@@ -1,0 +1,459 @@
+<?xml version="1.0"?>
+
+<!-- Boeing 314-A overhead and engineer panel.
+
+The photographs are probably taken with the engines stopped.
+
+
+B314 overhead panel (from left to right, top to bottom).
+===================
+- the 4 middle switches could be engine starters (A).
+
+
+B314-A overhead panel (from left to right, top to bottom).
+=====================
+- the 4 middle switches could be engine starters (A).
+
+
+B314-A engineer panel (from left to right, top to bottom).
+=====================
+Wall, half right of board, above the levers :
+- 1st line, 4 rpm at 0 rpm.
+- 4th line, 4 manifold pressure at outside pressure 29.92 inhg.
+
+Desk, below the half right of board :
+- 4 pitoh levers, ended by 4 mixture levers (A).
+
+
+
+References
+==========
+
+(A) position extrapolated from modern aircrafts.
+
+
+
+_______________________________________________________________________
+
+This is a panel configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the panel's background texture and
+the location (and optionally, size) of the instruments that will
+appear on the panel.
+
+Each instrument is, itself, defined in an XML-encoded property list
+in a separate file.
+
+Co-ordinates are relative to the *bottom* left corner of the screen
+(as in OpenGL).  The total FlightGear window is always considered to
+be 1024x768, whatever its actual display size on the screen.  All
+paths are relative to $FG_ROOT.
+
+Note that the name of the element defining each instrument must be
+different, or else instrument definitions will be overwritten:
+that's not particularly XML-ish, but that's how property lists
+work in FlightGear right now.
+
+Each instrument has its own preferred width and height, but you can
+override those by providing <w>..</w> and <h>..</h> properties with the
+<x>...</x> and <y>...</y> properties.
+
+-->
+
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<PropertyList>
+
+ <name>Boeing 314-A Engineer Panel</name>
+ <background>Aircraft/Boeing314/Panels/Textures/Boeing314A-panel-bg.rgb</background>
+ <w>1424</w>
+ <h>468</h>
+ <y-offset>0</y-offset>
+ <view-height>440</view-height>
+
+ <instruments>
+
+<!-- Engineer left -->
+
+  <instrument include="Instruments/B314-fuel-center.xml">
+   <name>Tank 5</name>
+   <params>
+    <content-select>/consumables/fuel/tank[4]/level-gal_us</content-select>
+   </params>
+   <x>50</x>
+   <y>245</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel-sponson.xml">
+   <name>Tank 6</name>
+   <params>
+    <content-select>/consumables/fuel/tank[5]/level-gal_us</content-select>
+   </params>
+   <x>50</x>
+   <y>145</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel-sponson.xml">
+   <name>Tank 7</name>
+   <params>
+    <content-select>/consumables/fuel/tank[6]/level-gal_us</content-select>
+   </params>
+   <x>50</x>
+   <y>45</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+<!-- Overhead -->
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 1</name>
+   <params>
+    <magneto-select>/controls/engines/engine[0]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[0]/starter</starter-select>
+   </params>
+   <x>268</x>
+   <y>435</y>
+   <w>100</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 2</name>
+   <params>
+    <magneto-select>/controls/engines/engine[1]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[1]/starter</starter-select>
+   </params>
+   <x>398</x>
+   <y>435</y>
+   <w>100</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 3</name>
+   <params>
+    <magneto-select>/controls/engines/engine[2]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[2]/starter</starter-select>
+   </params>
+   <x>528</x>
+   <y>435</y>
+   <w>100</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 4</name>
+   <params>
+    <magneto-select>/controls/engines/engine[3]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[3]/starter</starter-select>
+   </params>
+   <x>658</x>
+   <y>435</y>
+   <w>100</w>
+   <h>50</h>
+  </instrument>
+
+<!-- Engine tanks -->
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 1</name>
+   <params>
+    <content-select>/consumables/fuel/tank[0]/level-gal_us</content-select>
+   </params>
+   <x>270</x>
+   <y>345</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 2</name>
+   <params>
+    <content-select>/consumables/fuel/tank[1]/level-gal_us</content-select>
+   </params>
+   <x>400</x>
+   <y>345</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 3</name>
+   <params>
+    <content-select>/consumables/fuel/tank[2]/level-gal_us</content-select>
+   </params>
+   <x>530</x>
+   <y>345</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 4</name>
+   <params>
+    <content-select>/consumables/fuel/tank[3]/level-gal_us</content-select>
+   </params>
+   <x>660</x>
+   <y>345</y>
+   <w>95</w>
+   <h>95</h>
+  </instrument>
+
+<!-- Engineer -->
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 1 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[0]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[0]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>270</x>
+   <y>245</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 2 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[1]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[1]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>400</x>
+   <y>245</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 3 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[2]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[2]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>530</x>
+   <y>245</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/egt.xml">
+   <name>Engine 4 fuel flow</name>
+   <params>
+    <engine-egt-select>/engines/engine[3]/egt-degf</engine-egt-select>
+    <engine-fuel-flow-select>/engines/engine[3]/fuel-flow-gph</engine-fuel-flow-select>
+   </params>
+   <x>660</x>
+   <y>245</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 1 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[0]/rpm</rpm-select>
+   </params>
+   <x>270</x>
+   <y>145</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 2 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[1]/rpm</rpm-select>
+   </params>
+   <x>400</x>
+   <y>145</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 3 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[2]/rpm</rpm-select>
+   </params>
+   <x>530</x>
+   <y>145</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 4 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[3]/rpm</rpm-select>
+   </params>
+   <x>660</x>
+   <y>145</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 1</name>
+   <params>
+    <mp-select>/engines/engine[0]/mp-osi</mp-select>
+   </params>
+   <x>270</x>
+   <y>45</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 2</name>
+   <params>
+    <mp-select>/engines/engine[1]/mp-osi</mp-select>
+   </params>
+   <x>400</x>
+   <y>45</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 3</name>
+   <params>
+    <mp-select>/engines/engine[2]/mp-osi</mp-select>
+   </params>
+   <x>530</x>
+   <y>45</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 4</name>
+   <params>
+    <mp-select>/engines/engine[3]/mp-osi</mp-select>
+   </params>
+   <x>660</x>
+   <y>45</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+<!-- Radio -->
+
+  <instrument include="Instruments/B314-gdf-call.xml">
+   <name>Ground Direction Finding call</name>
+   <x>890</x>
+   <y>380</y>
+   <w>40</w>
+   <h>40</h>
+  </instrument>
+
+  <instrument include="../../Instruments/navcom-kx155.xml">
+   <name>NavCom 1 Radio</name>
+   <x>890</x>
+   <y>271</y>
+  </instrument>
+
+  <instrument include="../../Instruments/adf-radio.xml">
+   <name>ADF Radio</name>
+   <x>890</x>
+   <y>190</y>
+  </instrument>
+
+<!-- Engineer bottom -->
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 1 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[0]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>820</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 2 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[1]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>840</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 3 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[2]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>860</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 4 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[3]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>880</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 1 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[0]/mixture</engine-mixture-select>
+   </params>
+   <x>900</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 2 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[1]/mixture</engine-mixture-select>
+   </params>
+   <x>920</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 3 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[2]/mixture</engine-mixture-select>
+   </params>
+   <x>940</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 4 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[3]/mixture</engine-mixture-select>
+   </params>
+   <x>960</x>
+   <y>60</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+ </instruments>
+
+</PropertyList>

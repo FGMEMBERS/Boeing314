@@ -1,0 +1,818 @@
+<FDM_CONFIG NAME="Boeing314A" VERSION="1.65" RELEASE="1.0">
+<!--
+  File:     Boeing314A.xml
+  Author:   Aero-Matic v 0.71
+  Date:     7 january 2005
+
+  Inputs:
+    name:          Boeing314A
+    type:          multi-engine prop transport
+    max weight:    84000.0 lb
+    wing span:     152.0 ft
+    length:        106.0 ft
+    wing area:     2867.0 sq-ft
+    gear type:     tricycle
+    retractable?:  no
+    # engines:     4
+    engine type:   piston
+    engine layout: wings
+    yaw damper?    no
+
+  Outputs:
+    wing loading:  29.30 lb/sq-ft
+    CL-alpha:      4.9 per radian
+    CL-0:          0.24
+    CL-max:        1.4
+    CD-0:          0.028
+    K:             0.039
+
+
+  Summary : 
+  -------
+  - 314A model, 14.5 ft propeller, 1600 hp, 5200 miles range
+   (314 model has smaller propeller, 1500 hp and 3500 miles range).
+  - CG in range, between 28 and 29 % MAC.
+  - hull drag.
+  - tilt at rest.
+  - maximum speed above 175 kt at full load 2300 RPM 9500 ft.
+  - economic speed (138 gallons/h for all engines) around 110 kt at full load 9500 ft.
+
+
+  Known problems :
+  --------------
+  - no step.
+  - not enough brake (at 450 lb idle max pitch) : increasing the static friction gets vibrations at rest.
+  - at rest 700 RPM, one may have not enough brake or engines may stop with idle throttle :
+  not systematic, depends of pressure and/or temperature. 
+  - heading autopilot can hang in a roll : the ball of the turn indicator experiences of a
+  centrifugal force, in the direction of the roll.
+  - not the real gear ratio 16:9.
+  - no fuel selector.
+
+
+  References :
+  ----------
+  - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
+  (FAA certificate, TC704 - 25 january 1939, B-314) :
+
+  Engine limits : * maximum except take-off (straight line manifold pressure variation) : 33.2 in. hg. 2100 rpm (1200 hp)
+                  at 5400 ft, 35.0 in. hg. 2100 rpm (1200 hp) at sea level.
+                  * take-off (2 minutes), 42.5 in. hg. 2400 rpm (1550 hp).
+  Airspeed limits : * level flight or climb 178 mph (155 kt) true, glide or dive 212 mph (184 kt) true.
+                    * flaps extended (40° or less) 121 mph (105 kt) true.
+                    * flaps extended (more than 40°) 105 mph (91 kt) true. 
+  Weight limits : landing 80000 lb, take-off 84000 lb.
+  Fuel capacity : 5448 gallons (32688 lb). 2 tanks at 600 gallons (3600 lb) each, in wing stubs; 1 tank 960 gallons
+                  (5760 lb) inboard; and 1 tank at 1164 gallons (6984 lb) outboard, in each hydro-stabilizer.
+
+  Datum : nose of hull.
+  MAC : 258.79 in., leading edge of MAC at 398.66 in.
+  CG range (flight)   : * at 80000 lb or more, 455.6 in. (22% MAC) to 478.2 in. (30.7% MAC).
+                        * at less than 80000 lb, 444.3 in. (17.65% MAC) to 478.2 in. (30.7% MAC).
+           (landing)  : * at 70330 lb or more, 463.4 in. (25% MAC) to 478.2 in. (30.7% MAC).
+                        * at less than 70330 lb, 455.6 in. (22% MAC) to 478.2 in. (30.7% MAC).
+
+  Ceiling (ft)   Weight (lb)   RPM   Manifold   True IAS   Prop.   Cowl flap   De-icers
+                                     pressure     (kt)     blade    opening    installed
+  --------------------------------------------------------------------------------------
+     8900         80000       2100   Full         100     6159A-0     ---         ---
+                                     throttle
+     7500         84000       2100   Full         102     6159A-0     ---         ---
+                                     throttle
+    10000         80000       2100   Full         100     6243A-3   5 degrees     yes
+                                     throttle
+     9000         84000       2100   Full         102     6243A-3   5 degrees     yes
+                                     throttle
+
+  Propeller : * Hamilton standard 3 blade constant speed, 6243A-3 to 6243A-6 inclusive, diameter 14'9-3/8" maximum
+              14'5-5/8" minimum (1928 lb).
+              * Hamilton standard 3 blade constant speed, 6159A-0 to 6159A-3 inclusive, diameter 14'3/8" maximum
+              13'8-3/4" minimum (1819 lb).
+
+  - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
+  (FAA certificate, TC704 - 2 may 1941 B-314A) :
+
+  Same model as B-314, except for engine, powerplane installation, engine mount, and inner structural details.
+
+  Engine limits : * maximum except take-off (straight line manifold pressure variation) : 35.8 in. hg. 2300 rpm (1350 hp)
+                  at 6200 ft, 37.5 in. hg. 2300 rpm (1350 hp) at sea level.
+                  * take-off (2 minutes), 43.5 in. hg. 2400 rpm (1600 hp).
+
+  Ceiling (ft)   Weight (lb)   RPM   Manifold   True IAS   Prop.   Cowl flap   De-icers
+                                     pressure     (kt)     blade    opening    installed
+  --------------------------------------------------------------------------------------
+    10000         80000       2300   Full         100     6243A-3   5 degrees     yes
+                                     throttle
+     9000         84000       2300   Full         102     6243A-3   5 degrees     yes
+                                     throttle
+
+  Propeller : Hamilton standard 3 blade constant speed, 6243A-3 to 6243A-6 inclusive, diameter 14'9-3/8" maximum
+              14'5-5/8" minimum (1928 lb).
+
+  - http://case.pr.erau.edu/reports/US_reports/1940/1943.02.22_PanAmericanAirways_Boeing-314.pdf
+  (crash - 22 february 1943 Lisbon, Portugal) :
+
+  Elevator range : +/-25 deg (20 + 5).
+
+  - http://case.pr.erau.edu/reports/US_reports/1940/1941.08.16_PanAmericanAirways_Boeing-314.pdf
+  (crash - 16 august 1941 Apra Harbor, Guam) :
+
+  Takeoff : in less than 6000 ft (full load).
+
+  - http://www.hq.nasa.gov/office/pao/History/SP-468/app-a2.htm/
+
+  Maximum power (sea level) : 1600 hp per engine, power loading 13.1 lb / hp.
+  Weights : gross 84000 lb, empty 48400 lb.
+  Lengths : wing span 152.0 ft, length 106.0 ft.
+  Areas : wing 2867 sq ft, wind loading 29.3 lb / sq ft, drag area (CD0 x wing area) 78.56 sq ft.
+  Speeds : Vmax 201 mph at 6200 ft, Vcruise 184 mph at 11000 ft, Vstall 70 mph.
+  Drag : CD0 (zero-lift) 0.0274, wing aspect ratio 8.06, maximum lift/drag ratio 13.0.
+
+  - http://www.hq.nasa.gov/office/pao/History/SP-468/ch8-2.htm/
+
+  Curve of a hull drag.
+
+  - http://www.aviation-history.com/boeing/314.html/
+
+  4 Wright GR-2600 Twin Cyclone, 1600 hp (1192 kw), 14 cylinder, air-cooled, radial engines.
+  Weights : gross 82500 lb, empty 50268 lb.
+  Lengths : wing span 152.0 ft, length 106.0 ft, height 27.7 ft.
+  Wing area : 2867 sq ft.
+  Speeds : maximum level 199 mph, cruise 183 mph.
+  Service ceiling : 13400 ft.
+  Normal range : 3500 miles.
+
+  - http://www.daveswarbirds.com/usplanes/aircraft/b-314.htm/
+
+  4 Wright GR-2600 Cyclone, 1600 hp, 14 radial.
+  Weights : gross 82500 lb, empty 50268 lb.
+  Lengths : wing span 152.0 ft, length 106.0 ft, height 27.7 ft.
+  Wing area : 2867 sq ft.
+  Speeds : maximum 193 mph at 10000 ft, cruise 183 mph.
+  Service ceiling : 13400 ft.
+  Normal range : 3500 miles.
+
+  - http://www.flyingclippers.com/B314.html/
+  
+  Ceiling : cruise 13400 ft, maximum 19600 ft, climb 562 ft/min.
+  Crew : 6-10.
+  Payload : 40-74 (36 night) passengers.
+
+  - http://www.boeing.com/history/boeing/m314.html/
+
+  (B314-A)
+
+  4 1600 hp Wright GR-2600 Twin Cyclone.
+  Weights : gross 84000 lb.
+  Lengths : wing span 152.0 ft, length 106.0 ft.
+  Speeds : maximum 199 mph, cruise 184 mph.
+  Ceiling : 19600 ft.
+  Range : 5200 miles.
+  Accommodation : 10 crew, 74 passengers.
+
+  - http://www.southernoregonwarbirds.org/fa3.html/
+    (Franck Varnum flew during WWII).
+ 
+  The sponsons (the short fins sticking out of the sides of the fuselage) provide lateral stability on the water. They
+  were filled with gasoline and as a result were not at all that buoyant.
+  If you had to taxi to downwind, on the turn to downwind the wind could get under the upwind wing and tip the plane until
+  the downwind wing dug into the water. In that condition a lot of water could flow into the wing, and once there could
+  flow through the wings and into the fuselage, dousing everyone and everything. That never happened to me but I did hear
+  of such cases.
+  When we faced that situation we would have several of the crew walk into the upwind wing out to the outer nacelle, to
+  provide balance during the turn. The wing at the fuselage was about 11 feet thick and contained a catwalk that led all
+  the way out to the outboard engine. Flight engineers could actually work on the engines in flight.
+
+  Set up the cruise at 117 mph (102 kt), until 135 mph (117 kt) as one burns off gas.
+  They were never anywhere near the advertised max cruise of 193 mph (168 kt) : KSFO - PHNL (2080 nmi) at an average
+  speed of 126 mph (109 kt), 16 hours depending of wind.
+  During "Amber Alerts", they leaned out the mixture and slowed the engine rpms to 100 mph (87 kt) : 23-24 hours till
+  Honolulu.
+
+  Landing : 70-75 mph (61-65 kt).
+
+  - TV documentary (Panam films) :
+
+  At rest, B314 tilted on one of its lateral sponsons.
+ 
+
+-->
+
+ <METRICS>
+
+    <!--
+    Center of gravity location, empty weight, in aircraft's own structural coord
+    system. X, Y, Z, in inches; X is positive out the tail, Y positive out the
+    right wing.
+
+    Pilot's eyepoint location, in aircraft's own coord system, FROM cg.
+    X, Y, Z, in inches
+    -->
+
+    <!-- ORIGIN (0,0,0) is at NOSE -->
+
+    <!-- CG : empty weight at 28.0 % of MAC, full load at 29.0 % of MAC.
+
+         Chord at MAC.
+
+         Add ac_wingincidence : 1/20 of wing chord (real seems 1/5).
+
+    -->
+
+   AC_WINGAREA  2867.00
+   AC_WINGSPAN  152.00
+   AC_CHORD     21.57                                  <!-- aeromatic 18.86 -->
+   AC_WINGINCIDENCE 2.86                               <!-- added to help the take-off -->
+   AC_HTAILAREA 458.72
+   AC_HTAILARM  53.00
+   AC_VTAILAREA 516.06
+   AC_LV        53.00
+   AC_IXX       2314418
+   AC_IYY       1346488
+   AC_IZZ       3596084
+   AC_IXZ       0
+   AC_EMPTYWT   49872                                  <!-- aeromatic 50400 -->
+   AC_CGLOC     470.5  0.0 -31.8                       <!-- aeromatic 636.0  0.0 -31.8 -->
+   AC_AERORP    470.5  0.0  0.0                        <!-- aeromatic 636.0  0.0  0.0 -->
+   AC_EYEPTLOC  101.8 -24.0 65.0
+   AC_VRP       0 0 0
+ </METRICS>
+ <UNDERCARRIAGE>
+
+    <!--
+    the gear parameters that can be specified are as follows, IN ORDER OF APPEARANCE:
+
+    AC_GEAR
+    <name>                           name of gear entry - no spaces allowed
+    <X> <Y> <Z>                      Gear location in aircraft body coords in inches
+    <spring constant>                spring constant in lbs/ft
+    <damping coefficient>            damping coefficient in lbs/ft/sec
+    <dynamic friction coefficient>   Self-explanatory: sliding friction coefficient
+    <static friction coefficient>    Self-explanatory: "onset" friction coefficient
+    <rolling resistance coefficient> Self-explanatory: rolling resistance coefficient
+    <steerability attribute>         One of <STEERABLE | FIXED | CASTERED>
+    <brake group membership>         One of <LEFT | CENTER | RIGHT | NOSE | TAIL | NONE>
+    <max steer angle>                Maximum steerable angle in degrees
+    -->
+
+    <!-- left/right sponsons at 70% MAC and 1/4 wing, slightly higher (tilt at rest).
+    -->
+
+  AC_GEAR NOSE_LG   165.4  0.0   -152.6 25200.0 8400.0   0.5  0.8  0.02 FIXED NOSE  5.0 FIXED
+  AC_GEAR LEFT_MLG  579.9 -228.0 -142.6 84000.0 16800.0  0.5  0.8  0.02 FIXED LEFT  0   FIXED
+  AC_GEAR RIGHT_MLG 579.9  228.0 -142.6 84000.0 16800.0  0.5  0.8  0.02 FIXED RIGHT 0   FIXED
+  AC_GEAR REAR_MLG  661.4  0.0   -152.6 84000.0 16800.0  0.5  0.8  0.02 FIXED TAIL  0   FIXED
+ </UNDERCARRIAGE>
+ <PROPULSION>
+
+    <!--
+      TANKS SECTION
+
+      Tank locations and characteristics, empty weight, in aircraft's own coord system:
+      X, Y, Z, in inches
+      effective radius of tank, in inches (for fuel slosh, if/when modeled)
+      capacity in pounds
+      Current contents, in pounds
+
+      ENGINE[S] SECTION
+
+      Engine[s] is|are specified by giving engine name (which corresponds to an engine
+      definition file in the "engines" directory) followed by x, y, z placement and
+      pitch and yaw orientation. Coordinates are given in inches in the structural
+      coordinate frame. Angles for pitch and yaw are specified in radians.
+
+      AC_ENGINE name x y z pitch yaw
+
+      THRUSTER[S] SECTION
+
+      AC_THRUSTER name x y z pitch yaw
+    -->
+
+  <!-- propeller at 1/5 of length, 1/10 and 2/10 of wing span.
+
+       1 tank feeds 1 engine, plus floor and sponson (left or right), until a selector is implemented.
+  -->
+
+  <AC_ENGINE FILE="WrightGR-2600">
+    XLOC 254.4                             <!-- aeromatic 636 -->
+    YLOC -364.8                            <!-- aeromatic -304 -->
+    ZLOC 40                                <!-- aeromatic -40 -->
+    PITCH 0
+    YAW 0
+    FEED 0
+    FEED 4
+    FEED 5
+    <AC_THRUSTER FILE="HamiltonStd6243A-3">
+      XLOC 254.4
+      YLOC -364.8
+      ZLOC 40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+  <AC_ENGINE FILE="WrightGR-2600">
+    XLOC 254.4
+    YLOC -182.4                            <!-- aeromatic -304 -->
+    ZLOC 40
+    PITCH 0
+    YAW 0
+    FEED 1
+    FEED 4
+    FEED 5
+    <AC_THRUSTER FILE="HamiltonStd6243A-3">
+      XLOC 254.4
+      YLOC -182.4
+      ZLOC 40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+  <AC_ENGINE FILE="WrightGR-2600">
+    XLOC 254.4
+    YLOC 182.4                             <!-- aeromatic 304 -->
+    ZLOC 40
+    PITCH 0
+    YAW 0
+    FEED 2
+    FEED 4
+    FEED 6
+    <AC_THRUSTER FILE="HamiltonStd6243A-3">
+      XLOC 254.4
+      YLOC 182.4
+      ZLOC 40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+  <AC_ENGINE FILE="WrightGR-2600">
+    XLOC 254.4
+    YLOC 364.8                             <!-- aeromatic 304 -->
+    ZLOC 40
+    PITCH 0
+    YAW 0
+    FEED 3
+    FEED 4
+    FEED 6
+    <AC_THRUSTER FILE="HamiltonStd6243A-3">
+      XLOC 254.4
+      YLOC 364.8
+      ZLOC 40
+      PITCH 0
+      YAW 0
+    </AC_THRUSTER>
+  </AC_ENGINE>
+
+<!-- radius : lb -> kg -> divide by 0.792 (depends of fuel density) -> liter -> radius of sphere -->
+
+<!-- all tanks are 40 % of MAC -->
+
+<!-- wing tanks behind the engines -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="0">
+    XLOC 502.0                             <!-- aeromatic 636 --> 
+    YLOC -364.8                            <!-- aeromatic 0 --> 
+    ZLOC 30                                <!-- aeromatic -31.8 --> 
+    RADIUS 311                             <!-- aeromatic 1 --> 
+    CAPACITY   3600.0
+    CONTENTS   3600.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="1">
+    XLOC 502.0 
+    YLOC -182.4 
+    ZLOC 30 
+    RADIUS 311 
+    CAPACITY   3600.0
+    CONTENTS   3600.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="2">
+    XLOC 502.0 
+    YLOC 182.4 
+    ZLOC 30 
+    RADIUS 311 
+    CAPACITY   3600.0
+    CONTENTS   3600.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="3">
+    XLOC 502.0
+    YLOC 364.8
+    ZLOC 30
+    RADIUS 311
+    CAPACITY   3600.0
+    CONTENTS   3600.0
+  </AC_TANK>
+
+<!-- inboard tank (floor) -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="4">
+    XLOC 502.0
+    YLOC 0
+    ZLOC -40
+    RADIUS 363
+    CAPACITY   5760.0
+    CONTENTS   5760.0
+  </AC_TANK>
+
+<!-- ouboard tanks (hydro-stabilizer) -->
+
+  <AC_TANK TYPE="FUEL" NUMBER="5">
+    XLOC 502.0 
+    YLOC -182.4 
+    ZLOC -40 
+    RADIUS 388 
+    CAPACITY   6984.0
+    CONTENTS   6984.0
+  </AC_TANK>
+
+  <AC_TANK TYPE="FUEL" NUMBER="6">
+    XLOC 502.0 
+    YLOC 182.4 
+    ZLOC -40 
+    RADIUS 388 
+    CAPACITY   6984.0
+    CONTENTS   6984.0
+  </AC_TANK>
+
+ </PROPULSION>
+
+ <FLIGHT_CONTROL NAME="Boeing314A">
+   <COMPONENT NAME="Pitch Trim Sum" TYPE="SUMMER">
+      INPUT   fcs/elevator-cmd-norm
+      INPUT   fcs/pitch-trim-cmd-norm
+      CLIPTO  -1 1
+   </COMPONENT>
+   <COMPONENT NAME="Elevator Control" TYPE="AEROSURFACE_SCALE">
+
+      <!-- replaced -0.35/0.30 by real -25/25 deg -->
+
+      INPUT   fcs/pitch-trim-sum
+      MIN    -25
+      MAX     25
+      GAIN    0.01745
+      OUTPUT  fcs/elevator-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Roll Trim Sum" TYPE="SUMMER">
+      INPUT   fcs/aileron-cmd-norm
+      INPUT   fcs/roll-trim-cmd-norm
+      CLIPTO  -1 1
+   </COMPONENT>
+   <COMPONENT NAME="Left Aileron Control" TYPE="AEROSURFACE_SCALE">
+      INPUT   fcs/roll-trim-sum
+      MIN    -0.35
+      MAX     0.35
+      OUTPUT  fcs/left-aileron-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Right Aileron Control" TYPE="AEROSURFACE_SCALE">
+      INPUT  -fcs/roll-trim-sum
+      MIN    -0.35
+      MAX     0.35
+      OUTPUT  fcs/right-aileron-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Rudder Command Sum" TYPE="SUMMER">
+      INPUT   fcs/rudder-cmd-norm
+      INPUT   fcs/yaw-trim-cmd-norm
+      CLIPTO  -1 1
+   </COMPONENT>
+   <COMPONENT NAME="Rudder Control" TYPE="AEROSURFACE_SCALE">
+      INPUT   fcs/rudder-command-sum
+      MIN     -0.35
+      MAX      0.35
+      OUTPUT  fcs/rudder-pos-rad
+   </COMPONENT>
+   <COMPONENT NAME="Flaps Control" TYPE="KINEMAT">
+
+     <!-- changed 15/30 deg to 15/40/55 (real is above 40). -->
+
+     INPUT   fcs/flap-cmd-norm
+     DETENTS 4
+             0   0
+             15  4
+             40  3
+             55  2
+     OUTPUT  fcs/flap-pos-deg
+   </COMPONENT>
+   <COMPONENT NAME="Speedbrake Control" TYPE="KINEMAT">
+     INPUT   fcs/speedbrake-cmd-norm
+     DETENTS 2
+             0   0
+             1   1
+     OUTPUT  fcs/speedbrake-pos-norm
+   </COMPONENT>
+ </FLIGHT_CONTROL>
+ <AERODYNAMICS>
+  <AXIS NAME="LIFT">
+
+   <GROUP NAME="CLb">
+     <!-- created to apply the ground effect multiplier -->
+
+     Basic_lift
+
+     <FACTOR NAME="kCLge" TYPE="VECTOR">
+       <!-- created to help the takeoff at full load -->
+
+        Change_in_lift_due_to_ground_effect
+        5
+        aero/h_b-mac-ft
+        none
+        0.0   1.200
+        0.1   1.150
+        0.15  1.090
+        0.2   1.020
+        1.1   1.000
+    </FACTOR>
+
+    <COEFFICIENT NAME="CLo" TYPE="VALUE">
+
+      <!-- created -->
+
+      Lift_at_zero_alpha
+      aero/qbar-psf | metrics/Sw-sqft
+      0.240
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="CLalpha" TYPE="VECTOR">
+
+      <!-- substracted 0.240 -->
+
+      Lift_due_to_alpha
+      4
+      aero/alpha-rad
+      aero/qbar-psf|metrics/Sw-sqft
+      -0.20   -0.980
+       0.00    0.000
+       0.24    1.160
+       0.60    0.464
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="dCLflap" TYPE="VALUE">
+
+       <!-- replaced 0.6 by 0.9 to move the takeoff speed below the full flaps limit (91 kt). -->
+
+       Delta_Lift_due_to_flaps
+       aero/qbar-psf|metrics/Sw-sqft|fcs/components/flaps-control/output-norm
+       0.9
+    </COEFFICIENT>
+
+   </GROUP>
+
+    <COEFFICIENT NAME="dCLsb" TYPE="VALUE">
+       Delta_Lift_due_to_speedbrake
+       aero/qbar-psf|metrics/Sw-sqft|fcs/speedbrake-pos-norm
+       0
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CLde" TYPE="VALUE">
+       Lift_due_to_Elevator_Deflection
+       aero/qbar-psf|metrics/Sw-sqft|fcs/elevator-pos-rad
+       0.2
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="DRAG">
+
+     <GROUP NAME="CDHull">
+       <!-- created -->
+
+       Drag_due_to_hull
+
+       <FACTOR NAME="kCDhull" TYPE="TABLE">
+
+        <!-- - maximum (on the hump through the step) at 42 % of takeoff speed (100 kt full load).
+             - constant above 70 kt.
+             - 50 % of drag at 2 ft AGL (hull going out of water), and none at 5 ft.
+             - 9.93 ft is AGL altitude, when on ground.
+
+           % of takeoff speed, % of hump drag :
+           -   0.0/106,  0.0/59. (dock)
+           -   5.0/106,  4.0/59.
+           -   8.0/106,  8.0/59.
+           -  11.0/106, 13.5/59.
+           -  14.0/106, 21.0/59.
+           -  16.5/106, 27.0/59.
+           -  19.0/106, 33.0/59.
+           -  21.0/106, 36.5/59.
+           -  24.5/106, 42.5/59.
+           -  28.0/106, 47.5/59.
+           -  32.5/106, 53.0/59.
+           -  35.0/106, 55.0/59.
+           -  38.0/106, 56.5/59.
+           -  41.5/106, 58.5/59.
+           -  45.0/106, 59.0/59. (hump)
+           -  48.0/106, 58.5/59.
+           -  51.5/106, 57.0/59.
+           -  55.0/106, 53.5/59.
+           -  59.5/106, 48.5/59.
+           -  64.5/106, 42.0/59.
+           -  69.5/106, 36.5/59.
+           -  76.0/106, 29.0/59.
+           -  92.0/106, 11.5/59.
+           -  96.0/106,  7.0/59.
+           -  99.5/106,  5.0/59.
+           - 106.0/106,  0.0/59. (lift-off)
+        -->
+
+        Hull_factor
+        22
+        4
+        velocities/ve-kts
+        position/h-agl-ft
+        none
+                      9.93        11.93       14.93       19.93
+         0.0          0.000000    0.000000    0.000000    0.000000
+         4.7          0.067800    0.033900    0.000000    0.000000
+         7.5          0.135600    0.067800    0.000000    0.000000
+        10.4          0.228800    0.114400    0.000000    0.000000
+        13.2          0.355900    0.178000    0.000000    0.000000
+        15.6          0.457600    0.228800    0.000000    0.000000
+        17.9          0.559300    0.279700    0.000000    0.000000
+        19.8          0.618600    0.309300    0.000000    0.000000
+        23.1          0.720300    0.360200    0.000000    0.000000
+        26.4          0.805100    0.402600    0.000000    0.000000
+        30.7          0.898300    0.449200    0.000000    0.000000
+        33.0          0.932200    0.466100    0.000000    0.000000
+        35.8          0.957600    0.478800    0.000000    0.000000
+        39.1          0.991500    0.495800    0.000000    0.000000
+        42.0          1.000000    0.500000    0.000000    0.000000
+        45.3          0.991500    0.495800    0.000000    0.000000
+        48.6          0.996100    0.498100    0.000000    0.000000
+        51.9          0.906800    0.453400    0.000000    0.000000
+        56.1          0.711900    0.356000    0.000000    0.000000
+        60.9          0.618600    0.309300    0.000000    0.000000
+        65.6          0.491500    0.245800    0.000000    0.000000
+        71.7          0.194900    0.097500    0.000000    0.000000
+      </FACTOR>
+
+      <COEFFICIENT NAME="CDhump" TYPE="VECTOR">
+
+         <!-- - less weight is less hull inside water, and less displacement.
+              - more drag inside water than air.
+              - increase the takeoff distance.
+         -->
+
+         Drag_at_hump
+         2
+         inertia/weight-lbs
+         aero/qbar-psf | metrics/Sw-sqft
+         84000.0     0.55
+         49872.0     0.45
+      </COEFFICIENT>
+
+    </GROUP>
+
+    <COEFFICIENT NAME="CDo" TYPE="VALUE">
+
+       <!-- added -->
+
+       Drag_at_zero_lift
+       aero/qbar-psf | metrics/Sw-sqft
+       0.0274
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="CDalpha" TYPE="VECTOR">
+
+       <!-- - renamed from CDo.
+            - substracted Cdo 0.0274. -->
+
+       Drag_due_to_alpha
+       5
+       aero/alpha-rad
+       aero/qbar-psf|metrics/Sw-sqft
+       -1.57       1.4726
+       -0.26       0.0286
+        0.00       0.0006
+        0.26       0.0286
+        1.57       1.4726
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDi" TYPE="VALUE">
+       Induced_drag
+       aero/qbar-psf|metrics/Sw-sqft|aero/cl-squared-norm
+       0.039
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDmach" TYPE="VECTOR">
+       Drag_due_to_mach
+       4
+       velocities/mach-norm
+       aero/qbar-psf|metrics/Sw-sqft
+       0.0       0.000
+       0.7       0.000
+       1.1       0.023
+       1.8       0.015
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDflap" TYPE="VALUE">
+
+       <!-- replaced 0.035 by 0.059 to avoid too quickly the flaps speed limit (91 and 105 kt). -->
+
+       Drag_due_to_flaps
+       aero/qbar-psf|metrics/Sw-sqft|fcs/components/flaps-control/output-norm
+       0.059
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDsb" TYPE="VALUE">
+       Drag_due_to_speedbrakes
+       aero/qbar-psf|metrics/Sw-sqft|fcs/speedbrake-pos-norm
+       0.028
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDbeta" TYPE="VECTOR">
+       Drag_due_to_sideslip
+       5
+       aero/beta-rad
+       aero/qbar-psf|metrics/Sw-sqft
+       -1.57       1.230
+       -0.26       0.050
+        0.00       0.00
+        0.26       0.050
+        1.57       1.230
+    </COEFFICIENT>
+    <COEFFICIENT NAME="CDde" TYPE="VALUE">
+       Drag_due_to_Elevator_Deflection
+       aero/qbar-psf|metrics/Sw-sqft|fcs/elevator-pos-norm
+       0.035
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="SIDE">
+    <COEFFICIENT NAME="CYb" TYPE="VALUE">
+       Side_force_due_to_beta
+       aero/qbar-psf|metrics/Sw-sqft|aero/beta-rad
+       -1
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="ROLL">
+    <COEFFICIENT NAME="Clb" TYPE="VALUE">
+       Roll_moment_due_to_beta
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/beta-rad
+       -0.1
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Clp" TYPE="VALUE">
+       Roll_moment_due_to_roll_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/bi2vel|velocities/p-aero-rad_sec
+       -0.4
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Clr" TYPE="VALUE">
+       Roll_moment_due_to_yaw_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/bi2vel|velocities/r-aero-rad_sec
+       0.15
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Clda" TYPE="VECTOR">
+       Roll_moment_due_to_aileron
+       2
+       velocities/mach-norm
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/left-aileron-pos-rad
+       0.0       0.15
+       2.0       0.050
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cldr" TYPE="VALUE">
+       Roll_moment_due_to_rudder
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/rudder-pos-rad
+       0.01
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="PITCH">
+    <COEFFICIENT NAME="Cmalpha" TYPE="VALUE">
+       Pitch_moment_due_to_alpha
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|aero/alpha-rad
+       -0.4
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cmde" TYPE="VECTOR">
+       Pitch_moment_due_to_elevator
+       2
+       velocities/mach-norm
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|fcs/elevator-pos-rad
+       0.0       -1
+       2.0       -0.250
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cmq" TYPE="VALUE">
+       Pitch_moment_due_to_pitch_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|aero/ci2vel|velocities/q-aero-rad_sec
+       -22
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cmadot" TYPE="VALUE">
+       Pitch_moment_due_to_alpha_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|aero/ci2vel|aero/alphadot-rad_sec
+       -8
+    </COEFFICIENT>
+  </AXIS>
+  <AXIS NAME="YAW">
+    <COEFFICIENT NAME="Cnb" TYPE="VALUE">
+       Yaw_moment_due_to_beta
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/beta-rad
+       0.12
+    </COEFFICIENT>
+    <COEFFICIENT NAME="Cnr" TYPE="VALUE">
+       Yaw_moment_due_to_yaw_rate
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|aero/bi2vel|velocities/r-aero-rad_sec
+       -0.15
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="Cndr" TYPE="VALUE">
+       Yaw_moment_due_to_rudder
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/rudder-pos-rad
+       -0.1
+    </COEFFICIENT>
+
+    <COEFFICIENT NAME="Cnda" TYPE="VALUE">
+       Adverse_yaw
+       aero/qbar-psf|metrics/Sw-sqft|metrics/bw-ft|fcs/left-aileron-pos-rad
+       -0.008
+    </COEFFICIENT>
+  </AXIS>
+ </AERODYNAMICS>
+</FDM_CONFIG>
