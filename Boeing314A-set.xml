@@ -51,6 +51,12 @@
 
   <chase-distance-m type="double" archive="y">-37.5</chase-distance-m>
 
+  <help>
+   <line>Vmax at 6200 ft: 201 mph [175 kt]</line>
+   <line>Vcruise at 11000 ft: 184 mph [160 kt]</line>
+   <line>Vstall: 70 mph [61 kt]</line>
+  </help>
+
  </sim>
 
  <nasal>
