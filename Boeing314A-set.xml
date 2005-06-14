@@ -16,9 +16,6 @@
    <autopilot>
     <path>Aircraft/Boeing314/Systems/Boeing314A-autopilot.xml</path>
    </autopilot>
-   <electrical>
-    <path>Aircraft/Generic/generic-electrical.xml</path>
-   </electrical>
   </systems> 
 
   <sound>
