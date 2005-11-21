@@ -1,8 +1,8 @@
-<FDM_CONFIG NAME="Boeing314A" VERSION="1.65" RELEASE="1.0">
+<FDM_CONFIG NAME="Boeing314A" VERSION="1.65" RELEASE="1.1">
 <!--
   File:     Boeing314A.xml
   Author:   Aero-Matic v 0.71
-  Date:     7 january 2005
+  Date:     14 August 2005
 
   Inputs:
     name:          Boeing314A
@@ -28,30 +28,46 @@
 
 
   Summary : 
-  -------
+  =======
   - 314A model, 14.5 ft propeller, 1600 hp, 5200 miles range
    (314 model has smaller propeller, 1500 hp and 3500 miles range).
-  - CG in range, between 28 and 29 % MAC.
-  - hull drag.
+  - CG in range, between 26 and 29 % MAC.
+  - takeoff flaps 2/3.
+  - real gear ratio 16:9.
+  - economic speed 110 kt.
   - tilt at rest.
-  - maximum speed above 175 kt at full load 2300 RPM 9500 ft.
-  - economic speed (138 gallons/h for all engines) around 110 kt at full load 9500 ft.
+  - hull drag.
+  - step lift and triming moment.
+  - rebound at landing.
+  - skipping at landing (empty weight).
+
+
+  Notation :
+  ========
+  Hydrodynamic coefficients starts by H.
+  Artificial coefficients starts by A.
 
 
   Known problems :
-  --------------
-  - no step.
-  - not enough brake (at 450 lb idle max pitch) : increasing the static friction gets vibrations at rest.
-  - at rest 700 RPM, one may have not enough brake or engines may stop with idle throttle :
-  not systematic, depends of pressure and/or temperature. 
+  ==============
+  - the gear tilt reduces brakes efficiency (empty at idle 700 RPM) :
+  increasing the static friction brings vibrations at rest.
+  - no waterloop when turns by cross-wind (wing diging water).
+  - weathervaning doesn't result of the real causes.
+  - no weathervaning at rest.
+  - no propoising at takeoff.
+  - no fuel selector.
   - heading autopilot can hang in a roll : the ball of the turn indicator experiences of a
   centrifugal force, in the direction of the roll.
-  - not the real gear ratio 16:9.
-  - no fuel selector.
+
+  not possible :
+  ............
+  - buoyancy by weak spring, because that can rear up at rest (and speed makes water as hard as concrete). 
+  - rebound by hard spring, because static can be unstable with empty weight.
 
 
   References :
-  ----------
+  ==========
   - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
   (FAA certificate, TC704 - 25 january 1939, B-314) :
 
@@ -65,6 +81,10 @@
   Fuel capacity : 5448 gallons (32688 lb). 2 tanks at 600 gallons (3600 lb) each, in wing stubs; 1 tank 960 gallons
                   (5760 lb) inboard; and 1 tank at 1164 gallons (6984 lb) outboard, in each hydro-stabilizer.
 
+  Note that :
+  - 1 gallon = 6 lb !
+  - this is the most recent content (314A), the real content of 314 could be lower.
+
   Datum : nose of hull.
   MAC : 258.79 in., leading edge of MAC at 398.66 in.
   CG range (flight)   : * at 80000 lb or more, 455.6 in. (22% MAC) to 478.2 in. (30.7% MAC).
@@ -74,10 +94,10 @@
 
   Ceiling (ft)   Weight (lb)   RPM   Manifold   True IAS   Prop.   Cowl flap   De-icers
                                      pressure     (kt)     blade    opening    installed
-  --------------------------------------------------------------------------------------
-     8900         80000       2100   Full         100     6159A-0     ---         ---
+  ======================================================================================
+     8900         80000       2100   Full         100     6159A-0     ...         ...
                                      throttle
-     7500         84000       2100   Full         102     6159A-0     ---         ---
+     7500         84000       2100   Full         102     6159A-0     ...         ...
                                      throttle
     10000         80000       2100   Full         100     6243A-3   5 degrees     yes
                                      throttle
@@ -100,7 +120,7 @@
 
   Ceiling (ft)   Weight (lb)   RPM   Manifold   True IAS   Prop.   Cowl flap   De-icers
                                      pressure     (kt)     blade    opening    installed
-  --------------------------------------------------------------------------------------
+  ======================================================================================
     10000         80000       2300   Full         100     6243A-3   5 degrees     yes
                                      throttle
      9000         84000       2300   Full         102     6243A-3   5 degrees     yes
@@ -194,7 +214,19 @@
   - TV documentary (Panam films) :
 
   At rest, B314 tilted on one of its lateral sponsons.
- 
+
+  - http://www.pilotfriend.com/flight_training/frames2/seaplane_main_frame.htm/ :
+  How to fly seaplanes and amphibians.
+
+  - http://naca.larc.nasa.gov/reports/1938/naca-tn-512/ :
+  A complete tank test of the hull of the Sikorsky S-40 flying-boat - American clipper class,
+  John R. Dawson, December 1934.
+
+  - http://naca.larc.nasa.gov/reports/1952/naca-report-1103/ :
+  Generalized theory for seaplane impact, Benjamin Milwitzky, October 1952.
+
+  - http://www.nwlink.com/~orion/Documents/Hull.pdf/ :
+  Stepped hull development for amphibious aircraft, Orion Technologies.
 
 -->
 
@@ -209,32 +241,35 @@
     X, Y, Z, in inches
     -->
 
-    <!-- ORIGIN (0,0,0) is at NOSE -->
+    <!-- ORIGIN (0,0,0) is at NOSE.
 
-    <!-- CG : empty weight at 28.0 % of MAC, full load at 29.0 % of MAC.
+         CG : empty load at 26.0 % of MAC, full load at 29.0 % of MAC.
 
          Chord at MAC.
 
          Add ac_wingincidence : 1/20 of wing chord (real seems 1/5).
 
+         Htailarm : distance from CG to horizontal tail tip.
+         Vtailarm : distance from CG to vertical tail tip.
     -->
 
-   AC_WINGAREA  2867.00
-   AC_WINGSPAN  152.00
-   AC_CHORD     21.57                                  <!-- aeromatic 18.86 -->
-   AC_WINGINCIDENCE 2.86                               <!-- added to help the take-off -->
-   AC_HTAILAREA 458.72
-   AC_HTAILARM  53.00
-   AC_VTAILAREA 516.06
+   AC_WINGAREA  2867.00                  <!-- ft2 -->
+   AC_WINGSPAN  152.00                   <!-- ft -->
+   AC_CHORD     21.57                    <!-- ft -->              <!-- aeromatic 18.86 -->
+   AC_WINGINCIDENCE 2.86                 <!-- deg -->             <!-- added to help the take-off -->
+   AC_HTAILAREA 458.72                   <!-- ft2 -->
+   AC_HTAILARM  22.91                    <!-- ft -->              <!-- aeromatic 53.00 -->
+   AC_VTAILAREA 516.06                   <!-- ft2 -->
+   AC_VTAILARM  17.17                    <!-- ft -->              <!-- added (turbulence) -->
    AC_LV        53.00
-   AC_IXX       2314418
-   AC_IYY       1346488
-   AC_IZZ       3596084
+   AC_IXX       2314418                  <!-- slug-ft2 -->
+   AC_IYY       1346488                  <!-- slug-ft2 -->
+   AC_IZZ       3596084                  <!-- slug-ft2 -->
    AC_IXZ       0
-   AC_EMPTYWT   49872                                  <!-- aeromatic 50400 -->
-   AC_CGLOC     470.5  0.0 -31.8                       <!-- aeromatic 636.0  0.0 -31.8 -->
-   AC_AERORP    470.5  0.0  0.0                        <!-- aeromatic 636.0  0.0  0.0 -->
-   AC_EYEPTLOC  101.8 -24.0 65.0
+   AC_EMPTYWT   49872                    <!-- lb -->              <!-- aeromatic 50400 -->
+   AC_CGLOC     477.7  0.0 -31.8         <!-- in -->              <!-- aeromatic 636.0  0.0 -31.8 -->
+   AC_AERORP    477.7  0.0  0.0          <!-- in -->              <!-- aeromatic 636.0  0.0  0.0 -->
+   AC_EYEPTLOC  101.8 -24.0 65.0         <!-- in -->
    AC_VRP       0 0 0
  </METRICS>
  <UNDERCARRIAGE>
@@ -255,13 +290,22 @@
     <max steer angle>                Maximum steerable angle in degrees
     -->
 
-    <!-- left/right sponsons at 70% MAC and 1/4 wing, slightly higher (tilt at rest).
+    <!-- Left/right sponsons at 70% MAC and 1/4 wing : higher at 3/4 hull height (tilt at rest).
+
+         The hump and step gears replaces the nose and rear gears, when the hull raises on the step.
+
+         The black painting of the hull should be visible, if empty load.
+
+         CAUTION : changing gear height or spring affects rest h_b-mac-ft !
     -->
 
-  AC_GEAR NOSE_LG   165.4  0.0   -152.6 25200.0 8400.0   0.5  0.8  0.02 FIXED NOSE  5.0 FIXED
-  AC_GEAR LEFT_MLG  579.9 -228.0 -142.6 84000.0 16800.0  0.5  0.8  0.02 FIXED LEFT  0   FIXED
-  AC_GEAR RIGHT_MLG 579.9  228.0 -142.6 84000.0 16800.0  0.5  0.8  0.02 FIXED RIGHT 0   FIXED
-  AC_GEAR REAR_MLG  661.4  0.0   -152.6 84000.0 16800.0  0.5  0.8  0.02 FIXED TAIL  0   FIXED
+  AC_GEAR HUMP_LG      66.4  0.0   -125.6 84000.0 16800.0  0.5  0.8  0.02 FIXED NOSE    0.0 FIXED
+  AC_GEAR NOSE_LG     395.4  0.0   -145.6 84000.0 16800.0  0.5  0.8  0.02 FIXED NOSE    0.0 FIXED
+  AC_GEAR LEFT_MLG    495.4 -228.0 -135.6 84000.0 16800.0  0.5  0.8  0.02 FIXED LEFT    0.0 FIXED
+  AC_GEAR RIGHT_MLG   495.4  228.0 -135.6 84000.0 16800.0  0.5  0.8  0.02 FIXED RIGHT   0.0 FIXED
+  AC_GEAR STEP_MLG    535.4  0.0   -125.6 84000.0 16800.0  0.5  0.8  0.02 FIXED TAIL    0.0 FIXED
+  AC_GEAR REAR_MLG    803.4  0.0   -145.6 84000.0 16800.0  0.5  0.8  0.02 FIXED TAIL    0.0 FIXED
+
  </UNDERCARRIAGE>
  <PROPULSION>
 
@@ -362,9 +406,10 @@
     </AC_THRUSTER>
   </AC_ENGINE>
 
-<!-- radius : lb -> kg -> divide by 0.792 (depends of fuel density) -> liter -> radius of sphere -->
+<!-- radius : lb => kg => divide by 0.792 (depends of fuel density) => liter => radius of sphere.
 
-<!-- all tanks are 40 % of MAC -->
+     all tanks are 40 % of MAC.
+-->
 
 <!-- wing tanks behind the engines -->
 
@@ -488,7 +533,7 @@
      INPUT   fcs/flap-cmd-norm
      DETENTS 4
              0   0
-             15  4
+             20  4
              40  3
              55  2
      OUTPUT  fcs/flap-pos-deg
@@ -503,6 +548,85 @@
  </FLIGHT_CONTROL>
  <AERODYNAMICS>
   <AXIS NAME="LIFT">
+
+   <GROUP NAME="HLstep">
+      <!-- created : the hull goes on its step. -->
+
+      Lift_due_to_step
+
+      <FACTOR NAME="kHLstep" TYPE="TABLE3D">
+
+        <!-- - hydrodynamic lift.
+             - 80 % when going out of water.
+             - 1st altitude = h_b-mac-ft at rest.
+             - 3rd altitude : 3.04' (from the keel) / wing span (152') = 0.020;
+             the planing layer is thin.
+             - 2nd altitude : in the middle.
+
+             Not implemented :
+             - drag when the bow plunges into a wave hump (nose down).
+             - drag when after body digs the water (nose up).
+        -->
+
+        Step_factor
+        3
+        3
+        2
+        aero/h_b-mac-ft
+        velocities/vc-kts
+        inertia/weight-lbs
+        none
+        47850                                           
+                      0.0         17.0        34.0
+        0.045         0.000000    0.000000    1.000000
+        0.055         0.000000    0.000000    0.800000
+        0.065         0.000000    0.000000    0.000000
+        84000                                            
+                      0.0         21.0        42.0
+        0.049         0.000000    0.000000    1.000000
+        0.059         0.000000    0.000000    0.800000
+        0.069         0.000000    0.000000    0.000000
+      </FACTOR>
+
+      <COEFFICIENT NAME="HLstep0" TYPE="TABLE3D">
+
+         <!-- - and missing lift for flaps.
+              - introducing roll quickly reduces lift at landing.
+              - sponson in water reduces lift : 0.02/0.029 rad at rest.
+              - on step, the possible roll is higher (sponson touching water).
+         -->
+
+         Lift_at_step
+         8
+         2
+         2
+         attitude/roll-rad
+         velocities/vc-kts
+         inertia/weight-lbs
+         aero/qbar-psf | metrics/Sw-sqft
+         47850                                            
+                   34.0     44.0
+        -0.069     0.0      0.0
+        -0.059     0.0      0.5
+        -0.049     0.5      1.0
+        -0.029     1.0      1.0
+         0.029     1.0      1.0
+         0.049     0.5      1.0
+         0.059     0.0      0.5
+         0.069     0.0      0.0
+         84000                                            
+                   42.0     52.0
+        -0.06      0.0      0.0
+        -0.05      0.0      0.5
+        -0.04      0.5      1.0
+        -0.02      1.0      1.0
+         0.02      1.0      1.0
+         0.04      0.5      1.0
+         0.05      0.0      0.5
+         0.06      0.0      0.0
+      </COEFFICIENT>
+
+   </GROUP>
 
    <GROUP NAME="CLb">
      <!-- created to apply the ground effect multiplier -->
@@ -548,11 +672,13 @@
 
     <COEFFICIENT NAME="dCLflap" TYPE="VALUE">
 
-       <!-- replaced 0.6 by 0.9 to move the takeoff speed below the full flaps limit (91 kt). -->
+       <!-- - unchanged.
+            - 0.9 is the value to takeoff at 2/3 full load; water provides the missing lift.
+       -->
 
        Delta_Lift_due_to_flaps
        aero/qbar-psf|metrics/Sw-sqft|fcs/components/flaps-control/output-norm
-       0.9
+       0.6
     </COEFFICIENT>
 
    </GROUP>
@@ -570,17 +696,20 @@
   </AXIS>
   <AXIS NAME="DRAG">
 
-     <GROUP NAME="CDHull">
-       <!-- created -->
+     <GROUP NAME="HDhull">
+       <!-- created : hull resistance in water until the step -->
 
        Drag_due_to_hull
 
-       <FACTOR NAME="kCDhull" TYPE="TABLE">
+       <FACTOR NAME="kHDhull" TYPE="TABLE3D">
 
-        <!-- - maximum (on the hump through the step) at 42 % of takeoff speed (100 kt full load).
+        <!-- - maximum at 42 % of takeoff speed : hump at 42 kt full load (100 kt) and 34 kt empty load (80 kt).
+             - reduced by hydrodynamic lift.
              - constant above 70 kt.
-             - 50 % of drag at 2 ft AGL (hull going out of water), and none at 5 ft.
-             - 9.93 ft is AGL altitude, when on ground.
+             - 50 % of drag when hull is going out of water, and then none.
+             - below ground effect.
+
+             similar to NACA TN 512, figure 11.
 
            % of takeoff speed, % of hump drag :
            -   0.0/106,  0.0/59. (dock)
@@ -613,48 +742,72 @@
 
         Hull_factor
         22
-        4
-        velocities/ve-kts
-        position/h-agl-ft
+        3
+        2
+        velocities/vc-kts
+        aero/h_b-mac-ft
+        inertia/weight-lbs
         none
-                      9.93        11.93       14.93       19.93
-         0.0          0.000000    0.000000    0.000000    0.000000
-         4.7          0.067800    0.033900    0.000000    0.000000
-         7.5          0.135600    0.067800    0.000000    0.000000
-        10.4          0.228800    0.114400    0.000000    0.000000
-        13.2          0.355900    0.178000    0.000000    0.000000
-        15.6          0.457600    0.228800    0.000000    0.000000
-        17.9          0.559300    0.279700    0.000000    0.000000
-        19.8          0.618600    0.309300    0.000000    0.000000
-        23.1          0.720300    0.360200    0.000000    0.000000
-        26.4          0.805100    0.402600    0.000000    0.000000
-        30.7          0.898300    0.449200    0.000000    0.000000
-        33.0          0.932200    0.466100    0.000000    0.000000
-        35.8          0.957600    0.478800    0.000000    0.000000
-        39.1          0.991500    0.495800    0.000000    0.000000
-        42.0          1.000000    0.500000    0.000000    0.000000
-        45.3          0.991500    0.495800    0.000000    0.000000
-        48.6          0.996100    0.498100    0.000000    0.000000
-        51.9          0.906800    0.453400    0.000000    0.000000
-        56.1          0.711900    0.356000    0.000000    0.000000
-        60.9          0.618600    0.309300    0.000000    0.000000
-        65.6          0.491500    0.245800    0.000000    0.000000
-        71.7          0.194900    0.097500    0.000000    0.000000
+        47850                                           
+                      0.045       0.055       0.065
+         0.0          0.000000    0.000000    0.000000
+         3.7          0.067800    0.033900    0.000000
+         6.0          0.135600    0.067800    0.000000
+         8.3          0.228800    0.114400    0.000000
+        10.6          0.355900    0.178000    0.000000
+        12.5          0.457600    0.228800    0.000000
+        14.3          0.559300    0.279700    0.000000
+        15.9          0.618600    0.309300    0.000000
+        18.5          0.720300    0.360200    0.000000
+        21.1          0.805100    0.402600    0.000000
+        24.5          0.898300    0.449200    0.000000
+        26.4          0.932200    0.466100    0.000000
+        28.7          0.957600    0.478800    0.000000
+        31.3          0.991500    0.495800    0.000000
+        34.0          1.000000    0.500000    0.000000
+        36.2          0.991500    0.495800    0.000000
+        38.9          0.996100    0.498100    0.000000
+        41.5          0.906800    0.453400    0.000000
+        44.9          0.711900    0.356000    0.000000
+        48.7          0.618600    0.309300    0.000000
+        52.5          0.491500    0.245800    0.000000
+        57.4          0.194900    0.097500    0.000000
+        84000                                           
+                      0.049       0.059       0.069
+         0.0          0.000000    0.000000    0.000000
+         4.7          0.067800    0.033900    0.000000
+         7.5          0.135600    0.067800    0.000000
+        10.4          0.228800    0.114400    0.000000
+        13.2          0.355900    0.178000    0.000000
+        15.6          0.457600    0.228800    0.000000
+        17.9          0.559300    0.279700    0.000000
+        19.8          0.618600    0.309300    0.000000
+        23.1          0.720300    0.360200    0.000000
+        26.4          0.805100    0.402600    0.000000
+        30.7          0.898300    0.449200    0.000000
+        33.0          0.932200    0.466100    0.000000
+        35.8          0.957600    0.478800    0.000000
+        39.1          0.991500    0.495800    0.000000
+        42.0          1.000000    0.500000    0.000000
+        45.3          0.991500    0.495800    0.000000
+        48.6          0.996100    0.498100    0.000000
+        51.9          0.906800    0.453400    0.000000
+        56.1          0.711900    0.356000    0.000000
+        60.9          0.618600    0.309300    0.000000
+        65.6          0.491500    0.245800    0.000000
+        71.7          0.194900    0.097500    0.000000
       </FACTOR>
 
-      <COEFFICIENT NAME="CDhump" TYPE="VECTOR">
+      <COEFFICIENT NAME="HDhull0" TYPE="VALUE">
 
-         <!-- - less weight is less hull inside water, and less displacement.
-              - more drag inside water than air.
-              - increase the takeoff distance.
+         <!-- - more drag inside water than air (ratio 7/1).
+              - increases the takeoff distance.
+              - could depend of weight.
          -->
 
          Drag_at_hump
-         2
-         inertia/weight-lbs
          aero/qbar-psf | metrics/Sw-sqft
-         84000.0     0.55
-         49872.0     0.45
+         0.12
       </COEFFICIENT>
 
     </GROUP>
@@ -699,12 +852,9 @@
        1.8       0.015
     </COEFFICIENT>
     <COEFFICIENT NAME="CDflap" TYPE="VALUE">
-
-       <!-- replaced 0.035 by 0.059 to avoid too quickly the flaps speed limit (91 and 105 kt). -->
-
        Drag_due_to_flaps
        aero/qbar-psf|metrics/Sw-sqft|fcs/components/flaps-control/output-norm
-       0.059
+       0.035
     </COEFFICIENT>
     <COEFFICIENT NAME="CDsb" TYPE="VALUE">
        Drag_due_to_speedbrakes
@@ -766,6 +916,176 @@
     </COEFFICIENT>
   </AXIS>
   <AXIS NAME="PITCH">
+
+    <GROUP NAME="Hmstep">
+      <!-- created : the bow climbs over the wave hump. -->
+
+      Trim_moment_due_to_step
+
+      <FACTOR NAME="kHmstep" TYPE="TABLE3D">
+
+        <!-- - strong pitch (positiv moment) until the hump (nose up on the hump), then light nose down (negativ moment).
+             - the center of buoyancy shifts with speed :
+             near center of gravity (step) at rest, then aft the step (afterbody) when ploughing the wave hump;
+             finally forwards the step (forebody), once planing on the step.
+             - 80 % when going out of water.
+
+             similar to  NACA TN 512, figure 13.
+        -->
+
+        Step_factor
+        5
+        3
+        2
+        velocities/vc-kts
+        aero/h_b-mac-ft
+        inertia/weight-lbs
+        none
+        47850
+                      0.045       0.055       0.065
+         0.0          0.000000    0.000000    0.000000
+         17.0        -1.600000   -1.280000    0.000000
+         34.0         0.800000    0.640000    0.000000
+         51.0         0.000000    0.000000    0.000000
+         57.0        -0.100000   -0.080000    0.000000
+        84000
+                      0.049       0.059       0.069
+         0.0          0.000000    0.000000    0.000000
+         21.0        -1.600000   -1.280000    0.000000
+         42.0         0.800000    0.640000    0.000000
+         63.0         0.000000    0.000000    0.000000
+         72.0        -0.100000   -0.080000    0.000000
+      </FACTOR>
+
+      <COEFFICIENT NAME="Hmstep0" TYPE="VALUE">
+
+         Trim_moment_at_step
+         aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft
+         1.0
+      </COEFFICIENT>
+
+    </GROUP>
+
+    <GROUP NAME="Amgear">
+      <!-- created : compensates compression of nose gear by speed. -->
+
+      Compression_due_to_speed
+
+      <FACTOR NAME="kAmgear" TYPE="TABLE3D">
+
+        <!-- - enough strong to make rise the bow, and have an effect on flight commands.
+             - 80 % when going out of water.
+             - hydrodynamic lift indirectly provides weathervaning if wing has enough alpha.
+             In reality, cross wind applied on the center of gravity (CG), is opposed by the water acting on a sinking float.
+             Hence a momment around the center of buoyancy (CB).
+             - gear reaction code seems not appropriate in this case.
+        -->
+
+        Compression_factor
+        5
+        3
+        2
+        velocities/vc-kts
+        aero/h_b-mac-ft
+        inertia/weight-lbs
+        none
+        47850
+                      0.045       0.055       0.065
+         0.0          0.000000    0.000000    0.000000
+         17.0         2.000000    1.600000    0.000000
+         34.0         1.000000    0.800000    0.000000
+         51.0         0.700000    0.560000    0.000000
+         57.0         0.700000    0.560000    0.000000
+        84000
+                      0.049       0.059       0.069
+         0.0          0.000000    0.000000    0.000000
+         21.0         2.000000    1.600000    0.000000
+         42.0         3.000000    2.400000    0.000000
+         63.0         0.700000    0.560000    0.000000
+         72.0         0.700000    0.560000    0.000000
+      </FACTOR>
+
+      <COEFFICIENT NAME="Amgear0" TYPE="VALUE">
+
+         <!--- could depend of weight. -->
+
+         Compression
+         aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft
+         0.5
+      </COEFFICIENT>
+
+    </GROUP>
+
+    <GROUP NAME="Hmrebound">
+      <!-- created : rebound on touch-down. -->
+
+      Rebound
+
+      <FACTOR NAME="kHmkhi" TYPE="TABLE3D">
+
+         <!-- NACA report 1103 :
+              - figure 2, khi 3 and 15 deg.
+              gamma, velocity angle over water : 0 - 80 deg, horizontal is 0. 
+              - figure 6, tau 6 deg (used as 3 deg) and tau 12 deg (used as 15 deg). 
+              tau, bow pitch over water : 3 - 15 deg, horizontal is 0.
+
+              khi = (sin(tau) / sin(gamma)) x cos(tau + gamma) :
+              - no rebound when flight path near vertical (energy absorbed by water).
+              - maximum near planing condition.
+              - favoured by bow pitch.
+         -->
+
+         Rebound_due_to_khi
+         5
+         2
+         2
+         flight-path/gamma-rad
+         attitude/pitch-rad
+         velocities/vc-kts
+         none
+         42.0
+                   0.05       0.26
+         0.0       0.0        0.0
+         0.35      0.0        0.0 
+         0.70      0.0        0.0 
+         1.05      0.0        0.0 
+         1.40      0.0        0.0
+         52.0
+                   0.05       0.26
+         0.0      15.0       13.0
+         0.35      0.35       1.1
+         0.70      0.25       0.6
+         1.05      0.15       0.5
+         1.40      0.05       0.4
+      </FACTOR>
+
+      <COEFFICIENT NAME="Hmrebound0" TYPE="TABLE3D">
+
+        <!-- - rest 0 ft/min.
+             - maximum 700 ft/min.
+             - before hydrodynamic lift.
+        -->
+
+        Rebound_due_to_vertical_speed
+        2
+        3
+        2
+        velocities/v-down-fps
+        aero/h_b-mac-ft
+        inertia/weight-lbs
+        aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft
+        47850
+                      0.065       0.070       0.075
+         0.0          0.000000    0.000000    0.000000
+         11.67        0.000000    0.300000    0.000000
+        84000
+                      0.069       0.074       0.079
+         0.0          0.000000    0.000000    0.000000
+         11.67        0.000000    0.300000    0.000000
+      </COEFFICIENT>
+
+    </GROUP>
+
     <COEFFICIENT NAME="Cmalpha" TYPE="VALUE">
        Pitch_moment_due_to_alpha
        aero/qbar-psf|metrics/Sw-sqft|metrics/cbarw-ft|aero/alpha-rad

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
-<!-- Flap qquadrant.
+<!-- Flap quadrant.
+
 
 This is an instrument configuration file for the open-source flight
 simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
@@ -89,12 +90,8 @@ properties' values.
    <w>18</w>
    <h>18</h>
    <binding>
-    <command>property-adjust</command>
-    <property alias="../../../../params/flaps-select"/>
-    <step>-0.25</step>
-    <min>0</min>
-    <max>1.0</max>
-    <wrap>false</wrap>
+    <command>nasal</command>
+    <script>controls.flapsDown(-1)</script>
    </binding>
   </action>
 
@@ -106,12 +103,8 @@ properties' values.
    <w>18</w>
    <h>18</h>
    <binding>
-    <command>property-adjust</command>
-    <property alias="../../../../params/flaps-select"/>
-    <step>0.25</step>
-    <min>0</min>
-    <max>1.0</max>
-    <wrap>false</wrap>
+    <command>nasal</command>
+    <script>controls.flapsDown(1)</script>
    </binding>
   </action>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!-- Rope (brakes) :
+
+     - only below 15 kt.
+-->
+
+<PropertyList>
+
+  <or>
+   <less-than>
+    <property>/velocities/uBody-fps</property>        <!-- airspeed-kt may be greater than 15 kt at rest -->
+    <value>25</value> <!-- with a boat or a pier -->
+   </less-than>
+   <not-equals>
+    <property>/controls/gear/brake-parking</property>
+    <value>0.0</value>
+   </not-equals>
+  </or>
+
+</PropertyList>

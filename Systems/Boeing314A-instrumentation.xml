@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!-- Boeing 314A instrumentation.
+
+     Only the historical instruments.
+-->
+
+<PropertyList>
+
+  <adf>
+    <name>adf</name>
+    <number>0</number>
+  </adf>
+
+  <airspeed-indicator>
+    <name>airspeed-indicator</name>
+    <number>0</number>
+    <pitot-port>/systems/pitot</pitot-port>
+    <static-port>/systems/static</static-port>
+  </airspeed-indicator>
+
+  <altimeter>
+    <name>altimeter</name>
+    <number>0</number>
+    <static-port>/systems/static</static-port>
+  </altimeter>
+
+  <attitude-indicator>
+    <name>attitude-indicator</name>
+    <number>0</number>
+    <vacuum-system>/systems/vacuum</vacuum-system>
+  </attitude-indicator>
+
+  <clock>
+    <name>clock</name>
+    <number>0</number>
+  </clock>
+
+  <heading-indicator>
+    <name>heading-indicator</name>
+    <number>0</number>
+    <vacuum-system>/systems/vacuum</vacuum-system>
+  </heading-indicator>
+
+  <magnetic-compass>
+    <name>magnetic-compass</name>
+    <number>0</number>
+  </magnetic-compass>
+
+  <slip-skid-ball>
+    <name>slip-skid-ball</name>
+    <number>0</number>
+  </slip-skid-ball>
+
+  <turn-indicator>
+    <name>turn-indicator</name>
+    <number>0</number>
+  </turn-indicator>
+
+  <vertical-speed-indicator>
+    <name>vertical-speed-indicator</name>
+    <number>0</number>
+    <static-port>/systems/static</static-port>
+  </vertical-speed-indicator>
+
+</PropertyList>

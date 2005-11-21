@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 
-<!-- Boeing 314 caging knob.
+<!-- Boeing 314 level knob.
 -->
 
 <PropertyList>
 
- <name>Pitch hold</name>
+ <name>Altitude hold</name>
  <w-base>52</w-base>
  <h-base>52</h-base>
 
  <layers>
 
   <layer>
-   <name>Pitch hold</name>
+   <name>Altitude hold</name>
     <type>switch</type>
      <layer>
       <condition>
        <equals>
         <property>/autopilot/locks/altitude</property>
-        <value>pitch-hold</value>
+        <value>altitude-hold</value>
        </equals>
       </condition>
       <name>on</name>
@@ -67,7 +67,7 @@
  <actions>
 
   <action>
-   <name>toggle pitch hold</name>
+   <name>toggle altitude hold</name>
    <button>0</button>
    <x>-22</x>
    <y>-19</y>
@@ -75,7 +75,7 @@
    <h>44</h>
    <binding>
     <command>nasal</command>
-    <script>globals.Boeing314.appitchexport();</script>
+    <script>globals.Boeing314.apaltitudeexport();</script>
    </binding>
   </action>
 

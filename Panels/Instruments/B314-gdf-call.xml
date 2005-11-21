@@ -11,13 +11,28 @@
  <layers>
 
   <layer>
+   <name>background</name>
+   <texture>
+    <path>Aircraft/Boeing314/Panels/Instruments/Textures/B314-gdf.rgb</path>
+   </texture>
+   <w>45</w>
+   <h>45</h>
+   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>60</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
    <name>GDF Called</name>
     <type>switch</type>
      <layer>
       <condition>
        <equals>
         <property>/instrumentation/gdf/called</property>
-        <value>1.0</value>
+        <value>on</value>
        </equals>
       </condition>
       <name>on</name>
@@ -61,33 +76,6 @@
    </transformations>
   </layer>
 
-  <layer>
-   <name>Title abbreviation</name>
-   <type>text</type>
-   <point-size>17</point-size>
-   <color>
-    <red>1.0</red>
-    <green>1.0</green>
-    <blue>1.0</blue>
-   </color>
-   <chunks>
-    <chunk>
-     <type>literal</type>
-     <text>GDF</text>
-    </chunk>
-   </chunks>
-   <transformations>
-    <transformation>
-     <type>x-shift</type>
-     <offset>-20</offset>
-    </transformation>
-    <transformation>
-     <type>y-shift</type>
-     <offset>35</offset>
-    </transformation>
-   </transformations>
-  </layer>
-
  </layers>
 
  <actions>
@@ -104,7 +92,7 @@
    <binding>
     <command>property-assign</command>
     <property>/instrumentation/gdf/called</property>
-    <value type="double">1.0</value>
+    <value type="string">on</value>
    </binding>
   </action>
 

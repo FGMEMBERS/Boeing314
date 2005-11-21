@@ -5,13 +5,13 @@ Weight limits   : take-off 84000 lb (full load), landing 80000 lb (A).
 Engine limits   : - maximum : 37.5 inhg 2300 rpm (1350 hp), at sea level; 35.8 inhg 2300 rpm (1350 hp), at 6200 ft (A).
                   - take-off (2 minutes) : 43.5 inhg 2400 rpm (1600 hp) (A).
 
-Airspeed limits : - flaps extended (more than 40°) 91 kt true (A). 
-                  - flaps extended (40° or less) 105 kt true (A).
-                  - level flight or climb 155 kt true (A).
-                  - maximum 199 mph [173 kt], cruise 184 mph [160 kt] (B)
-                  - Vmax 201 mph [175 kt] at 6200 ft, Vcruise 184 mph [160 kt] at 11000 ft, Vstall 70 mph [61 kt] (C).
+Airspeed limits : - glide or dive 184 kt true (A).
                   - max 172 kt, cruise 160 kt (D).
-                  - glide or dive 184 kt true (A).
+                  - Vmax 201 mph [175 kt] at 6200 ft, Vcruise 184 mph [160 kt] at 11000 ft, Vstall 70 mph [61 kt] (C).
+                  - maximum 199 mph [173 kt], cruise 184 mph [160 kt] (B)
+                  - level flight or climb 155 kt true (A).
+                  - flaps extended (40° or less) 105 kt true (A).
+                  - flaps extended (more than 40°) 91 kt true (A). 
 
 Usable ceiling (A) :
 
@@ -27,6 +27,19 @@ Ceiling : - cruise 13400 ft, maximum 19600 ft, climb 562 ft/min (E).
           - 19600 ft (D).
 
 Range : 5200 miles [4500 NM] (B).
+
+
+Operation :
+- turn    : "If you had to taxi to downwind, on the turn to downwind the wind could get under the upwind wing and tip
+            the plane until the downwind wing dug into the water. In that condition a lot of water could flow into the
+            wing, and once there could flow through the wings and into the fuselage, dousing everyone and everything.
+            That never happened to me but I did hear of such cases.
+            When we faced that situation we would have several of the crew walk into the upwind wing out to the outer
+            nacelle, to provide balance during the turn." (F).
+- cruise  : "One sets up the cruise at 117 mph [102 kt], until 135 mph [117 kt] as one burns off gas.
+            They were never anywhere near the advertised max cruise of 193 mph [168 kt] : KSFO - PHNL [2080 NM] at an
+            average speed of 126 mph [109 kt], 16 hours depending of wind" (F).
+- landing : 70-75 mph [61-65 kt] (F).
 
 
 Comparison of 314 with 314A
@@ -63,115 +76,146 @@ Port Washington NY     Bermuda Island        1 h       5h           5h30        
 314A ops
 ========
 - parking  : 700 RPM.
-- taxi     : 4 or 2 outboards engines.
-- turn     : - turn with throttle on 1 or 2 outboard engines.
-             - "If you had to taxi to downwind, on the turn to downwind the wind could get under the upwind wing and tip
-             the plane until the downwind wing dug into the water. In that condition a lot of water could flow into the
-             wing, and once there could flow through the wings and into the fuselage, dousing everyone and everything.
-             That never happened to me but I did hear of such cases.
-             When we faced that situation we would have several of the crew walk into the upwind wing out to the outer
-             nacelle, to provide balance during the turn." (F).
-- take-off : - with idle throttle, let the bow align itself inside the wind.
-             - full flaps, 78 kt at full load, 65 kt at empty load, full throttle 2400 RPM.
+- taxi     : - increase pitch on 2 symmetrical engines.
+             - turn with pitch on 1 or 2 outboard engines.
+- take-off : - flaps 2/3 at full load (1/3 at empty load), full throttle 2400 RPM.
+             - lift off between 80 kt (full load) and 60 kt (empty load). 
              - long (less than 6000 ft) because of water drag.
-- climb    : reduce to 37.5 inhg (throttle), 2300 RPM (at first mixture until cutoff, then pitch until ineffective
-             and finally throttle until ineffective).
+- climb    : - retract flaps before 100 kt.
+             - reduce to 37.5 inhg (throttle), 2300 RPM.
 - maximum  : 160 kt 2300 RPM 37.5 inhg (min pitch, min mixture).
-- cruise   : - "One sets up the cruise at 117 mph [102 kt], until 135 mph [117 kt] as one burns off gas.
-             They were never anywhere near the advertised max cruise of 193 mph [168 kt] : KSFO - PHNL [2080 NM] at an
-             average speed of 126 mph [109 kt], 16 hours depending of wind" (F).
+- cruise   : - 110 kt on average.
              - slow climb rate from 9000 ft (full load) to 13400 ft.
-- descent  : reduce throttle, increase pitch.
-- approach : - level to reduce speed at 100 kt, then flaps 2/3.
-             - maintain 90 kt.
-- landing  : - align at 1000 ft, then full flaps.
-             - maintain 80 kt.
-             - land at 70-75 mph [61-65 kt] (F).
+- descent  : idle.
+- approach : reduce speed at 100 kt, then flaps 1/3.
+- landing  : - align at 1500 ft, reduce speed at 90 kt, then flaps 2/3.
+             - at 1000 ft, reduce speed at 80 kt, then full flaps.
+             - touch down behind the step, between 60 kt (empty load) and 75 kt (full load).
              - short because of water drag.
-- stop     : shutdown 2 or 4 engines, if unable to stop alone.
+- stop     : 700 RPM, shutdown 2 or 4 engines.
 
 
 Customizing
 ===========
+If your preferences.xml doesn't have 6 views, update Boeing314-views.xml and Boeing314-keyboard.xml.
+
 When the airport ID is in Boeing314-route.xml, the seaplane is moved to its moorage, keeping the tower view.
 To disable, set /sim/presets/moorage to false.
 
-Fuel
-----
-Boeing314A-set.xml has 3 configurations (max payload) :
-- empty weight, 50000 lb.
-- maximum landing weight, 80000 lb.
-- maximum takeoff weight, 84000 lb : put in comment the US gallons (inheritance from JSBSim).
+Sounds
+------
+See Boeing314-b17-sound.xml to install B17 sounds (recommended).
+
+Fuel load
+---------
+Default is maximum landing weight, 80000 lb.
+For maximum takeoff weight, 85000 lb, set /sim/presets/fuel to 1.
+For other configurations, see Boeing314A-fuel.xml.
 
 
 Keyboard
 ========
-- "s" swaps between Captain and Engineer 2D panels.
-- "B"rake is the rope.
+- to hold the current heading or pitch, toggle the switch of Sperry autopilot.
+- "e / E" : increases / decreases propeller pitch.
+- "q"     : resets speed up to 1.
+
+Views
+-----
+- "ctrl-E" : "E"ngineer view.
+- "ctrl-J" : Copilot view..
+- "ctrl-O" : radi"O" view.
+ 
+Unchanged behaviour
+-------------------
+- "x / X"  : zooms in the small fonts; reset with "ctrl-X".
 - starter until slightly below 500 RPM.
   If unable to start the engine, increase the throttle beforehand, or when releasing the starter.
-- to hold the current heading or pitch, toggle the switch of Sperry autopilot.
-- "q" resets speed up to 1.
+- "ctrl-H" : heading hold.
+- "left / right" : turns the heading hold.
+
+Same behaviour
+--------------
+- "s"      : swaps between Captain and Engineer 2D panels.
+- "ctrl-A" : altitude hold (disable pitch hold before).
+- "ctrl-P" : pitch hold (disable altitude hold before).
+- "ctrl-S" : autothrottle (speed-up only).
  
-Overriden
----------
-- "a/A" speeds up BOTH speed and time : external view until X 10.
+Improved behaviour
+------------------
+- "b / B"      : is the rope (brakes), only below 15 kt.
+- "up / down"  : increases / decreases pitch hold (fast).
+- "home / end"  : increases / decreases pitch hold (slow).
+- "a / A"      : speeds up BOTH speed and time : external view until X 10.
   Automatically resets to 1, when above 1000 ft/min.
 
 Ground Direction Finding
 ------------------------
 "The radio operator held the Morse key in transmit mode a minute, while the ground operator took a bearing of the
 signal" (G) :
-- add a waypoint (disables the autopilot heading !).
-- toggle the switch "GDF" to call the ground operator : range limited to 1500 NM (G).
-- within a delay of 2 minutes, the GDF needle will point towards the waypoint.
+- add a waypoint (WARNING disables the autopilot heading !).
+- toggle the switch "GDF" to call the ground operator : range limited to 1500 NM (G)(J).
+- within a delay of 2 minutes, the radio returns on a paper the magnetic heading towards the waypoint.
 
 Four course radio range
 -----------------------
-It is emulated by the NDB.
+Emulated by the NDB.
 NDB only appeared after WWII with the VOR, when they both superseded the four course radio range (I).
 
 
 Consumption
 ===========
 Maximum speed 2300 RPM (full throttle, min pitch, min mixture), for 1 engine :
-- full load, > 175 kt 110 gallons/h at 9500 ft.
-- empty load, 166 kt 95 gallons/h at 13400 ft.
-Economic speed 34.5 gallons/h (max pitch, min mixture), for 1 engine :
-- full load 1850 RPM, 120 kt at 9500 ft.
-- empty load 1950 RPM, 135 kt at 13400 ft.
+- full load, > 170 kt 78 gallons/h at 9000 ft (J = 1.08).
+- empty load, > 160 kt 71 gallons/h at 13400 ft (J = 1.10).
+Cruise speed 160 kt (max pitch, min mixture), for 1 engine :
+- full load 2200 RPM, 71 gallons/h at 9000 ft (J = 1.07).
+- empty load 2300 RPM, 71 gallons/h at 13400 ft (J = 1.10).
+Economic speed, 110 kt (max pitch, min mixture), for 1 engine :
+- full load 1800 RPM, 47 gallons/h at 9000 ft (J = 0.89).
+- empty load 1700 RPM, 36 gallons/h at 13400 ft (J = 1.01).
+
+As the real fuel is 1 US gal = 6 lb (A), multiply by 6.6 / 6 to compare with the real consumption.
+ 
+All with lateral wind.
+Min mixture : before engine cutoff.
+Max/min pitch : before influence on RPM.
 
 Example
 -------
 KSFO - PHNL, 2080 NM :
-- takeoff at full load (5688 gallons).
-- wind 270 deg 12 kt, average speed 115 kt.
-- reaches 13400 ft at half way.
-- after 17h15, lands with 1470 gallons.
+- at 0h10 zulu (afternoon), takeoff at full load (5171 gallons), heading 237 deg.
+- average wind 270 deg 15 kt, speed 110 kt indicated, 39 gallons/h.
+- cruise starts at 9000 ft, +1000 ft every 5 h, to reach 12000 ft before arrival.
+- after 18h00, lands in the morning with 2300 gallons or 18 h.
+
+At 160 kt indicated, the cruise will last 2080 NM / 166 kt = 12.5 h.
+And the remaining fuel will be 5171 - 12.5 x 4 x 71 gallons/h = 1600 gallons or 5h30.  
 
 
 JSBSim
 ======
 - real propeller diameter (14.5 ft).
-- hull drag.
+- real gear ratio 16:9.
 - tilt at rest (sponsons).
-- economic speed (120 kt).
+- economic speed (110 kt).
+- planing over step.
+- rebound at landing.
 
 
 TO DO
 =====
 - fuel transfer or tank selector.
-- map the 2D instruments in a 3D cockpit.
 - make 2D instruments from contemporary aircrafts.
-- cross feed of tanks.
+- cross feed tanks, fuel per hour gauge.
 - celestial navigation.
 
 TO DO JSBSim
 -------------
-- no step.
+- no weathervaning at rest.
+- hull stability (waterloop) with cross wind (F). 
+- no propoising at takeoff.
 - no tank selector.
 - consumption when speed up (done with Nasal).
-- hull stability with cross wind (F). 
 
 
 Known problems
@@ -180,18 +224,14 @@ The meaning of instruments is ergonomic guess and historical crosscheck.
 
 Known problems automatic mooring
 --------------------------------
-If Nasal crashes the seaplane, try to increase the delays.
+- If Nasal crashes the seaplane, try to delay/advance the event.
+- Nasal hangs on PCIS (Canton Island) latitude and longitude.
 
 Known problems JSBSim
 ---------------------
+- not enough brake at empty load : cut 2 or 4 engines.
 - not enough brake at maximum throttle : increasing the static friction, brings vibrations at rest.
-- at rest 700 RPM, one may have not enough brake or engines may stop with idle throttle : not systematic, depends of
-pressure and/or temperature. 
-- economic speed seems slightly too high : 120 kt instead of 110 kt.
-
-Known problems autopilot
-------------------------
-- at high speed (160 kt 9500 ft), autopilot heading hold may lock with roll.
+- fakes the displacement to get the real range.
  
 
 References
@@ -222,5 +262,14 @@ References
 (I) http://members.aol.com/trekkspill/aerobcn.html/
     (four course radio range).
 
+(J) http://www.panam.org/
+    (Adcock Direction Finder).
 
-8 january 2005.
+(K) http://www.pilotfriend.com/flight_training/frames2/seaplane_main_frame.htm/
+    (how to fly seaplanes and amphibians).
+
+    http://www.seaplanes.org/library/govtpubs/AC61-21A.pdf
+    (seaplane operations : like (K) in pdf).
+
+
+17 November 2005.

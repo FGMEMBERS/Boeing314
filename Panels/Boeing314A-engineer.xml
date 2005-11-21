@@ -1,18 +1,12 @@
 <?xml version="1.0"?>
 
-<!-- Boeing 314-A overhead and engineer panel.
+<!-- Boeing 314-A engineer panel.
+
+CAUTION : fuel tanks in 3D panel must use level-lb; otherwise with level-gal_us,
+          all tanks become reset to 0 (even without fuel preset) !
+
 
 The photographs are probably taken with the engines stopped.
-
-
-B314 overhead panel (from left to right, top to bottom).
-===================
-- the 4 middle switches could be engine starters (A).
-
-
-B314-A overhead panel (from left to right, top to bottom).
-=====================
-- the 4 middle switches could be engine starters (A).
 
 
 B314-A engineer panel (from left to right, top to bottom).
@@ -65,119 +59,25 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 <PropertyList>
 
  <name>Boeing 314-A Engineer Panel</name>
- <background>Aircraft/Boeing314/Panels/Textures/Boeing314A-panel-bg.rgb</background>
- <w>1140</w>
- <h>770</h>
+ <background>Aircraft/Boeing314/Panels/Textures/transparent-bg.rgb</background>
+ <w>1024</w>
+ <h>512</h>
  <y-offset>0</y-offset>
  <view-height>500</view-height>
 
  <instruments>
 
-<!-- Overhead -->
-
-  <instrument include="../../Instruments/single-magneto-switch.xml">
-   <name>Magneto 1</name>
-   <params>
-    <magneto-select>/controls/engines/engine[0]/magnetos</magneto-select>
-    <starter-select>/controls/engines/engine[0]/starter</starter-select>
-   </params>
-   <x>268</x>
-   <y>700</y>
-   <w>100</w>
-   <h>50</h>
-  </instrument>
-
-  <instrument include="../../Instruments/single-magneto-switch.xml">
-   <name>Magneto 2</name>
-   <params>
-    <magneto-select>/controls/engines/engine[1]/magnetos</magneto-select>
-    <starter-select>/controls/engines/engine[1]/starter</starter-select>
-   </params>
-   <x>398</x>
-   <y>700</y>
-   <w>100</w>
-   <h>50</h>
-  </instrument>
-
-  <instrument include="../../Instruments/single-magneto-switch.xml">
-   <name>Magneto 3</name>
-   <params>
-    <magneto-select>/controls/engines/engine[2]/magnetos</magneto-select>
-    <starter-select>/controls/engines/engine[2]/starter</starter-select>
-   </params>
-   <x>528</x>
-   <y>700</y>
-   <w>100</w>
-   <h>50</h>
-  </instrument>
-
-  <instrument include="../../Instruments/single-magneto-switch.xml">
-   <name>Magneto 4</name>
-   <params>
-    <magneto-select>/controls/engines/engine[3]/magnetos</magneto-select>
-    <starter-select>/controls/engines/engine[3]/starter</starter-select>
-   </params>
-   <x>658</x>
-   <y>700</y>
-   <w>100</w>
-   <h>50</h>
-  </instrument>
-
-<!-- Tanks -->
-
-  <instrument include="Instruments/B314-fuel.xml">
-   <name>Tank 1</name>
-   <params>
-    <content-select>/consumables/fuel/tank[0]/level-lb</content-select>
-   </params>
-   <x>270</x>
-   <y>535</y>
-   <w>95</w>
-   <h>95</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-fuel.xml">
-   <name>Tank 2</name>
-   <params>
-    <content-select>/consumables/fuel/tank[1]/level-lb</content-select>
-   </params>
-   <x>400</x>
-   <y>535</y>
-   <w>95</w>
-   <h>95</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-fuel.xml">
-   <name>Tank 3</name>
-   <params>
-    <content-select>/consumables/fuel/tank[2]/level-lb</content-select>
-   </params>
-   <x>530</x>
-   <y>535</y>
-   <w>95</w>
-   <h>95</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-fuel.xml">
-   <name>Tank 4</name>
-   <params>
-    <content-select>/consumables/fuel/tank[3]/level-lb</content-select>
-   </params>
-   <x>660</x>
-   <y>535</y>
-   <w>95</w>
-   <h>95</h>
-  </instrument>
+<!-- Engine tanks -->
 
   <instrument include="Instruments/B314-fuel-center.xml">
    <name>Tank 5</name>
    <params>
     <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
    </params>
-   <x>465</x>
+   <x>460</x>
    <y>415</y>
-   <w>95</w>
-   <h>95</h>
+   <w>55</w>
+   <h>55</h>
   </instrument>
 
   <instrument include="Instruments/B314-fuel-sponson.xml">
@@ -185,10 +85,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <content-select>/consumables/fuel/tank[5]/level-lb</content-select>
    </params>
-   <x>335</x>
+   <x>400</x>
    <y>415</y>
-   <w>95</w>
-   <h>95</h>
+   <w>55</w>
+   <h>55</h>
   </instrument>
 
   <instrument include="Instruments/B314-fuel-sponson.xml">
@@ -196,13 +96,103 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <content-select>/consumables/fuel/tank[6]/level-lb</content-select>
    </params>
-   <x>595</x>
+   <x>520</x>
    <y>415</y>
-   <w>95</w>
-   <h>95</h>
+   <w>55</w>
+   <h>55</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 1</name>
+   <params>
+    <content-select>/consumables/fuel/tank[0]/level-lb</content-select>
+   </params>
+   <x>370</x>
+   <y>355</y>
+   <w>55</w>
+   <h>55</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 2</name>
+   <params>
+    <content-select>/consumables/fuel/tank[1]/level-lb</content-select>
+   </params>
+   <x>430</x>
+   <y>355</y>
+   <w>55</w>
+   <h>55</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 3</name>
+   <params>
+    <content-select>/consumables/fuel/tank[2]/level-lb</content-select>
+   </params>
+   <x>490</x>
+   <y>355</y>
+   <w>55</w>
+   <h>55</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-fuel.xml">
+   <name>Tank 4</name>
+   <params>
+    <content-select>/consumables/fuel/tank[3]/level-lb</content-select>
+   </params>
+   <x>550</x>
+   <y>355</y>
+   <w>55</w>
+   <h>55</h>
   </instrument>
 
 <!-- Engineer -->
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 1 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[0]/rpm</rpm-select>
+   </params>
+   <x>370</x>
+   <y>295</y>
+   <w>60</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 2 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[1]/rpm</rpm-select>
+   </params>
+   <x>430</x>
+   <y>295</y>
+   <w>60</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 3 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[2]/rpm</rpm-select>
+   </params>
+   <x>490</x>
+   <y>295</y>
+   <w>60</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 4 rpm</name>
+   <params>
+    <rpm-select>/engines/engine[3]/rpm</rpm-select>
+   </params>
+   <x>550</x>
+   <y>295</y>
+   <w>60</w>
+   <h>60</h>
+  </instrument>
+
+<!-- line 3 -->
 
   <instrument include="../../Instruments/egt.xml">
    <name>Engine 1 fuel flow</name>
@@ -210,10 +200,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <engine-egt-select>/engines/engine[0]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[0]/fuel-flow-gph</engine-fuel-flow-select>
    </params>
-   <x>270</x>
-   <y>245</y>
-   <w>100</w>
-   <h>100</h>
+   <x>370</x>
+   <y>230</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="../../Instruments/egt.xml">
@@ -222,10 +212,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <engine-egt-select>/engines/engine[1]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[1]/fuel-flow-gph</engine-fuel-flow-select>
    </params>
-   <x>400</x>
-   <y>245</y>
-   <w>100</w>
-   <h>100</h>
+   <x>430</x>
+   <y>230</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="../../Instruments/egt.xml">
@@ -234,10 +224,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <engine-egt-select>/engines/engine[2]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[2]/fuel-flow-gph</engine-fuel-flow-select>
    </params>
-   <x>530</x>
-   <y>245</y>
-   <w>100</w>
-   <h>100</h>
+   <x>490</x>
+   <y>230</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="../../Instruments/egt.xml">
@@ -246,65 +236,23 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     <engine-egt-select>/engines/engine[3]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[3]/fuel-flow-gph</engine-fuel-flow-select>
    </params>
-   <x>660</x>
-   <y>245</y>
-   <w>100</w>
-   <h>100</h>
+   <x>550</x>
+   <y>230</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
-   <name>Engine 1 rpm</name>
-   <params>
-    <rpm-select>/engines/engine[0]/rpm</rpm-select>
-   </params>
-   <x>270</x>
-   <y>145</y>
-   <w>100</w>
-   <h>100</h>
-  </instrument>
-
-  <instrument include="../../Instruments/rpm.xml">
-   <name>Engine 2 rpm</name>
-   <params>
-    <rpm-select>/engines/engine[1]/rpm</rpm-select>
-   </params>
-   <x>400</x>
-   <y>145</y>
-   <w>100</w>
-   <h>100</h>
-  </instrument>
-
-  <instrument include="../../Instruments/rpm.xml">
-   <name>Engine 3 rpm</name>
-   <params>
-    <rpm-select>/engines/engine[2]/rpm</rpm-select>
-   </params>
-   <x>530</x>
-   <y>145</y>
-   <w>100</w>
-   <h>100</h>
-  </instrument>
-
-  <instrument include="../../Instruments/rpm.xml">
-   <name>Engine 4 rpm</name>
-   <params>
-    <rpm-select>/engines/engine[3]/rpm</rpm-select>
-   </params>
-   <x>660</x>
-   <y>145</y>
-   <w>100</w>
-   <h>100</h>
-  </instrument>
+<!-- line 4 -->
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 1</name>
    <params>
     <mp-select>/engines/engine[0]/mp-osi</mp-select>
    </params>
-   <x>270</x>
-   <y>45</y>
-   <w>100</w>
-   <h>100</h>
+   <x>370</x>
+   <y>165</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
@@ -312,10 +260,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <mp-select>/engines/engine[1]/mp-osi</mp-select>
    </params>
-   <x>400</x>
-   <y>45</y>
-   <w>100</w>
-   <h>100</h>
+   <x>430</x>
+   <y>165</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
@@ -323,10 +271,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <mp-select>/engines/engine[2]/mp-osi</mp-select>
    </params>
-   <x>530</x>
-   <y>45</y>
-   <w>100</w>
-   <h>100</h>
+   <x>490</x>
+   <y>165</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
@@ -334,23 +282,67 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <mp-select>/engines/engine[3]/mp-osi</mp-select>
    </params>
-   <x>660</x>
-   <y>45</y>
-   <w>100</w>
-   <h>100</h>
+   <x>550</x>
+   <y>165</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
-<!-- Engineer desk -->
+<!-- Engineer bottom -->
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 1 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[0]/throttle</engine-throttle-select>
+   </params>
+   <x>280</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 2 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[1]/throttle</engine-throttle-select>
+   </params>
+   <x>300</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 3 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[2]/throttle</engine-throttle-select>
+   </params>
+   <x>320</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 4 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[3]/throttle</engine-throttle-select>
+   </params>
+   <x>340</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
 
   <instrument include="Instruments/B314-pitch-quadrant.xml">
    <name>Engine 1 pitch</name>
    <params>
     <engine-pitch-select>/controls/engines/engine[0]/propeller-pitch</engine-pitch-select>
    </params>
-   <x>20</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
+   <x>380</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-pitch-quadrant.xml">
@@ -358,10 +350,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <engine-pitch-select>/controls/engines/engine[1]/propeller-pitch</engine-pitch-select>
    </params>
-   <x>40</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
+   <x>400</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-pitch-quadrant.xml">
@@ -369,10 +361,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <engine-pitch-select>/controls/engines/engine[2]/propeller-pitch</engine-pitch-select>
    </params>
-   <x>60</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
+   <x>420</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-pitch-quadrant.xml">
@@ -380,10 +372,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <engine-pitch-select>/controls/engines/engine[3]/propeller-pitch</engine-pitch-select>
    </params>
-   <x>80</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
+   <x>440</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-mixture-quadrant.xml">
@@ -391,10 +383,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <engine-mixture-select>/controls/engines/engine[0]/mixture</engine-mixture-select>
    </params>
-   <x>100</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
+   <x>500</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-mixture-quadrant.xml">
@@ -402,10 +394,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <engine-mixture-select>/controls/engines/engine[1]/mixture</engine-mixture-select>
    </params>
-   <x>120</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
+   <x>520</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-mixture-quadrant.xml">
@@ -413,10 +405,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <engine-mixture-select>/controls/engines/engine[2]/mixture</engine-mixture-select>
    </params>
-   <x>140</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
+   <x>540</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-mixture-quadrant.xml">
@@ -424,32 +416,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <engine-mixture-select>/controls/engines/engine[3]/mixture</engine-mixture-select>
    </params>
-   <x>160</x>
-   <y>60</y>
-   <w>20</w>
-   <h>80</h>
-  </instrument>
-
-<!-- Radio -->
-
-  <instrument include="Instruments/B314-gdf-call.xml">
-   <name>Ground Direction Finding call</name>
-   <x>890</x>
-   <y>330</y>
-   <w>40</w>
-   <h>40</h>
-  </instrument>
-
-  <instrument include="../../Instruments/navcom-kx155.xml">
-   <name>NavCom 1 Radio</name>
-   <x>890</x>
-   <y>171</y>
-  </instrument>
-
-  <instrument include="../../Instruments/adf-radio.xml">
-   <name>ADF Radio</name>
-   <x>890</x>
-   <y>90</y>
+   <x>560</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
   </instrument>
 
  </instruments>

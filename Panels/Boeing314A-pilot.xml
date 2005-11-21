@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Boeing 314-A captain, center, and pedestal panel.
-
-By lack of space, only one lever for propeller and mixture.
+<!-- Boeing 314-A pilot panel.
 
 
 The photographs are probably taken with the engines stopped.
@@ -86,106 +84,110 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <PropertyList>
 
- <name>Boeing 314-A Captain Panel</name>
- <background>Aircraft/Boeing314/Panels/Textures/Boeing314A-panel-bg.rgb</background>
- <w>1424</w>
- <h>468</h>
+ <name>Boeing 314-A Pilot Panel</name>
+ <background>Aircraft/Boeing314/Panels/Textures/transparent-bg.rgb</background>
+ <w>1024</w>
+ <h>512</h>
  <y-offset>0</y-offset>
- <view-height>440</view-height>
+ <view-height>500</view-height>
 
  <instruments>
+
+<!-- Captain -->
 
   <instrument include="../../Instruments/brakes.xml">
    <name>Brake (rope)</name>
    <condition include="Instruments/B314-cond-rope.xml"/>
-   <x>220</x>
-   <y>430</y>
-   <w>40</w>
-   <h>17</h>
+   <x>190</x>
+   <y>440</y>
+   <w>25</w>
+   <h>10</h>
   </instrument>
 
   <instrument include="Instruments/B314-speed-up.xml">
    <name>Speed up</name>
-   <x>410</x>
-   <y>430</y>
-   <w>10</w>
-   <h>40</h>
-  </instrument>
-
-<!-- Captain -->
-
-  <instrument include="../../Instruments/asi.xml">
-   <name>Indicated air speed</name>
-   <x>80</x>
-   <y>295</y>
-   <w>120</w>
-   <h>120</h>
-  </instrument>
-
-  <instrument include="../../Instruments/turn.xml">
-   <name>Turn Coordinator</name>
-   <x>220</x>
-   <y>295</y>
-   <w>120</w>
-   <h>120</h>
-  </instrument>
-
-  <instrument include="../../Instruments/vsi.xml">
-   <name>Vertical speed</name>
-   <x>360</x>
-   <y>295</y>
-   <w>120</w>
-   <h>120</h>
+   <x>260</x>
+   <y>445</y>
+   <w>5</w>
+   <h>20</h>
   </instrument>
 
   <instrument include="../../Instruments/altimeter.xml">
    <name>Altimeter</name>
-   <x>510</x>
-   <y>360</y>
-   <w>120</w>
-   <h>120</h>
+   <x>310</x>
+   <y>420</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
+
+<!-- Captain  2nd line-->
+
+  <instrument include="../../Instruments/asi.xml">
+   <name>Indicated air speed</name>
+   <x>130</x>
+   <y>400</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/turn.xml">
+   <name>Turn Coordinator</name>
+   <x>190</x>
+   <y>400</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/vsi.xml">
+   <name>Vertical speed</name>
+   <x>250</x>
+   <y>400</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+<!-- Captain 3rd line-->
 
   <instrument include="../../Instruments/controls.xml">
    <name>Control Position Indicators</name>
-   <x>80</x>
-   <y>120</y>
-   <w>90</w>
-   <h>90</h>
+   <x>110</x>
+   <y>330</y>
+   <w>35</w>
+   <h>35</h>
   </instrument>
 
   <instrument include="../../Instruments/ati-c172s.xml">
    <name>Attitude indicator</name>
-   <x>220</x>
-   <y>120</y>
-   <w>120</w>
-   <h>120</h>
+   <x>190</x>
+   <y>330</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
 
   <instrument include="../../Instruments/adf.xml">
    <name>ADF</name>
-   <x>390</x>
-   <y>120</y>
-   <w>120</w>
-   <h>120</h>
+   <x>280</x>
+   <y>330</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
 
 <!-- Captain right -->
 
-  <instrument include="Instruments/B314-gdf.xml">
-   <name>Ground Direction Finder</name>
-   <x>590</x>
-   <y>195</y>
-   <w>70</w>
-   <h>70</h>
+  <instrument include="../../Instruments/magcompass.xml">
+   <name>Magnetic Compass</name>
+   <x>358</x>
+   <y>350</y>
+   <w>60</w>
+   <h>15</h>
   </instrument>
 
   <instrument include="../../Instruments/clock.xml">
-   <name>Chronometer</name>
-   <x>560</x>
-   <y>55</y>
-   <w>90</w>
-   <h>90</h>
+   <name>Clock</name>
+   <x>360</x>
+   <y>280</y>
+   <w>35</w>
+   <h>35</h>
   </instrument>
 
 <!-- Center (outboards engines) -->
@@ -195,32 +197,64 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <mp-select>/engines/engine[0]/mp-osi</mp-select>
    </params>
-   <x>670</x>
-   <y>395</y>
-   <w>100</w>
-   <h>100</h>
+   <x>370</x>
+   <y>440</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 2</name>
+   <params>
+    <mp-select>/engines/engine[1]/mp-osi</mp-select>
+   </params>
+   <x>423</x>
+   <y>440</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 3</name>
+   <params>
+    <mp-select>/engines/engine[2]/mp-osi</mp-select>
+   </params>
+   <x>476</x>
+   <y>440</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 4</name>
+   <condition>
+    <not>
+     <property>/sim/current-view/radio-seat</property>
+    </not>
+   </condition>
    <params>
     <mp-select>/engines/engine[3]/mp-osi</mp-select>
    </params>
-   <x>770</x>
-   <y>395</y>
-   <w>100</w>
-   <h>100</h>
+   <x>529</x>
+   <y>440</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
 
   <instrument include="../../Instruments/rpm.xml">
    <name>Engine 1</name>
+   <condition>
+    <not>
+     <property>/sim/current-view/radio-seat</property>
+    </not>
+   </condition>
    <params>
     <rpm-select>/engines/engine[0]/rpm</rpm-select>
    </params>
-   <x>870</x>
-   <y>395</y>
-   <w>100</w>
-   <h>100</h>
+   <x>582</x>
+   <y>440</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
 
   <instrument include="../../Instruments/rpm.xml">
@@ -228,32 +262,37 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <params>
     <rpm-select>/engines/engine[3]/rpm</rpm-select>
    </params>
-   <x>970</x>
-   <y>395</y>
-   <w>100</w>
-   <h>100</h>
+   <x>635</x>
+   <y>440</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
 
 <!-- Sperry autopilot -->
 
   <instrument include="../../Instruments/gyro.xml">
    <name>Directional Gauge</name>
-   <x>720</x>
-   <y>245</y>
-   <w>120</w>
-   <h>120</h>
+   <x>448</x>
+   <y>350</y>
+   <w>60</w>
+   <h>60</h>
   </instrument>
 
   <instrument include="Instruments/B314-sperry-horizon.xml">
    <name>Attitude Indicator</name>
-   <x>900</x>
-   <y>245</y>
-   <w>150</w>
-   <h>150</h>
+   <condition>
+    <not>
+     <property>/sim/current-view/radio-seat</property>
+    </not>
+   </condition>
+   <x>525</x>
+   <y>350</y>
+   <w>70</w>
+   <h>70</h>
   </instrument>
 
   <instrument include="Instruments/B314-autothrottle.xml">
-   <name>Autothrottle</name>
+   <name>Autothrottle switch</name>
    <condition>
     <or>
      <greater-than>
@@ -266,117 +305,159 @@ override those by providing <w>..</w> and <h>..</h> properties with the
      </not-equals>
     </or>
    </condition>
-   <x>680</x>
-   <y>30</y>
-   <w>40</w>
-   <h>40</h>
+   <x>415</x>
+   <y>245</y>
+   <w>25</w>
+   <h>25</h>
   </instrument>
 
   <instrument include="Instruments/B314-sperry-heading-hold.xml">
    <name>Heading hold switch</name>
-   <x>720</x>
-   <y>150</y>
-   <w>40</w>
-   <h>40</h>
+   <x>448</x>
+   <y>290</y>
+   <w>25</w>
+   <h>25</h>
   </instrument>
 
   <instrument include="Instruments/B314-sperry-pitch-hold.xml">
    <name>Pitch hold switch</name>
-   <x>840</x>
-   <y>150</y>
-   <w>40</w>
-   <h>40</h>
+   <x>495</x>
+   <y>290</y>
+   <w>25</w>
+   <h>25</h>
   </instrument>
 
   <instrument include="Instruments/B314-sperry-level-hold.xml">
-   <name>Level hold switch</name>
-   <x>1000</x>
-   <y>150</y>
-   <w>40</w>
-   <h>40</h>
+   <name>Altitude hold switch</name>
+   <condition>
+    <not>
+     <property>/sim/current-view/radio-seat</property>
+    </not>
+   </condition>
+   <x>580</x>
+   <y>290</y>
+   <w>25</w>
+   <h>25</h>
   </instrument>
 
-<!-- Pedestal -->
-
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 1 throttle quadrant</name>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[0]/throttle</engine-throttle-select>
-   </params>
-   <x>770</x>
-   <y>44</y>
-   <w>20</w>
-   <h>80</h>
+  <instrument include="Instruments/B314-gdf.xml">
+   <name>Ground Direction Finder</name>
+   <x>470</x>
+   <y>255</y>
+   <w>35</w>
+   <h>35</h>
   </instrument>
 
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 2 throttle quadrant</name>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[1]/throttle</engine-throttle-select>
-   </params>
-   <x>790</x>
-   <y>44</y>
-   <w>20</w>
-   <h>80</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 3 throttle quadrant</name>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[2]/throttle</engine-throttle-select>
-   </params>
-   <x>810</x>
-   <y>44</y>
-   <w>20</w>
-   <h>80</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 4 throttle quadrant</name>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[3]/throttle</engine-throttle-select>
-   </params>
-   <x>830</x>
-   <y>44</y>
-   <w>20</w>
-   <h>80</h>
-  </instrument>
-
-<!-- Engineer -->
-
-  <instrument include="Instruments/B314-pitch-all.xml">
-   <name>Engines pitch</name>
-   <x>880</x>
-   <y>44</y>
-   <w>20</w>
-   <h>80</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-mixture-all.xml">
-   <name>Engines mixture</name>
-   <x>900</x>
-   <y>44</y>
-   <w>20</w>
-   <h>80</h>
-  </instrument>
-
-<!-- Copilot -->
+<!-- Copilot left -->
 
   <instrument include="Instruments/B314-flap-quadrant.xml">
    <name>Flaps quadrant</name>
    <params>
     <flaps-select>/controls/flight/flaps</flaps-select>
    </params>
-   <x>990</x>
-   <y>44</y>
-   <w>40</w>
-   <h>80</h>
+   <x>630</x>
+   <y>340</y>
+   <w>25</w>
+   <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/magcompass.xml">
-   <name>Magnetic Compass</name>
-   <x>778</x>
-   <y>480</y>
+<!-- Copilot -->
+
+  <instrument include="../../Instruments/altimeter.xml">
+   <name>Altimeter (copilot)</name>
+   <condition>
+    <not>
+     <property>/sim/current-view/radio-seat</property>
+    </not>
+   </condition>
+   <x>695</x>
+   <y>420</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+<!-- Copilot 2nd line -->
+
+  <instrument include="../../Instruments/asi.xml">
+   <name>Indicated air speed (copilot)</name>
+   <condition>
+    <and>
+     <not>
+      <property>/sim/current-view/radio-seat</property>
+     </not>
+     <not>
+      <property>/sim/current-view/engineer-seat</property>
+     </not>
+    </and>
+   </condition>
+   <x>755</x>
+   <y>400</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/turn.xml">
+   <name>Turn Coordinator (copilot)</name>
+   <condition>
+    <and>
+     <not>
+      <property>/sim/current-view/radio-seat</property>
+     </not>
+     <not>
+      <property>/sim/current-view/engineer-seat</property>
+     </not>
+    </and>
+   </condition>
+   <x>815</x>
+   <y>400</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/vsi.xml">
+   <name>Vertical speed (copilot)</name>
+   <condition>
+    <not>
+     <property>/sim/current-view/radio-seat</property>
+    </not>
+   </condition>
+   <x>875</x>
+   <y>400</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+<!-- Copilot 3rd line-->
+
+  <instrument include="../../Instruments/adf.xml">
+   <name>ADF (copilot)</name>
+   <condition>
+    <not>
+     <property>/sim/current-view/radio-seat</property>
+    </not>
+   </condition>
+   <x>725</x>
+   <y>330</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/ati-c172s.xml">
+   <name>Attitude indicator (copilot)</name>
+   <condition>
+    <and>
+     <not>
+      <property>/sim/current-view/radio-seat</property>
+     </not>
+     <not>
+      <property>/sim/current-view/engineer-seat</property>
+     </not>
+    </and>
+   </condition>
+   <x>815</x>
+   <y>330</y>
+   <w>50</w>
+   <h>50</h>
   </instrument>
 
  </instruments>

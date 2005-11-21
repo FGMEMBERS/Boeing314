@@ -648,7 +648,7 @@
 <!-- water -->
 
 <!-- - less than 14 ft : BUG, wow not reset, when starting in flight.
-     - more than 20 kt : enough waves.
+     - more than 40 kt : enough waves.
 -->
 
 <!--
@@ -666,17 +666,19 @@
       <property>/gear/gear[0]/wow</property>
       <property>/gear/gear[1]/wow</property>
       <property>/gear/gear[2]/wow</property>
+      <property>/gear/gear[3]/wow</property>
+      <property>/gear/gear[4]/wow</property>
      </or>
      <greater-than>
       <property>/velocities/airspeed-kt</property>
-      <value>20</value>     
+      <value>40</value>     
      </greater-than>
     </and>
    </condition>
    <volume>
     <property>/velocities/airspeed-kt</property>
     <type>log</type>
-    <factor>0.1</factor>
+    <factor>0.2</factor>
    </volume>
   </hull>
 -->

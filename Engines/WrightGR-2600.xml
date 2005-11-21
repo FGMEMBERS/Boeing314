@@ -1,8 +1,9 @@
 <?xml version="1.0" ?> 
-<!-- 
+- <!-- 
   File:     WrightGR-2600.xml
   Author:   Aero-Matic v 0.7
-  Date:     7 january 2005
+  Date:     14 August 2005
+  Version   1.1
 
   Inputs:
     name:           WrightGR-2600
@@ -13,7 +14,7 @@
 
 
   References :
-  ----------
+  ==========
   - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
   (FAA certificate, TC704 - 25 january 1939, B-314) :
 
@@ -40,14 +41,21 @@
 <FG_PISTON NAME="Wright Double Row Cyclone GR-2600 709C14AC1">
 
 <!-- fakes displacement (2603) to increase the consumption and match the range :
-     - cannot change the volumetric efficiency.
-     - economic cruise is 110 kt, that is 41 h = 5200 miles / 110, or 5688 / 41 = 138 gallons/h for all engines.
-     314A (314) was unable to reach 5200 (3500) miles at the cruise speed of 160 kt.
+
+     - one cannot change the volumetric efficiency.
+
+     - in the FAA certificate the fuel capacity of 314A is 5688 gallons where 1 gallon = 6 lb !
+
+     - the economic cruise speed is 110 kt indicated, or 130 kt true (KSFO - PHNL 2080 NM / 16 h),
+     that is a range of 34.75 h = 5200 miles / 130 kt,
+     or 5688 US gal / 34.75 h = 164 gallons/h for all engines, or 41 gallons/h per engine.
+
+     The 314A (314) was unable to reach 5200 (3500) miles at the cruise speed of 160 kt.
 -->
 
  MINMP 6.0
- MAXMP 43.5                                <!-- aeromatic 30.0 -->
- DISPLACEMENT 6000                         <!-- aeromatic 2560.00 -->
+ MAXMP 43.5                                     <!-- aeromatic 30.0 -->
+ DISPLACEMENT 4600                              <!-- aeromatic 2560.00 -->
  MAXHP 1600.00
  CYCLES 2.0
  IDLERPM 700.0

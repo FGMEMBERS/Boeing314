@@ -4,212 +4,168 @@
 
 http://www.petan.net/aviation/gdf.htm/ : range limited to 1500 miles.
 
-
-Adapted from David Megginson, david@megginson.com.
-
-This is an instrument configuration file for the open-source flight
-simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
-FlightGear property list defining the instrument's layers and actions.
-
-Each instrument is composed of layers stacked on top of each other.
-A layer may be a texture (with transparent parts to show the layers
-underneath), text, or a special layer that switches between two
-others (say, to turn an indicator light on or off).  Each layer can
-move independently in proportion to a property value, and text
-can be generated from property values as well: all of the layer's
-movements are defined as transformations.
-
-Actions are hotspots on the instrument that will respond to a mouse
-click.  Actions always modify the values of properties, either by
-adjusting them, toggling them, or swaping them with other
-properties' values.
+The ground operator sends to the radio operator the true heading.
+Then the radio operator computes the magnetic heading from its approximate position (map with magnetic variation).
+And write the result on a paper for the pilots.
 -->
 
 <PropertyList>
 
- <name>GDF Gauge</name>
+ <name>GDF paper</name>
 
- <w-base>128</w-base>
- <h-base>128</h-base>
+ <w-base>50</w-base>
+ <h-base>50</h-base>
 
  <layers>
 
   <layer>
-   <name>gauge face</name>
+   <name>background</name>
+   <condition>
+    <equals>
+     <property>/instrumentation/gdf/show-paper</property>
+     <value>on</value>
+    </equals>
+   </condition>
    <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/faces-1.rgb</path>
-    <x1>0.0</x1>
-    <y1>0.515625</y1>
-    <x2>0.484375</x2>
-    <y2>1.0</y2>
+    <path>Aircraft/Boeing314/Panels/Instruments/Textures/B314-white-paper.rgb</path>
    </texture>
-   <w>104</w>
-   <h>104</h>
+   <w>50</w>
+   <h>50</h>
    <transformations>
     <transformation>
      <type>rotation</type>
-     <property>/orientation/heading-magnetic-deg</property>
-     <scale>-1</scale>
-     <min>-360.0</min>
-     <max>360.0</max>
+     <offset>15</offset>
     </transformation>
    </transformations>
   </layer>
 
   <layer>
-   <name>Face with markings</name>
-   <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/gyro-fronts.rgb</path>
-    <x1>0.01</x1>
-    <y1>0.5</y1>
-    <x2>0.5</x2>
-    <y2>1.0</y2>
-   </texture>
-   <w>104</w>
-   <h>104</h>
-  </layer>
-
-  <layer>
-   <name>Title abbreviation</name>
+   <name>Zulu time of the radio call</name>
+   <condition>
+    <equals>
+     <property>/instrumentation/gdf/show-paper</property>
+     <value>on</value>
+    </equals>
+   </condition>
    <type>text</type>
-   <point-size>12</point-size>
+   <point-size>9</point-size>
    <color>
-    <red>1.0</red>
-    <green>1.0</green>
-    <blue>1.0</blue>
+    <red>0.1</red> <!-- grey paper pencil -->
+    <green>0.1</green>
+    <blue>0.1</blue>
    </color>
    <chunks>
     <chunk>
-     <type>literal</type>
-     <text>Ground</text>
+     <type>text-value</type>
+     <property>/instrumentation/gdf/gmt-string</property>
     </chunk>
    </chunks>
    <transformations>
     <transformation>
      <type>x-shift</type>
-     <offset>-22</offset>
+     <offset>-20</offset>
     </transformation>
     <transformation>
      <type>y-shift</type>
-     <offset>-22</offset>
+     <offset>11</offset>
+    </transformation>
+    <transformation>
+     <type>rotation</type>
+     <offset>15</offset>
     </transformation>
    </transformations>
   </layer>
 
-<!-- fix misc.rgb -->
   <layer>
-   <name>Needle</name>
-   <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/misc-1.rgb</path>
-    <x1>0.8671875</x1>
-    <y1>0.25</y1>
-    <x2>0.921875</x2>
-    <y2>1.0</y2>
-   </texture>
-   <w>9</w>
-   <h>64</h>
+   <name>Heading noted on a paper by the radio</name>
+   <condition>
+    <and>
+     <equals>
+      <property>/instrumentation/gdf/show-paper</property>
+      <value>on</value>
+     </equals>
+     <not-equals>
+      <property>/instrumentation/gdf/gmt-string</property>
+      <value></value>
+     </not-equals>
+    </and>
+   </condition>
+   <type>text</type>
+   <point-size>9</point-size>
+   <color>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>number-value</type>
+     <property>/instrumentation/gdf/heading-deg</property>
+     <format>%03.0f</format>
+    </chunk>
+   </chunks>
    <transformations>
-    <transformation> <!-- true bearing indicated by autopilot -->
-     <condition include="B314-cond-gdf-in-range.xml">
-     </condition>
-     <type>rotation</type>
-     <property>/instrumentation/gdf/true-heading-deg</property>
-     <min>-360</min>
-     <max>360</max>
-    </transformation>
-    <transformation> <!-- points towards the real direction -->
-     <condition include="B314-cond-gdf-in-range.xml">
-     </condition>
-     <type>rotation</type>
-     <property>/orientation/heading-magnetic-deg</property>
-     <scale>-1</scale>
-     <min>-360</min>
-     <max>360</max>
-    </transformation>
-    <transformation> <!-- out of range -->
-     <condition>
-      <not include="B314-cond-gdf-in-range.xml">
-      </not>
-     </condition>
-     <type>rotation</type>
-     <offset>90</offset>
-     <min>-360</min>
-     <max>360</max>
-    </transformation>
     <transformation>
      <type>x-shift</type>
-     <offset>-1</offset>
-    </transformation> 
-   </transformations>
-  </layer>
- 
-  <layer>
-   <name>Plane</name>
-   <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/misc-1.rgb</path>
-    <x1>0.5</x1>
-    <y1>0.734375</y1>
-    <x2>0.59375</x2>
-    <y2>0.828125</y2>
-   </texture>
-   <w>25</w>
-   <h>25</h>
-   <transformations>
-    <transformation> 
-     <type>y-shift</type>
-     <offset>-6</offset>
-    </transformation> 
-   </transformations>
-  </layer>
-
-  <layer>
-   <name>bezel</name>
-   <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/bezel.rgb</path>
-    <x1>0.0</x1>
-    <y1>0.0</y1>
-    <x2>1.0</x2>
-    <y2>1.0</y2>
-   </texture>
-   <transformations>
-    <transformation>
-    <type>x-shift</type>
-    <offset>-1</offset>
+     <offset>-7</offset>
     </transformation>
-   </transformations>
-  </layer> 
-
-  <layer>
-   <name>glare shield</name>
-   <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/bezel1.rgb</path>
-    <x1>0.5</x1>
-    <y1>0.0</y1>
-    <x2>1.0</x2>
-    <y2>0.5</y2>
-   </texture>
-   <w>124</w>
-   <h>124</h>
-   <transformations>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-11</offset>
+    </transformation>
     <transformation>
      <type>rotation</type>
-     <property>/orientation/roll-deg</property>
-     <min>-360.0</min>
-     <max>360.0</max>
-     <scale>1.0</scale>
-     <wrap>1</wrap>
-    </transformation>
-    <transformation>
-     <type>x-shift</type>
-     <offset>2</offset>
-    </transformation>
-    <transformation>
-     <type>y-shift</type>
-     <offset>-2</offset>
+     <offset>15</offset>
     </transformation>
    </transformations>
   </layer>
 
  </layers>
+
+<!-- remove the paper -->
+
+ <actions>
+
+  <action>
+   <name>remove</name>
+   <condition>
+    <equals>
+     <property>/instrumentation/gdf/show-paper</property>
+     <value>on</value>
+    </equals>
+   </condition>
+   <button>0</button>
+   <x>-25</x>
+   <y>-25</y>
+   <w>50</w>
+   <h>50</h>
+   <binding>
+    <command>property-assign</command>
+    <property>/instrumentation/gdf/show-paper</property>
+    <value></value>
+   </binding>
+  </action> 
+
+  <action>
+   <name>show</name>
+   <condition>
+    <not-equals>
+     <property>/instrumentation/gdf/show-paper</property>
+     <value>on</value>
+    </not-equals>
+   </condition>
+   <button>0</button>
+   <x>-25</x>
+   <y>-25</y>
+   <w>50</w>
+   <h>50</h>
+   <binding>
+    <command>property-assign</command>
+    <property>/instrumentation/gdf/show-paper</property>
+    <value>on</value>
+   </binding>
+  </action> 
+
+ </actions>
 
 </PropertyList>

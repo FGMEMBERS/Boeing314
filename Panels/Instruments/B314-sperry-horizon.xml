@@ -294,34 +294,28 @@ properties' values.
  </action>
 
   <action>
-   <name></name>
+   <name>decrease pitch</name>
    <button>0</button>
    <x>36</x>
    <y>-56</y>
    <w>10</w>
    <h>24</h>
    <binding>
-    <command>property-adjust</command>
-    <property>/autopilot/settings/target-pitch-deg</property>
-    <step>-0.15</step>
-    <min>-12</min>
-    <max>12</max>
+    <command>nasal</command>
+    <script>globals.Boeing314.pitchexport(-1.0);</script>
    </binding>
   </action>
 
   <action>
-   <name></name>
+   <name>increase pitch</name>
    <button>0</button>
    <x>46</x>
    <y>-56</y>
    <w>10</w>
    <h>24</h>
    <binding>
-    <command>property-adjust</command>
-    <property>/autopilot/settings/target-pitch-deg</property>
-    <step>0.15</step>
-    <min>-12</min>
-    <max>12</max>
+    <command>nasal</command>
+    <script>globals.Boeing314.pitchexport(1.0);</script>
    </binding>
   </action>
 

@@ -19,7 +19,7 @@
    </less-than>
    <not-equals>
     <property>/instrumentation/gdf/called</property>
-    <value type="double">1.0</value>
+    <value type="double">on</value>
    </not-equals>
   </and>
 

@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 
-<!-- Animations :
+<!-- All panels are 1024x512, i.e. surface must have width/height = 2/1, to keep the scale of instruments.
+
+     If panel position has discrepancy between 2 views :
+     - the closest view (example : overhead seen from engineer seat, inside from outside) is wrong.  
+     - from outside, localize with the hotspots (ctrl-C).
+
+
+     Animations :
      ==========
      Surfaces : proceed by comparison left/right.
 
@@ -50,6 +57,95 @@
 -->
 
  </offsets>
+
+ <!-- ======================================= -->
+ <!-- panel models (X/Y/Z depth/width/height) -->
+ <!-- ======================================= -->
+
+ <!-- PILOT -->
+
+  <panel>
+   <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
+   <bottom-left>
+    <x-m>-8.61</x-m>
+    <y-m>-0.850</y-m>
+    <z-m> 1.6275</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-8.61</x-m>
+    <y-m> 0.895</y-m>
+    <z-m> 1.6275</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-8.81</x-m>
+    <y-m>-0.850</y-m>
+    <z-m> 2.5</z-m>
+   </top-left>
+  </panel>
+
+ <!-- OVERHEAD -->
+
+  <panel>
+   <path>Aircraft/Boeing314/Panels/Boeing314A-overhead.xml</path>
+   <bottom-left>
+    <x-m>-8.9825</x-m>
+    <y-m>-0.550</y-m>
+    <z-m> 2.74</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-8.9825</x-m>
+    <y-m> 1.295</y-m>
+    <z-m> 2.74</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-8.11</x-m>
+    <y-m>-0.550</y-m>
+    <z-m> 2.84</z-m>
+   </top-left>
+  </panel>
+
+ <!-- ENGINEER -->
+
+  <panel>
+   <path>Aircraft/Boeing314/Panels/Boeing314A-engineer.xml</path>
+   <bottom-left>
+    <x-m>-5.08</x-m>
+    <y-m> 1.35</y-m>
+    <z-m> 2.08</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-3.88</x-m>
+    <y-m> 1.35</y-m>
+    <z-m> 2.08</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-5.08</x-m>
+    <y-m> 1.35</y-m>
+    <z-m> 2.68</z-m>
+   </top-left>
+  </panel>
+
+ <!-- RADIO -->
+
+  <panel>
+   <path>Aircraft/Boeing314/Panels/Boeing314A-radio.xml</path>
+   <bottom-left>
+    <x-m>-6.21</x-m>
+    <y-m> 0.80</y-m>
+    <z-m> 2.10</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-6.21</x-m>
+    <y-m> 1.50</y-m>
+    <z-m> 2.10</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-6.21</x-m>
+    <y-m> 0.80</y-m>
+    <z-m> 2.45</z-m>
+   </top-left>
+  </panel>
+
 
 <!-- ================================== -->
 <!-- Animations (x/y/z = back/right/up) -->

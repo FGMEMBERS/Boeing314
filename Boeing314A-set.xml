@@ -1,31 +1,58 @@
 <?xml version="1.0"?>
 
-<!-- 
+<!-- CAUTION, if preferences.xml isn't with 6 views, update Boeing314-views.xml and Boeing314-keyboard.xml !
 -->
 
-<PropertyList include="Nasal/Boeing314-route.xml">
- <sim>
+<!-- Version           CVS date                   Milestone
+     ==========================================================================================
+     1.0               January 2005               Aircraft, FDM, 2D panel.
+     1.1               not yet known              3D cockpit, hydrodynamics.
+     ==========================================================================================
+-->
+
+
+<PropertyList>
+
+ <sim include="Nasal/Boeing314-views.xml">
 
   <description>Boeing 314-A</description>
   <status>early-production</status>
+  <version>1.1</version>
+
+  <startup>
+   <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>
+  </startup>
 
   <flight-model>jsb</flight-model>
   <aero>Boeing314A</aero>
+
+  <presets>
+   <tanks include="Nasal/Boeing314A-fuel.xml"/>
+   <mooring include="Nasal/Boeing314-route.xml"/>
+  </presets>
 
   <systems>
    <autopilot>
     <path>Aircraft/Boeing314/Systems/Boeing314A-autopilot.xml</path>
    </autopilot>
+   <electrical>
+    <path>Aircraft/Generic/generic-electrical.xml</path>
+   </electrical>
   </systems> 
+
+  <instrumentation>
+   <path>Aircraft/Boeing314/Systems/Boeing314A-instrumentation.xml</path>
+  </instrumentation>
 
   <sound>
    <audible>true</audible>
    <path>Aircraft/Boeing314/Sounds/Boeing314-sound.xml</path>
+   <!-- <path>Aircraft/Boeing314/Sounds/Boeing314-b17-sound.xml</path> -->
   </sound>
 
   <panel>
    <path>Aircraft/Boeing314/Panels/Boeing314A-2D-captain.xml</path>
-   <visibility>true</visibility>
+   <visibility>false</visibility>
   </panel>
   <panel_2>
    <path>Aircraft/Boeing314/Panels/Boeing314A-2D-engineer.xml</path>
@@ -35,24 +62,9 @@
    <path>Aircraft/Boeing314/Models/Boeing314Clipper.xml</path>
   </model> 
 
-  <view>
-   <internal archive="y">true</internal>
-   <config>
-     <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y">-0.5</x-offset-m>
-     <y-offset-m archive="y">0.445</y-offset-m>
-     <z-offset-m archive="y">-8.7</z-offset-m>
-     <pitch-offset-deg>-1</pitch-offset-deg>
-   </config>
-  </view>
-
   <chase-distance-m type="double" archive="y">-37.5</chase-distance-m>
 
-  <help>
-   <line>Vmax at 6200 ft: 201 mph [175 kt]</line>
-   <line>Vcruise at 11000 ft: 184 mph [160 kt]</line>
-   <line>Vstall: 70 mph [61 kt]</line>
-  </help>
+  <help include="help.xml"/>
 
  </sim>
 
@@ -63,18 +75,7 @@
  </nasal>
 
  <input>
-  <keyboard>
-
-   <key n="113">
-    <name>q</name>
-    <desc>reset speed-up.</desc>
-    <binding>
-     <command>property-assign</command>
-     <property>/sim/speed-up</property>
-     <value>1</value>
-    </binding>
-   </key>
-
+  <keyboard include="Nasal/Boeing314-keyboard.xml">
   </keyboard>
  </input>
 
@@ -83,7 +84,7 @@
 <!-- customization -->
 <!-- ============= -->
 
-<!-- engines on, low pitch -->
+<!-- engines on, low pitch (parking) -->
 
  <controls>
   <engines>
@@ -105,7 +106,9 @@
    </engine>
   </engines>
  </controls>
- 
+
+<!-- above 700 RPM avoids to the stop --> 
+
  <engines>
   <engine n="0">
    <rpm>1000</rpm>
@@ -120,46 +123,13 @@
    <rpm>1000</rpm>
   </engine>
  </engines>
-   
- <consumables>
-  <fuel>
-   <!-- overrides JBSim, which only sees US gallons (6.6 pound = 1 US gal = 3.875 l) -->
 
-   <!-- The default filling is max takeoff weight (84000 lb / 5688 gallons fuel). -->
+<!-- autopilot -->
 
-   <!-- For max landing weight (80000 lb / 5082 gallons fuel), remove the comments of this section. -->
-
-   <tank n="4">
-    <level-gal_us>130.0</level-gal_us>
-   </tank>
-
-   <!-- For empty tanks (center is emptied first), remove the comments of this section. -->
-
-<!--
-   <tank n="0">
-    <level-gal_us>75.0</level-gal_us>
-   </tank>
-   <tank n="1">
-    <level-gal_us>75.0</level-gal_us>
-   </tank>
-   <tank n="2">
-    <level-gal_us>75.0</level-gal_us>
-   </tank>
-   <tank n="3">
-    <level-gal_us>75.0</level-gal_us>
-   </tank>
-   <tank n="4">
-    <level-gal_us>0.0</level-gal_us>
-   </tank>
-   <tank n="5">
-    <level-gal_us>0.0</level-gal_us>
-   </tank>
-   <tank n="6">
-    <level-gal_us>0.0</level-gal_us>
-   </tank>
--->
-
-  </fuel>
- </consumables>
+ <autopilot>
+  <settings>
+   <target-speed-kt>110</target-speed-kt>
+  </settings>
+ </autopilot>
 
 </PropertyList>

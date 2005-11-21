@@ -7,7 +7,7 @@
  <h-base>128</h-base>
 
  <params>
-  <content-select>/consumables/fuel/tank[0]/level-gal_us</content-select>
+  <content-select>/consumables/fuel/tank[0]/level-lb</content-select>
  </params>
 
  <layers>
@@ -41,8 +41,8 @@
      <type>rotation</type>
       <property alias="../../../../../params/content-select"/>
       <min>0</min>
-      <max>1100</max>
-      <scale>0.288</scale>
+      <max>7260</max>
+      <scale>0.043636</scale> <!-- in lb ! -->
       <offset>216</offset>
     </transformation>
     <transformation>

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
-<!-- Heading hold switch -->
+<!-- Boeing 314 caging knob.
+-->
 
 <PropertyList>
 
@@ -67,46 +68,14 @@
 
   <action>
    <name>toggle heading hold</name>
-   <condition>
-    <not-equals>
-     <property>/autopilot/locks/heading</property>
-     <value>dg-heading-hold</value>
-    </not-equals>
-   </condition>
    <button>0</button>
    <x>-22</x>
    <y>-19</y>
    <w>44</w>
    <h>44</h>
    <binding>
-    <command>property-assign</command>
-    <property>/autopilot/locks/heading</property>
-    <value>dg-heading-hold</value>
-   </binding>
-   <binding>
-    <command>property-assign</command>
-    <property>/autopilot/settings/heading-bug-deg</property>
-    <property n="1">/orientation/heading-deg</property>
-   </binding>
-  </action>
-
-  <action>
-   <name>disable heading hold</name>
-   <condition>
-    <equals>
-     <property>/autopilot/locks/heading</property>
-     <value>dg-heading-hold</value>
-    </equals>
-   </condition>
-   <button>0</button>
-   <x>-22</x>
-   <y>-19</y>
-   <w>44</w>
-   <h>44</h>
-   <binding>
-    <command>property-assign</command>
-    <property>/autopilot/locks/heading</property>
-    <value></value>
+    <command>nasal</command>
+    <script>globals.Boeing314.apheadingexport();</script>
    </binding>
   </action>
 
