@@ -94,6 +94,10 @@
     <property>/instrumentation/gdf/called</property>
     <value type="string">on</value>
    </binding>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.GDFinstrument.call();</script>
+   </binding>
   </action>
 
  </actions>

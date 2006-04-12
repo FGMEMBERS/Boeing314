@@ -164,64 +164,6 @@ properties' values.
    </transformations>
   </layer>
 
-<!-- knob -->
-
-  <layer>
-   <name>Heading Knob</name>
-   <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/blister.rgb</path>
-    <x1>0.25</x1>
-    <y1>0.75</y1>
-    <x2>0.5</x2>
-    <y2>1.0</y2>
-   </texture>
-   <h>24</h>
-   <w>24</w>
-   <transformations>
-    <transformation>
-     <type>x-shift</type>
-     <offset>45</offset>
-    </transformation>
-    <transformation>
-     <type>y-shift</type>
-     <offset>-45</offset>
-    </transformation>
-    <transformation>
-     <type>rotation</type>
-     <property>/autopilot/settings/target-pitch-deg</property>
-     <scale>80.0</scale>
-    </transformation>
-   </transformations>
-  </layer>
-
-  <layer>
-   <name>Heading label</name>
-   <texture>
-    <path>Aircraft/Boeing314/Panels/Instruments/Textures/misc-1.rgb</path>
-    <x1>0.0078125</x1>
-    <y1>0.5</y1>
-    <x2>0.1640625</x2>
-    <y2>0.6640625</y2>
-   </texture>
-   <w>15</w>
-   <h>15</h>
-   <transformations>
-    <transformation>
-     <type>x-shift</type>
-     <offset>45</offset>
-    </transformation>
-    <transformation>
-     <type>y-shift</type>
-     <offset>-45</offset>
-    </transformation>
-    <transformation>
-     <type>rotation</type>
-     <property>/autopilot/settings/target-pitch-deg</property>
-     <scale>80.0</scale>
-    </transformation>
-   </transformations>
-  </layer>
-
  </layers>
 
  <actions>
@@ -292,32 +234,6 @@ properties' values.
    <wrap>false</wrap>
   </binding>
  </action>
-
-  <action>
-   <name>decrease pitch</name>
-   <button>0</button>
-   <x>36</x>
-   <y>-56</y>
-   <w>10</w>
-   <h>24</h>
-   <binding>
-    <command>nasal</command>
-    <script>globals.Boeing314.pitchexport(-1.0);</script>
-   </binding>
-  </action>
-
-  <action>
-   <name>increase pitch</name>
-   <button>0</button>
-   <x>46</x>
-   <y>-56</y>
-   <w>10</w>
-   <h>24</h>
-   <binding>
-    <command>nasal</command>
-    <script>globals.Boeing314.pitchexport(1.0);</script>
-   </binding>
-  </action>
 
 </actions>
 

@@ -24,13 +24,16 @@
   <!-- additional seats. -->
 
   <current-view>
-   <captain-seat type="bool">true</captain-seat>
-   <engineer-seat type="bool">false</engineer-seat>
-   <radio-seat type="bool">false</radio-seat>
-   <copilot-seat type="bool">false</copilot-seat>
+   <seat>
+    <captain type="bool">true</captain>
+    <engineer type="bool">false</engineer>
+    <radio type="bool">false</radio>
+    <copilot type="bool">false</copilot>
+    <star type="bool">false</star>
+   </seat>
   </current-view>
 
-  <number-views type="int">9</number-views>
+  <number-views type="int">10</number-views>
 
   <view n="6">
     <name>Engineer View</name>
@@ -113,6 +116,34 @@
      <z-offset-m archive="y">-8.07</z-offset-m>
      <pitch-offset-deg>-4</pitch-offset-deg>
      <heading-offset-deg type="double">290</heading-offset-deg> <!-- inside its window -->
+    </config>
+  </view>
+
+  <view n="9">
+    <name>Star View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">0.01</x-offset-m> <!-- centered -->
+     <y-offset-m archive="y">0.77</y-offset-m>
+     <z-offset-m archive="y">-1.90</z-offset-m>
+     <pitch-offset-deg>0</pitch-offset-deg>
+     <heading-offset-deg type="double">180</heading-offset-deg> <!-- towards the stern -->
     </config>
   </view>
 

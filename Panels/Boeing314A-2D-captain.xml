@@ -236,10 +236,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Sperry autopilot -->
 
+  <instrument include="Instruments/B314-sperry-climb-knob.xml">
+   <name>Climb knob</name>
+   <x>1000</x>
+   <y>310</y>
+   <w>70</w>
+   <h>70</h>
+  </instrument>
+
   <instrument include="../../Instruments/gyro.xml">
    <name>Directional Gauge</name>
    <x>720</x>
-   <y>245</y>
+   <y>235</y>
    <w>120</w>
    <h>120</h>
   </instrument>
@@ -247,7 +255,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-sperry-horizon.xml">
    <name>Attitude Indicator</name>
    <x>900</x>
-   <y>245</y>
+   <y>235</y>
    <w>150</w>
    <h>150</h>
   </instrument>
@@ -267,7 +275,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
     </or>
    </condition>
    <x>680</x>
-   <y>30</y>
+   <y>20</y>
    <w>40</w>
    <h>40</h>
   </instrument>
@@ -275,7 +283,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-sperry-heading-hold.xml">
    <name>Heading hold switch</name>
    <x>720</x>
-   <y>150</y>
+   <y>140</y>
    <w>40</w>
    <h>40</h>
   </instrument>
@@ -283,7 +291,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-sperry-pitch-hold.xml">
    <name>Pitch hold switch</name>
    <x>840</x>
-   <y>150</y>
+   <y>140</y>
    <w>40</w>
    <h>40</h>
   </instrument>
@@ -291,7 +299,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-sperry-level-hold.xml">
    <name>Level hold switch</name>
    <x>1000</x>
-   <y>150</y>
+   <y>140</y>
    <w>40</w>
    <h>40</h>
   </instrument>

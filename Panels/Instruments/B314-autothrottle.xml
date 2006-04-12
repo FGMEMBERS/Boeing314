@@ -104,7 +104,7 @@
    <h>44</h>
    <binding>
     <command>nasal</command>
-    <script>globals.Boeing314.atexport();</script>
+    <script>globals.Boeing314.autopilotsystem.atexport();</script>
    </binding>
   </action>
 

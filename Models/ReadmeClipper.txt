@@ -25,11 +25,14 @@ The following proportions are respected :
 - in propeller diameter : engine 1/3.
 - panel height = 1/2 of height to floor (below the panel).
 
-
-For the transparency, propeller discs must be the last of the file (all other objects belong to a fuselage group at the
-export).
-
 This model can also be used as 314 (same dimensions).
+
+
+For the transparency, propeller discs must be the last of the file :
+- all other objects belong to a fuselage group, at the export.
+- outboard discs are inside a group, whose parent is the last but one object.
+- inboard discs are inside a group, whose parent is the last object.
+
 
 Texturing
 ---------
@@ -40,15 +43,17 @@ The yellow strips are delimited by the mesh (except the rounded tip) :
 
 TO DO
 =====
-- shape of hull behind the step.
+- dilate the model (scale is underestimated).
+- shape of hull behind the step (afterbody).
 - grooves (sponsons, top of fuselage).
 - a reversed "PAA" logo for the bow right (italic in direction of the speed).
+- door accessing the "star room" from the flight deck.
+- replace material by texture.
 
 
 Known problems
 ==============
 - the top of the vertical stabilizers is slightly too long.
-- transparency between propeller discs 3 and 4 (copilot view).
 
 Known problems Panam livery
 ---------------------------
@@ -82,7 +87,7 @@ http://www.commercemarketplace.com/home/CollectAir/ephemera.html/ : the Boeing l
 
 GPL licence
 ===========
-Contact devel-list for the .blend file (Blender 2.34).
+Contact devel-list for the .blend file (Blender 2.36).
 
 
-10 August 2005.
+21 March 2006.

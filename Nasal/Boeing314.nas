@@ -6,21 +6,78 @@
 # SCHEDULE : functions ending by schedule are called from cron
 
 
-# ===========================
-# Consumption during speed-up
-# ===========================
 
-SPEEDUPSEC = 2;                                               # refresh rate
-CLIMBFTPMIN = 1000;                                           # average climb rate
-CLIMBFTPSEC = CLIMBFTPMIN / 60;
-MAXSTEPFT = CLIMBFTPSEC * SPEEDUPSEC;
+# =========
+# CONSTANTS
+# =========
+
+Constant = {};
+
+Constant.new = func {
+   obj = { parents : [Constant],
+
+           HOURTOSECOND : 3600.0,
+           MINUTETOSECOND : 60.0,
+         };
+
+   return obj;
+};
+
+
+# ===========
+# FUEL SYSTEM
+# ===========
+
+Fuel = {};
+
+Fuel.new = func {
+   obj = { parents : [Fuel],
+           SPEEDUPSEC : 2,             # refresh rate
+           CLIMBFTPMIN : 1000,         # average climb rate
+           CLIMBFTPSEC : 0.0,
+           MAXSTEPFT : 0.0
+         };
+
+   obj.init();
+
+   return obj;
+};
+
+Fuel.init = func {
+   me.CLIMBFTPSEC = me.CLIMBFTPMIN / constant.MINUTETOSECOND;
+   me.MAXSTEPFT = me.CLIMBFTPSEC * me.SPEEDUPSEC;
+
+   me.presetfuel();
+}
+
+# fuel configuration
+Fuel.presetfuel = func {
+   # default is 0
+   fuel = getprop("/sim/presets/fuel");
+   if( fuel == nil ) {
+       fuel = 0;
+   }
+   fillings = props.globals.getNode("/sim/presets/tanks").getChildren("filling");
+   if( fuel < 0 or fuel >= size(fillings) ) {
+       fuel = 0;
+   } 
+   presets = fillings[fuel].getChildren("tank");
+   tanks = props.globals.getNode("/consumables/fuel").getChildren("tank");
+   for( i=0; i < size(presets); i=i+1 ) {
+        child = presets[i].getChild("level-gal_us");
+        if( child != nil ) {
+            level = child.getValue();
+            tanks[i].getChild("level-gal_us").setValue(level);
+        }
+   } 
+}
 
 # speed up engine, arguments :
 # - engine tank
 # - fuel flow of engine
 # - sponson tank
 # - speed up
-speedupengine = func {
+Fuel.speedupengine = func {
    enginetank = arg[0];
    flowgph = arg[1];
    sponsontank = arg[2];
@@ -34,8 +91,8 @@ speedupengine = func {
    if( flowgph > 0 ) {
        multiplier = multiplier - 1;
        enginegal = flowgph * multiplier;
-       enginegal = enginegal / 3600;
-       enginegal = enginegal * SPEEDUPSEC;
+       enginegal = enginegal / constant.HOURTOSECOND;
+       enginegal = enginegal * me.SPEEDUPSEC;
 
        tanks = props.globals.getNode("/consumables/fuel").getChildren("tank");
 
@@ -88,31 +145,31 @@ speedupengine = func {
 }
 
 # speed up consumption
-speedupfuelcron = func {
+Fuel.schedule = func {
    altitudeft = getprop("/position/altitude-ft");
    speedup = getprop("/sim/speed-up");
    if( speedup > 1 ) {
        engines = props.globals.getNode("/engines/").getChildren("engine");
        galphour = engines[0].getValue("fuel-flow-gph");
-       speedupengine( 0, galphour, 5, speedup );
+       me.speedupengine( 0, galphour, 5, speedup );
        galphour = engines[1].getValue("fuel-flow-gph");
-       speedupengine( 1, galphour, 5, speedup );
+       me.speedupengine( 1, galphour, 5, speedup );
        galphour = engines[2].getValue("fuel-flow-gph");
-       speedupengine( 2, galphour, 6, speedup );
+       me.speedupengine( 2, galphour, 6, speedup );
        galphour = engines[3].getValue("fuel-flow-gph");
-       speedupengine( 3, galphour, 6, speedup );
+       me.speedupengine( 3, galphour, 6, speedup );
 
        # accelerate day time
        node = props.globals.getNode("/sim/time/warp");
        multiplier = speedup - 1;
-       offsetsec = SPEEDUPSEC * multiplier;
+       offsetsec = me.SPEEDUPSEC * multiplier;
        warp = node.getValue() + offsetsec; 
        node.setValue(warp);
 
        # safety
        lastft = getprop("/position/speed-up-ft");
        if( lastft != nil ) {
-           stepft = MAXSTEPFT * speedup;
+           stepft = me.MAXSTEPFT * speedup;
            maxft = lastft + stepft;
            minft = lastft - stepft;
 
@@ -124,21 +181,35 @@ speedupfuelcron = func {
    }
 
    setprop("/position/speed-up-ft",altitudeft);
-
-   # schedule the next call
-    settimer(speedupfuelcron,SPEEDUPSEC);
 }
 
+
 # ========================
-# Ground direction finding
+# GROUND DIRECTION FINDING
 # ========================
 
+GDF = {};
+
+GDF.new = func {
+   obj = { parents : [GDF]
+         };
+   return obj;
+};
+
+# cannot make a settimer on a class member
 callgdfcron = func {
+   GDFinstrument.call();
+}
+
+GDF.call = func {
    if( getprop("/instrumentation/gdf/called") == "on" ) {
        if( getprop("/instrumentation/gdf/calling") != "on" ) {
            setprop("/instrumentation/gdf/calling","on");
            speedup = getprop("/sim/speed-up");
            delaysec = 120.0 / speedup;
+
+           # schedule the next call
+           settimer(callgdfcron,delaysec);
        }
        else {
            waypoints = props.globals.getNode("/autopilot/route-manager").getChildren("wp");
@@ -164,78 +235,81 @@ callgdfcron = func {
            }
            setprop("/instrumentation/gdf/called","");
            setprop("/instrumentation/gdf/calling","");
-           delaysec = 15.0;
        }
    }
-   else {
-       delaysec = 15.0;
-   }
-
-   # schedule the next call
-    settimer(callgdfcron,delaysec);
 }
 
+
 # ================
-# Sperry autopilot
+# SPERRY AUTOPILOT
 # ================
+
+Autopilot = {};
+
+Autopilot.new = func {
+   obj = { parents : [Autopilot]
+         };
+   return obj;
+};
 
 # pitch hold
-appitchexport = func {
+Autopilot.appitchexport = func {
     mode = getprop("/autopilot/locks/altitude");
-    # rudimentary, must disable current mode
-    if( mode != "altitude-hold" ) {
-        if( mode != "pitch-hold" ) {
-            mode = "pitch-hold";
-            pitchdeg = getprop("/orientation/pitch-deg");
-            setprop("/autopilot/settings/target-pitch-deg",pitchdeg);
-        }
-        else {
-            mode = "";
-        }
-
-        setprop("/autopilot/locks/altitude",mode);
-    }
-}
-
-# heading hold
-apheadingexport = func {
-    mode = getprop("/autopilot/locks/heading");
-    if( mode != "dg-heading-hold" ) {
-        mode = "dg-heading-hold";
-        headingdeg = getprop("/orientation/heading-magnetic-deg");
-        setprop("/autopilot/settings/heading-bug-deg",headingdeg);
+    if( mode != "pitch-hold" ) {
+        mode = "pitch-hold";
+        pitchdeg = getprop("/orientation/pitch-deg");
+        setprop("/autopilot/settings/target-pitch-deg",pitchdeg);
     }
     else {
         mode = "";
     }
 
+    setprop("/autopilot/locks/altitude",mode);
+}
+
+# heading hold
+Autopilot.apheadingexport = func {
+    mode = getprop("/autopilot/locks/heading");
+    if( mode != "dg-heading-hold" ) {
+        mode = "dg-heading-hold";
+        headingdeg = getprop("/orientation/heading-magnetic-deg");
+        setprop("/autopilot/settings/heading-bug-deg",headingdeg);
+        mode2 = "horizontal";
+    }
+    else {
+        mode = "";
+        mode2 = "";
+    }
+
     setprop("/autopilot/locks/heading",mode);
+    setprop("/autopilot/locks/heading2",mode2);
 }
 
 # altitude hold
-apaltitudeexport = func {
+Autopilot.apaltitudeexport = func {
     mode = getprop("/autopilot/locks/altitude");
-    # rudimentary, must disable current mode
-    if( mode != "pitch-hold" ) {
-        if( mode != "altitude-hold" ) {
-            mode = "altitude-hold";
-            altitudeft = getprop("/instrumentation/altimeter/indicated-altitude-ft");
-            setprop("/autopilot/settings/target-altitude-ft",altitudeft);
-        }
-        else {
-            mode = "";
-        }
-
-        setprop("/autopilot/locks/altitude",mode);
+    if( mode != "altitude-hold" ) {
+        mode = "altitude-hold";
+        altitudeft = getprop("/instrumentation/altimeter/indicated-altitude-ft");
+        setprop("/autopilot/settings/target-altitude-ft",altitudeft);
     }
+    else {
+        mode = "";
+    }
+
+    setprop("/autopilot/locks/altitude",mode);
 }
 
 # pitch horizon :
 # - coefficient 
-pitchexport = func {
+Autopilot.pitchexport = func {
     sign = arg[ 0 ];
 
     pitchdeg = getprop("/autopilot/settings/target-pitch-deg");
+    if( pitchdeg == nil ) {
+        pitchdeg = 0.0;
+    }
+
     pitchdeg = pitchdeg + 0.15 * sign;
     if( pitchdeg > 12 ) {
         pitchdeg = 12;
@@ -248,10 +322,14 @@ pitchexport = func {
 
 # heading bug :
 # - sign
-headingexport = func {
+Autopilot.headingexport = func {
     sign = arg[ 0 ];
 
     headingdeg = getprop("/autopilot/settings/heading-bug-deg");
+    if( headingdeg == nil ) {
+        headingdeg = 0.0;
+    }
+
     headingdeg = headingdeg + 1 * sign;
     if( headingdeg > 360 ) {
         headingdeg = 1;
@@ -263,7 +341,7 @@ headingexport = func {
 }
 
 # auto throttle
-atexport = func{
+Autopilot.atexport = func{
    speed = getprop("/autopilot/locks/speed");
    if( speed == "speed-with-throttle-arm" or speed == "speed-with-throttle" ) {
        speed = "";
@@ -275,7 +353,7 @@ atexport = func{
 }
 
 # autopilot help testing during speed-up
-speedupapcron = func {
+Autopilot.schedule = func {
    speed = getprop("/autopilot/locks/speed");
 
    # activate speed-up mode
@@ -294,18 +372,51 @@ speedupapcron = func {
        }
    }
 
-   # schedule the next call
-   settimer(speedupapcron,5.0);
+   # adding a waypoint swaps to true heading hold
+   mode = getprop("/autopilot/locks/heading");
+   if( mode == "true-heading-hold" ) {
+       mode2 = getprop("/autopilot/locks/heading2");
+
+       # keeps sperry autopilot
+       if( mode2 == "horizontal" ) { 
+           mode =  "dg-heading-hold";
+       }
+       # autopilot not activated, that was a new waypoint
+       else {
+           mode = "";
+       }
+       setprop("/autopilot/locks/heading",mode);
+   }
 }
 
+
 # =================
-# Automatic mooring
+# AUTOMATIC MOORING
 # =================
 
-AIRPORTSEC = 3.0;
+Mooring = {};
+
+Mooring.new = func {
+   obj = { parents : [Mooring],
+           AIRPORTSEC : 3.0
+         };
+
+   obj.init();
+
+   return obj;
+};
+
+Mooring.init = func {
+   me.presetseaplane();
+}
+
+# cannot make a settimer on a class member
+presetairportcron = func {
+   mooringsystem.presetairport();
+}
 
 # change of airport
-presetairport = func {
+Mooring.presetairport = func {
    airport = getprop("/sim/presets/airport-id");
    runway = getprop("/sim/presets/runway");
 
@@ -314,44 +425,54 @@ presetairport = func {
        altitude = getprop("/sim/presets/altitude-ft");
 
        if( altitude <= 0 ) {
-           settimer(presetseaplane,1.0);
+           settimer(presetseaplanecron,1.0);
        }
        
        # in flight
        else {
-           settimer(presetairport,AIRPORTSEC);
+           settimer(presetairportcron,me.AIRPORTSEC);
        }
    }
 
    # unchanged
    else {
-       settimer(presetairport,AIRPORTSEC);
+       settimer(presetairportcron,me.AIRPORTSEC);
    }
 }
 
+# cannot make a settimer on a class member
+presetseaplanecron = func {
+   mooringsystem.presetseaplane();
+}
+
 # automatic seaplane preset
-presetseaplane = func {
+Mooring.presetseaplane = func {
    moorage = getprop("/sim/presets/moorage");
    if( moorage == nil or moorage ) {
        # wait for end of trim
        if( getprop("/sim/sceneryloaded") ) {
-           settimer(presetharbour,1.0);
+           settimer(presetharbourcron,1.0);
        }
 
        # wait for end initialization
        else {
-           settimer(presetseaplane,1.0);
+           settimer(presetseaplanecron,1.0);
        }
    }
 
    # no automatic mooring
    else {
-       settimer(presetairport,AIRPORTSEC);
+       settimer(presetairportcron,me.AIRPORTSEC);
    }
 }
 
+# cannot make a settimer on a class member
+presetharbourcron = func {
+   mooringsystem.presetharbour();
+}
+
 # goes to the harbour, once one has the tower
-presetharbour = func {
+Mooring.presetharbour = func {
    found = "false";
    airport = getprop("/sim/presets/airport-id");
    if( airport != nil and airport != "" ) {
@@ -386,7 +507,7 @@ presetharbour = func {
                 found = "true";
 
                 # doesn't work in the same event, needs some delay
-                settimer(presetwater,1.5);
+                settimer(presetwatercron,1.5);
                 break;
             }
        }
@@ -394,55 +515,51 @@ presetharbour = func {
 
    # moorage not found
    if( found == "false" ) {
-       settimer(presetairport,AIRPORTSEC);
+       settimer(presetairportcron,me.AIRPORTSEC);
    }
 }
 
+# cannot make a settimer on a class member
+presetwatercron = func {
+   mooringsystem.presetwater();
+}
+
 # computes the water level
-presetwater = func {
+Mooring.presetwater = func {
    altitudeft = getprop("/position/altitude-ft");
    aglft = getprop("/position/altitude-agl-ft");
    altitudeft = altitudeft - aglft;
    setprop("/position/altitude-ft",altitudeft);
 
    # scan airport change
-   settimer(presetairport,AIRPORTSEC);
+   settimer(presetairportcron,me.AIRPORTSEC);
 }
+
 
 # ==============
 # Initialization
 # ==============
 
-# fuel configuration
-presetfuel = func {
-   # default is 0
-   fuel = getprop("/sim/presets/fuel");
-   if( fuel == nil ) {
-       fuel = 0;
-   }
-   fillings = props.globals.getNode("/sim/presets/tanks").getChildren("filling");
-   if( fuel < 0 or fuel >= size(fillings) ) {
-       fuel = 0;
-   } 
-   presets = fillings[fuel].getChildren("tank");
-   tanks = props.globals.getNode("/consumables/fuel").getChildren("tank");
-   for( i=0; i < size(presets); i=i+1 ) {
-        child = presets[i].getChild("level-gal_us");
-        if( child != nil ) {
-            level = child.getValue();
-            tanks[i].getChild("level-gal_us").setValue(level);
-        }
-   } 
+# 2 s cron
+sec2cron = func {
+   fuelsystem.schedule();
+   autopilotsystem.schedule();
+
+   # schedule the next call
+   settimer(sec2cron,fuelsystem.SPEEDUPSEC);
 }
 
 init = func {
-   presetfuel();
-
    # schedule the 1st call
-   settimer(callgdfcron,0.0);
-   settimer(presetseaplane,0.0);
-   settimer(speedupapcron,0.0);
-   settimer(speedupfuelcron,0.0);
+   sec2cron();
 }
+
+# objects must be here, otherwise local to init()
+constant = Constant.new();
+fuelsystem = Fuel.new();
+mooringsystem = Mooring.new();
+autopilotsystem = Autopilot.new();
+
+GDFinstrument = GDF.new();
 
 init();

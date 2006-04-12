@@ -6,7 +6,8 @@
 <!-- Version           CVS date                   Milestone
      ==========================================================================================
      1.0               January 2005               Aircraft, FDM, 2D panel.
-     1.1               not yet known              3D cockpit, hydrodynamics.
+     1.1               November 2005              3D cockpit, hydrodynamics.
+     1.2               not yet known              Star view. 
      ==========================================================================================
 -->
 
@@ -17,7 +18,7 @@
 
   <description>Boeing 314-A</description>
   <status>early-production</status>
-  <aircraft-version>1.1</aircraft-version>
+  <aircraft-version>1.2</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>
@@ -46,8 +47,10 @@
 
   <sound>
    <audible>true</audible>
-   <path>Aircraft/Boeing314/Sounds/Boeing314-sound.xml</path>
-   <!-- <path>Aircraft/Boeing314/Sounds/Boeing314-b17-sound.xml</path> -->
+    <path>Aircraft/Boeing314/Sounds/Boeing314-sound.xml</path>
+<!--
+   <path>Aircraft/Boeing314/Sounds/Boeing314-b17-sound.xml</path>
+-->
   </sound>
 
   <panel>
