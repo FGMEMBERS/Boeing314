@@ -15,20 +15,20 @@
   <airspeed-indicator>
     <name>airspeed-indicator</name>
     <number>0</number>
-    <pitot-port>/systems/pitot</pitot-port>
-    <static-port>/systems/static</static-port>
+    <total-pressure>/systems/pitot/total-pressure-inhg</total-pressure>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
   </airspeed-indicator>
 
   <altimeter>
     <name>altimeter</name>
     <number>0</number>
-    <static-port>/systems/static</static-port>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
   </altimeter>
 
   <attitude-indicator>
     <name>attitude-indicator</name>
     <number>0</number>
-    <vacuum-system>/systems/vacuum</vacuum-system>
+    <suction>/systems/vacuum/suction-inhg</suction>
   </attitude-indicator>
 
   <clock>
@@ -39,7 +39,7 @@
   <heading-indicator>
     <name>heading-indicator</name>
     <number>0</number>
-    <vacuum-system>/systems/vacuum</vacuum-system>
+    <suction>/systems/vacuum/suction-inhg</suction>
   </heading-indicator>
 
   <magnetic-compass>
@@ -60,7 +60,7 @@
   <vertical-speed-indicator>
     <name>vertical-speed-indicator</name>
     <number>0</number>
-    <static-port>/systems/static</static-port>
+    <static-pressure>/systems/static/pressure-inhg</static-pressure>
   </vertical-speed-indicator>
 
 </PropertyList>
