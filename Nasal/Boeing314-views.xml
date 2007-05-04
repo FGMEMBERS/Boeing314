@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 
-<!-- CAUTION, if preferences.xml isn't with 6 views, update below :
-
-     - /sim/number-views.
-     - /sim/view n="xxx".
+<!--
+    aircraft views shall use indices 100++
 -->
 
 <PropertyList>
@@ -33,9 +31,7 @@
    </seat>
   </current-view>
 
-  <number-views type="int">10</number-views>
-
-  <view n="6">
+  <view n="100">
     <name>Engineer View</name>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
@@ -63,7 +59,7 @@
     </config>
   </view>
 
-  <view n="7">
+  <view>
     <name>Radio View</name>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
@@ -91,7 +87,7 @@
     </config>
   </view>
 
-  <view n="8">
+  <view>
     <name>Copilot View</name>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
@@ -119,7 +115,7 @@
     </config>
   </view>
 
-  <view n="9">
+  <view>
     <name>Star View</name>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
