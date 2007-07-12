@@ -162,7 +162,7 @@
   <object-name>PropellerDisc1</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[0]/rpm</property>
+    <property>engines/engine[0]/rpm</property>
     <value>1800</value>
    </greater-than-equals>
   </condition>
@@ -171,7 +171,7 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc1</object-name>
-  <property>/engines/engine[0]/rpm</property>
+  <property>engines/engine[0]/rpm</property>
   <factor>0.5625</factor> <!-- real 16 : 9 -->
   <center>
    <x-m>-6.9</x-m>
@@ -188,7 +188,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc1</object-name>
-  <property>/engines/engine[0]/rpm</property>
+  <property>engines/engine[0]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -200,7 +200,7 @@
   <object-name>PropellerShaft1</object-name>
   <condition>
    <greater-than>
-    <property>/engines/engine[0]/rpm</property>
+    <property>engines/engine[0]/rpm</property>
     <value>1600</value>
    </greater-than>
   </condition>
@@ -211,7 +211,7 @@
   <object-name>Propeller1</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[0]/rpm</property>
+    <property>engines/engine[0]/rpm</property>
     <value>1800</value>
    </less-than>
   </condition>
@@ -220,7 +220,7 @@
  <animation>
   <type>spin</type>
   <object-name>Propeller1</object-name>
-  <property>/engines/engine[0]/rpm</property>
+  <property>engines/engine[0]/rpm</property>
   <factor>0.5625</factor> <!-- real 16 : 9 -->
   <center>
    <x-m>-6.9</x-m>
@@ -241,7 +241,7 @@
   <object-name>PropellerDisc4</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[3]/rpm</property>
+    <property>engines/engine[3]/rpm</property>
     <value>1800</value>
    </greater-than-equals>
   </condition>
@@ -250,7 +250,7 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc4</object-name>
-  <property>/engines/engine[3]/rpm</property>
+  <property>engines/engine[3]/rpm</property>
   <factor>0.5625</factor> <!-- test with 0.01 -->
   <center>
    <x-m>-6.9</x-m>
@@ -267,7 +267,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc4</object-name>
-  <property>/engines/engine[3]/rpm</property>
+  <property>engines/engine[3]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -279,7 +279,7 @@
   <object-name>PropellerShaft4</object-name>
   <condition>
    <greater-than>
-    <property>/engines/engine[3]/rpm</property>
+    <property>engines/engine[3]/rpm</property>
     <value>1600</value>
    </greater-than>
   </condition>
@@ -290,7 +290,7 @@
   <object-name>Propeller4</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[3]/rpm</property>
+    <property>engines/engine[3]/rpm</property>
     <value>1800</value>
    </less-than>
   </condition>
@@ -299,7 +299,7 @@
  <animation>
   <type>spin</type>
   <object-name>Propeller4</object-name>
-  <property>/engines/engine[3]/rpm</property>
+  <property>engines/engine[3]/rpm</property>
   <factor>0.5625</factor> <!-- test with 0.01 -->
   <center>
    <x-m>-6.9</x-m>
@@ -320,7 +320,7 @@
   <object-name>PropellerDisc2</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[1]/rpm</property>
+    <property>engines/engine[1]/rpm</property>
     <value>1800</value>
    </greater-than-equals>
   </condition>
@@ -329,7 +329,7 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc2</object-name>
-  <property>/engines/engine[1]/rpm</property>
+  <property>engines/engine[1]/rpm</property>
   <factor>0.5625</factor>
   <center>
    <x-m>-7.2</x-m>
@@ -346,7 +346,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc2</object-name>
-  <property>/engines/engine[1]/rpm</property>
+  <property>engines/engine[1]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -358,7 +358,7 @@
   <object-name>PropellerShaft2</object-name>
   <condition>
    <greater-than>
-    <property>/engines/engine[1]/rpm</property>
+    <property>engines/engine[1]/rpm</property>
     <value>1600</value>
    </greater-than>
   </condition>
@@ -369,7 +369,7 @@
   <object-name>Propeller2</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[1]/rpm</property>
+    <property>engines/engine[1]/rpm</property>
     <value>1800</value>
    </less-than>
   </condition>
@@ -378,7 +378,7 @@
  <animation>
   <type>spin</type>
   <object-name>Propeller2</object-name>
-  <property>/engines/engine[1]/rpm</property>
+  <property>engines/engine[1]/rpm</property>
   <factor>0.5625</factor>
   <center>
    <x-m>-7.2</x-m>
@@ -399,7 +399,7 @@
   <object-name>PropellerDisc3</object-name>
   <condition>
    <greater-than-equals>
-    <property>/engines/engine[2]/rpm</property>
+    <property>engines/engine[2]/rpm</property>
     <value>1800</value>
    </greater-than-equals>
   </condition>
@@ -408,7 +408,7 @@
  <animation>
   <type>spin</type>
   <object-name>PropellerDisc3</object-name>
-  <property>/engines/engine[2]/rpm</property>
+  <property>engines/engine[2]/rpm</property>
   <factor>0.5625</factor> <!-- test with 0.01 -->
   <center>
    <x-m>-7.2</x-m>
@@ -425,7 +425,7 @@
  <animation> 
   <type>blend</type>
   <object-name>PropellerDisc3</object-name>
-  <property>/engines/engine[2]/rpm</property>
+  <property>engines/engine[2]/rpm</property>
   <factor>0.00015</factor>
   <offset>-0.5</offset>
   <min>0.0</min>
@@ -437,7 +437,7 @@
   <object-name>PropellerShaft3</object-name>
   <condition>
    <greater-than>
-    <property>/engines/engine[2]/rpm</property>
+    <property>engines/engine[2]/rpm</property>
     <value>1600</value>
    </greater-than>
   </condition>
@@ -448,7 +448,7 @@
   <object-name>Propeller3</object-name>
   <condition>
    <less-than>
-    <property>/engines/engine[2]/rpm</property>
+    <property>engines/engine[2]/rpm</property>
     <value>1800</value>
    </less-than>
   </condition>
@@ -457,7 +457,7 @@
  <animation>
   <type>spin</type>
   <object-name>Propeller3</object-name>
-  <property>/engines/engine[2]/rpm</property>
+  <property>engines/engine[2]/rpm</property>
   <factor>0.5625</factor> <!-- test with 0.01 -->
   <center>
    <x-m>-7.2</x-m>
@@ -476,7 +476,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <factor>-55.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -494,7 +494,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RightFlap</object-name>
-  <property>/surface-positions/flap-pos-norm</property>
+  <property>surface-positions/flap-pos-norm</property>
   <factor>55.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -514,7 +514,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftAileron</object-name>
-  <property>/surface-positions/left-aileron-pos-norm</property>
+  <property>surface-positions/left-aileron-pos-norm</property>
   <factor>25.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -532,7 +532,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RightAileron</object-name>
-  <property>/surface-positions/right-aileron-pos-norm</property>
+  <property>surface-positions/right-aileron-pos-norm</property>
   <factor>25.0</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -552,7 +552,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftElevator</object-name>
-  <property>/surface-positions/elevator-pos-norm</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>25.0</factor> <!-- real -->
   <offset-deg>0</offset-deg>   
   <center>
@@ -570,7 +570,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RightElevator</object-name>
-  <property>/surface-positions/elevator-pos-norm</property>
+  <property>surface-positions/elevator-pos-norm</property>
   <factor>-25.0</factor> <!-- real -->
   <offset-deg>0</offset-deg>   
   <center>
@@ -590,7 +590,7 @@
  <animation>
   <type>rotate</type>
   <object-name>LeftRudder</object-name>
-  <property>/surface-positions/rudder-pos-norm</property>
+  <property>surface-positions/rudder-pos-norm</property>
   <factor>20</factor>
   <offset-deg>0</offset-deg>   
   <center>
@@ -608,7 +608,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RightRudder</object-name>
-  <property>/surface-positions/rudder-pos-norm</property>
+  <property>surface-positions/rudder-pos-norm</property>
   <factor>20</factor>
   <offset-deg>0</offset-deg>   
   <center>
