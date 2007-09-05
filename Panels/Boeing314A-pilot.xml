@@ -95,41 +95,16 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Captain -->
 
-  <instrument include="../../Instruments/brakes.xml">
-   <name>Brake (rope)</name>
-   <condition>
-    <and include="Instruments/B314-cond-rope.xml">
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <x>190</x>
-   <y>440</y>
-   <w>25</w>
-   <h>10</h>
-  </instrument>
-
   <instrument include="Instruments/B314-speed-up.xml">
    <name>Speed up</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
-   <x>260</x>
-   <y>445</y>
-   <w>5</w>
-   <h>20</h>
+   <x>240</x>
+   <y>440</y>
+   <w>30</w>
+   <h>30</h>
   </instrument>
 
   <instrument include="../../Instruments/altimeter.xml">
    <name>Altimeter</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>310</x>
    <y>420</y>
    <w>50</w>
@@ -140,11 +115,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/asi.xml">
    <name>Indicated air speed</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>130</x>
    <y>400</y>
    <w>50</w>
@@ -153,11 +123,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/turn.xml">
    <name>Turn Coordinator</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>190</x>
    <y>400</y>
    <w>50</w>
@@ -166,11 +131,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/vsi.xml">
    <name>Vertical speed</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>250</x>
    <y>400</y>
    <w>50</w>
@@ -181,11 +141,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/controls.xml">
    <name>Control Position Indicators</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>110</x>
    <y>330</y>
    <w>35</w>
@@ -194,11 +149,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/ati-c172s.xml">
    <name>Attitude indicator</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>190</x>
    <y>330</y>
    <w>50</w>
@@ -207,11 +157,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/adf.xml">
    <name>ADF</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>280</x>
    <y>330</y>
    <w>50</w>
@@ -222,39 +167,24 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/magcompass.xml">
    <name>Magnetic Compass</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>358</x>
    <y>350</y>
    <w>60</w>
    <h>15</h>
   </instrument>
 
-  <instrument include="../../Instruments/clock.xml">
+  <instrument include="Instruments/B314-clock.xml">
    <name>Clock</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>360</x>
-   <y>280</y>
-   <w>35</w>
-   <h>35</h>
+   <y>275</y>
+   <w>43</w>
+   <h>43</h>
   </instrument>
 
 <!-- Center (outboards engines) -->
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 1</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <mp-select>/engines/engine[0]/mp-osi</mp-select>
    </params>
@@ -266,11 +196,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 2</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <mp-select>/engines/engine[1]/mp-osi</mp-select>
    </params>
@@ -282,11 +207,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 3</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <mp-select>/engines/engine[2]/mp-osi</mp-select>
    </params>
@@ -298,16 +218,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 4</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <params>
     <mp-select>/engines/engine[3]/mp-osi</mp-select>
    </params>
@@ -319,16 +229,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/rpm.xml">
    <name>Engine 1</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <params>
     <rpm-select>/engines/engine[0]/rpm</rpm-select>
    </params>
@@ -340,11 +240,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/rpm.xml">
    <name>Engine 4</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <rpm-select>/engines/engine[3]/rpm</rpm-select>
    </params>
@@ -358,16 +253,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-sperry-climb-knob.xml">
    <name>Climb knob</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>577</x>
    <y>380</y>
    <w>40</w>
@@ -376,11 +261,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/gyro.xml">
    <name>Directional Gauge</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>448</x>
    <y>340</y>
    <w>60</w>
@@ -389,54 +269,14 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-sperry-horizon.xml">
    <name>Attitude Indicator</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>525</x>
    <y>340</y>
    <w>70</w>
    <h>70</h>
   </instrument>
 
-  <instrument include="Instruments/B314-autothrottle.xml">
-   <name>Autothrottle switch</name>
-   <condition>
-    <and>
-     <or>
-      <greater-than>
-       <property>/sim/speed-up</property>
-       <value>1</value>
-      </greater-than>
-      <not-equals>
-       <property>/autopilot/locks/speed</property>
-       <value></value>
-      </not-equals>
-     </or>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <x>415</x>
-   <y>245</y>
-   <w>25</w>
-   <h>25</h>
-  </instrument>
-
   <instrument include="Instruments/B314-sperry-heading-hold.xml">
    <name>Heading hold switch</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>448</x>
    <y>290</y>
    <w>25</w>
@@ -445,11 +285,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-sperry-pitch-hold.xml">
    <name>Pitch hold switch</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>495</x>
    <y>290</y>
    <w>25</w>
@@ -458,16 +293,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-sperry-level-hold.xml">
    <name>Altitude hold switch</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>580</x>
    <y>290</y>
    <w>25</w>
@@ -476,11 +301,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-gdf.xml">
    <name>Ground Direction Finder</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>470</x>
    <y>255</y>
    <w>35</w>
@@ -491,11 +311,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-flap-quadrant.xml">
    <name>Flaps quadrant</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <flaps-select>/controls/flight/flaps</flaps-select>
    </params>
@@ -509,16 +324,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/altimeter.xml">
    <name>Altimeter (copilot)</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>695</x>
    <y>420</y>
    <w>50</w>
@@ -529,19 +334,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/asi.xml">
    <name>Indicated air speed (copilot)</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/engineer</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>755</x>
    <y>400</y>
    <w>50</w>
@@ -550,19 +342,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/turn.xml">
    <name>Turn Coordinator (copilot)</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/engineer</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>815</x>
    <y>400</y>
    <w>50</w>
@@ -571,16 +350,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/vsi.xml">
    <name>Vertical speed (copilot)</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>875</x>
    <y>400</y>
    <w>50</w>
@@ -591,16 +360,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/adf.xml">
    <name>ADF (copilot)</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>725</x>
    <y>330</y>
    <w>50</w>
@@ -609,23 +368,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/ati-c172s.xml">
    <name>Attitude indicator (copilot)</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/engineer</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <x>815</x>
    <y>330</y>
    <w>50</w>
    <h>50</h>
+  </instrument>
+
+  <instrument include="../../Instruments/controls.xml">
+   <name>Control Position Indicators (copilot)</name>
+   <x>895</x>
+   <y>330</y>
+   <w>35</w>
+   <h>35</h>
   </instrument>
 
  </instruments>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!-- - creates booleans (impossible with Nasal), which would otherwise be empty strings by default.
+     - makes more readable the initialization state.
+-->
+
+<PropertyList>
+
+  <crew>
+   <copilot type="bool">false</copilot>
+   <minimized-s>10.0</minimized-s>
+  </crew>
+
+  <mooring>
+   <automatic userarchive="y" type="bool">true</automatic>
+  </mooring>
+
+  <seat>
+   <recover userarchive="y" type="bool">false</recover>
+  </seat>
+
+</PropertyList>

@@ -1,37 +1,62 @@
 <?xml version="1.0"?>
 
 <!--
-    aircraft views shall use indices 100++
+     IMPORTANT : the index of views is automatically created, and then retrieved by Nasal.
+
+
+     VRP :
+     The external views look at the FDM movement point, which is by default a CG.
+     But the CG moves with time, while the view point is hard coded.
+
+     The solution is to hard code the movement point :
+     - sets the gear height and CG, and VRP to nose tip, inside the FDM.
+     - shifts the model at nose tip.
 -->
 
 <PropertyList>
 
   <!-- pilot seat in cockpit. -->
 
-  <view>
+  <view n="0">
    <internal archive="y">true</internal>
    <config>
     <!-- x/y/z == right/up/back -->
-    <x-offset-m archive="y">-0.53</x-offset-m>
-    <y-offset-m archive="y">0.55</y-offset-m>
-    <z-offset-m archive="y">-8.07</z-offset-m>
+    <x-offset-m archive="y">-0.60</x-offset-m>
+    <y-offset-m archive="y">1.42</y-offset-m>
+    <z-offset-m archive="y">5.88</z-offset-m>
     <pitch-offset-deg>-15</pitch-offset-deg>
    </config>
   </view>
 
-  <!-- additional seats. -->
+<!-- shift from nose to CG (near 27% of MAC), to make the view natural -->
 
-  <current-view>
-   <seat>
-    <captain type="bool">true</captain>
-    <engineer type="bool">false</engineer>
-    <radio type="bool">false</radio>
-    <copilot type="bool">false</copilot>
-    <star type="bool">false</star>
-   </seat>
-  </current-view>
+  <view n="1">
+<!-- put in comment to check that the view really points at the nose.
+-->
+   <config>
+     <target-z-offset-m archive="y">12.0</target-z-offset-m>
+   </config>
+  </view>
 
-  <view n="100">
+  <view n="2">
+   <config>
+     <target-z-offset-m archive="y">12.0</target-z-offset-m>
+   </config>
+  </view>
+
+  <view n="5">
+   <config>
+     <target-z-offset-m archive="y">12.0</target-z-offset-m>
+   </config>
+  </view>
+
+  <view n="6">
+   <config>
+     <target-z-offset-m archive="y">12.0</target-z-offset-m>
+   </config>
+  </view>
+
+  <view n="100">                                           <!-- MANDATORY view number -->
     <name>Engineer View</name>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
@@ -51,10 +76,10 @@
      <right-direction-deg type="double">270</right-direction-deg>
      <front-right-direction-deg type="double">315</front-right-direction-deg>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y">0.71</x-offset-m>
-     <y-offset-m archive="y">0.25</y-offset-m> <!-- head below the window -->
-     <z-offset-m archive="y">-4.72</z-offset-m> <!-- behind the rear windows, before the wing door -->
-     <pitch-offset-deg>0</pitch-offset-deg>
+     <x-offset-m archive="y">0.78</x-offset-m>
+     <y-offset-m archive="y">1.16</y-offset-m>    <!-- head below the window -->
+     <z-offset-m archive="y">9.68</z-offset-m>   <!-- behind the rear windows, before the wing door -->
+     <pitch-offset-deg>-3</pitch-offset-deg>      <!-- can see levers -->
      <heading-offset-deg type="double">270</heading-offset-deg> <!-- parallel to the panel -->
     </config>
   </view>
@@ -79,9 +104,9 @@
      <right-direction-deg type="double">270</right-direction-deg>
      <front-right-direction-deg type="double">315</front-right-direction-deg>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y">0.8</x-offset-m>
-     <y-offset-m archive="y">0.25</y-offset-m> <!-- head below the window -->
-     <z-offset-m archive="y">-5.50</z-offset-m> <!-- fowards rear window -->
+     <x-offset-m archive="y">0.88</x-offset-m>
+     <y-offset-m archive="y">1.14</y-offset-m> <!-- head below the window -->
+     <z-offset-m archive="y">8.80</z-offset-m> <!-- fowards rear window -->
      <pitch-offset-deg>-4</pitch-offset-deg>
      <heading-offset-deg type="double">0</heading-offset-deg> <!-- parallel to the panel -->
     </config>
@@ -107,16 +132,16 @@
      <right-direction-deg type="double">270</right-direction-deg>
      <front-right-direction-deg type="double">315</front-right-direction-deg>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y">0.53</x-offset-m> <!-- symmetry with captain -->
-     <y-offset-m archive="y">0.55</y-offset-m>
-     <z-offset-m archive="y">-8.07</z-offset-m>
+     <x-offset-m archive="y">0.60</x-offset-m> <!-- symmetry with captain -->
+     <y-offset-m archive="y">1.42</y-offset-m>
+     <z-offset-m archive="y">5.88</z-offset-m>
      <pitch-offset-deg>-4</pitch-offset-deg>
      <heading-offset-deg type="double">290</heading-offset-deg> <!-- inside its window -->
     </config>
   </view>
 
   <view>
-    <name>Star View</name>
+    <name>Celestial View</name>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -135,11 +160,59 @@
      <right-direction-deg type="double">270</right-direction-deg>
      <front-right-direction-deg type="double">315</front-right-direction-deg>
      <!-- x/y/z == right/up/back -->
-     <x-offset-m archive="y">0.01</x-offset-m> <!-- centered -->
-     <y-offset-m archive="y">0.77</y-offset-m>
-     <z-offset-m archive="y">-1.90</z-offset-m>
+     <x-offset-m archive="y">0.0</x-offset-m>
+     <y-offset-m archive="y">1.72</y-offset-m>
+     <z-offset-m archive="y">12.81</z-offset-m>
      <pitch-offset-deg>0</pitch-offset-deg>
      <heading-offset-deg type="double">180</heading-offset-deg> <!-- towards the stern -->
+    </config>
+  </view>
+
+  <view>
+    <name>Observer View</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+     <from-model type="bool">true</from-model>
+     <from-model-idx type="int">0</from-model-idx>
+     <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+     <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+     <default-pitch-deg type="double">0</default-pitch-deg>
+     <default-heading-deg type="double">0</default-heading-deg>
+     <front-direction-deg type="double">0</front-direction-deg>
+     <front-left-direction-deg type="double">45</front-left-direction-deg>
+     <left-direction-deg type="double">90</left-direction-deg>
+     <back-left-direction-deg type="double">135</back-left-direction-deg>
+     <back-direction-deg type="double">180</back-direction-deg>
+     <back-right-direction-deg type="double">225</back-right-direction-deg>
+     <right-direction-deg type="double">270</right-direction-deg>
+     <front-right-direction-deg type="double">315</front-right-direction-deg>
+     <!-- x/y/z == right/up/back -->
+     <x-offset-m archive="y">0.0</x-offset-m>
+     <y-offset-m archive="y">1.37</y-offset-m>
+     <z-offset-m archive="y">10.3</z-offset-m>   <!-- in front of the door of star room -->
+     <pitch-offset-deg>0</pitch-offset-deg>
+     <heading-offset-deg type="double">0</heading-offset-deg>
+    </config>
+  </view>
+
+  <view>
+    <name>Boat View</name>
+    <type>lookat</type>
+    <config>
+      <eye-lat-deg-path>/systems/seat/position/boat-view/latitude-deg</eye-lat-deg-path>
+      <eye-lon-deg-path>/systems/seat/position/boat-view/longitude-deg</eye-lon-deg-path>
+      <eye-alt-ft-path>/systems/seat/position/boat-view/altitude-ft</eye-alt-ft-path>
+
+      <at-model type="bool">true</at-model>
+      <at-model-idx type="int">0</at-model-idx>
+
+      <ground-level-nearplane-m type="double">3.0f</ground-level-nearplane-m>      <!-- boat -->
+      <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+      <x-offset-m type="double">0</x-offset-m>
+      <y-offset-m type="double">0</y-offset-m>
+      <z-offset-m type="double">0</z-offset-m>
     </config>
   </view>
 

@@ -2,12 +2,14 @@ Boeing 314A real data
 =====================
 Weight limits   : take-off 84000 lb (full load), landing 80000 lb (A).
 
-Engine limits   : - maximum : 37.5 inhg 2300 rpm (1350 hp), at sea level; 35.8 inhg 2300 rpm (1350 hp), at 6200 ft (A).
+Engine limits   : - maximum : 37.5 inhg 2300 rpm (1350 hp), at sea level;
+                              35.8 inhg 2300 rpm (1350 hp), at 6200 ft (A).
                   - take-off (2 minutes) : 43.5 inhg 2400 rpm (1600 hp) (A).
 
 Airspeed limits : - glide or dive 184 kt true (A).
                   - max 172 kt, cruise 160 kt (D).
-                  - Vmax 201 mph [175 kt] at 6200 ft, Vcruise 184 mph [160 kt] at 11000 ft, Vstall 70 mph [61 kt] (C).
+                  - Vmax 201 mph [175 kt] at 6200 ft, Vcruise 184 mph [160 kt] at 11000 ft,
+                    Vstall 70 mph [61 kt] (C).
                   - maximum 199 mph [173 kt], cruise 184 mph [160 kt] (B)
                   - level flight or climb 155 kt true (A).
                   - flaps extended (40° or less) 105 kt true (A).
@@ -30,19 +32,20 @@ Range : 5200 miles [4500 NM] (B).
 
 
 Operation :
-- turn    : - "If you had to taxi to downwind, on the turn to downwind the wind could get under the upwind wing and tip
-            the plane until the downwind wing dug into the water. In that condition a lot of water could flow into the
-            wing, and once there could flow through the wings and into the fuselage, dousing everyone and everything.
+- turn    : - "If you had to taxi to downwind, on the turn to downwind the wind could get under
+            the upwind wing and tip the plane until the downwind wing dug into the water.
+            In that condition a lot of water could flow into the wing, and once there could flow
+            through the wings and into the fuselage, dousing everyone and everything.
             That never happened to me but I did hear of such cases.
-            When we faced that situation we would have several of the crew walk into the upwind wing out to the outer
-            nacelle, to provide balance during the turn." (F).
+            When we faced that situation we would have several of the crew walk into
+            the upwind wing out to the outer nacelle, to provide balance during the turn." (F).
             - the 314 water rudder, too small for its weight, was unsatisfactory (L).
 - cruise  : - "One sets up the cruise at 117 mph [102 kt], until 135 mph [117 kt] as one burns off gas.
-            They were never anywhere near the advertised max cruise of 193 mph [168 kt] : KSFO - PHNL [2080 NM] at an
-            average speed of 126 mph [109 kt], 16 hours depending of wind" (F).
+            They were never anywhere near the advertised max cruise of 193 mph [168 kt] :
+            KSFO - PHNL [2080 NM] at an average speed of 126 mph [109 kt], 16 hours depending of wind" (F).
 - landing : - 70-75 mph [61-65 kt] (F).
             - the 314 had unstable skipping, which has been corrected (A-314) by moving the step aft,
-              to increase the angle between forebody and afterbody, and reduce the suction (M). 
+            to increase the angle between forebody and afterbody, and reduce the suction (M). 
 
 
 
@@ -79,56 +82,66 @@ Port Washington NY     Bermuda Island        1 h       5h           5h30        
 
 314A ops
 ========
-- parking  : 700 RPM.
-- taxi     : - increase pitch on 2 symmetrical engines.
-             - turn with pitch on 1 or 2 outboard engines.
-- take-off : - flaps 1/3, full throttle 2400 RPM.
-             - lift off between 80 kt (full load) and 60 kt (empty load). 
-             - long (less than 6000 ft) because of water drag.
-- climb    : - retract flaps before 105 kt.
-             - reduce to 37.5 inhg (throttle), 2300 RPM.
-- maximum  : 160 kt 2300 RPM 37.5 inhg (min pitch, min mixture).
-- cruise   : - 110 kt on average.
-             - slow climb rate from 9000 ft (full load) to 13400 ft.
-- descent  : idle.
-- approach : flaps 1/3 below 105 kt.
-- landing  : - align at 1500 ft, flaps 2/3 below 105 kt.
-             - at 1000 ft, full flaps below 90 kt.
-             - touch down behind the step, between 60 kt (empty load) and 75 kt (full load).
-             - short because of water drag.
-- stop     : 700 RPM, shutdown 2 or 4 engines.
+- parking    : - 700 RPM.
+               - align gyro with magnetic compass.
+- taxi       : - increase pitch on 2 symmetrical engines.
+               - turn with pitch on 1 or 2 outboard engines.
+- take-off   : - flaps 1/3, full throttle 2400 RPM.
+               - lift off between 80 kt (full load) and 60 kt (empty load). 
+               - long (less than 6000 ft) because of water drag.
+- climb      : - retract flaps before 105 kt.
+               - reduce to 37.5 inhg (throttle), 2300 RPM.
+- cruise     : - economic : 102 kt at 9000 ft (full load), 117 kt at 13400 ft (empty load).
+               - maximum : 160 kt, 2300 RPM 37.5 inhg (min pitch, min mixture).
+- navigation : - align gyro with magnetic compass.
+               - listen in four course radio range of destination.
+- descent    : idle, max mixture.
+- approach   : flaps 1/3 below 105 kt.
+- landing    : - align at 1500 ft, flaps 2/3 below 105 kt.
+               - at 1000 ft, full flaps below 90 kt.
+               - touch down behind the step, between 60 kt (empty load) and 75 kt (full load).
+               - short because of water drag.
+- stop       : 700 RPM, shutdown 2 or 4 engines.
 
 
-Customizing
-===========
-If your preferences.xml doesn't have 6 views, update Nasal/Boeing314-views.xml and Nasal/Boeing314-keyboard.xml.
+Installation
+============
 
-When the airport ID is in Nasal/Boeing314-route.xml, the seaplane is moved to its moorage, keeping the tower view.
-To disable, set /sim/presets/moorage to false.
+Fuel load
+---------
+- default is maximum landing weight, 80000 lb.
+- for alternate load, press "ctrl-M f" (saved on exit in aircraft-data).
+
+Mooring
+-------
+- at startup, the seaplane is moved to its moorage (if any in Nasal/Boeing314-route.xml),
+keeping the tower view. To disable, see "ctrl-M c".
+- for alternate moorages, press "ctrl-M m".
 
 Sounds
 ------
 See Sounds/Boeing314-b17-sound.xml to install B17 sounds (recommended).
 
-Fuel load
----------
-Default is maximum landing weight, 80000 lb.
-For maximum takeoff weight, 85000 lb, set /sim/presets/fuel to 1.
-For other configurations, see Nasal/Boeing314A-fuel.xml.
+Known compatibility
+-------------------
+- 0.9.11 : minimal version.
 
 
 Keyboard
 ========
-- to hold the current heading or pitch, toggle the switch of Sperry autopilot.
-- "e / E" : increases / decreases propeller pitch.
-- "q"     : quit speed up.
+- "ctrl-M" : "M"enu.
+- "q"      : quit speed up.
 
 Views
 -----
+- "ctrl-B" : "B"oat view.
 - "ctrl-E" : "E"ngineer view.
-- "ctrl-J" : Copilot view.
-- "ctrl-K" : Star view.
+- "ctrl-J" : copilot view.
+- "ctrl-K" : observer view (floating).
 - "ctrl-O" : radi"O" view.
+- "ctrl-T" : celes"T"ial view (floating).
+- "shift-ctrl-T" : sex"T"ant (polaris star or southern cross).
+- "shift-ctrl-X" : restore floating view.
  
 Unchanged behaviour
 -------------------
@@ -143,22 +156,34 @@ Same behaviour
 - "s"      : swaps between Captain and Engineer 2D panels.
 - "ctrl-A" : altitude hold.
 - "ctrl-P" : pitch hold.
-- "ctrl-S" : autothrottle (speed-up only).
  
 Improved behaviour
 ------------------
-- "b / B"      : is the rope (brakes), only below 15 kt.
-- "up / down"  : increases / decreases pitch hold (fast).
+- "b / B"  : is the anchor, only below 15 kt.
+- "up / down"  : increases / decreases pitch hold.
 - "home / end" : increases / decreases pitch hold (slow).
-- "a / A"      : speeds up BOTH speed and time : external view until X 10.
+- "page up / page down" : increases / decreases copilot speed.
+- "ctrl-S" : virtual copilot (autothrottle).
+- "a / A"  : speeds up BOTH speed and time; external view until X 10, internal view until X 20.
   Automatically resets to 1, when above 1000 ft/min.
+
+Alternate behaviour
+-------------------
+- "up / down"    : move floating view in length.
+- "home / end" : move floating view in length (fast).
+- "left / right" : move floating view in width.
+- "page up / page down" : move floating view in height.
+
+
+Mouse
+=====
 
 Ground Direction Finding
 ------------------------
-"The radio operator held the Morse key in transmit mode a minute, while the ground operator took a bearing of the
-signal" (G) :
+"The radio operator held the Morse key in transmit mode a minute, while the ground operator took
+a bearing of the signal" (G) :
 - add a waypoint.
-- toggle the switch "GDF" to call the ground operator : range limited to 1500 NM (G)(J).
+- call the ground operator, by "ctrl-M d" : range limited to 1500 NM (G)(J).
 - within a delay of 2 minutes, the radio returns on a paper the magnetic heading towards the waypoint.
 
 Four course radio range
@@ -167,17 +192,25 @@ Emulated by the NDB.
 NDB only appeared after WWII with the VOR, when they both superseded the four course radio range (I).
 
 
+Virtual copilot
+===============
+- activ, the copilot is green; otherwise yellow.
+- is never the pilot in command.
+- aligns gyro with magnetic compass, holds the speed (autothrottle).
+- activ above 500 ft sea level.
+
+
 Consumption
 ===========
 Maximum speed 2300 RPM (full throttle, min pitch, min mixture), for 1 engine :
-- full load, > 170 kt 78 gallons/h at 9000 ft (J = 1.08).
-- empty load, > 160 kt 71 gallons/h at 13400 ft (J = 1.10).
+- full load, > 170 kt 86 gallons/h at 9000 ft (J = 1.05).
+- empty load, > 160 kt 76 gallons/h at 13400 ft (J = 1.08).
 Cruise speed 160 kt (max pitch, min mixture), for 1 engine :
-- full load 2200 RPM, 71 gallons/h at 9000 ft (J = 1.07).
-- empty load 2300 RPM, 71 gallons/h at 13400 ft (J = 1.10).
+- full load 2200 RPM, 74 gallons/h at 9000 ft (J = 1.02).
+- empty load 2300 RPM, 70 gallons/h at 13400 ft (J = 1.05).
 Economic speed, 110 kt (max pitch, min mixture), for 1 engine :
-- full load 1800 RPM, 47 gallons/h at 9000 ft (J = 0.89).
-- empty load 1700 RPM, 36 gallons/h at 13400 ft (J = 1.01).
+- full load 1800 RPM, 47 gallons/h at 9000 ft (J = 0.87).
+- empty load 1700 RPM, 34 gallons/h at 13400 ft (J = 0.97).
 
 As the real fuel is 1 US gal = 6 lb (A), multiply by 6.6 / 6 to compare with the real consumption.
  
@@ -188,13 +221,15 @@ Max/min pitch : before influence on RPM.
 Example
 -------
 KSFO - PHNL, 2080 NM :
-- at 0h10 zulu (afternoon), takeoff at full load (5171 gallons), heading 237 deg.
-- average wind 270 deg 15 kt, speed 110 kt indicated, 39 gallons/h.
-- cruise starts at 9000 ft, +1000 ft every 5 h, to reach 12000 ft before arrival.
-- after 18h00, lands in the morning with 2300 gallons or 18 h.
+- at 0h00 zulu (afternoon), takeoff at full load (5171 gallons), heading 237 deg.
+- average wind 270 deg 15 kt.
+- cruise starts at 9000 ft 102 kt indicated, +1000 ft + 5 kt every 5 h,
+  to reach 12000 ft 117 kt before arrival.
+- after 16h00, lands in the morning with 1750 gallons, or 8 h :
+  130 kt average ground speed (112 kt average indicated), at 53 gallons / h.
 
 At 160 kt indicated, the cruise will last 2080 NM / 166 kt = 12.5 h.
-And the remaining fuel will be 5171 - 12.5 x 4 x 71 gallons/h = 1600 gallons or 5h30.  
+And the remaining fuel will be 5171 - 12.5 x 4 x 72 gallons/h = 1570 gallons or 5h30.  
 
 
 JSBSim
@@ -209,34 +244,51 @@ JSBSim
 
 TO DO
 =====
-- fuel transfer or tank selector.
+- navigator view.
+- celestial navigation (sextant).
 - make 2D instruments from contemporary aircrafts.
-- cross feed tanks, fuel per hour gauge.
-- star navigation.
 
-TO DO JSBSim
+TO DO FDM
+----------
+- additional lift of sponsons.
+
+TO DO JSBSim (seaplane)
 -------------
-- no weathervaning at rest.
+- weathervaning at rest.
 - hull stability (waterloop) with cross wind (F). 
-- no propoising at takeoff.
-- no tank selector.
-- consumption when speed up (done with Nasal).
 
 
 Known problems
 ==============
-The meaning of instruments is ergonomic guess and historical crosscheck.
+- the file in application-data (saved configuration) causes the bounce at loading
+  (it seems to trim over the runway).
 
-Known problems automatic mooring
---------------------------------
-- If Nasal crashes the seaplane, try to delay/advance the event.
-- Nasal hangs on PCIS (Canton Island) latitude and longitude : scenery ?
+Known problems OSG
+------------------
+The following artefacts are supposed to be solved by OSG (works with 0.9.10 / Plib) :
+- missing hotspots.
+- panels swaping too early.
+- instrument transparent through layer with alpha (celestial view).
 
 Known problems JSBSim
 ---------------------
 - not enough brake at empty load : cut 2 or 4 engines.
-- not enough brake at maximum throttle : increasing the static friction, brings vibrations at rest.
+- not enough brake at maximum throttle.
 - at full load, the speed window between the lift off (80 kt) and flap overspeed (105 kt), is almost short.
+
+
+Secondary problems
+==================
+- the polaris star is barely visible; the southern cross constellation is not visible.
+- the meaning of instruments is ergonomic guess and historical crosscheck.
+
+Secondary problems automatic mooring
+------------------------------------
+- PCIS (Canton Island) is only available by "ctrl-M m" (no tower view).
+
+Secondary problems JSBSim
+--------------------------
+- negativ pitch at rest.
 - fakes the displacement to get the real range.
  
 
@@ -259,13 +311,13 @@ References
 (F) http://www.southernoregonwarbirds.org/fa3.html/
     (Franck Varnum flew during WWII). 
 
-(G) http://www.petan.net/aviation/gdf.htm/
+(G) http://www.petan.net/aviation/gdf.htm
     (Marconi Adcock Direction Finder).
 
 (H) http://bluegrassairlines.com/bgas/clip01.htm/
     (1939 PAAA schedule).
 
-(I) http://members.aol.com/trekkspill/aerobcn.html/
+(I) http://members.aol.com/trekkspill/aerobcn.html
     (four course radio range).
 
 (J) http://www.panam.org/memoirs1.asp 
@@ -290,4 +342,4 @@ References
     F. W. S. Locke Jr., January 1946.
 
 
-15 December 2005.
+26 August 2007.

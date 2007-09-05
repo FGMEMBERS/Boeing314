@@ -67,11 +67,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 1</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <magneto-select>/controls/engines/engine[0]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[0]/starter</starter-select>
@@ -84,11 +79,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 2</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <magneto-select>/controls/engines/engine[1]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[1]/starter</starter-select>
@@ -101,25 +91,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 3</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <params>
     <magneto-select>/controls/engines/engine[2]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[2]/starter</starter-select>
    </params>
-   <condition>
-    <not>
-     <property>/sim/current-view/radio-seat</property>
-    </not>
-   </condition>
    <x>353</x>
    <y>170</y>
    <w>40</w>
@@ -128,25 +103,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
    <name>Magneto 4</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/radio</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
    <params>
     <magneto-select>/controls/engines/engine[3]/magnetos</magneto-select>
     <starter-select>/controls/engines/engine[3]/starter</starter-select>
    </params>
-   <condition>
-    <not>
-     <property>/sim/current-view/radio-seat</property>
-    </not>
-   </condition>
    <x>413</x>
    <y>170</y>
    <w>40</w>

@@ -5,8 +5,8 @@
 http://www.petan.net/aviation/gdf.htm/ : range limited to 1500 miles.
 
 The ground operator sends to the radio operator the true heading.
-Then the radio operator computes the magnetic heading from its approximate position (map with magnetic variation).
-And write the result on a paper for the pilots.
+Then the radio operator computes the magnetic heading from its approximate position
+(map with magnetic variation). And write the result on a paper for the pilots.
 -->
 
 <PropertyList>
@@ -21,10 +21,7 @@ And write the result on a paper for the pilots.
   <layer>
    <name>background</name>
    <condition>
-    <equals>
-     <property>/instrumentation/gdf/show-paper</property>
-     <value>on</value>
-    </equals>
+    <property>/instrumentation/gdf/show-paper</property>
    </condition>
    <texture>
     <path>Aircraft/Boeing314/Panels/Instruments/Textures/B314-white-paper.rgb</path>
@@ -42,10 +39,7 @@ And write the result on a paper for the pilots.
   <layer>
    <name>Zulu time of the radio call</name>
    <condition>
-    <equals>
-     <property>/instrumentation/gdf/show-paper</property>
-     <value>on</value>
-    </equals>
+    <property>/instrumentation/gdf/show-paper</property>
    </condition>
    <type>text</type>
    <point-size>9</point-size>
@@ -77,18 +71,9 @@ And write the result on a paper for the pilots.
   </layer>
 
   <layer>
-   <name>Heading noted on a paper by the radio</name>
+   <name>Bearing noted on a paper by the radio</name>
    <condition>
-    <and>
-     <equals>
-      <property>/instrumentation/gdf/show-paper</property>
-      <value>on</value>
-     </equals>
-     <not-equals>
-      <property>/instrumentation/gdf/gmt-string</property>
-      <value></value>
-     </not-equals>
-    </and>
+    <property>/instrumentation/gdf/show-paper</property>
    </condition>
    <type>text</type>
    <point-size>9</point-size>
@@ -99,9 +84,8 @@ And write the result on a paper for the pilots.
    </color>
    <chunks>
     <chunk>
-     <type>number-value</type>
+     <type>text-value</type>
      <property>/instrumentation/gdf/heading-deg</property>
-     <format>%03.0f</format>
     </chunk>
    </chunks>
    <transformations>
@@ -127,42 +111,16 @@ And write the result on a paper for the pilots.
  <actions>
 
   <action>
-   <name>remove</name>
-   <condition>
-    <equals>
-     <property>/instrumentation/gdf/show-paper</property>
-     <value>on</value>
-    </equals>
-   </condition>
+   <name>toggle</name>
    <button>0</button>
    <x>-25</x>
    <y>-25</y>
    <w>50</w>
    <h>50</h>
    <binding>
-    <command>property-assign</command>
+    <command>property-toggle</command>
     <property>/instrumentation/gdf/show-paper</property>
     <value></value>
-   </binding>
-  </action> 
-
-  <action>
-   <name>show</name>
-   <condition>
-    <not-equals>
-     <property>/instrumentation/gdf/show-paper</property>
-     <value>on</value>
-    </not-equals>
-   </condition>
-   <button>0</button>
-   <x>-25</x>
-   <y>-25</y>
-   <w>50</w>
-   <h>50</h>
-   <binding>
-    <command>property-assign</command>
-    <property>/instrumentation/gdf/show-paper</property>
-    <value>on</value>
    </binding>
   </action> 
 

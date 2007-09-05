@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!-- Initialize instrumentation :
+
+     - avoids nil value for nasal.
+-->
+
+<PropertyList>
+
+  <gdf>
+   <called type="bool">false</called>
+   <calling type="bool">false</calling>
+   <gmt-string></gmt-string>
+   <heading-deg></heading-deg>
+   <show-paper type="bool">false</show-paper>
+  </gdf>
+
+</PropertyList>

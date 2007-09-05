@@ -2,7 +2,7 @@
  
 <!-- Boeing 314-A Sperry autopilot : gyro heading and pitch, level knob.
 
-     Autothrottle is a test mode (speed-up).
+     Copilot emulation by autothrottle.
 
 
      Known problems:

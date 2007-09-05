@@ -73,6 +73,14 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
  <instruments>
 
+  <instrument include="Instruments/B314-speed-up.xml">
+   <name>Speed up</name>
+   <x>60</x>
+   <y>400</y>
+   <w>80</w>
+   <h>80</h>
+  </instrument>
+
 <!-- Overhead -->
 
   <instrument include="../../Instruments/single-magneto-switch.xml">
@@ -431,14 +439,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   </instrument>
 
 <!-- Radio -->
-
-  <instrument include="Instruments/B314-gdf-call.xml">
-   <name>Ground Direction Finding call</name>
-   <x>890</x>
-   <y>330</y>
-   <w>40</w>
-   <h>40</h>
-  </instrument>
 
   <instrument include="../../Instruments/navcom-kx155.xml">
    <name>NavCom 1 Radio</name>

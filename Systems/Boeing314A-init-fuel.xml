@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<!-- Boeing 314-A tanks :
+
+     - density was 6 historically : but JSBSim is always 6.6 !
+-->
+
+
+<PropertyList>
+
+<!-- wing stubs -->
+
+  <tank n="0">
+   <capacity-gal_us>600.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>1</tank-num>
+  </tank>
+  <tank n="1">
+   <capacity-gal_us>600.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>2</tank-num>
+  </tank>
+  <tank n="2">
+   <capacity-gal_us>600.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>3</tank-num>
+  </tank>
+  <tank n="3">
+   <capacity-gal_us>600.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>4</tank-num>
+  </tank>
+
+<!-- inboard -->
+
+  <tank n="4">
+   <capacity-gal_us>960.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>5</tank-num>
+  </tank>
+
+<!-- outboard -->
+
+  <tank n="5">
+   <capacity-gal_us>1164.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>6</tank-num>
+  </tank>
+  <tank n="6">
+   <capacity-gal_us>1164.0</capacity-gal_us>
+   <density-ppg>6.0</density-ppg>
+   <tank-num>7</tank-num>
+  </tank>
+
+</PropertyList>

@@ -67,15 +67,18 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
  <instruments>
 
+  <instrument include="Instruments/B314-speed-up.xml">
+   <name>Speed up</name>
+   <x>240</x>
+   <y>150</y>
+   <w>50</w>
+   <h>50</h>
+  </instrument>
+
 <!-- Engine tanks -->
 
   <instrument include="Instruments/B314-fuel-center.xml">
    <name>Tank 5</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
    </params>
@@ -87,11 +90,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-fuel-sponson.xml">
    <name>Tank 6</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <content-select>/consumables/fuel/tank[5]/level-lb</content-select>
    </params>
@@ -103,11 +101,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-fuel-sponson.xml">
    <name>Tank 7</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <content-select>/consumables/fuel/tank[6]/level-lb</content-select>
    </params>
@@ -119,11 +112,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 1</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <content-select>/consumables/fuel/tank[0]/level-lb</content-select>
    </params>
@@ -135,11 +123,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 2</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <content-select>/consumables/fuel/tank[1]/level-lb</content-select>
    </params>
@@ -151,11 +134,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 3</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <content-select>/consumables/fuel/tank[2]/level-lb</content-select>
    </params>
@@ -167,11 +145,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 4</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <content-select>/consumables/fuel/tank[3]/level-lb</content-select>
    </params>
@@ -185,11 +158,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/rpm.xml">
    <name>Engine 1 rpm</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <rpm-select>/engines/engine[0]/rpm</rpm-select>
    </params>
@@ -201,11 +169,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/rpm.xml">
    <name>Engine 2 rpm</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <rpm-select>/engines/engine[1]/rpm</rpm-select>
    </params>
@@ -217,11 +180,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/rpm.xml">
    <name>Engine 3 rpm</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <rpm-select>/engines/engine[2]/rpm</rpm-select>
    </params>
@@ -233,11 +191,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/rpm.xml">
    <name>Engine 4 rpm</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <rpm-select>/engines/engine[3]/rpm</rpm-select>
    </params>
@@ -251,11 +204,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/egt.xml">
    <name>Engine 1 fuel flow</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <engine-egt-select>/engines/engine[0]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[0]/fuel-flow-gph</engine-fuel-flow-select>
@@ -268,11 +216,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/egt.xml">
    <name>Engine 2 fuel flow</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <engine-egt-select>/engines/engine[1]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[1]/fuel-flow-gph</engine-fuel-flow-select>
@@ -285,11 +228,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/egt.xml">
    <name>Engine 3 fuel flow</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <engine-egt-select>/engines/engine[2]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[2]/fuel-flow-gph</engine-fuel-flow-select>
@@ -302,11 +240,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/egt.xml">
    <name>Engine 4 fuel flow</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <engine-egt-select>/engines/engine[3]/egt-degf</engine-egt-select>
     <engine-fuel-flow-select>/engines/engine[3]/fuel-flow-gph</engine-fuel-flow-select>
@@ -321,11 +254,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 1</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <mp-select>/engines/engine[0]/mp-osi</mp-select>
    </params>
@@ -337,11 +265,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 2</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <mp-select>/engines/engine[1]/mp-osi</mp-select>
    </params>
@@ -353,11 +276,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 3</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <mp-select>/engines/engine[2]/mp-osi</mp-select>
    </params>
@@ -369,271 +287,12 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 4</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <params>
     <mp-select>/engines/engine[3]/mp-osi</mp-select>
    </params>
    <x>550</x>
    <y>165</y>
    <w>60</w>
-   <h>60</h>
-  </instrument>
-
-<!-- Engineer bottom -->
-
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 1 throttle quadrant</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[0]/throttle</engine-throttle-select>
-   </params>
-   <x>280</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 2 throttle quadrant</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[1]/throttle</engine-throttle-select>
-   </params>
-   <x>300</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 3 throttle quadrant</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[2]/throttle</engine-throttle-select>
-   </params>
-   <x>320</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-throttle-quadrant.xml">
-   <name>Engine 4 throttle quadrant</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-throttle-select>/controls/engines/engine[3]/throttle</engine-throttle-select>
-   </params>
-   <x>340</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-pitch-quadrant.xml">
-   <name>Engine 1 pitch</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-pitch-select>/controls/engines/engine[0]/propeller-pitch</engine-pitch-select>
-   </params>
-   <x>380</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-pitch-quadrant.xml">
-   <name>Engine 2 pitch</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-pitch-select>/controls/engines/engine[1]/propeller-pitch</engine-pitch-select>
-   </params>
-   <x>400</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-pitch-quadrant.xml">
-   <name>Engine 3 pitch</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-pitch-select>/controls/engines/engine[2]/propeller-pitch</engine-pitch-select>
-   </params>
-   <x>420</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-pitch-quadrant.xml">
-   <name>Engine 4 pitch</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-pitch-select>/controls/engines/engine[3]/propeller-pitch</engine-pitch-select>
-   </params>
-   <x>440</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-mixture-quadrant.xml">
-   <name>Engine 1 mixture</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-mixture-select>/controls/engines/engine[0]/mixture</engine-mixture-select>
-   </params>
-   <x>500</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-mixture-quadrant.xml">
-   <name>Engine 2 mixture</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-mixture-select>/controls/engines/engine[1]/mixture</engine-mixture-select>
-   </params>
-   <x>520</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-mixture-quadrant.xml">
-   <name>Engine 3 mixture</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-mixture-select>/controls/engines/engine[2]/mixture</engine-mixture-select>
-   </params>
-   <x>540</x>
-   <y>50</y>
-   <w>15</w>
-   <h>60</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-mixture-quadrant.xml">
-   <name>Engine 4 mixture</name>
-   <condition>
-    <and>
-     <not>
-      <property>/sim/current-view/seat/copilot</property>
-     </not>
-     <not>
-      <property>/sim/current-view/seat/star</property>
-     </not>
-    </and>
-   </condition>
-   <params>
-    <engine-mixture-select>/controls/engines/engine[3]/mixture</engine-mixture-select>
-   </params>
-   <x>560</x>
-   <y>50</y>
-   <w>15</w>
    <h>60</h>
   </instrument>
 

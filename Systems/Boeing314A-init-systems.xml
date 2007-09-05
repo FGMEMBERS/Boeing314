@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<!-- intialize systems :
+
+     - avoids nil values for Nasal.
+-->
+
+<PropertyList>
+
+  <crew>
+   <serviceable type="bool">true</serviceable>
+
+   <copilot>
+    <activ type="bool">false</activ>                                                   <!-- yellow -->
+    <state></state>
+    <time></time>
+   </copilot>
+
+   <minimized type="bool">true</minimized>
+  </crew>
+
+  <fuel>
+   <tanks include="../Nasal/Boeing314A-fuel.xml"/>
+  </fuel>
+
+  <mooring>
+   <boat-id></boat-id>                                                                 <!-- boat view -->
+   <dialog></dialog>
+   <moorage-id></moorage-id>
+   <route include="../Nasal/Boeing314-route.xml"/>
+   <state></state>
+  </mooring>
+
+  <seat>
+   <boat type="bool">false</boat>
+   <captain type="bool">true</captain>
+   <celestial type="bool">false</celestial>
+   <copilot type="bool">false</copilot>
+   <engineer type="bool">false</engineer>
+   <moorage type="bool">false</moorage>
+   <observer type="bool">false</observer>
+   <position>
+    <boat-view>
+     <altitude-ft type="double">0.0</altitude-ft>
+     <latitude-deg type="double">0.0</latitude-deg>
+     <longitude-deg type="double">0.0</longitude-deg>
+    </boat-view>
+    <celestial>
+     <x-m userarchive="y" type="double">0.0</x-m>
+     <y-m userarchive="y" type="double">0.0</y-m>
+     <z-m userarchive="y" type="double">0.0</z-m>
+    </celestial>
+    <observer>
+     <x-m userarchive="y" type="double">0.0</x-m>
+     <y-m userarchive="y" type="double">0.0</y-m>
+     <z-m userarchive="y" type="double">0.0</z-m>
+    </observer>
+   </position>
+   <radio type="bool">false</radio>
+  </seat>
+
+</PropertyList>

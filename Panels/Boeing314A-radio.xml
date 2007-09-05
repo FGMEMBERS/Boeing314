@@ -43,15 +43,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
  <instruments>
 
-<!-- Radio -->
-
   <instrument include="../../Instruments/navcom-kx155.xml">
    <name>NavCom 1 Radio</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>100</x>
    <y>201</y>
    <w>298</w>
@@ -60,11 +53,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="../../Instruments/adf-radio.xml">
    <name>ADF Radio</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>100</x>
    <y>110</y>
    <w>298</w>
@@ -73,28 +61,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-gdf.xml">
    <name>Ground Direction Finder</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
    <x>380</x>
    <y>380</y>
    <w>70</w>
    <h>70</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-gdf-call.xml">
-   <name>Ground Direction Finding call</name>
-   <condition>
-    <not>
-     <property>/sim/current-view/seat/star</property>
-    </not>
-   </condition>
-   <x>430</x>
-   <y>180</y>
-   <w>40</w>
-   <h>40</h>
   </instrument>
 
  </instruments>

@@ -10,16 +10,36 @@
 <!-- Specific keys -->
 
    <key>
+    <name>left/right</name>
+    <desc>autopilot heading</desc>
+   </key>
+   <key>
+    <name></name>
+    <desc>floating view left/right</desc>
+   </key>
+   <key>
     <name>up/down</name>
-    <desc>increase/decrease autopilot pitch (fast)</desc>
+    <desc>autopilot pitch</desc>
+   </key>
+   <key>
+    <name></name>
+    <desc>floating view front/aft</desc>
    </key>
    <key>
     <name>home/end</name>
     <desc>increase/decrease autopilot pitch (slow)</desc>
    </key>
    <key>
-    <name>left/right</name>
-    <desc>adjust autopilot heading</desc>
+    <name></name>
+    <desc>floating view front/aft (fast)</desc>
+   </key>
+   <key>
+     <name>page up/down</name>
+     <desc>increase/decrease copilot speed</desc>
+   </key>
+   <key>
+     <name></name>
+     <desc>floating view up/down</desc>
    </key>
    <key>
     <name>a/A</name>
@@ -27,11 +47,7 @@
    </key>
    <key>
     <name>b/B</name>
-    <desc>rope (brake)</desc>
-   </key>
-   <key>
-    <name>e/E</name>
-    <desc>increase/decrease propeller pitch</desc>
+    <desc>anchor</desc>
    </key>
    <key>
     <name>q</name>
@@ -46,16 +62,16 @@
     <desc>altitude hold</desc>
    </key>
    <key>
-    <name>Ctrl-H</name>
-    <desc>heading hold</desc>
-   </key>
-   <key>
-    <name>Ctrl-P</name>
-    <desc>pitch hold</desc>
+    <name>Ctrl-B</name>
+    <desc>boat view</desc>
    </key>
    <key>
     <name>Ctrl-E</name>
     <desc>engineer view</desc>
+   </key>
+   <key>
+    <name>Ctrl-H</name>
+    <desc>heading hold</desc>
    </key>
    <key>
     <name>Ctrl-J</name>
@@ -63,16 +79,37 @@
    </key>
    <key>
     <name>Ctrl-K</name>
-    <desc>star view</desc>
+    <desc>observer view (floating)</desc>
+   </key>
+   <key>
+    <name>Ctrl-M</name>
+    <desc>menu</desc>
    </key>
    <key>
     <name>Ctrl-O</name>
     <desc>radio view</desc>
    </key>
    <key>
-    <name>Ctrl-S</name>
-    <desc>autothrottle (speed-up only)</desc>
+    <name>Ctrl-P</name>
+    <desc>pitch hold</desc>
    </key>
+   <key>
+    <name>Ctrl-T</name>
+    <desc>celestial view (floating)</desc>
+   </key>
+   <key>
+    <name>shift-ctrl-T</name>
+    <desc>sextant</desc>
+   </key>
+   <key>
+    <name>Ctrl-S</name>
+    <desc>virtual copilot</desc>
+   </key>
+   <key>
+    <name>shift-ctrl-X</name>
+    <desc>restore floating view</desc>
+   </key>
+
 
 <!-- FDM ops -->
 
@@ -80,21 +117,24 @@
  ________________________Procedures_________________________
  Parking :
            700 RPM.
+           align gyro with magnetic compass.
  Taxi :
            increase pitch on 2 symmetrical engines.
-           turn with pitch on 1 or 2 outboard engines.
+           turn with pitch on 1 outboard engine.
  Takeoff :
            flaps 1/3, 2400 RPM.
            lift off between 80 kt (full) and 60 kt (empty load).
  Climb :
            retract flaps before 105 kt.
            37.5 inhg, 2300 RPM.
- Cruise (economic) :
-           102 kt at 9000 ft (full), 117 kt at 13400 ft (empty load).
- Cruise (max) :
-           160 kt.
+ Cruise :
+           economic : 102 kt at 9000 ft (full), 117 kt at 13400 ft (empty load).
+           max : 160 kt.
+ Navigation :
+           align gyro with magnetic compass.
+           listen in four course radio range of destination.
  Descent :
-           idle.
+           idle, max mixture.
  Approach :
            flaps 1/3 below 105 kt. 
  Landing :
@@ -123,13 +163,6 @@
    
  max take-off : 84000 lb
  max landing : 80000 lb
-
- ________________________Moorages_________________________
- CCP2 CYQM DNMM EINN EGHI FZAA GBYD GGOV
- KBFI KBWI KLGA KMIA KSFO LFML LPHR LPPT
- NWWM NZAA OBBI OPMR PCIS PGUM PHNL PMDY PWAK RPLL
- SBBE SBNT TTPP TXKF VHHH VCCT VMMC WRSJ YGLA YPDN
- 7N3
    </text>
 
 </PropertyList>

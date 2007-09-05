@@ -95,21 +95,12 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
  <instruments>
 
-  <instrument include="../../Instruments/brakes.xml">
-   <name>Brake (rope)</name>
-   <condition include="Instruments/B314-cond-rope.xml"/>
-   <x>220</x>
-   <y>430</y>
-   <w>40</w>
-   <h>17</h>
-  </instrument>
-
   <instrument include="Instruments/B314-speed-up.xml">
    <name>Speed up</name>
-   <x>410</x>
-   <y>430</y>
-   <w>10</w>
-   <h>40</h>
+   <x>370</x>
+   <y>420</y>
+   <w>80</w>
+   <h>80</h>
   </instrument>
 
 <!-- Captain -->
@@ -180,8 +171,8 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>70</h>
   </instrument>
 
-  <instrument include="../../Instruments/clock.xml">
-   <name>Chronometer</name>
+  <instrument include="Instruments/B314-clock.xml">
+   <name>Clock</name>
    <x>560</x>
    <y>55</y>
    <w>90</w>
@@ -258,26 +249,6 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <y>235</y>
    <w>150</w>
    <h>150</h>
-  </instrument>
-
-  <instrument include="Instruments/B314-autothrottle.xml">
-   <name>Autothrottle</name>
-   <condition>
-    <or>
-     <greater-than>
-      <property>/sim/speed-up</property>
-      <value>1</value>
-     </greater-than>
-     <not-equals>
-      <property>/autopilot/locks/speed</property>
-      <value></value>
-     </not-equals>
-    </or>
-   </condition>
-   <x>680</x>
-   <y>20</y>
-   <w>40</w>
-   <h>40</h>
   </instrument>
 
   <instrument include="Instruments/B314-sperry-heading-hold.xml">

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!-- Alias, avoiding to type the A. -->
+
+<PropertyList include="Boeing314A-set.xml">
+ <sim>
+
+  <description>Boeing 314 (alias)</description>
+
+ </sim>
+
+</PropertyList>

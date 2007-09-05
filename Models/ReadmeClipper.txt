@@ -5,13 +5,14 @@ NC 18609 was a 314A, flown by Panam from 1941 to 1946, as Pacific Clipper (A).
 The rudder has 3 fins, because the tests had not enough directional control with only 1 or 2.
 
 The turret over the middle of the wing is for star navigation.
-The windows just fowards the wing is the spacious flightdeck (navigator, radio and engineer), closed from the cockpit by
-a curtain during night flights (night vision). Doors at the rear of the flightdeck, enabled to go inside the wings during
-the flight.
+The windows just fowards the wing is the spacious flightdeck (navigator, radio and engineer),
+closed from the cockpit by a curtain during night flights (night vision).
+Doors at the rear of the flightdeck, enabled to go inside the wings during the flight.
 
 The price of a ticket was like the Concorde today.
 
-The flag on the bow, the top of the wing, and below the sponsons was to identify itself as neutral aircraft (war time) (B).
+The flag on the bow, the top of the wing, and below the sponsons was to identify itself
+as neutral aircraft (war time) (B).
 
 C-98 is the military designation of the 314 (C)(D).
 
@@ -28,10 +29,21 @@ The following proportions are respected :
 This model can also be used as 314 (same dimensions).
 
 
-For the transparency, propeller discs must be the last of the file :
-- all other objects belong to a fuselage group, at the export.
-- outboard discs are inside a group, whose parent is the last but one object.
-- inboard discs are inside a group, whose parent is the last object.
+Transparency
+------------
+Propeller discs must be the last of the file :
+- all other objects belong to a fuselage or cockpit group at the export.
+- for windows transparency, cockpit is the parent of fuselage.
+- for selection during design, cockpit and fuselage are in separate layers
+  (one cannot use a group to isolate the cockpit).
+
+
+VRP
+---
+The model is aligned vertically along the nose axis, but is still centered
+horizontally on the center of gravity :
+- that is more handy with the Blender grid. 
+- the alignment of VRP to the nose tip is finished by XML (horizontal offset).
 
 
 Texturing
@@ -43,12 +55,11 @@ The yellow strips are delimited by the mesh (except the rounded tip) :
 
 TO DO
 =====
-- dilate the model (scale is underestimated).
 - shape of hull behind the step (afterbody).
 - grooves (sponsons, top of fuselage).
 - a reversed "PAA" logo for the bow right (italic in direction of the speed).
-- door accessing the "star room" from the flight deck.
-- replace material by texture.
+- door accessing the celestial view.
+- transparency ordering of propellers.
 
 
 Known problems
@@ -57,7 +68,7 @@ Known problems
 
 Known problems Panam livery
 ---------------------------
-- since the livery is not a skin, it would be difficult to repaint it.
+- the livery is difficult to repaint (not a skin).
 - the wing color was somewhere between yellow and red.
 - the fuselage seemed to be a metallic grey blue.
 - the yellow strips behind the engines seem to be not systematic.
@@ -85,9 +96,7 @@ http://www.panamair.org/History/earlydays.htm/ : the Panam logo.
 http://www.commercemarketplace.com/home/CollectAir/ephemera.html/ : the Boeing logo.
 
 
-GPL licence
-===========
-Contact devel-list for the .blend file (Blender 2.36).
+Made with Blender 2.43.
 
 
-21 March 2006.
+8 March 2007.
