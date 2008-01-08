@@ -58,6 +58,7 @@
 
   <view n="100">                                           <!-- MANDATORY view number -->
     <name>Engineer View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -86,6 +87,7 @@
 
   <view>
     <name>Radio View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -114,6 +116,7 @@
 
   <view>
     <name>Copilot View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -142,6 +145,7 @@
 
   <view>
     <name>Celestial View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -170,6 +174,7 @@
 
   <view>
     <name>Observer View</name>
+    <enabled type="bool">false</enabled>
     <type>lookfrom</type>
     <internal type="bool">true</internal>
     <config>
@@ -198,6 +203,7 @@
 
   <view>
     <name>Boat View</name>
+    <enabled type="bool">false</enabled>
     <type>lookat</type>
     <config>
       <eye-lat-deg-path>/systems/seat/position/boat-view/latitude-deg</eye-lat-deg-path>

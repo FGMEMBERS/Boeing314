@@ -110,13 +110,13 @@ Installation
 Fuel load
 ---------
 - default is maximum landing weight, 80000 lb.
-- for alternate load, press "ctrl-M f" (saved on exit in aircraft-data).
+- for alternate load, press "ctrl-I f" (saved on exit in aircraft-data).
 
 Mooring
 -------
 - at startup, the seaplane is moved to its moorage (if any in Nasal/Boeing314-route.xml),
-keeping the tower view. To disable, see "ctrl-M c".
-- for alternate moorages, press "ctrl-M m".
+keeping the tower view. To disable, see "ctrl-I c".
+- for alternate moorages, press "ctrl-I m".
 
 Sounds
 ------
@@ -129,7 +129,6 @@ Known compatibility
 
 Keyboard
 ========
-- "ctrl-M" : "M"enu.
 - "q"      : quit speed up.
 
 Views
@@ -169,8 +168,9 @@ Improved behaviour
 
 Alternate behaviour
 -------------------
+- "ctrl-I" : menu.
 - "up / down"    : move floating view in length.
-- "home / end" : move floating view in length (fast).
+- "home / end"   : move floating view in length (fast).
 - "left / right" : move floating view in width.
 - "page up / page down" : move floating view in height.
 
@@ -183,7 +183,7 @@ Ground Direction Finding
 "The radio operator held the Morse key in transmit mode a minute, while the ground operator took
 a bearing of the signal" (G) :
 - add a waypoint.
-- call the ground operator, by "ctrl-M d" : range limited to 1500 NM (G)(J).
+- call the ground operator, by "ctrl-I d" : range limited to 1500 NM (G)(J).
 - within a delay of 2 minutes, the radio returns on a paper the magnetic heading towards the waypoint.
 
 Four course radio range
@@ -263,18 +263,23 @@ Known problems
 - the file in application-data (saved configuration) causes the bounce at loading
   (it seems to trim over the runway).
 
+Known problems JSBSim
+---------------------
+- not enough brake at empty load : cut 2 or 4 engines.
+- not enough brake at maximum throttle.
+- at full load, the speed window between the lift off (80 kt) and flap overspeed (105 kt), is almost short.
+
+Known problems keyboard
+-----------------------
+- because of ctrl-I overriding, TAB altimeter menu is not available with GLUT.
+
 Known problems OSG
 ------------------
 The following artefacts are supposed to be solved by OSG (works with 0.9.10 / Plib) :
 - missing hotspots.
 - panels swaping too early.
 - instrument transparent through layer with alpha (celestial view).
-
-Known problems JSBSim
----------------------
-- not enough brake at empty load : cut 2 or 4 engines.
-- not enough brake at maximum throttle.
-- at full load, the speed window between the lift off (80 kt) and flap overspeed (105 kt), is almost short.
+- transparency of propellers.
 
 
 Secondary problems
@@ -284,7 +289,7 @@ Secondary problems
 
 Secondary problems automatic mooring
 ------------------------------------
-- PCIS (Canton Island) is only available by "ctrl-M m" (no tower view).
+- sinks below ground at VMMC.
 
 Secondary problems JSBSim
 --------------------------
@@ -342,4 +347,4 @@ References
     F. W. S. Locke Jr., January 1946.
 
 
-26 August 2007.
+9 December 2007.

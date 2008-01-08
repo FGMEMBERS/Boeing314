@@ -53,6 +53,10 @@
 
     Panam's ground direction finding in the Pacific.
 
+(L) http://www.historylink.org/essays/output.cfm?file_id=3545
+
+    Elliott Bay, maiden flight on 7 June 1938.
+
 
 (P) Photos at moorage :
 
@@ -75,6 +79,7 @@
 <!--                                                                       -->
 <!--                                                                       -->
 <!-- NDB : query of 0.9.8 base with http://atlas.sourceforge.net/          -->
+<!-- Latitude/longitude : 0.9.10 scenery.                                  -->
 <!-- ===================================================================== -->
 
 <!-- .............. -->
@@ -82,16 +87,16 @@
 <!--                -->
 <!-- .............. -->
 
-<!-- Mathews Beach, Boeing Airfield (KBFI), Seattle.
+<!-- Boeing Airfield (KBFI), Seattle.
 
-     in a channel, along a cliff (P).
+     Elliott bay (L).
 -->
 
    <seaplane n="0">
     <airport-id type="string">KBFI</airport-id>
-    <latitude-deg type="double">47.581139</latitude-deg>
-    <longitude-deg type="double">-122.193028</longitude-deg>
-    <heading-deg type="double">70.0</heading-deg>
+    <latitude-deg type="double">47.62242</latitude-deg>
+    <longitude-deg type="double">-122.39022</longitude-deg>
+    <heading-deg type="double">250.0</heading-deg>
 
 <!-- Seattle (Boeing airfield) and Port Angeles -->
 
@@ -154,8 +159,8 @@
 
    <seaplane n="3">
     <airport-id type="string">PMDY</airport-id>
-    <latitude-deg type="double">28.208693</latitude-deg>
-    <longitude-deg type="double">-177.366076</longitude-deg>
+    <latitude-deg type="double">28.20868</latitude-deg>
+    <longitude-deg type="double">-177.36264</longitude-deg>
     <heading-deg type="double">90.0</heading-deg>
 
 <!-- Midway  -->
@@ -172,8 +177,8 @@
 
    <seaplane n="4">
     <airport-id type="string">PWAK</airport-id>
-    <latitude-deg type="double">19.273151</latitude-deg>
-    <longitude-deg type="double">166.641974</longitude-deg>
+    <latitude-deg type="double">19.27102</latitude-deg>
+    <longitude-deg type="double">166.64117</longitude-deg>
     <heading-deg type="double">210.0</heading-deg>
 
 <!-- Wake : no NDB  -->
@@ -186,8 +191,8 @@
 
    <seaplane n="5">
     <airport-id type="string">PGUM</airport-id>
-    <latitude-deg type="double">13.476557</latitude-deg>
-    <longitude-deg type="double">144.749034</longitude-deg>
+    <latitude-deg type="double">13.48185</latitude-deg>
+    <longitude-deg type="double">144.74940</longitude-deg>
     <heading-deg type="double">10.0</heading-deg>
 
 <!-- Guam -->
@@ -242,8 +247,8 @@
 
    <seaplane n="8">
     <airport-id type="string">VHHH</airport-id>
-    <latitude-deg type="double">22.318229</latitude-deg>
-    <longitude-deg type="double">114.159788</longitude-deg>
+    <latitude-deg type="double">22.31700</latitude-deg>
+    <longitude-deg type="double">114.15200</longitude-deg>
     <heading-deg type="double">215.0</heading-deg>
 
 <!-- Hong Kong and Macau -->
@@ -266,8 +271,8 @@
 
    <seaplane n="9">
     <airport-id type="string">PCIS</airport-id>
-    <latitude-deg type="double">-2.786212</latitude-deg>
-    <longitude-deg type="double">-171.717961</longitude-deg>
+    <latitude-deg type="double">-2.78645</latitude-deg>
+    <longitude-deg type="double">-171.71261</longitude-deg>
     <heading-deg type="double">90.0</heading-deg>
 
 <!-- Canton : no NDB  -->
@@ -275,13 +280,13 @@
 
 <!-- Noumea (NWWM), New Caledonia.
 
-     in the harbour.
+     on the island, in front of the harbour.
 -->
 
    <seaplane n="10">
     <airport-id type="string">NWWM</airport-id>
-    <latitude-deg type="double">-22.247569</latitude-deg>
-    <longitude-deg type="double">166.413176</longitude-deg>
+    <latitude-deg type="double">-22.25978</latitude-deg>
+    <longitude-deg type="double">166.37537</longitude-deg>
     <heading-deg type="double">260.0</heading-deg>
 
 <!-- Noumea and Ile des Pins -->
@@ -299,8 +304,8 @@
 
    <seaplane n="11">
     <airport-id type="string">NZAA</airport-id>
-    <latitude-deg type="double">-37.009641</latitude-deg>
-    <longitude-deg type="double">174.783375</longitude-deg>
+    <latitude-deg type="double">-37.01113</latitude-deg>
+    <longitude-deg type="double">174.76828</longitude-deg>
     <heading-deg type="double">250.0</heading-deg>
 
 <!-- Auckland (Westpoint) and Great Barrier -->
@@ -347,8 +352,8 @@
 
    <seaplane n="13">
     <airport-id type="string">7N3</airport-id>
-    <latitude-deg type="double">40.839207</latitude-deg>
-    <longitude-deg type="double">-73.725215</longitude-deg>
+    <latitude-deg type="double">40.83625</latitude-deg>
+    <longitude-deg type="double">-73.72534</longitude-deg>
     <heading-deg type="double">180.0</heading-deg>
 
 <!-- New York (La Guardia) and Orchy  -->
@@ -408,8 +413,8 @@
 
    <seaplane n="16">
     <airport-id type="string">EINN</airport-id>
-    <latitude-deg type="double">52.6118</latitude-deg>
-    <longitude-deg type="double">-9.10583</longitude-deg>
+    <latitude-deg type="double">52.61750</latitude-deg>
+    <longitude-deg type="double">-9.09871</longitude-deg>
     <heading-deg type="double">45.0</heading-deg>
 
 <!-- Foynes and Kerry -->
@@ -473,8 +478,8 @@
 
    <seaplane n="19">
     <airport-id type="string">LPPT</airport-id>
-    <latitude-deg type="double">38.779278</latitude-deg>
-    <longitude-deg type="double">-9.094537</longitude-deg>
+    <latitude-deg type="double">38.78022</latitude-deg>
+    <longitude-deg type="double">-9.08267</longitude-deg>
     <heading-deg type="double">85.0</heading-deg>
 
 <!-- Lisbon (Sintra) and Cascais  -->
@@ -492,8 +497,8 @@
 
    <seaplane n="20">
     <airport-id type="string">LFML</airport-id>
-    <latitude-deg type="double">43.459248</latitude-deg>
-    <longitude-deg type="double">5.198534</longitude-deg>
+    <latitude-deg type="double">43.44018</latitude-deg>
+    <longitude-deg type="double">5.17487</longitude-deg>
     <heading-deg type="double">310.0</heading-deg>
 
 <!-- Marseille and Hyeres -->
@@ -575,8 +580,8 @@
 
    <seaplane n="24">
     <airport-id type="string">SBBE</airport-id>
-    <latitude-deg type="double">-1.388096</latitude-deg>
-    <longitude-deg type="double">-48.484921</longitude-deg>
+    <latitude-deg type="double">-1.38634</latitude-deg>
+    <longitude-deg type="double">-48.49842</longitude-deg>
     <heading-deg type="double">280.0</heading-deg>
 
 <!-- Belem and Salinopolis -->
@@ -620,7 +625,7 @@
    <seaplane n="26">
     <airport-id type="string">KMIA</airport-id>
     <latitude-deg type="double">25.725</latitude-deg>
-    <longitude-deg type="double">-80.24</longitude-deg>
+    <longitude-deg type="double">-80.235</longitude-deg>
     <heading-deg type="double">220.0</heading-deg>
 
 <!-- Miami and Plantation  -->
@@ -645,8 +650,8 @@
 
    <seaplane n="27">
     <airport-id type="string">GBYD</airport-id>
-    <latitude-deg type="double">13.448291</latitude-deg>
-    <longitude-deg type="double">-16.589662</longitude-deg>
+    <latitude-deg type="double">13.43950</latitude-deg>
+    <longitude-deg type="double">-16.59575</longitude-deg>
     <heading-deg type="double">180.0</heading-deg>
 
 <!-- Banjul and Dakar -->
@@ -690,9 +695,9 @@
 
    <seaplane n="29">
     <airport-id type="string">YGLA</airport-id>
-    <latitude-deg type="double">-23.833765</latitude-deg>
-    <longitude-deg type="double">151.253248</longitude-deg>
-    <heading-deg type="double">300.0</heading-deg>
+    <latitude-deg type="double">-23.83203</latitude-deg>
+    <longitude-deg type="double">151.26548</longitude-deg>
+    <heading-deg type="double">10.0</heading-deg>
 
 <!-- Gladstone and Mackay -->
 
@@ -709,8 +714,8 @@
 
    <seaplane n="30">
     <airport-id type="string">YPDN</airport-id>
-    <latitude-deg type="double">-12.448177</latitude-deg>
-    <longitude-deg type="double">130.825804</longitude-deg>
+    <latitude-deg type="double">-12.44590</latitude-deg>
+    <longitude-deg type="double">130.82483</longitude-deg>
     <heading-deg type="double">335.0</heading-deg>
 
 <!-- Darwin (Bagot) and Troughton Island -->
@@ -728,8 +733,8 @@
 
    <seaplane n="31">
     <airport-id type="string">WRSJ</airport-id>
-    <latitude-deg type="double">-7.205648</latitude-deg>
-    <longitude-deg type="double">112.723082</longitude-deg>
+    <latitude-deg type="double">-7.20408</latitude-deg>
+    <longitude-deg type="double">112.72201</longitude-deg>
     <heading-deg type="double">320.0</heading-deg>
 
 <!-- Surabaya and Semarang -->
@@ -747,8 +752,8 @@
 
    <seaplane n="32">
     <airport-id type="string">VCCT</airport-id>
-    <latitude-deg type="double">8.569664</latitude-deg>
-    <longitude-deg type="double">81.225854</longitude-deg>
+    <latitude-deg type="double">8.56686</latitude-deg>
+    <longitude-deg type="double">81.22494</longitude-deg>
     <heading-deg type="double">205.0</heading-deg>
 
 <!-- Trincomalee (China Bay) and Kankesanturai -->
@@ -780,13 +785,13 @@
 
 <!-- Bahrein (OBBI).
 
-     in the bay (barred by the modern aiport), near the city.
+     in the bay, near the city.
 -->
 
    <seaplane n="34">
     <airport-id type="string">OBBI</airport-id>
-    <latitude-deg type="double">26.265720</latitude-deg>
-    <longitude-deg type="double">50.622092</longitude-deg>
+    <latitude-deg type="double">26.23984</latitude-deg>
+    <longitude-deg type="double">50.62323</longitude-deg>
     <heading-deg type="double">110.0</heading-deg>
 
 <!-- Bahrein and Doha (at the south-east) --> 
@@ -799,20 +804,25 @@
 
 <!-- Khartoum (HSSS), Sudan.
 
-     on the Nile.
+     where Blue and White Nile merge.
 -->
 
-<!-- TO DO : no Nile on my scenery. -->
+   <seaplane n="35">
+    <airport-id type="string">HSSS</airport-id>
+    <latitude-deg type="double">15.60347</latitude-deg>
+    <longitude-deg type="double">32.52591</longitude-deg>
+    <heading-deg type="double">340.0</heading-deg>
+   </seaplane>
 
 <!-- Kinshasa (FZAA), Zaire.
 
      on the Congo river, near the city.
 -->
 
-   <seaplane n="35">
+   <seaplane n="36">
     <airport-id type="string">FZAA</airport-id>
-    <latitude-deg type="double">-4.306242</latitude-deg>
-    <longitude-deg type="double">15.318137</longitude-deg>
+    <latitude-deg type="double">-4.29909</latitude-deg>
+    <longitude-deg type="double">15.32285</longitude-deg>
     <heading-deg type="double">35.0</heading-deg>
 
 <!-- Kinshasa (Ndjili) and Dolisie  -->
@@ -828,11 +838,11 @@
      on the Potengi river.
 -->
 
-   <seaplane n="36">
+   <seaplane n="37">
     <airport-id type="string">SBNT</airport-id>
-    <latitude-deg type="double">-5.761368</latitude-deg>
-    <longitude-deg type="double">-35.205671</longitude-deg>
-    <heading-deg type="double">0.0</heading-deg>
+    <latitude-deg type="double">-5.78500</latitude-deg>
+    <longitude-deg type="double">-35.21500</longitude-deg>
+    <heading-deg type="double">45.0</heading-deg>
 
 <!-- Natal and Calcanhar  -->
 

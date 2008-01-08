@@ -7,6 +7,7 @@
      Since this file is not GPL, you must download and install yourself the sounds :
      - 17_1, 17_2, 17_3, 17_4 and 17idle (internal).
      - x17_1, x17_2, x17_3, x17_4 and x17idle (external).
+     - in Boeing314A-set.xml, substitute Boeing314-b17-sound.xml to Boeing314-sound.xml.
 
 
      With 60000 lb, the B-17 is 4 engines powered by Wright R-1820-97 1200 hp.
@@ -23,9 +24,11 @@
  
 <PropertyList>
 
+<!-- position x/y/z = depth/width/height, from nose (because of VRP) -->
+
  <fx>
  
-<!-- Engines 1 & 2 -->
+<!-- ENGINES 1 & 2 -->
 
   <crank>
    <name>engstart1</name>
@@ -37,9 +40,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.01</offset>
@@ -68,9 +71,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -87,9 +90,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.3</offset>
@@ -131,9 +134,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -184,9 +187,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -237,9 +240,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -282,9 +285,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -327,9 +330,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -386,9 +389,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -443,9 +446,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -500,9 +503,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -549,9 +552,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -598,9 +601,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -618,7 +621,7 @@
    </volume>
   </engine>
 
-<!-- Engines 3 & 4 -->
+<!-- ENGINES 3 & 4 -->
 
   <crank>
    <name>engstart2</name>
@@ -630,9 +633,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.01</offset>
@@ -661,9 +664,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -680,9 +683,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.0</offset>
@@ -724,9 +727,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -777,9 +780,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -830,9 +833,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -875,9 +878,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -920,9 +923,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -979,9 +982,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1036,9 +1039,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1093,9 +1096,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1142,9 +1145,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1191,9 +1194,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -1211,7 +1214,7 @@
    </volume>
   </engine>
 
-<!-- common sounds -->
+<!-- COMMON SOUNDS -->
  
 <!-- - less than 14 ft : BUG, wow not reset, when starting in flight.
      - more than 40 kt : enough waves.

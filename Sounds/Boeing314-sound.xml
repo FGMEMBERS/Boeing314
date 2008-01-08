@@ -7,9 +7,11 @@
  
 <PropertyList>
 
+<!-- position x/y/z = depth/width/height, from nose (because of VRP) -->
+
  <fx>
  
-<!-- Engines 1 & 2 -->
+<!-- ENGINES 1 & 2 -->
 
   <crank>
    <name>engstart1</name>
@@ -21,9 +23,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.01</offset>
@@ -52,9 +54,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -71,9 +73,9 @@
     </or>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.3</offset>
@@ -108,9 +110,9 @@
     </and>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -168,9 +170,9 @@
     </and>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -232,9 +234,9 @@
     </and>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -294,9 +296,9 @@
     </and>
    </condition>
    <position>
-    <x>-2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>-7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[0]/mp-osi</property>
@@ -328,7 +330,7 @@
    </pitch>
   </engine>
 
-<!-- Engines 3 & 4 -->
+<!-- ENGINES 3 & 4 -->
 
   <crank>
    <name>engstart2</name>
@@ -340,9 +342,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.01</offset>
@@ -371,9 +373,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.5</offset>
@@ -390,9 +392,9 @@
     </or>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <offset>0.0</offset>
@@ -425,9 +427,9 @@
     </and>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -485,9 +487,9 @@
     </and>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -549,9 +551,9 @@
     </and>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -611,9 +613,9 @@
     </and>
    </condition>
    <position>
-    <x>2.0</x>
-    <y>0.0</y>
-    <z>-2.0</z>
+    <x>8.0</x>
+    <y>7.0</y>
+    <z>0.0</z>
    </position>
    <volume>
     <property>/engines/engine[2]/mp-osi</property>
@@ -644,6 +646,8 @@
     <offset>0.3</offset>
    </pitch>
   </engine>
+
+<!-- COMMON SOUNDS -->
 
 <!-- water -->
 

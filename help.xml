@@ -74,16 +74,16 @@
     <desc>heading hold</desc>
    </key>
    <key>
+    <name>Ctrl-I</name>
+    <desc>menu</desc>
+   </key>
+   <key>
     <name>Ctrl-J</name>
     <desc>copilot view</desc>
    </key>
    <key>
     <name>Ctrl-K</name>
     <desc>observer view (floating)</desc>
-   </key>
-   <key>
-    <name>Ctrl-M</name>
-    <desc>menu</desc>
    </key>
    <key>
     <name>Ctrl-O</name>

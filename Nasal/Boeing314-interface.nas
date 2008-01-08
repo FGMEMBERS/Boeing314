@@ -13,17 +13,20 @@
 Seats = {};
 
 Seats.new = func {
-   obj = { parents : [Seats],
+   var obj = { parents : [Seats],
 
            sextant : Sextant.new(),
 
            controls : nil,
            positions : nil,
            theseats : nil,
+           theview : nil,
 
            lookup : {},
            names : {},
            nb_seats : 0,
+
+           CAPTINDEX : 0,
 
            floating : {},
            recoverfloating : constant.FALSE,
@@ -37,19 +40,20 @@ Seats.new = func {
 };
 
 Seats.init = func {
+   var name = "";
+   var child = nil;
+
    me.controls = props.globals.getNode("/controls/seat");
    me.positions = props.globals.getNode("/systems/seat/position");
    me.theseats = props.globals.getNode("/systems/seat");
-
-   theviews = props.globals.getNode("/sim").getChildren("view");
-   last = size(theviews);
+   me.theviews = props.globals.getNode("/sim").getChildren("view");
 
    # retrieve the index as created by FG
-   for( i = 0; i < last; i=i+1 ) {
-        child = theviews[i].getChild("name");
+   for( var i = 0; i < size(me.theviews); i=i+1 ) {
+        child = me.theviews[i].getChild("name");
         # nasal doesn't see yet the views of preferences.xml
         if( child != nil ) {
-            name = theviews[i].getChild("name").getValue();
+            name = me.theviews[i].getChild("name").getValue();
             if( name == "Engineer View" ) {
                 me.save_lookup("engineer", i);
             }
@@ -61,11 +65,11 @@ Seats.init = func {
             }
             elsif( name == "Celestial View" ) {
                 me.save_lookup("celestial", i);
-                me.save_initial( "celestial", theviews[i] );
+                me.save_initial( "celestial", me.theviews[i] );
             }
             elsif( name == "Observer View" ) {
                 me.save_lookup("observer", i);
-                me.save_initial( "observer", theviews[i] );
+                me.save_initial( "observer", me.theviews[i] );
             }
             elsif( name == "Boat View" ) {
                 me.save_lookup("boat", i);
@@ -83,27 +87,36 @@ Seats.recoverexport = func {
 }
 
 Seats.viewexport = func( name ) {
+   var index = 0;
+
    if( name != "captain" ) {
+       index = me.lookup[name];
 
        # swap to view
        if( !me.theseats.getChild(name).getValue() ) {
-           index = me.lookup[name];
            setprop("/sim/current-view/view-number", index);
            me.theseats.getChild(name).setValue(constant.TRUE);
            me.theseats.getChild("captain").setValue(constant.FALSE);
+
+           me.theviews[index].getChild("enabled").setValue(constant.TRUE);
        }
 
        # return to captain view
        else {
-           setprop("/sim/current-view/view-number", 0);
+           setprop("/sim/current-view/view-number", me.CAPTINDEX);
            me.theseats.getChild(name).setValue(constant.FALSE);
            me.theseats.getChild("captain").setValue(constant.TRUE);
+
+           me.theviews[index].getChild("enabled").setValue(constant.FALSE);
        }
 
        # disable all other views
-       for( i = 0; i < me.nb_seats; i=i+1 ) {
+       for( var i = 0; i < me.nb_seats; i=i+1 ) {
             if( name != me.names[i] ) {
                 me.theseats.getChild(me.names[i]).setValue(constant.FALSE);
+
+                index = me.lookup[me.names[i]];
+                me.theviews[index].getChild("enabled").setValue(constant.FALSE);
             }
        }
 
@@ -112,67 +125,32 @@ Seats.viewexport = func( name ) {
 
    # captain view
    else {
-       setprop("/sim/current-view/view-number",0);
+       setprop("/sim/current-view/view-number",me.CAPTINDEX);
        me.theseats.getChild("captain").setValue(constant.TRUE);
 
-        # disable all other views
-        for( i = 0; i < me.nb_seats; i=i+1 ) {
-             me.theseats.getChild(me.names[i]).setValue(constant.FALSE);
-        }
+       # disable all other views
+       for( var i = 0; i < me.nb_seats; i=i+1 ) {
+            me.theseats.getChild(me.names[i]).setValue(constant.FALSE);
+
+            index = me.lookup[me.names[i]];
+            me.theviews[index].getChild("enabled").setValue(constant.FALSE);
+       }
    }
 }
 
 Seats.scrollexport = func{
-   # number of views = 11
-   nbviews = size(props.globals.getNode("/sim").getChildren("view"));
-
-   # by default, returns to captain view
-   targetview = nbviews;
-
-   # if specific view, step once more to ignore captain view 
-   for( i = 0; i < me.nb_seats; i=i+1 ) {
-        name = me.names[i];
-        if( me.theseats.getChild(name).getValue() ) {
-            targetview = me.lookup[name];
-            break;
-        }
-   }
-
-   # number of default views (preferences.xml) = 6
-   nbdefaultviews = nbviews - me.nb_seats;
-
-   # last default view (preferences.xml) = 5
-   lastview = nbdefaultviews - 1;
-
-   # moves to seat
-   if( getprop("/sim/current-view/view-number") == lastview ) {
-       step = targetview - nbdefaultviews;
-       view.stepView(step);
-       view.stepView(1);
-   }
-
-   # returns to captain
-   elsif( getprop("/sim/current-view/view-number") == targetview ) {
-       step = nbviews - targetview;
-       view.stepView(step);
-       view.stepView(1);
-   }
-
-   # default
-   else {
-       view.stepView(1);
-   }
+   me.stepView(1);
 }
 
 Seats.scrollreverseexport = func{
-   # number of views = 11
-   nbviews = size(props.globals.getNode("/sim").getChildren("view"));
+   me.stepView(-1);
+}
 
-   # by default, returns to captain view
-   targetview = 0;
+Seats.stepView = func( step ) {
+   var targetview = 0;
+   var name = "";
 
-   # if specific view, step once more to ignore captain view 
-   for( i = 0; i < me.nb_seats; i=i+1 ) {
+   for( var i = 0; i < me.nb_seats; i=i+1 ) {
         name = me.names[i];
         if( me.theseats.getChild(name).getValue() ) {
             targetview = me.lookup[name];
@@ -180,42 +158,28 @@ Seats.scrollreverseexport = func{
         }
    }
 
-   # number of default views (preferences.xml) = 6
-   nbdefaultviews = nbviews - me.nb_seats;
+   # ignores captain view
+   if( targetview > me.CAPTINDEX ) {
+       me.theviews[me.CAPTINDEX].getChild("enabled").setValue(constant.FALSE);
+   }
 
-   # last view = 10
-   lastview = nbviews - 1;
+   view.stepView(step);
 
-   # moves to seat
-   if( getprop("/sim/current-view/view-number") == 1 ) {
-       # to 0
-       view.stepView(-1);
-       # to last
-       view.stepView(-1);
-       step = targetview - lastview;
-       view.stepView(step);
-    }
-
-   # returns to captain
-    elsif( getprop("/sim/current-view/view-number") == targetview ) {
-        step = nbdefaultviews - targetview;
-        view.stepView(step);
-        view.stepView(-1);
-    }
-
-    # default
-    else {
-        view.stepView(-1);
-    }
+   # restores because of userarchive
+   if( targetview > me.CAPTINDEX ) {
+       me.theviews[me.CAPTINDEX].getChild("enabled").setValue(constant.TRUE);
+   }
 }
 
 # forwards is positiv
 Seats.movelengthexport = func( name, step ) {
-   if( !me.move() ) {
-       result = constant.FALSE;
-   }
+   var sign = 0;
+   var headdeg = 0.0;
+   var pos = "";
+   var axis = "";
+   var result = constant.FALSE;
 
-   else {
+   if( me.move() ) {
        headdeg = getprop("/sim/current-view/goal-heading-offset-deg");
 
        if( headdeg <= 45 or headdeg >= 315 ) {
@@ -251,11 +215,13 @@ Seats.movelengthexport = func( name, step ) {
 
 # left is negativ
 Seats.movewidthexport = func( name, step ) {
-   if( !me.move() ) {
-       result = constant.FALSE;
-   }
+   var sign = 0;
+   var headdeg = 0.0;
+   var pos = "";
+   var axis = "";
+   var result = constant.FALSE;
 
-   else {
+   if( me.move() ) {
        headdeg = getprop("/sim/current-view/goal-heading-offset-deg");
 
        if( headdeg <= 45 or headdeg >= 315 ) {
@@ -291,11 +257,10 @@ Seats.movewidthexport = func( name, step ) {
 
 # up is positiv
 Seats.moveheightexport = func( name, step ) {
-   if( !me.move() ) {
-       result = constant.FALSE;
-   }
+   var pos = "";
+   var result = constant.FALSE;
 
-   else {
+   if( me.move() ) {
        pos = getprop("/sim/current-view/y-offset-m");
        pos = pos + step;
        setprop("/sim/current-view/y-offset-m",pos);
@@ -319,8 +284,7 @@ Seats.save_lookup = func( name, index ) {
 # backup initial position
 Seats.save_initial = func( name, view ) {
    var pos = {};
-
-   config = view.getNode("config");
+   var config = view.getNode("config");
 
    pos["x"] = config.getChild("x-offset-m").getValue();
    pos["y"] = config.getChild("y-offset-m").getValue();
@@ -333,7 +297,10 @@ Seats.save_initial = func( name, view ) {
 }
 
 Seats.initial_position = func( name ) {
-   position = me.positions.getNode(name);
+   var posx = 0.0;
+   var posy = 0.0;
+   var posz = 0.0;
+   var position = me.positions.getNode(name);
 
    posx = me.initial[name]["x"];
    posy = me.initial[name]["y"];
@@ -349,6 +316,11 @@ Seats.initial_position = func( name ) {
 }
 
 Seats.last_position = func( name ) {
+   var posx = 0.0;
+   var posy = 0.0;
+   var posz = 0.0;
+   var position = nil;
+
    # 1st restore
    if( !me.last_recover[ name ] and me.recoverfloating ) {
        position = me.positions.getNode(name);
@@ -371,7 +343,9 @@ Seats.last_position = func( name ) {
 }
 
 Seats.recover = func {
-   for( i = 0; i < me.nb_seats; i=i+1 ) {
+   var name = "";
+
+   for( var i = 0; i < me.nb_seats; i=i+1 ) {
         name = me.names[i];
         if( me.theseats.getChild(name).getValue() ) {
             if( me.floating[name] ) {
@@ -383,11 +357,11 @@ Seats.recover = func {
 }
 
 Seats.move_position = func( name ) {
-   posx = getprop("/sim/current-view/x-offset-m");
-   posy = getprop("/sim/current-view/y-offset-m");
-   posz = getprop("/sim/current-view/z-offset-m");
+   var posx = getprop("/sim/current-view/x-offset-m");
+   var posy = getprop("/sim/current-view/y-offset-m");
+   var posz = getprop("/sim/current-view/z-offset-m");
 
-   position = me.positions.getNode(name);
+   var position = me.positions.getNode(name);
 
    position.getChild("x-m").setValue(posx);
    position.getChild("y-m").setValue(posy);
@@ -395,10 +369,11 @@ Seats.move_position = func( name ) {
 }
 
 Seats.move = func {
-   result = constant.FALSE;
+   var name = "";
+   var result = constant.FALSE;
 
    # saves previous position
-   for( i = 0; i < me.nb_seats; i=i+1 ) {
+   for( var i = 0; i < me.nb_seats; i=i+1 ) {
         name = me.names[i];
         if( me.theseats.getChild(name).getValue() ) {
             if( me.floating[name] ) {
@@ -414,7 +389,9 @@ Seats.move = func {
 
 # restore view
 Seats.restoreexport = func {
-   for( i = 0; i < me.nb_seats; i=i+1 ) {
+   var name = "";
+
+   for( var i = 0; i < me.nb_seats; i=i+1 ) {
         name = me.names[i];
         if( me.theseats.getChild(name).getValue() ) {
             if( me.floating[name] ) {
@@ -441,7 +418,7 @@ Seats.polarisexport = func {
 Menu = {};
 
 Menu.new = func {
-   obj = { parents : [Menu],
+   var obj = { parents : [Menu],
 
            crew : nil,
            fuel : nil,
@@ -476,7 +453,7 @@ Menu.init = func {
 Mooring = {};
 
 Mooring.new = func {
-   obj = { parents : [Mooring],
+   var obj = { parents : [Mooring],
 
            mooring : nil,
            presets : nil,
@@ -484,7 +461,7 @@ Mooring.new = func {
 
            MOORINGSEC : 5.0,
            AIRPORTSEC : 3.0,
-           HARBOURSEC : 1.0,
+           HARBOURSEC : 2.0,
 
            BOATDEG : 0.0001,
 
@@ -513,20 +490,18 @@ Mooring.schedule = func {
 }
 
 Mooring.dialogexport = func {
-   dialog = me.mooring.getChild("dialog").getValue();
+   var harbour = "";
+   var dialog = me.mooring.getChild("dialog").getValue();
    
    # KSFO  Treasure Island ==> KSFO
-   idcomment = split( " ", dialog );
-   moorage = idcomment[0];
+   var idcomment = split( " ", dialog );
+   var moorage = idcomment[0];
 
-   for(i=0; i<size(me.seaplanes); i=i+1) {
+   for(var i=0; i<size(me.seaplanes); i=i+1) {
        harbour = me.seaplanes[ i ].getChild("airport-id").getValue();
 
        if( harbour == moorage ) {
            me.setmoorage( i, moorage );
-
-           me.presets.getChild("altitude-ft").setValue(-9999);
-           me.presets.getChild("airspeed-kt").setValue(0);
 
            setprop("/sim/tower/airport-id",moorage);
            break;
@@ -535,21 +510,28 @@ Mooring.dialogexport = func {
 }
 
 Mooring.setmoorage = func( index, moorage ) {
-    latitudedeg = me.seaplanes[ index ].getChild("latitude-deg").getValue();
+    var latitudedeg = me.seaplanes[ index ].getChild("latitude-deg").getValue();
+    var longitudedeg = me.seaplanes[ index ].getChild("longitude-deg").getValue();
+    var headingdeg = me.seaplanes[ index ].getChild("heading-deg").getValue();
+
     me.presets.getChild("latitude-deg").setValue(latitudedeg);
-    longitudedeg = me.seaplanes[ index ].getChild("longitude-deg").getValue();
     me.presets.getChild("longitude-deg").setValue(longitudedeg);
 
     me.setboatposition( latitudedeg, longitudedeg, moorage );
 
-    headingdeg = me.seaplanes[ index ].getChild("heading-deg").getValue();
     me.presets.getChild("heading-deg").setValue(headingdeg);
+
+    # forces the computation of ground
+    me.presets.getChild("altitude-ft").setValue(-9999);
+
+    me.presets.getChild("airspeed-kt").setValue(0);
 
     me.setadf( index, moorage );
 }
 
 Mooring.setadf = func( index, beacon ) {
-   adf = me.seaplanes[ index ].getNode("adf");
+   var frequency = 0.0;
+   var adf = me.seaplanes[ index ].getNode("adf");
 
    if( adf != nil ) {
        frequency = adf.getChild("selected-khz");
@@ -567,8 +549,8 @@ Mooring.setadf = func( index, beacon ) {
 
 Mooring.setboatposition = func( latitudedeg, longitudedeg, airport ) {
    # offset to be outside the hull
-   latitudedeg = latitudedeg + me.BOATDEG;
-   longitudedeg = longitudedeg + me.BOATDEG;
+   var latitudedeg = latitudedeg + me.BOATDEG;
+   var longitudedeg = longitudedeg + me.BOATDEG;
 
    setprop( "/systems/seat/position/boat-view/latitude-deg", latitudedeg );
    setprop( "/systems/seat/position/boat-view/longitude-deg", longitudedeg );
@@ -585,9 +567,9 @@ Mooring.setboatheight = func( altitudeft ) {
 }
 
 Mooring.setboatdefault = func {
-   airport = me.presets.getChild("airport-id").getValue();
-   latitudedeg = getprop("/position/latitude-deg");
-   longitudedeg = getprop("/position/longitude-deg");
+   var airport = me.presets.getChild("airport-id").getValue();
+   var latitudedeg = getprop("/position/latitude-deg");
+   var longitudedeg = getprop("/position/longitude-deg");
 
    me.setboatposition( latitudedeg, longitudedeg, airport );
 
@@ -595,11 +577,11 @@ Mooring.setboatdefault = func {
 }
 
 Mooring.setboatsea = func {
-   altitudeft = getprop("/position/altitude-ft");
-   aglft = getprop("/position/altitude-agl-ft");
+   var altitudeft = getprop("/position/altitude-ft");
+   var aglft = getprop("/position/altitude-agl-ft");
 
    # sea level
-   altitudeft = altitudeft - aglft - constantaero.AGLFT;
+   var altitudeft = altitudeft - aglft - constantaero.AGLFT;
 
    # boat level
    altitudeft = altitudeft + me.BOATFT;
@@ -616,10 +598,15 @@ Mooring.mooragechange = func {
 
 # tower changed by dialog (destination or airport location)
 Mooring.towerchange = func {
-   tower = getprop("/sim/tower/airport-id");
+   var latitudedeg = 0.0;
+   var longitudedeg = 0.0;
+   var altitudeft = 0.0;
+   var harbour = "";
+   var tower = getprop("/sim/tower/airport-id");
+
    if( tower != me.mooring.getChild("boat-id").getValue() ) {
 
-       for(i=0; i<size(me.seaplanes); i=i+1) {
+       for(var i=0; i<size(me.seaplanes); i=i+1) {
            harbour = me.seaplanes[ i ].getChild("airport-id").getValue();
            if( harbour == tower ) {
 
@@ -640,7 +627,8 @@ Mooring.towerchange = func {
 
 # change of airport
 Mooring.presetairport = func {
-   airport = me.presets.getChild("airport-id").getValue();
+   var airport = me.presets.getChild("airport-id").getValue();
+
    if( airport != nil and airport != "" ) {
        settimer(func{ me.presetseaplane(); },me.HARBOURSEC);
    }
@@ -666,14 +654,19 @@ Mooring.presetseaplane = func {
 
 # goes to the harbour, once one has the tower
 Mooring.presetharbour = func {
-   found = constant.FALSE;
+   var aglft = 0.0;
+   var airport = "";
+   var harbour = "";
+   var found = constant.FALSE;
 
    if( getprop("/controls/mooring/automatic") ) {
+       aglft = getprop("/position/altitude-agl-ft");
+
        # on sea
-       if( getprop("/position/altitude-agl-ft") < me.FLIGHTFT ) {
+       if( aglft < me.FLIGHTFT ) {
            airport = me.presets.getChild("airport-id").getValue();
            if( airport != nil and airport != "" ) {
-               for(i=0; i<size(me.seaplanes); i=i+1) {
+               for(var i=0; i<size(me.seaplanes); i=i+1) {
                    harbour = me.seaplanes[ i ].getChild("airport-id").getValue();
 
                    if( harbour == airport ) {
