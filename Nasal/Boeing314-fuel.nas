@@ -3,7 +3,7 @@
 # SCHEDULE : functions ending by schedule are called from cron
 
 # IMPORTANT : always uses /consumables/fuel/tank[0]/level-gal_us,
-# because /level-lb seems not synchronized with level-gal_us, during the time of a procedure.
+# because /level-lbs seems not synchronized with level-gal_us, during the time of a procedure.
 
 
 

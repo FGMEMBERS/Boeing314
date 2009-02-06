@@ -7,7 +7,7 @@
  <h-base>128</h-base>
 
  <params>
-  <content-select>/consumables/fuel/tank[0]/level-lb</content-select>
+  <content-select>/consumables/fuel/tank[0]/level-lbs</content-select>
  </params>
 
  <layers>

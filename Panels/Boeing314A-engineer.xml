@@ -2,7 +2,7 @@
 
 <!-- Boeing 314-A engineer panel.
 
-CAUTION : fuel tanks in 3D panel must use level-lb; otherwise with level-gal_us,
+CAUTION : fuel tanks in 3D panel must use level-lbs; otherwise with level-gal_us,
           all tanks become reset to 0 (even without fuel preset) !
 
 
@@ -80,7 +80,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel-center.xml">
    <name>Tank 5</name>
    <params>
-    <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[4]/level-lbs</content-select>
    </params>
    <x>460</x>
    <y>415</y>
@@ -91,7 +91,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel-sponson.xml">
    <name>Tank 6</name>
    <params>
-    <content-select>/consumables/fuel/tank[5]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[5]/level-lbs</content-select>
    </params>
    <x>400</x>
    <y>415</y>
@@ -102,7 +102,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel-sponson.xml">
    <name>Tank 7</name>
    <params>
-    <content-select>/consumables/fuel/tank[6]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[6]/level-lbs</content-select>
    </params>
    <x>520</x>
    <y>415</y>
@@ -113,7 +113,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 1</name>
    <params>
-    <content-select>/consumables/fuel/tank[0]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[0]/level-lbs</content-select>
    </params>
    <x>370</x>
    <y>355</y>
@@ -124,7 +124,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 2</name>
    <params>
-    <content-select>/consumables/fuel/tank[1]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[1]/level-lbs</content-select>
    </params>
    <x>430</x>
    <y>355</y>
@@ -135,7 +135,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 3</name>
    <params>
-    <content-select>/consumables/fuel/tank[2]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[2]/level-lbs</content-select>
    </params>
    <x>490</x>
    <y>355</y>
@@ -146,7 +146,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 4</name>
    <params>
-    <content-select>/consumables/fuel/tank[3]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[3]/level-lbs</content-select>
    </params>
    <x>550</x>
    <y>355</y>

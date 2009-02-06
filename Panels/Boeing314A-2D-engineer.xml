@@ -136,7 +136,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 1</name>
    <params>
-    <content-select>/consumables/fuel/tank[0]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[0]/level-lbs</content-select>
    </params>
    <x>270</x>
    <y>535</y>
@@ -147,7 +147,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 2</name>
    <params>
-    <content-select>/consumables/fuel/tank[1]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[1]/level-lbs</content-select>
    </params>
    <x>400</x>
    <y>535</y>
@@ -158,7 +158,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 3</name>
    <params>
-    <content-select>/consumables/fuel/tank[2]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[2]/level-lbs</content-select>
    </params>
    <x>530</x>
    <y>535</y>
@@ -169,7 +169,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel.xml">
    <name>Tank 4</name>
    <params>
-    <content-select>/consumables/fuel/tank[3]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[3]/level-lbs</content-select>
    </params>
    <x>660</x>
    <y>535</y>
@@ -180,7 +180,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel-center.xml">
    <name>Tank 5</name>
    <params>
-    <content-select>/consumables/fuel/tank[4]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[4]/level-lbs</content-select>
    </params>
    <x>465</x>
    <y>415</y>
@@ -191,7 +191,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel-sponson.xml">
    <name>Tank 6</name>
    <params>
-    <content-select>/consumables/fuel/tank[5]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[5]/level-lbs</content-select>
    </params>
    <x>335</x>
    <y>415</y>
@@ -202,7 +202,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-fuel-sponson.xml">
    <name>Tank 7</name>
    <params>
-    <content-select>/consumables/fuel/tank[6]/level-lb</content-select>
+    <content-select>/consumables/fuel/tank[6]/level-lbs</content-select>
    </params>
    <x>595</x>
    <y>415</y>
