@@ -4,97 +4,6 @@
 
 
 
-# ========================
-# GROUND DIRECTION FINDING
-# ========================
-
-GDF = {};
-
-GDF.new = func {
-   obj = { parents : [GDF],
-
-           CALLSEC : 120.0,
-
-           waypoints : nil,
-
-           RANGENM : 1500
-         };
-
-   obj.init();
-
-   return obj;
-};
-
-GDF.init = func {
-   me.waypoints = props.globals.getNode("/autopilot/route-manager").getChildren("wp");
-}
-
-GDF.callexport = func {
-   if( !getprop("/instrumentation/gdf/calling") ) {
-       # no waypoint
-       id = me.waypoints[0].getChild("id").getValue();
-       if( id == nil or id == "" ) {
-           state = "Add a waypoint as station"
-       }
-
-       # out of range
-       elsif( getprop("/autopilot/route-manager/wp/dist") > me.RANGENM ) {
-           state = "Station is out of range"
-       }
-
-       else {
-           state = "Calling station operator";
-
-           setprop("/instrumentation/gdf/called",constant.TRUE);
-           setprop("/instrumentation/gdf/calling",constant.TRUE);
-
-           speedup = getprop("/sim/speed-up");
-           delaysec = me.CALLSEC / speedup;
-
-           # schedule the next call
-           settimer(func{ me.callexport(); },delaysec);
-       }
-
-       setprop("/instrumentation/gdf/state",state);
-   }
-
-   elsif( getprop("/instrumentation/gdf/called") ) {
-       id = me.waypoints[0].getChild("id").getValue();
-       if( id != nil ) {
-
-           # magnetic heading for gyro (Sperry)
-           bearingdeg = getprop("/autopilot/settings/true-heading-deg");
-           magdeg = getprop("/environment/magnetic-variation-deg");
-           bearingdeg = bearingdeg - magdeg;
-
-           # north crossing
-           if( bearingdeg < 0 ) {
-               bearingdeg = 360 + bearingdeg;
-           }
-           elsif( bearingdeg > 360 ) {
-               bearingdeg = bearingdeg - 360;
-           }
-
-           # rounding
-           bearingdeg = sprintf( "%3d", bearingdeg );
-
-           setprop("/instrumentation/gdf/heading-deg",bearingdeg);
-
-           # remove seconds
-           reception = getprop("/sim/time/gmt-string");
-           reception = substr( reception, 1, 5 );
-
-           setprop("/instrumentation/gdf/gmt-string",reception);
-           setprop("/instrumentation/gdf/show-paper",constant.TRUE);
-       }
-
-       setprop("/instrumentation/gdf/called",constant.FALSE);
-       setprop("/instrumentation/gdf/calling",constant.FALSE);
-       setprop("/instrumentation/gdf/state","");
-   }
-}
-
-
 # =======
 # SEXTANT
 # =======
@@ -102,13 +11,14 @@ GDF.callexport = func {
 Sextant = {};
 
 Sextant.new = func {
-   obj = { parents : [Sextant]
+   var obj = { parents : [Sextant]
          };
    return obj;
 };
 
 Sextant.polarisexport = func {
-   latdeg = getprop("/position/latitude-deg");
+   var headingdeg = 0.0;
+   var latdeg = getprop("/position/latitude-deg");
 
    # polaris star
    if( latdeg >= 0.0 ) {
@@ -126,6 +36,42 @@ Sextant.polarisexport = func {
 }
 
 
+# =======
+# GENERIC
+# =======
+
+Generic = {};
+
+Generic.new = func {
+   var obj = { parents : [Generic],
+
+           click : nil,
+
+           generic : aircraft.light.new("/instrumentation/generic",[ 1.5,0.2 ])
+         };
+
+   obj.init();
+
+   return obj;
+};
+
+Generic.init = func {
+   me.click = props.globals.getNode("/instrumentation/generic/click");
+
+   me.generic.toggle();
+}
+
+Generic.toggleclick = func {
+   var sound = constant.TRUE;
+
+   if( me.click.getValue() ) {
+       sound = constant.FALSE;
+   }
+
+   me.click.setValue( sound );
+}
+
+
 # =============
 # SPEED UP TIME
 # =============
@@ -133,18 +79,14 @@ Sextant.polarisexport = func {
 DayTime = {};
 
 DayTime.new = func {
-   obj = { parents : [DayTime],
+   var obj = { parents : [DayTime,System],
 
-           altitudenode : nil,
-           thesim : nil,
-           warpnode : nil,
+               SPEEDUPSEC : 1.0,
 
-           SPEEDUPSEC : 1.0,
+               CLIMBFTPMIN : 1000,                                           # average climb rate
+               MAXSTEPFT : 0.0,                                              # altitude change for step
 
-           CLIMBFTPMIN : 1000,                                       # average climb rate
-           MAXSTEPFT : 0.0,                                          # altitude change for step
-
-           lastft : 0.0
+               lastft : 0.0
          };
 
    obj.init();
@@ -153,24 +95,30 @@ DayTime.new = func {
 }
 
 DayTime.init = func {
-    climbftpsec = me.CLIMBFTPMIN / constant.MINUTETOSECOND;
-    me.MAXSTEPFT = climbftpsec * me.SPEEDUPSEC;
+    me.inherit_system("/instrumentation/clock");
 
-    me.altitudenode = props.globals.getNode("/position/altitude-ft");
-    me.thesim = props.globals.getNode("/sim");
-    me.warpnode = props.globals.getNode("/sim/time/warp");
+    var climbftpsec = me.CLIMBFTPMIN / constant.MINUTETOSECOND;
+
+    me.MAXSTEPFT = climbftpsec * me.SPEEDUPSEC;
 }
 
 DayTime.schedule = func {
-   altitudeft = me.altitudenode.getValue();
+   var altitudeft = me.noinstrument["altitude"].getValue();
+   var speedup = me.noinstrument["speed-up"].getValue();
 
-   speedup = me.thesim.getChild("speed-up").getValue();
    if( speedup > 1 ) {
+       var multiplier = 0.0;
+       var offsetsec = 0.0;
+       var warp = 0.0;
+       var stepft = 0.0;
+       var maxft = 0.0;
+       var minft = 0.0;
+
        # accelerate day time
        multiplier = speedup - 1;
        offsetsec = me.SPEEDUPSEC * multiplier;
-       warp = me.warpnode.getValue() + offsetsec; 
-       me.warpnode.setValue(warp);
+       warp = me.noinstrument["warp"].getValue() + offsetsec; 
+       me.noinstrument["warp"].setValue(warp);
 
        # safety
        stepft = me.MAXSTEPFT * speedup;
@@ -179,7 +127,7 @@ DayTime.schedule = func {
 
        # too fast
        if( altitudeft > maxft or altitudeft < minft ) {
-           me.thesim.getChild("speed-up").setValue(1);
+           me.noinstrument["speed-up"].setValue(1);
        }
    }
 

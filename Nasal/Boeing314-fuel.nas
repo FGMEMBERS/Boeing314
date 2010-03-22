@@ -14,7 +14,7 @@
 Fuel = {};
 
 Fuel.new = func {
-   obj = { parents : [Fuel],
+   var obj = { parents : [Fuel],
 
            tanksystem : Tanks.new()
          };
@@ -43,7 +43,7 @@ Tanks = {};
 
 Tanks.new = func {
 # tank contents, to be initialised from XML
-   obj = { parents : [Tanks], 
+   var obj = { parents : [Tanks], 
 
            pumpsystem : Pump.new(),
 
@@ -72,7 +72,9 @@ Tanks.init = func {
 
 # fuel initialization
 Tanks.initcontent = func {
-   for( i=0; i < me.nb_tanks; i=i+1 ) {
+   var densityppg = 0.0;
+
+   for( var i=0; i < me.nb_tanks; i=i+1 ) {
         densityppg = me.tanks[i].getChild("density-ppg").getValue();
         me.CONTENTLB[me.TANKNAME[i]] = me.tanks[i].getChild("capacity-gal_us").getValue() * densityppg;
    }
@@ -80,13 +82,14 @@ Tanks.initcontent = func {
 
 # change by dialog
 Tanks.menu = func {
-   value = getprop("/systems/fuel/tanks/dialog");
-   for( i=0; i < size(me.fillings); i=i+1 ) {
+   var value = getprop("/systems/fuel/tanks/dialog");
+
+   for( var i=0; i < size(me.fillings); i=i+1 ) {
         if( me.fillings[i].getChild("comment").getValue() == value ) {
             me.load( i );
 
             # for aircraft-data
-            setprop("/sim/presets/fuel",i);
+            setprop("/systems/fuel/presets",i);
             break;
         }
    }
@@ -94,8 +97,12 @@ Tanks.menu = func {
 
 # fuel configuration
 Tanks.presetfuel = func {
+   var dialog = "";
+   var value = "";
+
    # default is 0
-   fuel = getprop("/sim/presets/fuel");
+   var fuel = getprop("/systems/fuel/presets");
+
    if( fuel == nil ) {
        fuel = 0;
    }
@@ -115,8 +122,10 @@ Tanks.presetfuel = func {
 }
 
 Tanks.load = func( fuel ) {
-   presets = me.fillings[fuel].getChildren("tank");
-   for( i=0; i < size(presets); i=i+1 ) {
+   var child = nil;
+   var presets = me.fillings[fuel].getChildren("tank");
+
+   for( var i=0; i < size(presets); i=i+1 ) {
         child = presets[i].getChild("level-gal_us");
         if( child != nil ) {
             level = child.getValue();
@@ -140,7 +149,7 @@ Tanks.load = func( fuel ) {
 Pump = {};
 
 Pump.new = func {
-   obj = { parents : [Pump],
+   var obj = { parents : [Pump],
 
            tanks : nil 
          };

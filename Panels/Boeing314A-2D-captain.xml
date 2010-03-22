@@ -165,10 +165,10 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
   <instrument include="Instruments/B314-gdf.xml">
    <name>Ground Direction Finder</name>
-   <x>590</x>
+   <x>560</x>
    <y>195</y>
-   <w>70</w>
-   <h>70</h>
+   <w>88</w>
+   <h>88</h>
   </instrument>
 
   <instrument include="Instruments/B314-clock.xml">

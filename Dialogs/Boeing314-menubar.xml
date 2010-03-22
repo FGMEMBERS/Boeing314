@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <default>
+   <menu n="10">
+     <label>Boeing 314</label>
+      <enabled type="bool">true</enabled>
+      <item>
+       <label>Autopilot</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-autopilot</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Crew</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-crew</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Fuel</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-fuel</dialog-name>
+       </binding>
+      </item>
+      <!--
+      <item>
+       <label>Select Livery</label>
+       <binding>
+        <command>nasal</command>
+        <script>aircraft.livery.dialog.toggle()</script>
+       </binding>
+      </item>
+      -->
+      <item>
+       <label>Moorage</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-moorage</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Procedures</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-procedures</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Voice</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-voice</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Help</label>
+       <binding>
+        <command>nasal</command>
+        <script>gui.showHelpDialog("/sim/help")</script>
+       </binding>
+      </item>
+   </menu>
+  </default>
+
+</PropertyList>

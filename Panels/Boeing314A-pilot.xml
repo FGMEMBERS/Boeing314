@@ -302,9 +302,9 @@ override those by providing <w>..</w> and <h>..</h> properties with the
   <instrument include="Instruments/B314-gdf.xml">
    <name>Ground Direction Finder</name>
    <x>470</x>
-   <y>255</y>
-   <w>35</w>
-   <h>35</h>
+   <y>250</y>
+   <w>44</w>
+   <h>44</h>
   </instrument>
 
 <!-- Copilot left -->

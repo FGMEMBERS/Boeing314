@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-procedures2</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Boeing 314 procedures</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Settings</label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+     <layout>hbox</layout>
+
+     <group>
+      <layout>vbox</layout>
+
+      <checkbox>
+        <label>Copilot</label>
+        <halign>left</halign>
+        <property>/controls/copilot/activ</property>
+        <binding>
+         <command>nasal</command>
+         <script>globals.Boeing314.copilotcrew.toggleexport();</script>
+        </binding>
+      </checkbox>
+     </group>
+
+
+     <group>
+      <layout>vbox</layout>
+
+      <text>
+       <label>AI</label>
+      </text>
+
+      <text>
+       <label></label>
+      </text>
+
+      <checkbox>
+        <label>adjusts gyro  ~</label>
+        <halign>left</halign>
+        <property>/controls/copilot/gyro</property>
+        <binding>
+         <command>property-toggle</command>
+         <property>/controls/copilot/gyro</property>
+        </binding>
+      </checkbox>
+     </group>
+
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+  </group>
+</PropertyList>

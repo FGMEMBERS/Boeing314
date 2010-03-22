@@ -3,7 +3,8 @@
 <PropertyList>
   <name>Boeing314-crew</name>
   <layout>vbox</layout>
-  <width>400</width>
+  <width>450</width>
+
 
   <text>
     <label>Boeing 314 crew</label>
@@ -15,28 +16,45 @@
     <layout>vbox</layout>
 
     <text>
-      <halign>center</halign>
-      <label>Virtual crew</label>
+      <label>Status</label>
     </text>
 
     <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <group>
       <layout>hbox</layout>
 
-      <checkbox>
-        <label>Copilot</label>
-        <halign>left</halign>
-        <property>/controls/crew/copilot</property>
-        <binding>
-         <command>nasal</command>
-         <script>globals.Boeing314.copilotcrew.toggleexport();</script>
-        </binding>
-      </checkbox>
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
 
-      <input>
-        <label>Throttle (kt)</label>
-        <halign>left</halign>
-        <property>/autopilot/settings/target-speed-kt</property>
-      </input>
+       <checkbox>
+         <halign>left</halign>
+         <label>Timeout of display  ~</label>
+         <property>/controls/crew/timeout</property>
+         <binding>
+          <command>property-toggle</command>
+          <property>/controls/crew/timeout</property>
+         </binding>
+       </checkbox>
+      </group>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <input>
+         <halign>left</halign>
+         <property>/controls/crew/timeout-s</property>
+         <label>seconds  ~</label>
+         <binding>
+          <command>dialog-apply</command>
+         </binding>
+       </input>
+      </group>
+     </group>
     </group>
 
     <text>
@@ -71,6 +89,54 @@
       <halign>left</halign>
       <property>/controls/mooring/automatic</property>
     </checkbox>
+
+    <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <group>
+      <layout>hbox</layout>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <checkbox>
+         <halign>left</halign>
+         <label>Head to wind  ~</label>
+         <property>/controls/mooring/wind</property>
+         <binding>
+          <command>property-toggle</command>
+          <property>/controls/mooring/wind</property>
+         </binding>
+       </checkbox>
+      </group>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <input>
+         <halign>left</halign>
+         <property>/controls/mooring/heading-deg</property>
+         <label>degrees  ~</label>
+         <binding>
+          <command>dialog-apply</command>
+         </binding>
+       </input>
+      </group>
+     </group>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <checkbox>
+      <label>Four course radio range of tower  ~</label>
+      <halign>left</halign>
+      <property>/controls/mooring/tower-adf</property>
+    </checkbox>
   </group>
 
   <text>
@@ -83,7 +149,6 @@
 
   <group>
     <layout>hbox</layout>
-    <empty><stretch>true</stretch></empty>
 
     <button>
       <legend>Close</legend>
@@ -97,6 +162,16 @@
       </binding>
     </button>
 
-    <empty><stretch>true</stretch></empty>
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
   </group>
 </PropertyList>

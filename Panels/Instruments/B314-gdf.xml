@@ -26,8 +26,8 @@ Then the radio operator computes the magnetic heading from its approximate posit
    <texture>
     <path>Aircraft/Boeing314/Panels/Instruments/Textures/B314-white-paper.rgb</path>
    </texture>
-   <w>50</w>
-   <h>50</h>
+   <w>40</w>
+   <h>40</h>
    <transformations>
     <transformation>
      <type>rotation</type>
@@ -57,7 +57,7 @@ Then the radio operator computes the magnetic heading from its approximate posit
    <transformations>
     <transformation>
      <type>x-shift</type>
-     <offset>-20</offset>
+     <offset>-10</offset>
     </transformation>
     <transformation>
      <type>y-shift</type>
@@ -91,7 +91,7 @@ Then the radio operator computes the magnetic heading from its approximate posit
    <transformations>
     <transformation>
      <type>x-shift</type>
-     <offset>-7</offset>
+     <offset>-10</offset>
     </transformation>
     <transformation>
      <type>y-shift</type>

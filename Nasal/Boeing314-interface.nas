@@ -15,23 +15,23 @@ Seats = {};
 Seats.new = func {
    var obj = { parents : [Seats],
 
-           sextant : Sextant.new(),
+               sextant : Sextant.new(),
 
-           controls : nil,
-           positions : nil,
-           theseats : nil,
-           theview : nil,
+               controls : nil,
+               positions : nil,
+               theseats : nil,
+               theview : nil,
 
-           lookup : {},
-           names : {},
-           nb_seats : 0,
+               lookup : {},
+               names : {},
+               nb_seats : 0,
 
-           CAPTINDEX : 0,
+               CAPTINDEX : 0,
 
-           floating : {},
-           recoverfloating : constant.FALSE,
-           last_recover : {},
-           initial : {}
+               floating : {},
+               recoverfloating : constant.FALSE,
+               last_recover : {},
+               initial : {}
          };
 
    obj.init();
@@ -56,6 +56,10 @@ Seats.init = func {
             name = me.theviews[i].getChild("name").getValue();
             if( name == "Engineer View" ) {
                 me.save_lookup("engineer", i);
+            }
+            elsif( name == "Navigator View" ) {
+                me.save_lookup("navigator", i);
+                me.save_initial( "navigator", me.theviews[i] );
             }
             elsif( name == "Radio View" ) {
                 me.save_lookup("radio", i);
@@ -402,6 +406,36 @@ Seats.restoreexport = func {
    }
 }
 
+# restore view pitch
+Seats.restorepitchexport = func {
+   var index = getprop("/sim/current-view/view-number");
+
+   if( index == me.CAPTINDEX ) {
+       var headingdeg = me.theviews[index].getNode("config").getChild("heading-offset-deg").getValue();
+       var pitchdeg = me.theviews[index].getNode("config").getChild("pitch-offset-deg").getValue();
+
+       setprop("/sim/current-view/heading-offset-deg", headingdeg );
+       setprop("/sim/current-view/pitch-offset-deg", pitchdeg );
+   }
+
+   # only cockpit views
+   else {
+       var name = "";
+
+       for( var i = 0; i < me.nb_seats; i=i+1 ) {
+            name = me.names[i];
+            if( me.theseats.getChild(name).getValue() ) {
+                var headingdeg = me.theviews[index].getNode("config").getChild("heading-offset-deg").getValue();
+                var pitchdeg = me.theviews[index].getNode("config").getChild("pitch-offset-deg").getValue();
+
+                setprop("/sim/current-view/heading-offset-deg", headingdeg );
+                setprop("/sim/current-view/pitch-offset-deg", pitchdeg );
+                break;
+            }
+        }
+   }
+}
+
 Seats.polarisexport = func {
     if( !me.theseats.getChild("celestial").getValue() ) {
         me.viewexport("celestial");
@@ -420,11 +454,14 @@ Menu = {};
 Menu.new = func {
    var obj = { parents : [Menu],
 
-           crew : nil,
-           fuel : nil,
-           gdf : nil,
-           menu : nil,
-           moorage : nil
+               autopilot : nil,
+               crew : nil,
+               fuel : nil,
+               gdf : nil,
+               menu : nil,
+               moorage : nil,
+               procedures : {},
+               voice : {}
          };
 
    obj.init();
@@ -435,6 +472,8 @@ Menu.new = func {
 Menu.init = func {
    me.menu = gui.Dialog.new("/sim/gui/dialogs/Boeing314/menu/dialog",
                             "Aircraft/Boeing314/Dialogs/Boeing314-menu.xml");
+   me.autopilot = gui.Dialog.new("/sim/gui/dialogs/Boeing314/autopilot/dialog",
+                                 "Aircraft/Boeing314/Dialogs/Boeing314-autopilot.xml");
    me.crew = gui.Dialog.new("/sim/gui/dialogs/Boeing314/crew/dialog",
                             "Aircraft/Boeing314/Dialogs/Boeing314-crew.xml");
    me.gdf = gui.Dialog.new("/sim/gui/dialogs/Boeing314/gdf/dialog",
@@ -443,255 +482,367 @@ Menu.init = func {
                             "Aircraft/Boeing314/Dialogs/Boeing314-fuel.xml");
    me.moorage = gui.Dialog.new("/sim/gui/dialogs/Boeing314/moorage/dialog",
                                "Aircraft/Boeing314/Dialogs/Boeing314-moorage.xml");
+
+   me.array( me.procedures, 2, "procedures" );
+   me.array( me.voice, 2, "voice" );
+}
+
+Menu.array = func( table, max, name ) {
+    var j = 0;
+
+    for( var i = 0; i < max; i=i+1 ) {
+       if( j == 0 ) {
+           j = "";
+       }
+       else {
+           j = i + 1;
+       }
+
+       table[i] = gui.Dialog.new("/sim/gui/dialogs/Boeing314/" ~ name ~ "[" ~ i ~ "]/dialog",
+                                 "Aircraft/Boeing314/Dialogs/Boeing314-" ~ name ~ j ~ ".xml");
+    }
 }
 
 
-# =================
-# AUTOMATIC MOORING
-# =================
+# ========
+# CREW BOX
+# ========
 
-Mooring = {};
+Crewbox = {};
 
-Mooring.new = func {
-   var obj = { parents : [Mooring],
+Crewbox.new = func {
+   var obj = { parents : [Crewbox],
 
-           mooring : nil,
-           presets : nil,
-           seaplanes : nil,
+               MENUSEC : 3.0,
 
-           MOORINGSEC : 5.0,
-           AIRPORTSEC : 3.0,
-           HARBOURSEC : 2.0,
+               timers : 0.0,
 
-           BOATDEG : 0.0001,
+               copilot : nil,
+               copilotcontrol : nil,
+               crew : nil,
+               crewcontrols : nil,
+               engineercontrol : nil,
+               voice : nil,
 
-           FLIGHTFT : 20,
-           BOATFT : 10,                                            # crew in a boat
-           
-           boataltitude : constant.FALSE
+# left bottom, 1 line, 10 seconds.
+               BOXX : 10,
+               BOXY : 34,
+               BOTTOMY : -768,
+               LINEY : 20,
+
+               lineindex : { "speedup" : 0, "checklist" : 1, "engineer" : 2, "copilot" : 3 },
+               lasttext : [ "", "", "", "" ],
+               textbox : [ nil, nil, nil, nil ],
+               nblines : 4
          };
+
+    obj.init();
+
+    return obj;
+};
+
+Crewbox.init = func {
+    me.copilot = props.globals.getNode("/systems/copilot");
+    me.copilotcontrol = props.globals.getNode("/controls/copilot");
+    me.crew = props.globals.getNode("/systems/crew");
+    me.crewcontrols = props.globals.getNode("/controls/crew");
+    me.engineer = props.globals.getNode("/systems/engineer");
+    me.engineercontrol = props.globals.getNode("/controls/engineer");
+    me.voice = props.globals.getNode("/systems/voice");
+ 
+
+    me.resize();
+
+    setlistener("/sim/startup/ysize", crewboxresizecron);
+    setlistener("/sim/speed-up", crewboxcron);
+    setlistener("/sim/freeze/master", crewboxcron);
+}
+
+Crewbox.resize = func {
+    var y = 0;
+    var ysize = - getprop("/sim/startup/ysize");
+
+    if( ysize == nil ) {
+        ysize = me.BOTTOMY;
+    }
+
+    # must clear the text, otherwise text remains after close
+    me.clear();
+
+    for( var i = 0; i < me.nblines; i = i+1 ) {
+         # starts at 700 if height is 768
+         y = ysize + me.BOXY + me.LINEY * i;
+
+         # not really deleted
+         if( me.textbox[i] != nil ) {
+             me.textbox[i].close();
+         }
+
+         # CAUTION : duration is 0 (infinite), or one must wait that the text vanishes device;
+         # otherwise, overwriting the text makes the view popup tip always visible !!!
+         me.textbox[i] = screen.window.new( me.BOXX, y, 1, 0 );
+    }
+
+    me.crewtext();
+    me.pausetext();
+}
+
+Crewbox.pausetext = func {
+    var index = me.lineindex["speedup"];
+    var speedup = 0.0;
+    var red = constant.FALSE;
+    var text = "";
+
+    if( getprop("/sim/freeze/master") ) {
+        text = "pause";
+    }
+    else {
+        speedup = getprop("/sim/speed-up");
+        if( speedup > 1 ) {
+            text = sprintf( speedup, "3f.0" ) ~ "  t";
+        }
+        red = constant.TRUE;
+    }
+
+    me.sendpause( index, red, text );
+}
+
+crewboxresizecron = func {
+    crewscreen.resize();
+}
+
+crewboxcron = func {
+    crewscreen.pausetext();
+}
+
+Crewbox.minimizeexport = func {
+    var value = me.crew.getChild("minimized").getValue();
+
+    me.crew.getChild("minimized").setValue(!value);
+
+    me.resettimer();
+}
+
+Crewbox.toggleexport = func {
+    # 2D feedback
+    if( !getprop("/systems/human/serviceable") ) {
+        me.crew.getChild("minimized").setValue(constant.FALSE);
+        me.resettimer();
+    }
+
+    # to accelerate display
+    me.crewtext();
+}
+
+Crewbox.schedule = func {
+    # timeout on text box
+    if( me.crewcontrols.getChild("timeout").getValue() ) {
+        me.timers = me.timers + me.MENUSEC;
+        if( me.timers >= me.timeoutsec() ) {
+            me.crew.getChild("minimized").setValue(constant.TRUE);
+        }
+    }
+
+    me.crewtext();
+}
+
+Crewbox.timeoutsec = func {
+    var result = me.crewcontrols.getChild("timeout-s").getValue();
+
+    if( result < me.MENUSEC ) {
+        result = me.MENUSEC;
+    }
+
+    return result;
+}
+
+Crewbox.resettimer = func {
+    me.timers = 0.0;
+
+    me.crewtext();
+}
+
+Crewbox.crewtext = func {
+    if( !me.crew.getChild("minimized").getValue() or
+        !me.crewcontrols.getChild("timeout").getValue() ) {
+        me.checklisttext();
+        me.copilottext();
+        me.engineertext();
+    }
+    else {
+        me.clearcrew();
+    }
+}
+
+Crewbox.checklisttext = func {
+    var white = constant.FALSE;
+    var text = me.voice.getChild("callout").getValue();
+    var text2 = me.voice.getChild("checklist").getValue();
+    var text = "";
+    var text2 = "";
+    var index = me.lineindex["checklist"];
+
+    if( text2 != "" ) {
+        text = text2 ~ " " ~ text;
+        white = me.voice.getChild("real").getValue();
+    }
+
+    # real checklist is white
+    me.sendtext( index, constant.TRUE, white, text );
+}
+
+Crewbox.copilottext = func {
+    var green = constant.FALSE;
+    var text = me.copilot.getChild("state").getValue();
+    var index = me.lineindex["copilot"];
+
+    if( text == "" ) {
+        if( me.copilotcontrol.getChild("activ").getValue() ) {
+            text = "copilot";
+        }
+    }
+
+    if( me.copilot.getChild("activ").getValue() ) {
+        green = constant.TRUE;
+    }
+
+    me.sendtext( index, green, constant.FALSE, text );
+}
+
+Crewbox.engineertext = func {
+    var green = me.engineer.getChild("activ").getValue();
+    var text = me.engineer.getChild("state").getValue();
+    var index = me.lineindex["engineer"];
+
+    if( text == "" ) {
+        if( me.engineercontrol.getChild("activ").getValue() ) {
+            text = "engineer";
+        }
+    }
+
+    me.sendtext( index, green, constant.FALSE, text );
+}
+
+Crewbox.sendtext = func( index, green, white, text ) {
+    var box = me.textbox[index];
+
+    me.lasttext[index] = text;
+
+    # bright white
+    if( white ) {
+        box.write( text, 1.0, 1.0, 1.0 );
+    }
+
+    # dark green
+    elsif( green ) {
+        box.write( text, 0, 0.7, 0 );
+    }
+
+    # dark yellow
+    else {
+        box.write( text, 0.7, 0.7, 0 );
+    }
+}
+
+Crewbox.sendpause = func( index, red, text ) {
+    var box = me.textbox[index];
+
+    me.lasttext[index] = text;
+
+    # bright red
+    if( red ) {
+        box.write( text, 1.0, 0, 0 );
+    }
+    # bright yellow
+    else {
+        box.write( text, 1.0, 1.0, 0 );
+    }
+}
+
+Crewbox.clearcrew = func {
+    for( var i = 1; i < me.nblines; i = i+1 ) {
+         if( me.lasttext[i] != "" ) {
+             me.lasttext[i] = "";
+             me.textbox[i].write( me.lasttext[i], 0, 0, 0 );
+         }
+    }
+}
+
+Crewbox.clear = func {
+    for( var i = 0; i < me.nblines; i = i+1 ) {
+         if( me.lasttext[i] != "" ) {
+             me.lasttext[i] = "";
+             me.textbox[i].write( me.lasttext[i], 0, 0, 0 );
+         }
+    }
+}
+
+
+# =========
+# VOICE BOX
+# =========
+
+Voicebox = {};
+
+Voicebox.new = func {
+   var obj = { parents : [Voicebox,System],
+
+               seetext : constant.TRUE,
+
+# centered in the vision field, 1 line, 10 seconds.
+               textbox : screen.window.new( nil, -200, 1, 10 )
+   };
 
    obj.init();
 
    return obj;
-};
-
-Mooring.init = func {
-   me.mooring = props.globals.getNode("/systems/mooring");
-   me.presets = props.globals.getNode("/sim/presets");
-   me.seaplanes = props.globals.getNode("/systems/mooring/route").getChildren("seaplane");
-
-   me.presetseaplane();
 }
 
-Mooring.schedule = func {
-   me.towerchange();
-   me.mooragechange();
+Voicebox.init = func {
+   me.inherit_system("/systems/voice");
 }
 
-Mooring.dialogexport = func {
-   var harbour = "";
-   var dialog = me.mooring.getChild("dialog").getValue();
-   
-   # KSFO  Treasure Island ==> KSFO
-   var idcomment = split( " ", dialog );
-   var moorage = idcomment[0];
+Voicebox.schedule = func {
+   me.seetext = me.itself["root-ctrl"].getChild("text").getValue();
+}
 
-   for(var i=0; i<size(me.seaplanes); i=i+1) {
-       harbour = me.seaplanes[ i ].getChild("airport-id").getValue();
+Voicebox.textexport = func {
+   var feedback = "";
 
-       if( harbour == moorage ) {
-           me.setmoorage( i, moorage );
-
-           setprop("/sim/tower/airport-id",moorage);
-           break;
-       }
+   if( me.seetext ) {
+       feedback = "crew text off";
+       me.seetext = constant.FALSE;
    }
-}
-
-Mooring.setmoorage = func( index, moorage ) {
-    var latitudedeg = me.seaplanes[ index ].getChild("latitude-deg").getValue();
-    var longitudedeg = me.seaplanes[ index ].getChild("longitude-deg").getValue();
-    var headingdeg = me.seaplanes[ index ].getChild("heading-deg").getValue();
-
-    me.presets.getChild("latitude-deg").setValue(latitudedeg);
-    me.presets.getChild("longitude-deg").setValue(longitudedeg);
-
-    me.setboatposition( latitudedeg, longitudedeg, moorage );
-
-    me.presets.getChild("heading-deg").setValue(headingdeg);
-
-    # forces the computation of ground
-    me.presets.getChild("altitude-ft").setValue(-9999);
-
-    me.presets.getChild("airspeed-kt").setValue(0);
-
-    me.setadf( index, moorage );
-}
-
-Mooring.setadf = func( index, beacon ) {
-   var frequency = 0.0;
-   var adf = me.seaplanes[ index ].getNode("adf");
-
-   if( adf != nil ) {
-       frequency = adf.getChild("selected-khz");
-       if( frequency != nil ) {
-           frequencykz = frequency.getValue();
-           setprop("/instrumentation/adf/frequencies/selected-khz",frequencykz);
-       }
-       frequency = adf.getChild("standby-khz");
-       if( frequency != nil ) {
-           frequencykz = frequency.getValue();
-           setprop("/instrumentation/adf/frequencies/standby-khz",frequencykz);
-       }
-   }
-}
-
-Mooring.setboatposition = func( latitudedeg, longitudedeg, airport ) {
-   # offset to be outside the hull
-   var latitudedeg = latitudedeg + me.BOATDEG;
-   var longitudedeg = longitudedeg + me.BOATDEG;
-
-   setprop( "/systems/seat/position/boat-view/latitude-deg", latitudedeg );
-   setprop( "/systems/seat/position/boat-view/longitude-deg", longitudedeg );
-
-   me.mooring.getChild("boat-id").setValue(airport);
-
-   me.boataltitude = constant.TRUE;
-}
-
-Mooring.setboatheight = func( altitudeft ) {
-   setprop( "/systems/seat/position/boat-view/altitude-ft", altitudeft );
-
-   me.boataltitude = constant.FALSE;
-}
-
-Mooring.setboatdefault = func {
-   var airport = me.presets.getChild("airport-id").getValue();
-   var latitudedeg = getprop("/position/latitude-deg");
-   var longitudedeg = getprop("/position/longitude-deg");
-
-   me.setboatposition( latitudedeg, longitudedeg, airport );
-
-   me.setboatsea();
-}
-
-Mooring.setboatsea = func {
-   var altitudeft = getprop("/position/altitude-ft");
-   var aglft = getprop("/position/altitude-agl-ft");
-
-   # sea level
-   var altitudeft = altitudeft - aglft - constantaero.AGLFT;
-
-   # boat level
-   altitudeft = altitudeft + me.BOATFT;
-
-   me.setboatheight( altitudeft );
-}
-
-# computes boat altitude, once seaplane on the water
-Mooring.mooragechange = func {
-   if( me.boataltitude ) {
-       me.setboatsea();
-   }
-}
-
-# tower changed by dialog (destination or airport location)
-Mooring.towerchange = func {
-   var latitudedeg = 0.0;
-   var longitudedeg = 0.0;
-   var altitudeft = 0.0;
-   var harbour = "";
-   var tower = getprop("/sim/tower/airport-id");
-
-   if( tower != me.mooring.getChild("boat-id").getValue() ) {
-
-       for(var i=0; i<size(me.seaplanes); i=i+1) {
-           harbour = me.seaplanes[ i ].getChild("airport-id").getValue();
-           if( harbour == tower ) {
-
-               # boat corresponding to the tower
-               latitudedeg = me.seaplanes[ i ].getChild("latitude-deg").getValue();
-               longitudedeg = me.seaplanes[ i ].getChild("longitude-deg").getValue();
-
-               me.setboatposition( latitudedeg, longitudedeg, tower );
-
-               # rough guess of boat altitude from tower !
-               altitudeft = getprop("/sim/tower/altitude-ft" );
-               me.setboatheight( altitudeft );
-               break;
-           }
-       }
-   }
-}
-
-# change of airport
-Mooring.presetairport = func {
-   var airport = me.presets.getChild("airport-id").getValue();
-
-   if( airport != nil and airport != "" ) {
-       settimer(func{ me.presetseaplane(); },me.HARBOURSEC);
-   }
-
-   # unchanged
    else {
-       settimer(func{ me.presetairport(); },me.AIRPORTSEC);
+       feedback = "crew text on";
+       me.seetext = constant.TRUE;
    }
+
+   me.sendtext( feedback, !me.seetext, constant.FALSE, constant.TRUE );
+   me.itself["root-ctrl"].getChild("text").setValue(me.seetext);
+
+   return feedback;
 }
 
-# automatic seaplane preset
-Mooring.presetseaplane = func {
-   # wait for end of trim
-   if( getprop("/sim/sceneryloaded") ) {
-       settimer(func{ me.presetharbour(); },me.HARBOURSEC);
-   }
-
-   # wait for end of initialization
-   else {
-       settimer(func{ me.presetseaplane(); },me.HARBOURSEC);
-   }
+Voicebox.is_on = func {
+   return me.seetext;
 }
 
-# goes to the harbour, once one has the tower
-Mooring.presetharbour = func {
-   var aglft = 0.0;
-   var airport = "";
-   var harbour = "";
-   var found = constant.FALSE;
-
-   if( getprop("/controls/mooring/automatic") ) {
-       aglft = getprop("/position/altitude-agl-ft");
-
-       # on sea
-       if( aglft < me.FLIGHTFT ) {
-           airport = me.presets.getChild("airport-id").getValue();
-           if( airport != nil and airport != "" ) {
-               for(var i=0; i<size(me.seaplanes); i=i+1) {
-                   harbour = me.seaplanes[ i ].getChild("airport-id").getValue();
-
-                   if( harbour == airport ) {
-                       me.setmoorage( i, airport );
-
-                       fgcommand("presets-commit", props.Node.new());
-
-                       # presets cuts the engines
-                       var eng = props.globals.getNode("/controls/engines");
-                       if (eng != nil) {
-                           foreach (var c; eng.getChildren("engine")) {
-                                    c.getNode("magnetos", 1).setIntValue(3);
-                           }
-                       }
-
-                       found = constant.TRUE;
-                       break;
-                   }
-               }
-           }
+Voicebox.sendtext = func( text, engineer = 0, captain = 0, force = 0 ) {
+   if( me.seetext or force ) {
+       # bright blue
+       if( engineer ) {
+           me.textbox.write( text, 0, 1, 1 );
        }
-   }
 
-   # in flight
-   if( !found ) {
-       me.setboatdefault();
+       # bright yellow
+       elsif( captain ) {
+           me.textbox.write( text, 1, 1, 0 );
+       }
+
+       # bright green
+       else {
+           me.textbox.write( text, 0, 1, 0 );
+       }
    }
 }

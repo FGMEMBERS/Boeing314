@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+
+<!-- 
+     Panels :
+     all panels are 1024x512, i.e. surface must have width/height = 2/1, to keep the scale of instruments.
+-->
+
+<PropertyList>
+
+ <!-- ======================================= -->
+ <!-- panel models (X/Y/Z depth/width/height) -->
+ <!-- ======================================= -->
+
+ <!-- PILOT -->
+
+  <panel>
+   <name>Panel2DPilot</name>
+   <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
+   <bottom-left>
+    <x-m>-10.94</x-m>
+    <y-m>-0.950</y-m>
+    <z-m> 0.3675</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-10.94</x-m>
+    <y-m> 0.955</y-m>
+    <z-m> 0.3675</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-11.14</x-m>
+    <y-m>-0.950</y-m>
+    <z-m> 1.32</z-m>
+   </top-left>
+  </panel>
+
+ <!-- OVERHEAD -->
+
+  <panel>
+   <name>Panel2DOverhead</name>
+   <path>Aircraft/Boeing314/Panels/Boeing314A-overhead.xml</path>
+   <bottom-left>
+    <x-m>-11.0825</x-m>
+    <y-m>-0.610</y-m>
+    <z-m> 1.59</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-11.0825</x-m>
+    <y-m> 1.295</y-m>
+    <z-m> 1.59</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-10.18</x-m>
+    <y-m>-0.610</y-m>
+    <z-m> 1.69</z-m>
+   </top-left>
+  </panel>
+
+ <!-- ENGINEER -->
+
+  <panel>
+   <name>Panel2DEngineer</name>
+   <path>Aircraft/Boeing314/Panels/Boeing314A-engineer.xml</path>
+   <bottom-left>
+    <x-m>-6.98</x-m>
+    <y-m> 1.49</y-m>
+    <z-m> 0.84</z-m>
+   </bottom-left>
+   <bottom-right>
+    <x-m>-5.78</x-m>
+    <y-m> 1.49</y-m>
+    <z-m> 0.84</z-m>
+   </bottom-right>
+   <top-left>
+    <x-m>-6.98</x-m>
+    <y-m> 1.49</y-m>
+    <z-m> 1.44</z-m>
+   </top-left>
+  </panel>
+
+
+<!-- =========== -->
+<!-- Instruments -->
+<!-- =========== -->
+
+<!-- seats -->
+
+ <model>
+  <name>Pilot seat</name>
+  <path>Aircraft/Boeing314/Instruments/seat/pilot.xml</path>
+  <offsets>
+   <x-m>-10.00</x-m>
+   <y-m>-0.605</y-m>
+   <z-m> 0.32</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Copilot seat</name>
+  <path>Aircraft/Boeing314/Instruments/seat/pilot.xml</path>
+  <offsets>
+   <x-m>-10.00</x-m>
+   <y-m> 0.605</y-m>
+   <z-m> 0.32</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Radio seat</name>
+  <path>Aircraft/Boeing314/Instruments/seat/radio.xml</path>
+  <offsets>
+   <x-m>-7.422</x-m>
+   <y-m> 0.88</y-m>
+   <z-m> 0.17</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Engineer seat</name>
+  <path>Aircraft/Boeing314/Instruments/seat/engineer.xml</path>
+  <offsets>
+   <x-m>-6.619</x-m>
+   <y-m> 0.811</y-m>
+   <z-m> 0.17</z-m>
+  </offsets>
+ </model>
+
+<!-- radio -->
+
+ <model>
+  <name>Radio</name>
+  <path>Aircraft/Instruments-3d/kx165/kx165-1.xml</path>
+  <offsets>
+   <x-m>-8.295</x-m>
+   <y-m> 0.95</y-m>
+   <z-m> 1.10</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>ADF</name>
+  <path>Aircraft/Instruments-3d/ADF-462/ctl62-adf.xml</path>
+  <offsets>
+   <x-m>-8.285</x-m>
+   <y-m> 0.95</y-m>
+   <z-m> 1.00</z-m>
+  </offsets>
+ </model>
+
+<!-- engineer -->
+
+ <model>
+  <name>Cylinder</name>
+  <path>Aircraft/Boeing314/Instruments/table/cylinder.xml</path>
+  <offsets>
+   <x-m>-6.575</x-m>
+   <y-m> 1.445</y-m>
+   <z-m> 0.801</z-m>
+  </offsets>
+ </model>
+
+<!-- sextant -->
+
+ <model>
+  <name>Bubble_sextant</name>
+  <path>Aircraft/Boeing314/Instruments/BubbleSextant/RAF_Mk9_bubble_sextant.xml</path>
+  <offsets>
+   <x-m> -3.49 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  1.72 </z-m>
+  </offsets>
+ </model>
+
+</PropertyList>

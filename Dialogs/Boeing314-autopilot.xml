@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-autopilot</name>
+  <layout>vbox</layout>
+  <width>300</width>
+
+  <text>
+    <label>Boeing314 autopilot</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+
+    <input>
+      <label>Throttle (kt)</label>
+      <halign>left</halign>
+      <property>/autopilot/settings/target-speed-kt</property>
+      <live>true</live>
+      <binding>
+       <command>dialog-apply</command>
+      </binding>
+    </input>
+
+    <text>
+      <label></label>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Virtual copilot is holding throttle</label>
+      <property>/systems/copilot/throttle</property>
+       <live>true</live>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.copilotcrew.throttleexport();</script>
+      </binding>
+    </checkbox>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Menu</legend>
+    <key>m</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+  </group>
+</PropertyList>

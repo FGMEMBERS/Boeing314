@@ -6,11 +6,17 @@
      1.1               November 2005              3D cockpit.
                                                   Hydrodynamics.
      1.2               April 2006                 Celestial view. 
-     1.3               August 2007                Textured cockpit.
+     1.3               September 2007             Textured cockpit.
                                                   Observer and boat views.
-                                                  Sextant.
+                                                  Sextant pointing.
                                                   VRP at nose.
-                                                  Virtual copilot, menu.
+                                                  Virtual copilot holds throttle and aligns
+                                                  gyro.
+                                                  Menu.
+     1.4               March 2010                 3D seats, engineer levers and sextant.
+                                                  Navigator view.
+                                                  Sponson lift and anchor.
+                                                  Voice callouts (wind only).
      ==========================================================================================
 -->
 
@@ -21,7 +27,7 @@
 
   <description>Boeing 314-A</description>
   <status>early-production</status>
-  <aircraft-version>1.3</aircraft-version>
+  <aircraft-version>1.4</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>
@@ -29,12 +35,6 @@
 
   <flight-model>jsb</flight-model>
   <aero>Boeing314A</aero>
-
-<!-- fuel load saved on exit -->
-
-  <presets>
-   <fuel type="int">0</fuel>
-  </presets>
 
   <systems>
    <autopilot>
@@ -52,7 +52,7 @@
   <sound>
    <audible>true</audible>
    <path>Aircraft/Boeing314/Sounds/Boeing314-sound.xml</path>
-<!--
+<!-- select the sound file
    <path>Aircraft/Boeing314/Sounds/Boeing314-b17-sound.xml</path>
 -->
   </sound>
@@ -69,7 +69,17 @@
    <path>Aircraft/Boeing314/Models/Boeing314Clipper.xml</path>
   </model> 
 
+<!-- compensates the shift of VRP at nose -->
+
+  <airport>
+   <runways>
+    <start-offset-m>12.0</start-offset-m>
+   </runways>
+  </airport>
+
   <chase-distance-m type="double" archive="y">-50.0</chase-distance-m>
+
+  <menubar include="Dialogs/Boeing314-menubar.xml"/>
 
   <help include="help.xml"/>
 
@@ -78,17 +88,38 @@
  <consumables>
   <fuel include="Systems/Boeing314A-init-fuel.xml"/>                  <!-- required by nasal -->
  </consumables>
+ 
+ <limits include="Nasal/Boeing314-limits.xml"/>
 
  <nasal>
   <Boeing314>
+   <file>Aircraft/Generic/limits.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-constants.nas</file>
+   <file>Aircraft/Boeing314/Nasal/Boeing314-hydraulic.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-instrument.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-fuel.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-autopilot.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-interface.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-crew.nas</file>
+   <file>Aircraft/Boeing314/Nasal/Boeing314-copilot.nas</file>
+   <file>Aircraft/Boeing314/Nasal/Boeing314-voice.nas</file>
+   <file>Aircraft/Boeing314/Nasal/Boeing314-marine.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314.nas</file>
+   <file>Aircraft/Boeing314/Nasal/Boeing314-override.nas</file>
   </Boeing314>
+  <RAFmk9sextant>
+   <file>Aircraft/Boeing314/Instruments/BubbleSextant/RAF_Mk9_bubble_sextant.nas</file>
+   <script>
+    var VIEW_NAME = "Celestial View";
+    var STOWED = { position    : {x:  0.04,
+                                  y: -0.37,
+                                  z: -0.41},
+                   orientation : {heading : 0.0,
+                                  pitch   : 0.0,
+                                  roll    : 0.0}
+                 };
+   </script>
+  </RAFmk9sextant>
  </nasal>
 
  <input>
@@ -98,6 +129,16 @@
 
  <systems include="Systems/Boeing314A-init-systems.xml">
  </systems>
+
+ <models>
+  <model>
+   <name>Boat</name>
+   <path>Models\Maritime\Misc\MarkerBuoy.xml</path>
+   <longitude-deg-prop>systems/seat/position/boat-view/longitude-deg</longitude-deg-prop>
+   <latitude-deg-prop>systems/seat/position/boat-view/latitude-deg</latitude-deg-prop>
+   <elevation-ft-prop>systems/seat/position/boat-view/water-ft</elevation-ft-prop>
+  </model>
+ </models>
 
 
 <!-- ============= -->
@@ -160,7 +201,7 @@
 
  <autopilot>
   <settings>
-   <target-speed-kt>110</target-speed-kt>                               <!-- virtual copilot -->
+   <target-speed-kt>150</target-speed-kt>                               <!-- virtual copilot -->
   </settings>
  </autopilot>
 

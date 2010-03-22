@@ -15,6 +15,10 @@
   <hrule><dummy/></hrule>
 
   <text>
+    <property>/sim/tower/airport-id</property>
+  </text>
+
+  <text>
     <label></label>
   </text>
 
@@ -48,24 +52,26 @@
       <value>HSSS  Khartoum</value>
       <value>FZAA  Kinshasa</value>
       <value>DNMM  Lagos</value>
+      <value>LPPT  Lisbon</value>
+      <value>KTOA  Los Angeles (San Pedro)</value>
       <value>KLGA  New York (La Guardia)</value>
       <value>7N3   New York (Port Washington)</value>
-      <value>LPPT  Lisbon</value>
       <value>VMMC  Macau</value>
-      <value>RPLL  Manila</value>
+      <value>RPLS  Manila</value>
       <value>LFML  Marseille</value>
       <value>KMIA  Miami (Dinner Key)</value>
-      <value>PMDY  Midway</value>
+      <value>PMDY  Midway Island</value>
       <value>NWWM  Noumea</value>
       <value>SBNT  Natal</value>
       <value>TTPP  Port of Spain</value>
-      <value>KSFO  San Francisco (Treasure Island)</value>
+      <value>KOAK  San Francisco (Treasure Island)</value>
       <value>KBFI  Seattle (Elliott Bay)</value>
       <value>CYQM  Shediac bay</value>
       <value>EGHI  Southampton</value>
       <value>WRSJ  Surabaya</value>
+      <value>NFNA  Suva</value>
       <value>VCCT  Trincomalee</value>
-      <value>PWAK  Wake</value>
+      <value>PWAK  Wake Island</value>
     </list>
   </group>
 
@@ -79,34 +85,48 @@
 
   <group>
     <layout>hbox</layout>
-    <empty><stretch>true</stretch></empty>
+
+    <group>
+      <layout>hbox</layout>
+      <empty><stretch>true</stretch></empty>
+
+      <button>
+        <legend>OK</legend>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>globals.Boeing314.mooringsystem.dialogexport();</script>
+        </binding>
+        <binding>
+          <command>presets-commit</command>
+        </binding>
+        <binding>
+          <command>dialog-close</command>
+        </binding>
+      </button>
+
+      <button>
+        <legend>Close</legend>
+        <default>true</default>
+        <key>Esc</key>
+        <binding>
+          <command>dialog-close</command>
+        </binding>
+      </button>
+    </group>
 
     <button>
-      <legend>OK</legend>
+      <legend>Menu</legend>
+      <key>m</key>
       <binding>
-        <command>dialog-apply</command>
-      </binding>
-      <binding>
-        <command>nasal</command>
-        <script>globals.Boeing314.mooringsystem.dialogexport();</script>
-      </binding>
-      <binding>
-        <command>presets-commit</command>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-menu</dialog-name>
       </binding>
       <binding>
         <command>dialog-close</command>
       </binding>
     </button>
-
-    <button>
-      <legend>Close</legend>
-      <default>true</default>
-      <key>Esc</key>
-      <binding>
-        <command>dialog-close</command>
-      </binding>
-    </button>
-
-    <empty><stretch>true</stretch></empty>
   </group>
 </PropertyList>

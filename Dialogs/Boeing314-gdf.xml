@@ -39,7 +39,7 @@
       <property>/instrumentation/gdf/called</property>
       <binding>
        <command>nasal</command>
-       <script>globals.Boeing314.GDFinstrument.callexport();</script>
+       <script>globals.Boeing314.GDFcrew.callexport();</script>
       </binding>
     </checkbox>
 
@@ -101,7 +101,6 @@
 
   <group>
     <layout>hbox</layout>
-    <empty><stretch>true</stretch></empty>
 
     <button>
       <legend>Close</legend>
@@ -112,6 +111,16 @@
       </binding>
     </button>
 
-    <empty><stretch>true</stretch></empty>
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
   </group>
 </PropertyList>

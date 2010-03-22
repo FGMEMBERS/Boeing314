@@ -2,7 +2,10 @@
  
 <!-- Boeing 314-A Sperry autopilot : gyro heading and pitch, level knob.
 
-     Copilot emulation by autothrottle.
+
+     Autothrottle and true-heading-hold are test modes (speed-up) :
+     - autothrottle simulates slower human behaviour (virtual copilot).
+     - true-heading-hold is for compatibility with FG behaviour (waypoint input).
 
 
      Known problems:
@@ -17,7 +20,9 @@
   <!-- Roll Axis Modes                                                 -->
   <!-- =============================================================== -->
 
-  <!-- Heading Bug Hold.  3 stage cascade controller. -->
+<!-- .............................................. -->
+<!-- Heading Bug Hold.  3 stage cascade controller. -->
+<!-- .............................................. -->
 
   <!-- Stage #1 sets target roll based on diff between current heading -->
   <!-- and heading bug. -->
@@ -87,6 +92,101 @@
     <enable>
       <prop>/autopilot/locks/heading</prop>
       <value>dg-heading-hold</value>
+    </enable>
+    <input>
+      <prop>/orientation/roll-deg</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/internal/target-roll-deg</prop>
+    </reference>
+    <output>
+      <prop>/controls/flight/rudder</prop>
+    </output>
+    <config>
+      <Kp>0.1</Kp>        <!-- proportional gain -->
+      <beta>1.0</beta>    <!-- input value weighing factor -->
+      <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>  <!-- input value weighing factor for -->
+                          <!-- unfiltered derivative error -->
+      <Ti>10.0</Ti>       <!-- integrator time -->
+      <Td>0.00001</Td>    <!-- derivator time -->
+      <u_min>-0.0025</u_min> <!-- minimum output clamp -->
+      <u_max>0.0025</u_max>  <!-- maximum output clamp -->
+    </config>
+  </pid-controller>
+
+  <!-- ............................................... -->
+  <!-- True Heading hold.  3 stage cascade controller. -->
+  <!-- ............................................... -->
+
+  <!-- Stage #1 sets target roll based on diff between current heading -->
+  <!-- and target heading. -->
+  <pid-controller>
+    <name>True Heading Hold (DG based) Stage 1</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/locks/heading</prop>
+      <value>true-heading-hold</value>
+    </enable>
+    <input>
+      <prop>/autopilot/internal/true-heading-error-deg</prop>
+    </input>
+    <reference>
+      <value>0.0</value>
+    </reference>
+    <output>
+      <prop>/autopilot/internal/target-roll-deg</prop>
+    </output>
+    <config>
+      <Kp>-1.0</Kp>        <!-- proportional gain -->
+      <beta>1.0</beta>     <!-- input value weighing factor -->
+      <alpha>0.1</alpha>   <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>   <!-- input value weighing factor for -->
+                           <!-- unfiltered derivative error -->
+      <Ti>10.0</Ti>        <!-- integrator time -->
+      <Td>0.00001</Td>     <!-- derivator time -->
+      <u_min>-20.0</u_min> <!-- minimum output clamp -->
+      <u_max>20.0</u_max>  <!-- maximum output clamp -->
+    </config>
+  </pid-controller>
+
+  <!-- Stage #2 drives the ailerons to achieve the desired roll deg. -->
+  <pid-controller>
+    <name>True Heading Hold (DG based) Stage 2</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/locks/heading</prop>
+      <value>true-heading-hold</value>
+    </enable>
+    <input>
+      <prop>/orientation/roll-deg</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/internal/target-roll-deg</prop>
+    </reference>
+    <output>
+      <prop>/controls/flight/aileron</prop>
+    </output>
+    <config>
+      <Kp>0.1</Kp>        <!-- proportional gain -->
+      <beta>1.0</beta>    <!-- input value weighing factor -->
+      <alpha>0.1</alpha>  <!-- low pass filter weighing factor -->
+      <gamma>0.0</gamma>  <!-- input value weighing factor for -->
+                          <!-- unfiltered derivative error -->
+      <Ti>10.0</Ti>       <!-- integrator time -->
+      <Td>0.00001</Td>    <!-- derivator time -->
+      <u_min>-1.0</u_min> <!-- minimum output clamp -->
+      <u_max>1.0</u_max>  <!-- maximum output clamp -->
+    </config>
+  </pid-controller>
+
+  <!-- Stage #3 drives the rudder to unlock roll. -->
+  <pid-controller>
+    <name>True Heading Hold (DG based) Stage 3</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/locks/heading</prop>
+      <value>true-heading-hold</value>
     </enable>
     <input>
       <prop>/orientation/roll-deg</prop>
@@ -214,14 +314,14 @@
  <!-- Auto throttle --> 
  <!-- ............. -->
  <pid-controller>
-    <name>Auto Throttle (5 sec lookahead)</name>
+    <name>Auto Throttle (copilot)</name>
     <debug>false</debug>
     <enable>
       <prop>/autopilot/locks/speed</prop>
       <value>speed-with-throttle</value>
     </enable>
     <input>
-      <prop>/autopilot/internal/lookahead-5-sec-airspeed-kt</prop>
+      <prop>/instrumentation/airspeed-indicator/indicated-speed-kt</prop>
     </input>
     <reference>
       <prop>/autopilot/settings/target-speed-kt</prop>

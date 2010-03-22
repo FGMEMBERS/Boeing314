@@ -1,0 +1,38 @@
+Index: mice.xml
+===================================================================
+RCS file: /var/cvs/FlightGear-0.9/data/mice.xml,v
+retrieving revision 1.20
+diff -u -p -r1.20 mice.xml
+--- mice.xml	1 Aug 2007 21:10:04 -0000	1.20
++++ mice.xml	30 Aug 2008 13:52:57 -0000
+@@ -50,6 +50,30 @@ current mode for each mouse is held in t
+     </binding>
+    </button>
+ 
++   <!-- Mouse left/right motion. -->
++   <x-axis>
++    <!-- Alt pressed: sextant control -->
++    <binding>
++     <command>nasal</command>
++     <script>
++      if (props.globals.getNode("/instrumentation/sextant/servicable") != nil)
++          RAFmk9sextant.mouseX();
++     </script>
++    </binding>
++   </x-axis>
++
++   <!-- Mouse up/down motion -->
++   <y-axis>
++    <!-- Alt pressed: sextant control -->
++    <binding>
++     <command>nasal</command>
++     <script>
++      if (props.globals.getNode("/instrumentation/sextant/servicable") != nil)
++          RAFmk9sextant.mouseY();
++     </script>
++    </binding>
++   </y-axis>
++
+   </mode>
+ 
+   <mode n="1">

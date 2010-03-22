@@ -42,6 +42,10 @@
      <desc>floating view up/down</desc>
    </key>
    <key>
+     <name>shift-F12</name>
+     <desc>crew text</desc>
+   </key>
+   <key>
     <name>a/A</name>
     <desc>speed-up</desc>
    </key>
@@ -54,7 +58,7 @@
     <desc>quit speed-up</desc>
    </key>
    <key>
-    <name>s</name>
+    <name>S</name>
     <desc>swaps 2D panel</desc>
    </key>
    <key>
@@ -86,12 +90,20 @@
     <desc>observer view (floating)</desc>
    </key>
    <key>
+    <name>Ctrl-N</name>
+    <desc>navigator view (floating)</desc>
+   </key>
+   <key>
     <name>Ctrl-O</name>
     <desc>radio view</desc>
    </key>
    <key>
     <name>Ctrl-P</name>
     <desc>pitch hold</desc>
+   </key>
+   <key>
+    <name>Ctrl-S</name>
+    <desc>autothrottle (virtual copilot)</desc>
    </key>
    <key>
     <name>Ctrl-T</name>
@@ -102,12 +114,20 @@
     <desc>sextant</desc>
    </key>
    <key>
-    <name>Ctrl-S</name>
-    <desc>virtual copilot</desc>
+    <name>shift-ctrl-V</name>
+    <desc>restore view pitch</desc>
+   </key>
+   <key>
+    <name>Ctrl-W</name>
+    <desc>wind check</desc>
    </key>
    <key>
     <name>shift-ctrl-X</name>
     <desc>restore floating view</desc>
+   </key>
+   <key>
+    <name>Ctrl-Z</name>
+    <desc>virtual crew</desc>
    </key>
 
 
@@ -117,16 +137,18 @@
  ________________________Procedures_________________________
  Parking :
            700 RPM.
+           adjust altimeter.
            align gyro with magnetic compass.
  Taxi :
-           increase pitch on 2 symmetrical engines.
-           turn with pitch on 1 outboard engine.
+           low pitch.
+           turn with throttle on 1 outboard engine.
  Takeoff :
            flaps 1/3, 2400 RPM.
            lift off between 80 kt (full) and 60 kt (empty load).
  Climb :
            retract flaps before 105 kt.
            37.5 inhg, 2300 RPM.
+           150 kt (full), 160 kt (empty).
  Cruise :
            economic : 102 kt at 9000 ft (full), 117 kt at 13400 ft (empty load).
            max : 160 kt.
@@ -134,7 +156,8 @@
            align gyro with magnetic compass.
            listen in four course radio range of destination.
  Descent :
-           idle, max mixture.
+           idle, max pitch.
+           increase mixture with decreasing altitude.
  Approach :
            flaps 1/3 below 105 kt. 
  Landing :

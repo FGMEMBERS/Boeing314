@@ -16,6 +16,18 @@
     <empty><stretch>true</stretch></empty>
 
     <button>
+      <legend>Autopilot</legend>
+      <key>a</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-autopilot</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
       <legend>Crew</legend>
       <key>c</key>
       <binding>
@@ -57,6 +69,30 @@
       <binding>
        <command>dialog-show</command>
        <dialog-name>Boeing314-moorage</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Procedures</legend>
+      <key>p</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-procedures</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Voice</legend>
+      <key>v</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-voice</dialog-name>
       </binding>
       <binding>
         <command>dialog-close</command>

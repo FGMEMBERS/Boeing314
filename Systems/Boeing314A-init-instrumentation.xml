@@ -7,12 +7,45 @@
 
 <PropertyList>
 
+  <clock>
+   <relations>
+    <noinstrument>
+     <altitude>/position/altitude-ft</altitude>
+     <speed-up>/sim/speed-up</speed-up>
+     <warp>/sim/time/warp</warp>
+    </noinstrument>
+   </relations>
+  </clock>
+
   <gdf>
    <called type="bool">false</called>
    <calling type="bool">false</calling>
-   <gmt-string></gmt-string>
-   <heading-deg></heading-deg>
+   <gmt-string type="string"></gmt-string>
+   <heading-deg type="double">0.0</heading-deg>
+
+   <relations>
+    <dependency>
+     <clock>/sim/time/gmt-string</clock>
+     <mag-variation>/environment/magnetic-variation-deg</mag-variation>
+    </dependency>
+
+    <noinstrument>
+     <bearing>/autopilot/settings/true-heading-deg</bearing>
+     <route>/autopilot/route-manager/route</route>
+     <route-manager>/autopilot/route-manager</route-manager>
+     <speed-up>/sim/speed-up</speed-up>
+     <waypoint>
+      <component>/autopilot/route-manager</component>
+      <subcomponent>wp</subcomponent>
+     </waypoint>
+    </noinstrument>
+   </relations>
+
    <show-paper type="bool">false</show-paper>
   </gdf>
+
+  <generic>
+   <factor type="double">1.0</factor>                                      <!-- otherwise material doesn't work with OSG -->
+  </generic>
 
 </PropertyList>

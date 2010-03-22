@@ -29,11 +29,11 @@
 
     Foynes Flying Boat Museum.
 
-(F) http://www3.nf.sympatico.ca/botwood/aviation.htm/
+(F) http://www.virtualmuseum.ca/
 
-    Botwood, Newfoundland.
+    Botwood harbour, Newfoundland.
 
-(G) http://www.bermuda-online.org/aviation.htm/
+(G) http://www.bermuda-online.org/aviation.htm
 
     Bermuda Island.
 
@@ -49,13 +49,17 @@
 
     History of Panam base at Wake Island.
 
-(K) http://www.petan.net/aviation/gdf.htm/
+(K) http://www.petan.net/aviation/gdf.htm
 
     Panam's ground direction finding in the Pacific.
 
 (L) http://www.historylink.org/essays/output.cfm?file_id=3545
 
     Elliott Bay, maiden flight on 7 June 1938.
+
+(M) http://en.wikipedia.org/wiki/Boeing_314
+
+    San Pedro, Suva.
 
 
 (P) Photos at moorage :
@@ -78,8 +82,8 @@
 <!-- (*) is the real moorage.                                              -->
 <!--                                                                       -->
 <!--                                                                       -->
-<!-- NDB : query of 0.9.8 base with http://atlas.sourceforge.net/          -->
-<!-- Latitude/longitude : 0.9.10 scenery.                                  -->
+<!-- References :                                                          -->
+<!-- - Latitude/longitude : 1.0.1 scenery.                                 -->
 <!-- ===================================================================== -->
 
 <!-- .............. -->
@@ -94,15 +98,33 @@
 
    <seaplane n="0">
     <airport-id type="string">KBFI</airport-id>
-    <latitude-deg type="double">47.62242</latitude-deg>
-    <longitude-deg type="double">-122.39022</longitude-deg>
-    <heading-deg type="double">250.0</heading-deg>
 
-<!-- Seattle (Boeing airfield) and Port Angeles -->
+    <location n="0">
+     <latitude-deg type="double">47.58811</latitude-deg>
+     <longitude-deg type="double">-122.36898</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">47.59320</latitude-deg>
+     <longitude-deg type="double">-122.50082</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">47.61929</latitude-deg>
+     <longitude-deg type="double">-122.38124</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">47.60203</latitude-deg>
+     <longitude-deg type="double">-122.34863</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Renton and Dondo -->
 
     <adf>
-     <selected-khz type="int">362</selected-khz>
-     <standby-khz type="int">317</standby-khz>
+     <selected-khz type="int">353</selected-khz>
+     <standby-khz type="int">224</standby-khz>
     </adf>
    </seaplane>
 
@@ -112,39 +134,59 @@
 <!-- 1939.                                                         -->
 <!-- ............................................................. -->
 
-<!-- Treasure Island, Pan Am base at San Francisco Downtown (KSFO) (B).
+<!-- Treasure Island, Pan Am base at San Francisco Downtown (KOAK) (B).
 
      bow towards the bridge (P) (*).
 
-     before the base was at Alameda, left beyond the bridge, on the KOAK shore.
+     before the base was at Alameda (KNGZ), left beyond the bridge, on the KOAK shore.
 -->
 
    <seaplane n="1">
-    <airport-id type="string">KSFO</airport-id>
-    <latitude-deg type="double">37.816241</latitude-deg>
-    <longitude-deg type="double">-122.367233</longitude-deg>
-    <heading-deg type="double">150.0</heading-deg>
+    <airport-id type="string">KOAK</airport-id>
 
-<!-- San Francisco and Oakland -->
+    <location n="0">
+     <latitude-deg type="double">37.81743</latitude-deg>
+     <longitude-deg type="double">-122.36370</longitude-deg>
+     <heading-deg type="int">150</heading-deg>
+    </location>
+
+<!-- Tracy -->
 
     <adf>
-     <selected-khz type="int">379</selected-khz>
-     <standby-khz type="int">341</standby-khz>
+     <selected-khz type="int">203</selected-khz>
     </adf>
    </seaplane>
 
 <!-- Pearl Harbour (Ford Island NPS), Honolulu (PHNL).
 
-     in the largest bay (P).
+     in the largest loch (P).
 -->
 
    <seaplane n="2">
     <airport-id type="string">PHNL</airport-id>
-    <latitude-deg type="double">21.381815</latitude-deg>
-    <longitude-deg type="double">-157.953059</longitude-deg>
-    <heading-deg type="double">205.0</heading-deg>
 
-<!-- Honolulu and Wheeler -->
+    <location n="0">
+     <latitude-deg type="double">21.37628</latitude-deg>
+     <longitude-deg type="double">-157.96512</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">21.381815</latitude-deg>
+     <longitude-deg type="double">-157.953059</longitude-deg>
+     <heading-deg type="int">205</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">21.37788</latitude-deg>
+     <longitude-deg type="double">-157.94512</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">21.37372</latitude-deg>
+     <longitude-deg type="double">-157.94314</longitude-deg>
+     <heading-deg type="int">310</heading-deg>
+    </location>
+
+<!-- Ewabe and Wheeler -->
 
     <adf>
      <selected-khz type="int">242</selected-khz>
@@ -154,14 +196,33 @@
 
 <!-- Midway Island (PMDY).
 
-     in a creek.
+     inside the atoll.
 -->
 
    <seaplane n="3">
     <airport-id type="string">PMDY</airport-id>
-    <latitude-deg type="double">28.20868</latitude-deg>
-    <longitude-deg type="double">-177.36264</longitude-deg>
-    <heading-deg type="double">90.0</heading-deg>
+    <water-ft type="double">-3.0</water-ft>
+
+    <location n="0">
+     <latitude-deg type="double">28.22183</latitude-deg>
+     <longitude-deg type="double">-177.36448</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">28.22183</latitude-deg>
+     <longitude-deg type="double">-177.36448</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">28.24134</latitude-deg>
+     <longitude-deg type="double">-177.34251</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">28.22183</latitude-deg>
+     <longitude-deg type="double">-177.36448</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
 
 <!-- Midway  -->
 
@@ -172,14 +233,32 @@
 
 <!-- Wake Island (PWAK).
 
-     at the end of a pier (there are pictures of it), outside the atoll.
+     inside the lagoon.
 -->
 
    <seaplane n="4">
     <airport-id type="string">PWAK</airport-id>
-    <latitude-deg type="double">19.27102</latitude-deg>
-    <longitude-deg type="double">166.64117</longitude-deg>
-    <heading-deg type="double">210.0</heading-deg>
+
+    <location n="0">
+     <latitude-deg type="double">19.31050</latitude-deg>
+     <longitude-deg type="double">166.60732</longitude-deg>
+     <heading-deg type="int">20</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">19.31093</latitude-deg>
+     <longitude-deg type="double">166.61533</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">19.29089</latitude-deg>
+     <longitude-deg type="double">166.63745</longitude-deg>
+     <heading-deg type="int">315</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">19.29600</latitude-deg>
+     <longitude-deg type="double">166.61513</longitude-deg>
+     <heading-deg type="int">340</heading-deg>
+    </location>
 
 <!-- Wake : no NDB  -->
    </seaplane>
@@ -191,33 +270,63 @@
 
    <seaplane n="5">
     <airport-id type="string">PGUM</airport-id>
-    <latitude-deg type="double">13.48185</latitude-deg>
-    <longitude-deg type="double">144.74940</longitude-deg>
-    <heading-deg type="double">10.0</heading-deg>
 
-<!-- Guam -->
+    <location n="0">
+     <latitude-deg type="double">13.48437</latitude-deg>
+     <longitude-deg type="double">144.74805</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">13.48437</latitude-deg>
+     <longitude-deg type="double">144.74805</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">13.48437</latitude-deg>
+     <longitude-deg type="double">144.74805</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Mt Macajna -->
 
     <adf>
      <selected-khz type="int">385</selected-khz>
     </adf>
    </seaplane>
 
-<!-- Manila (RPLL), the Philippines.
+<!-- Manila (RPLS), the Philippines.
 
-     in the bay.
+     near a peninsula, in the bay.
 -->
 
    <seaplane n="6">
-    <airport-id type="string">RPLL</airport-id>
-    <latitude-deg type="double">14.522143</latitude-deg>
-    <longitude-deg type="double">120.989951</longitude-deg>
-    <heading-deg type="double">280.0</heading-deg>
+    <airport-id type="string">RPLS</airport-id>
 
-<!-- Manila (Rosario) and Subic Bay  -->
+    <location n="0">
+     <latitude-deg type="double">14.48513</latitude-deg>
+     <longitude-deg type="double">120.91493</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">14.48837</latitude-deg>
+     <longitude-deg type="double">120.90969</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">14.49311</latitude-deg>
+     <longitude-deg type="double">120.91596</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">14.47790</latitude-deg>
+     <longitude-deg type="double">120.91939</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Rosario -->
 
     <adf>
      <selected-khz type="int">285</selected-khz>
-     <standby-khz type="int">366</standby-khz>
     </adf>
    </seaplane>
 
@@ -228,9 +337,22 @@
 
    <seaplane n="7">
     <airport-id type="string">VMMC</airport-id>
-    <latitude-deg type="double">22.187680</latitude-deg>
-    <longitude-deg type="double">113.536567</longitude-deg>
-    <heading-deg type="double">160.0</heading-deg>
+
+    <location n="0">
+     <latitude-deg type="double">22.17795</latitude-deg>
+     <longitude-deg type="double">113.53804</longitude-deg>
+     <heading-deg type="int">80</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">22.17795</latitude-deg>
+     <longitude-deg type="double">113.53804</longitude-deg>
+     <heading-deg type="int">170</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">22.17795</latitude-deg>
+     <longitude-deg type="double">113.53804</longitude-deg>
+     <heading-deg type="int">260</heading-deg>
+    </location>
 
 <!-- Macau (Lianshengwei) and Hong Kong  -->
 
@@ -247,15 +369,27 @@
 
    <seaplane n="8">
     <airport-id type="string">VHHH</airport-id>
-    <latitude-deg type="double">22.31700</latitude-deg>
-    <longitude-deg type="double">114.15200</longitude-deg>
-    <heading-deg type="double">215.0</heading-deg>
 
-<!-- Hong Kong and Macau -->
+    <location n="0">
+     <latitude-deg type="double">22.31530</latitude-deg>
+     <longitude-deg type="double">114.05766</longitude-deg>
+     <heading-deg type="int">110</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">22.31300</latitude-deg>
+     <longitude-deg type="double">114.14357</longitude-deg>
+     <heading-deg type="int">215</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">22.30919</latitude-deg>
+     <longitude-deg type="double">114.14292</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Lam Chau -->
 
     <adf>
-     <selected-khz type="int">377</selected-khz>
-     <standby-khz type="int">322</standby-khz>
+     <selected-khz type="int">390</selected-khz>
     </adf>
    </seaplane>
 
@@ -271,48 +405,81 @@
 
    <seaplane n="9">
     <airport-id type="string">PCIS</airport-id>
-    <latitude-deg type="double">-2.78645</latitude-deg>
-    <longitude-deg type="double">-171.71261</longitude-deg>
-    <heading-deg type="double">90.0</heading-deg>
+
+    <location n="0">
+     <latitude-deg type="double">-2.82440</latitude-deg>
+     <longitude-deg type="double">-171.69657</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-2.82100</latitude-deg>
+     <longitude-deg type="double">-171.70309</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">-2.78291</latitude-deg>
+     <longitude-deg type="double">-171.69245</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">-2.81566</latitude-deg>
+     <longitude-deg type="double">-171.64558</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
 
 <!-- Canton : no NDB  -->
    </seaplane>
 
 <!-- Noumea (NWWM), New Caledonia.
 
-     on the island, in front of the harbour.
+     in the harbour.
 -->
 
    <seaplane n="10">
     <airport-id type="string">NWWM</airport-id>
-    <latitude-deg type="double">-22.25978</latitude-deg>
-    <longitude-deg type="double">166.37537</longitude-deg>
-    <heading-deg type="double">260.0</heading-deg>
 
-<!-- Noumea and Ile des Pins -->
+    <location n="0">
+     <latitude-deg type="double">-22.25851</latitude-deg>
+     <longitude-deg type="double">166.40803</longitude-deg>
+     <heading-deg type="int">110</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-22.25851</latitude-deg>
+     <longitude-deg type="double">166.40803</longitude-deg>
+     <heading-deg type="int">290</heading-deg>
+    </location>
+
+<!-- Magenta -->
 
     <adf>
      <selected-khz type="int">394</selected-khz>
-     <standby-khz type="int">332</standby-khz>
     </adf>
    </seaplane>
 
 <!-- Auckland (NZAA), New Zealand.
 
-     near the airport.
+     in the harbour.
 -->
 
    <seaplane n="11">
     <airport-id type="string">NZAA</airport-id>
-    <latitude-deg type="double">-37.01113</latitude-deg>
-    <longitude-deg type="double">174.76828</longitude-deg>
-    <heading-deg type="double">250.0</heading-deg>
+    <water-ft type="double">-4</water-ft>
 
-<!-- Auckland (Westpoint) and Great Barrier -->
+    <location n="0">
+     <latitude-deg type="double">-36.83608</latitude-deg>
+     <longitude-deg type="double">174.76021</longitude-deg>
+     <heading-deg type="int">85</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-36.83608</latitude-deg>
+     <longitude-deg type="double">174.76021</longitude-deg>
+     <heading-deg type="int">285</heading-deg>
+    </location>
+
+<!-- Westpoint -->
 
     <adf>
      <selected-khz type="int">398</selected-khz>
-     <standby-khz type="int">274</standby-khz>
     </adf>
    </seaplane>
 
@@ -331,36 +498,70 @@
 
    <seaplane n="12">
     <airport-id type="string">KBWI</airport-id>
-    <latitude-deg type="double">39.243201</latitude-deg>
-    <longitude-deg type="double">-76.537663</longitude-deg>
-    <heading-deg type="double">255.0</heading-deg>
 
-<!-- Baltimore (Martin) and Patuxent -->
+    <location n="0">
+     <latitude-deg type="double">39.23239</latitude-deg>
+     <longitude-deg type="double">-76.55548</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">39.23239</latitude-deg>
+     <longitude-deg type="double">-76.55548</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">39.24409</latitude-deg>
+     <longitude-deg type="double">-76.53896</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">39.24409</latitude-deg>
+     <longitude-deg type="double">-76.53896</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Anne Arundel and Ellicott -->
 
     <adf>
-     <selected-khz type="int">342</selected-khz>
-     <standby-khz type="int">400</standby-khz>
+     <selected-khz type="int">260</selected-khz>
+     <standby-khz type="int">371</standby-khz>
     </adf>
    </seaplane>
 
 <!-- Sands point seaplane base (7N3), New York (Manhasset Bay in Port Washington, Long Island) (*).
 
      until the built of North Beach at La Guardia (KLGA) (D).
-
-     bow towards the water.
 -->
 
    <seaplane n="13">
     <airport-id type="string">7N3</airport-id>
-    <latitude-deg type="double">40.83625</latitude-deg>
-    <longitude-deg type="double">-73.72534</longitude-deg>
-    <heading-deg type="double">180.0</heading-deg>
 
-<!-- New York (La Guardia) and Orchy  -->
+    <location n="0">
+     <latitude-deg type="double">40.81517</latitude-deg>
+     <longitude-deg type="double">-73.71406</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">40.82888</latitude-deg>
+     <longitude-deg type="double">-73.73397</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">40.83440</latitude-deg>
+     <longitude-deg type="double">-73.71740</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">40.82909</latitude-deg>
+     <longitude-deg type="double">-73.71181</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Bridge and Babylon  -->
 
     <adf>
-     <selected-khz type="int">332</selected-khz>
-     <standby-khz type="int">385</standby-khz>
+     <selected-khz type="int">414</selected-khz>
+     <standby-khz type="int">275</standby-khz>
     </adf>
    </seaplane>
 
@@ -373,34 +574,78 @@
 
    <seaplane n="14">
     <airport-id type="string">CYQM</airport-id>
-    <latitude-deg type="double">46.228705</latitude-deg>
-    <longitude-deg type="double">-64.544214</longitude-deg>
-    <heading-deg type="double">15.0</heading-deg>
 
-<!-- Shediac (Moncton) and Summerside -->
+    <location n="0">
+     <latitude-deg type="double">46.24398</latitude-deg>
+     <longitude-deg type="double">-64.51567</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">46.24398</latitude-deg>
+     <longitude-deg type="double">-64.51567</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">46.25917</latitude-deg>
+     <longitude-deg type="double">-64.52717</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">46.24279</latitude-deg>
+     <longitude-deg type="double">-64.53026</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Riverview -->
 
     <adf>
-     <selected-khz type="int">224</selected-khz>
-     <standby-khz type="int">254</standby-khz>
+     <selected-khz type="int">304</selected-khz>
     </adf>
    </seaplane>
 
 <!-- Panam base at Botwood (CCP2), Newfoundland (F).
 
-     in a creek.
+     in the harbour.
 -->
 
    <seaplane n="15">
     <airport-id type="string">CCP2</airport-id>
-    <latitude-deg type="double">49.096036</latitude-deg>
-    <longitude-deg type="double">-55.289611</longitude-deg>
-    <heading-deg type="double">320.0</heading-deg>
 
-<!-- Botwood (Gander) and Fogo -->
+<!-- from the harbour -->
+
+    <location n="0">
+     <latitude-deg type="double">49.15660</latitude-deg>
+     <longitude-deg type="double">-55.33655</longitude-deg>
+     <heading-deg type="int">10</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">49.15660</latitude-deg>
+     <longitude-deg type="double">-55.33655</longitude-deg>
+     <heading-deg type="int">65</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">49.15660</latitude-deg>
+     <longitude-deg type="double">-55.33655</longitude-deg>
+     <heading-deg type="int">160</heading-deg>
+    </location>
+
+<!-- from the opposite channel -->
+
+    <location n="3">
+     <latitude-deg type="double">49.16234</latitude-deg>
+     <longitude-deg type="double">-55.30170</longitude-deg>
+     <heading-deg type="int">220</heading-deg>
+    </location>
+    <location n="4">
+     <latitude-deg type="double">49.16234</latitude-deg>
+     <longitude-deg type="double">-55.30170</longitude-deg>
+     <heading-deg type="int">290</heading-deg>
+    </location>
+
+<!-- Gander -->
 
     <adf>
      <selected-khz type="int">280</selected-khz>
-     <standby-khz type="int">237</standby-khz>
     </adf>
    </seaplane>
 
@@ -413,34 +658,58 @@
 
    <seaplane n="16">
     <airport-id type="string">EINN</airport-id>
-    <latitude-deg type="double">52.61750</latitude-deg>
-    <longitude-deg type="double">-9.09871</longitude-deg>
-    <heading-deg type="double">45.0</heading-deg>
 
-<!-- Foynes and Kerry -->
+    <location n="0">
+     <latitude-deg type="double">52.61750</latitude-deg>
+     <longitude-deg type="double">-9.09871</longitude-deg>
+     <heading-deg type="int">20</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">52.64598</latitude-deg>
+     <longitude-deg type="double">-9.10664</longitude-deg>
+     <heading-deg type="int">110</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">52.64598</latitude-deg>
+     <longitude-deg type="double">-9.10664</longitude-deg>
+     <heading-deg type="int">200</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">52.62878</latitude-deg>
+     <longitude-deg type="double">-9.08302</longitude-deg>
+     <heading-deg type="int">290</heading-deg>
+    </location>
+
+<!-- Foynes -->
 
     <adf>
      <selected-khz type="int">395</selected-khz>
-     <standby-khz type="int">334</standby-khz>
     </adf>
    </seaplane>
 
 <!-- Southampton (EGHI), England.
 
-     in the harbour.
+     in the Southampton Water.
 -->
 
    <seaplane n="17">
     <airport-id type="string">EGHI</airport-id>
-    <latitude-deg type="double">50.894240</latitude-deg>
-    <longitude-deg type="double">-1.415006</longitude-deg>
-    <heading-deg type="double">260.0</heading-deg>
 
-<!-- Southampton and Bembridge -->
+    <location n="0">
+     <latitude-deg type="double">50.87325</latitude-deg>
+     <longitude-deg type="double">-1.39063</longitude-deg>
+     <heading-deg type="int">120</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">50.86285</latitude-deg>
+     <longitude-deg type="double">-1.34789</longitude-deg>
+     <heading-deg type="int">300</heading-deg>
+    </location>
+
+<!-- Southampton -->
 
     <adf>
-     <selected-khz type="int">391</selected-khz>
-     <standby-khz type="int">426</standby-khz>
+     <selected-khz type="int">391.5</selected-khz>
     </adf>
    </seaplane>
 
@@ -459,34 +728,63 @@
 
    <seaplane n="18">
     <airport-id type="string">LPHR</airport-id>
-    <latitude-deg type="double">38.541520</latitude-deg>
-    <longitude-deg type="double">-28.621496</longitude-deg>
-    <heading-deg type="double">90.0</heading-deg>
 
-<!-- Horta and Pico Island  -->
+    <location n="0">
+     <latitude-deg type="double">38.54152</latitude-deg>
+     <longitude-deg type="double">-28.62150</longitude-deg>
+     <heading-deg type="int">105</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">38.54152</latitude-deg>
+     <longitude-deg type="double">-28.62150</longitude-deg>
+     <heading-deg type="int">160</heading-deg>
+    </location>
+
+<!-- Horta -->
 
     <adf>
      <selected-khz type="int">360</selected-khz>
-     <standby-khz type="int">420</standby-khz>
     </adf>
    </seaplane>
 
 <!-- Lisbon (LPPT), Portugal.
 
-     in the harbour.
+     on the river Tagus.
 -->
 
    <seaplane n="19">
     <airport-id type="string">LPPT</airport-id>
-    <latitude-deg type="double">38.78022</latitude-deg>
-    <longitude-deg type="double">-9.08267</longitude-deg>
-    <heading-deg type="double">85.0</heading-deg>
 
-<!-- Lisbon (Sintra) and Cascais  -->
+    <location n="0">
+     <latitude-deg type="double">38.67184</latitude-deg>
+     <longitude-deg type="double">-9.08123</longitude-deg>
+     <heading-deg type="int">20</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">38.68256</latitude-deg>
+     <longitude-deg type="double">-9.13925</longitude-deg>
+     <heading-deg type="int">80</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">38.76667</latitude-deg>
+     <longitude-deg type="double">-9.08192</longitude-deg>
+     <heading-deg type="int">160</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">38.70989</latitude-deg>
+     <longitude-deg type="double">-9.05582</longitude-deg>
+     <heading-deg type="int">235</heading-deg>
+    </location>
+    <location n="4">
+     <latitude-deg type="double">38.69677</latitude-deg>
+     <longitude-deg type="double">-9.05445</longitude-deg>
+     <heading-deg type="int">325</heading-deg>
+    </location>
+
+<!-- Arruda -->
 
     <adf>
-     <selected-khz type="int">371</selected-khz>
-     <standby-khz type="int">359</standby-khz>
+     <selected-khz type="int">382</selected-khz>
     </adf>
    </seaplane>
 
@@ -497,9 +795,28 @@
 
    <seaplane n="20">
     <airport-id type="string">LFML</airport-id>
-    <latitude-deg type="double">43.44018</latitude-deg>
-    <longitude-deg type="double">5.17487</longitude-deg>
-    <heading-deg type="double">310.0</heading-deg>
+    <water-ft type="double">-2.5</water-ft>
+
+    <location n="0">
+     <latitude-deg type="double">43.44018</latitude-deg>
+     <longitude-deg type="double">5.17487</longitude-deg>
+     <heading-deg type="int">30</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">43.46021</latitude-deg>
+     <longitude-deg type="double">5.16529</longitude-deg>
+     <heading-deg type="int">120</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">43.46021</latitude-deg>
+     <longitude-deg type="double">5.16529</longitude-deg>
+     <heading-deg type="int">210</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">43.44018</latitude-deg>
+     <longitude-deg type="double">5.17487</longitude-deg>
+     <heading-deg type="int">300</heading-deg>
+    </location>
 
 <!-- Marseille and Hyeres -->
 
@@ -522,9 +839,27 @@
 
    <seaplane n="21">
     <airport-id type="string">TXKF</airport-id>
-    <latitude-deg type="double">32.359974</latitude-deg>
-    <longitude-deg type="double">-64.674911</longitude-deg>
-    <heading-deg type="double">230.0</heading-deg>
+
+    <location n="0">
+     <latitude-deg type="double">32.34001</latitude-deg>
+     <longitude-deg type="double">-64.67548</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">32.34575</latitude-deg>
+     <longitude-deg type="double">-64.70087</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">32.35997</latitude-deg>
+     <longitude-deg type="double">-64.67491</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">32.34719</latitude-deg>
+     <longitude-deg type="double">-64.66699</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
 
 <!-- Bermuda : no NDB -->
    </seaplane>
@@ -544,15 +879,33 @@
 
    <seaplane n="22">
     <airport-id type="string">KLGA</airport-id>
-    <latitude-deg type="double">40.782436</latitude-deg>
-    <longitude-deg type="double">-73.869847</longitude-deg>
-    <heading-deg type="double">100.0</heading-deg>
 
-<!-- New York (La Guardia) and Orchy  -->
+    <location n="0">
+     <latitude-deg type="double">40.78244</latitude-deg>
+     <longitude-deg type="double">-73.86985</longitude-deg>
+     <heading-deg type="int">30</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">40.78244</latitude-deg>
+     <longitude-deg type="double">-73.86985</longitude-deg>
+     <heading-deg type="int">120</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">40.80225</latitude-deg>
+     <longitude-deg type="double">-73.85302</longitude-deg>
+     <heading-deg type="int">210</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">40.77572</latitude-deg>
+     <longitude-deg type="double">-73.85522</longitude-deg>
+     <heading-deg type="int">300</heading-deg>
+    </location>
+
+<!-- Bridge and Paterson  -->
 
     <adf>
-     <selected-khz type="int">332</selected-khz>
-     <standby-khz type="int">385</standby-khz>
+     <selected-khz type="int">414</selected-khz>
+     <standby-khz type="int">347</standby-khz>
     </adf>
    </seaplane>
 
@@ -561,15 +914,22 @@
 
    <seaplane n="23">
     <airport-id type="string">TTPP</airport-id>
-    <latitude-deg type="double">10.668607</latitude-deg>
-    <longitude-deg type="double">-61.543953</longitude-deg>
-    <heading-deg type="double">255.0</heading-deg>
 
-<!-- Port of Spain (Piarco) and Crown Point -->
+    <location n="0">
+     <latitude-deg type="double">10.66861</latitude-deg>
+     <longitude-deg type="double">-61.54395</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">10.66861</latitude-deg>
+     <longitude-deg type="double">-61.54395</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Piarco -->
 
     <adf>
      <selected-khz type="int">382</selected-khz>
-     <standby-khz type="int">323</standby-khz>
     </adf>
    </seaplane>
 
@@ -580,36 +940,50 @@
 
    <seaplane n="24">
     <airport-id type="string">SBBE</airport-id>
-    <latitude-deg type="double">-1.38634</latitude-deg>
-    <longitude-deg type="double">-48.49842</longitude-deg>
-    <heading-deg type="double">280.0</heading-deg>
 
-<!-- Belem and Salinopolis -->
+    <location n="0">
+     <latitude-deg type="double">-1.38634</latitude-deg>
+     <longitude-deg type="double">-48.49842</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-1.38634</latitude-deg>
+     <longitude-deg type="double">-48.49842</longitude-deg>
+     <heading-deg type="int">200</heading-deg>
+    </location>
+
+<!-- Valde -->
 
     <adf>
-     <selected-khz type="int">250</selected-khz>
-     <standby-khz type="int">315</standby-khz>
+     <selected-khz type="int">395</selected-khz>
     </adf>
    </seaplane>
 
 <!-- Bolama, Guinea.
 
-     in the town along the river.
+     near the town along the mangrove.
 
-     south of Bissau (GGOV), which is at the mouth of another river, the Geba.
+     south of Bissau (GGOV), which is on the river Geba.
 -->
 
    <seaplane n="25">
     <airport-id type="string">GGOV</airport-id>
-    <latitude-deg type="double">11.549900</latitude-deg>
-    <longitude-deg type="double">-15.515379</longitude-deg>
-    <heading-deg type="double">150.0</heading-deg>
 
-<!-- Bolama (Bissau) and Kamsar -->
+    <location n="0">
+     <latitude-deg type="double">11.58062</latitude-deg>
+     <longitude-deg type="double">-15.46516</longitude-deg>
+     <heading-deg type="int">155</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">11.58062</latitude-deg>
+     <longitude-deg type="double">-15.46516</longitude-deg>
+     <heading-deg type="int">335</heading-deg>
+    </location>
+
+<!-- Bissau -->
 
     <adf>
      <selected-khz type="int">325</selected-khz>
-     <standby-khz type="int">308</standby-khz>
     </adf>
    </seaplane>
 
@@ -624,15 +998,32 @@
 
    <seaplane n="26">
     <airport-id type="string">KMIA</airport-id>
-    <latitude-deg type="double">25.725</latitude-deg>
-    <longitude-deg type="double">-80.235</longitude-deg>
-    <heading-deg type="double">220.0</heading-deg>
 
-<!-- Miami and Plantation  -->
+    <location n="0">
+     <latitude-deg type="double">25.72360</latitude-deg>
+     <longitude-deg type="double">-80.22440</longitude-deg>
+     <heading-deg type="int">50</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">25.72360</latitude-deg>
+     <longitude-deg type="double">-80.22440</longitude-deg>
+     <heading-deg type="int">140</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">25.72360</latitude-deg>
+     <longitude-deg type="double">-80.22440</longitude-deg>
+     <heading-deg type="int">230</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">25.69452</latitude-deg>
+     <longitude-deg type="double">-80.17513</longitude-deg>
+     <heading-deg type="int">320</heading-deg>
+    </location>
+
+<!-- Plantation  -->
 
     <adf>
-     <selected-khz type="int">248</selected-khz>
-     <standby-khz type="int">242</standby-khz>
+     <selected-khz type="int">242</selected-khz>
     </adf>
    </seaplane>
 
@@ -645,33 +1036,68 @@
 
 <!-- Banjul (GBYD), Gambia.
 
-     at the mouth of the Gambia river.
+     on the Gambia river.
 -->
 
    <seaplane n="27">
     <airport-id type="string">GBYD</airport-id>
-    <latitude-deg type="double">13.43950</latitude-deg>
-    <longitude-deg type="double">-16.59575</longitude-deg>
-    <heading-deg type="double">180.0</heading-deg>
 
-<!-- Banjul and Dakar -->
+    <location n="0">
+     <latitude-deg type="double">13.40098</latitude-deg>
+     <longitude-deg type="double">-16.58472</longitude-deg>
+     <heading-deg type="int">30</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">13.43767</latitude-deg>
+     <longitude-deg type="double">-16.59575</longitude-deg>
+     <heading-deg type="int">140</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">13.43767</latitude-deg>
+     <longitude-deg type="double">-16.59575</longitude-deg>
+     <heading-deg type="int">220</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">13.38092</latitude-deg>
+     <longitude-deg type="double">-16.50624</longitude-deg>
+     <heading-deg type="int">310</heading-deg>
+    </location>
+
+<!-- Banjul -->
 
     <adf>
      <selected-khz type="int">256</selected-khz>
-     <standby-khz type="int">323</standby-khz>
     </adf>
    </seaplane>
 
 <!-- Lagos (DNMM), Nigeria.
 
-     in the harbour.
+     in the Lagos lagoon.
 -->
 
    <seaplane n="28">
     <airport-id type="string">DNMM</airport-id>
-    <latitude-deg type="double">6.455851</latitude-deg>
-    <longitude-deg type="double">3.416634</longitude-deg>
-    <heading-deg type="double">350.0</heading-deg>
+
+    <location n="0">
+     <latitude-deg type="double">6.471221</latitude-deg>
+     <longitude-deg type="double">3.44713</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">6.471221</latitude-deg>
+     <longitude-deg type="double">3.44713</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">6.544731</latitude-deg>
+     <longitude-deg type="double">3.47100</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">6.471221</latitude-deg>
+     <longitude-deg type="double">3.44713</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
 
 <!-- Okiripupa and Cotonou  -->
 
@@ -683,27 +1109,117 @@
 
 <!-- ........................................................................... -->
 <!-- Auckland, via Noumea and Port of Spain, to New York La Guardia              -->
-<!-- (15 December 1941, 6 January 1942) (A) (C).                                 -->
+<!-- (15 December 1941, 6 January 1942) (A) (C) (M).                                 -->
 <!--                                                                             -->
 <!-- The first round-the-world trip by a commercial aircraft (NC 18602).         -->
 <!-- ........................................................................... -->
+
+<!-- San Pedro (KTOA), Los Angeles (M).
+
+     inside Long Beach Harbor.
+-->
+
+   <seaplane n="29">
+    <airport-id type="string">KTOA</airport-id>
+
+    <location n="0">
+     <latitude-deg type="double">33.72345</latitude-deg>
+     <longitude-deg type="double">-118.21491</longitude-deg>
+     <heading-deg type="int">20</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">33.72391</latitude-deg>
+     <longitude-deg type="double">-118.23577</longitude-deg>
+     <heading-deg type="int">70</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">33.74018</latitude-deg>
+     <longitude-deg type="double">-118.22380</longitude-deg>
+     <heading-deg type="int">160</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">33.73134</latitude-deg>
+     <longitude-deg type="double">-118.20581</longitude-deg>
+     <heading-deg type="int">250</heading-deg>
+    </location>
+
+<!-- Compton and El Monte  -->
+
+    <adf>
+     <selected-khz type="int">378</selected-khz>
+     <standby-khz type="int">359</standby-khz>
+    </adf>
+   </seaplane>
+
+<!-- Suva (NFNA), Fiji (M).
+
+     inside the harbour.
+-->
+
+   <seaplane n="30">
+    <airport-id type="string">NFNA</airport-id>
+
+    <location n="0">
+     <latitude-deg type="double">-18.13672</latitude-deg>
+     <longitude-deg type="double">178.42072</longitude-deg>
+     <heading-deg type="int">20</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-18.11710</latitude-deg>
+     <longitude-deg type="double">178.39814</longitude-deg>
+     <heading-deg type="int">110</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">-18.13672</latitude-deg>
+     <longitude-deg type="double">178.42072</longitude-deg>
+     <heading-deg type="int">190</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">-18.13672</latitude-deg>
+     <longitude-deg type="double">178.42072</longitude-deg>
+     <heading-deg type="int">280</heading-deg>
+    </location>
+
+<!-- Navua -->
+
+    <adf>
+     <selected-khz type="int">281</selected-khz>
+    </adf>
+   </seaplane>
 
 <!-- Gladstone (YGLA), Australia.
 
      in the harbour.
 -->
 
-   <seaplane n="29">
+   <seaplane n="31">
     <airport-id type="string">YGLA</airport-id>
-    <latitude-deg type="double">-23.83203</latitude-deg>
-    <longitude-deg type="double">151.26548</longitude-deg>
-    <heading-deg type="double">10.0</heading-deg>
 
-<!-- Gladstone and Mackay -->
+    <location n="0">
+     <latitude-deg type="double">-23.83203</latitude-deg>
+     <longitude-deg type="double">151.26548</longitude-deg>
+     <heading-deg type="int">30</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-23.83203</latitude-deg>
+     <longitude-deg type="double">151.26548</longitude-deg>
+     <heading-deg type="int">120</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">-23.80294</latitude-deg>
+     <longitude-deg type="double">151.28230</longitude-deg>
+     <heading-deg type="int">210</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">-23.83203</latitude-deg>
+     <longitude-deg type="double">151.26548</longitude-deg>
+     <heading-deg type="int">300</heading-deg>
+    </location>
+
+<!-- Gladstone -->
 
     <adf>
      <selected-khz type="int">236</selected-khz>
-     <standby-khz type="int">308</standby-khz>
     </adf>
    </seaplane>
 
@@ -712,30 +1228,65 @@
      in the harbour.
 -->
 
-   <seaplane n="30">
+   <seaplane n="32">
     <airport-id type="string">YPDN</airport-id>
-    <latitude-deg type="double">-12.44590</latitude-deg>
-    <longitude-deg type="double">130.82483</longitude-deg>
-    <heading-deg type="double">335.0</heading-deg>
 
-<!-- Darwin (Bagot) and Troughton Island -->
+    <location n="0">
+     <latitude-deg type="double">-12.45049</latitude-deg>
+     <longitude-deg type="double">130.81644</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-12.47521</latitude-deg>
+     <longitude-deg type="double">130.84236</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">-12.47521</latitude-deg>
+     <longitude-deg type="double">130.84236</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">-12.45049</latitude-deg>
+     <longitude-deg type="double">130.81644</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- Howard Springs -->
 
     <adf>
-     <selected-khz type="int">308</selected-khz>
-     <standby-khz type="int">413</standby-khz>
+     <selected-khz type="int">257</selected-khz>
     </adf>
    </seaplane>
 
 <!-- Surabaya (WRSJ), Indonesia.
 
-     in a town at the north.
+     on the Mas River.
 -->
 
-   <seaplane n="31">
+   <seaplane n="33">
     <airport-id type="string">WRSJ</airport-id>
-    <latitude-deg type="double">-7.20408</latitude-deg>
-    <longitude-deg type="double">112.72201</longitude-deg>
-    <heading-deg type="double">320.0</heading-deg>
+
+    <location n="0">
+     <latitude-deg type="double">-7.19709</latitude-deg>
+     <longitude-deg type="double">112.71823</longitude-deg>
+     <heading-deg type="int">80</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-7.18025</latitude-deg>
+     <longitude-deg type="double">112.72497</longitude-deg>
+     <heading-deg type="int">170</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">-7.19709</latitude-deg>
+     <longitude-deg type="double">112.71823</longitude-deg>
+     <heading-deg type="int">260</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">-7.19709</latitude-deg>
+     <longitude-deg type="double">112.71823</longitude-deg>
+     <heading-deg type="int">340</heading-deg>
+    </location>
 
 <!-- Surabaya and Semarang -->
 
@@ -747,33 +1298,68 @@
 
 <!-- Trincomalee (VCCT), Sri Lanka.
 
-     in the laggoon near a town.
+     in the harbour.
 -->
 
-   <seaplane n="32">
+   <seaplane n="34">
     <airport-id type="string">VCCT</airport-id>
-    <latitude-deg type="double">8.56686</latitude-deg>
-    <longitude-deg type="double">81.22494</longitude-deg>
-    <heading-deg type="double">205.0</heading-deg>
 
-<!-- Trincomalee (China Bay) and Kankesanturai -->
+    <location n="0">
+     <latitude-deg type="double">8.55514</latitude-deg>
+     <longitude-deg type="double">81.20776</longitude-deg>
+     <heading-deg type="int">45</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">8.55514</latitude-deg>
+     <longitude-deg type="double">81.20776</longitude-deg>
+     <heading-deg type="int">135</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">8.56686</latitude-deg>
+     <longitude-deg type="double">81.22494</longitude-deg>
+     <heading-deg type="int">225</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">8.55166</latitude-deg>
+     <longitude-deg type="double">81.22484</longitude-deg>
+     <heading-deg type="int">315</heading-deg>
+    </location>
+
+<!-- China Bay -->
 
     <adf>
      <selected-khz type="int">280</selected-khz>
-     <standby-khz type="int">236</standby-khz>
     </adf>
    </seaplane>
 
 <!-- Karachi (OPMR), Pakistan.
 
-     on a river near the city.
+     in the harbour.
 -->
 
-   <seaplane n="33">
+   <seaplane n="35">
     <airport-id type="string">OPMR</airport-id>
-    <latitude-deg type="double">24.822954</latitude-deg>
-    <longitude-deg type="double">66.973042</longitude-deg>
-    <heading-deg type="double">275.0</heading-deg>
+
+    <location n="0">
+     <latitude-deg type="double">24.83291</latitude-deg>
+     <longitude-deg type="double">66.96201</longitude-deg>
+     <heading-deg type="int">5</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">24.85498</latitude-deg>
+     <longitude-deg type="double">66.94639</longitude-deg>
+     <heading-deg type="int">95</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">24.85498</latitude-deg>
+     <longitude-deg type="double">66.94639</longitude-deg>
+     <heading-deg type="int">185</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">24.83291</latitude-deg>
+     <longitude-deg type="double">66.96201</longitude-deg>
+     <heading-deg type="int">275</heading-deg>
+    </location>
 
 <!-- Karachi and Cape Monze  -->
 
@@ -788,17 +1374,34 @@
      in the bay, near the city.
 -->
 
-   <seaplane n="34">
+   <seaplane n="36">
     <airport-id type="string">OBBI</airport-id>
-    <latitude-deg type="double">26.23984</latitude-deg>
-    <longitude-deg type="double">50.62323</longitude-deg>
-    <heading-deg type="double">110.0</heading-deg>
 
-<!-- Bahrein and Doha (at the south-east) --> 
+    <location n="0">
+     <latitude-deg type="double">26.23530</latitude-deg>
+     <longitude-deg type="double">50.62449</longitude-deg>
+     <heading-deg type="int">20</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">26.23530</latitude-deg>
+     <longitude-deg type="double">50.62449</longitude-deg>
+     <heading-deg type="int">110</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">26.23530</latitude-deg>
+     <longitude-deg type="double">50.62449</longitude-deg>
+     <heading-deg type="int">200</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">26.23530</latitude-deg>
+     <longitude-deg type="double">50.62449</longitude-deg>
+     <heading-deg type="int">290</heading-deg>
+    </location>
+
+<!-- Bahrein --> 
 
     <adf>
      <selected-khz type="int">395</selected-khz>
-     <standby-khz type="int">323</standby-khz>
     </adf>
    </seaplane>
 
@@ -807,11 +1410,22 @@
      where Blue and White Nile merge.
 -->
 
-   <seaplane n="35">
+   <seaplane n="37">
     <airport-id type="string">HSSS</airport-id>
-    <latitude-deg type="double">15.60347</latitude-deg>
-    <longitude-deg type="double">32.52591</longitude-deg>
-    <heading-deg type="double">340.0</heading-deg>
+    <water-ft type="double">1224.0</water-ft>
+
+    <location n="0">
+     <latitude-deg type="double">15.60347</latitude-deg>
+     <longitude-deg type="double">32.52591</longitude-deg>
+     <heading-deg type="int">65</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">15.60347</latitude-deg>
+     <longitude-deg type="double">32.52591</longitude-deg>
+     <heading-deg type="int">315</heading-deg>
+    </location>
+
+<!-- Khartoum : no NDB  -->
    </seaplane>
 
 <!-- Kinshasa (FZAA), Zaire.
@@ -819,17 +1433,35 @@
      on the Congo river, near the city.
 -->
 
-   <seaplane n="36">
+   <seaplane n="38">
     <airport-id type="string">FZAA</airport-id>
-    <latitude-deg type="double">-4.29909</latitude-deg>
-    <longitude-deg type="double">15.32285</longitude-deg>
-    <heading-deg type="double">35.0</heading-deg>
+    <water-ft type="double">820.0</water-ft>
 
-<!-- Kinshasa (Ndjili) and Dolisie  -->
+    <location n="0">
+     <latitude-deg type="double">-4.29909</latitude-deg>
+     <longitude-deg type="double">15.32285</longitude-deg>
+     <heading-deg type="int">20</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-4.29909</latitude-deg>
+     <longitude-deg type="double">15.32285</longitude-deg>
+     <heading-deg type="int">110</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">-4.27900</latitude-deg>
+     <longitude-deg type="double">15.34521</longitude-deg>
+     <heading-deg type="int">200</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">-4.29909</latitude-deg>
+     <longitude-deg type="double">15.32285</longitude-deg>
+     <heading-deg type="int">290</heading-deg>
+    </location>
+
+<!-- Ndjili  -->
 
     <adf>
-     <selected-khz type="int">285</selected-khz>
-     <standby-khz type="int">267</standby-khz>
+     <selected-khz type="int">340</selected-khz>
     </adf>
    </seaplane>
 
@@ -838,17 +1470,24 @@
      on the Potengi river.
 -->
 
-   <seaplane n="37">
+   <seaplane n="39">
     <airport-id type="string">SBNT</airport-id>
-    <latitude-deg type="double">-5.78500</latitude-deg>
-    <longitude-deg type="double">-35.21500</longitude-deg>
-    <heading-deg type="double">45.0</heading-deg>
 
-<!-- Natal and Calcanhar  -->
+    <location n="0">
+     <latitude-deg type="double">-5.78500</latitude-deg>
+     <longitude-deg type="double">-35.21500</longitude-deg>
+     <heading-deg type="int">45</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">-5.76665</latitude-deg>
+     <longitude-deg type="double">-35.20586</longitude-deg>
+     <heading-deg type="int">195</heading-deg>
+    </location>
+
+<!-- Natal -->
 
     <adf>
      <selected-khz type="int">400</selected-khz>
-     <standby-khz type="int">305</standby-khz>
     </adf>
    </seaplane>
 

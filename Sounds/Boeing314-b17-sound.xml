@@ -19,7 +19,11 @@
 
      References
      ==========
-     http://aeroweb.brooklyn.cuny.edu/specs/boeing/b-17g.htm
+     - http://aeroweb.brooklyn.cuny.edu/specs/boeing/b-17g.htm :
+
+     - http://uk.youtube.com/watch?v=pRYzFjift2Q :
+
+     sound at at takeoff.
 -->
  
 <PropertyList>
@@ -1214,49 +1218,55 @@
    </volume>
   </engine>
 
-<!-- COMMON SOUNDS -->
+<!-- COMMON SOUNDS : the seats are 5.5 m from nose -->
  
-<!-- - less than 14 ft : BUG, wow not reset, when starting in flight.
-     - more than 40 kt : enough waves.
--->
+<!-- waves by taxi, or wind at rest (at least 2 Beaufort) -->
 
-<!--
   <hull>
    <name>waves</name>
    <mode>looped</mode>
-   <path>Aircraft/Boeing314/Sounds/outboard.wav</path>
+   <path>Sounds/wave.wav</path>
    <condition>
     <and>
+     <not>
+      <property>/sim/current-view/internal</property>
+     </not>
      <less-than>
-      <property>/position/altitude-agl-ft</property>
-      <value>14</value>
+      <property>/velocities/airspeed-kt</property>
+      <value>10</value>     
      </less-than>
      <or>
-      <property>/gear/gear[0]/wow</property>
-      <property>/gear/gear[1]/wow</property>
-      <property>/gear/gear[2]/wow</property>
-      <property>/gear/gear[3]/wow</property>
-      <property>/gear/gear[4]/wow</property>
+      <greater-than>
+       <property>/velocities/airspeed-kt</property>
+       <value>1</value>     
+      </greater-than>
+      <greater-than>
+       <property>/environment/wind-speed-kt</property>
+       <value>3</value>
+      </greater-than>
      </or>
-     <greater-than>
-      <property>/velocities/airspeed-kt</property>
-      <value>40</value>     
-     </greater-than>
     </and>
    </condition>
+   <position>
+    <x>9.0</x>
+    <y>0.0</y>
+    <z>-2.8</z>
+   </position>
    <volume>
-    <property>/velocities/airspeed-kt</property>
-    <type>log</type>
-    <factor>0.2</factor>
+    <factor>0.1</factor>
    </volume>
   </hull>
--->
 
   <flap>
    <name>flaps</name>
    <mode>in-transit</mode>
    <path>Aircraft/Boeing314/Sounds/flap_move.wav</path>
    <property>/surface-positions/flap-pos-norm</property>
+   <position>
+    <x>5.5</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <factor>0.1</factor>
    </volume>
@@ -1268,7 +1278,15 @@
    <name>wind</name>
    <mode>looped</mode>
    <path>Sounds/wind.wav</path>
+   <condition>
+    <property>/sim/current-view/internal</property>
+   </condition>
    <property>/velocities/airspeed-kt</property>
+   <position>
+    <x>5.5</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <property>/position/altitude-ft</property>
     <factor>-0.000015</factor>
@@ -1293,6 +1311,11 @@
    <name>stall</name>
    <path>Aircraft/Boeing314/Sounds/stall_horn.wav</path>
    <property>/sim/alarms/stall-warning</property>
+   <position>
+    <x>5.5</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
    <volume>
     <property>/velocities/airspeed-kt</property>
     <min>30.0</min>
@@ -1300,13 +1323,61 @@
    <reference-dist>10.0</reference-dist>
    <max-dist>20.0</max-dist>
   </stall>
- 
-<!-- no binding yet?
+
+  <door>
+   <name>Celestial door</name>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/controls/doors/celestial/position-norm</property>
+     <value>0.0</value>
+    </equals>
+   </condition>
+   <position>
+    <x>11.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <factor>0.2</factor>
+   </volume>
+  </door>
+
+<!-- cannot disable click in external views, otherwise heard when ctrl-V -->
+
   <click>
-   <name>click</name>
+   <name>click on</name>
    <path>Sounds/click.wav</path>
+   <condition>
+    <property>/instrumentation/generic/click</property>
+   </condition>
+   <position>
+    <x>5.5</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <max>0.2</max>
+   </volume>
   </click>
--->
+
+  <click>
+   <name>click off</name>
+   <path>Sounds/click.wav</path>
+   <condition>
+    <not>
+     <property>/instrumentation/generic/click</property>
+    </not>
+   </condition>
+   <position>
+    <x>5.5</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <max>0.2</max>
+   </volume>
+  </click>
 
 </fx>
  

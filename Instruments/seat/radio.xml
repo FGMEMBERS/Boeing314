@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>engineer.ac</path>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Seat</object-name>
+  <property>sim/current-view/goal-heading-offset-deg</property>
+  <offset-deg>90</offset-deg>
+  <condition>
+   <property>systems/seat/radio</property>
+  </condition>
+  <center>
+   <x-m> 0.0</x-m>
+   <y-m> 0.0</y-m>
+   <z-m> 0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+</PropertyList>

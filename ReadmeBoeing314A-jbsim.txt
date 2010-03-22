@@ -12,8 +12,8 @@ Airspeed limits : - glide or dive 184 kt true (A).
                     Vstall 70 mph [61 kt] (C).
                   - maximum 199 mph [173 kt], cruise 184 mph [160 kt] (B)
                   - level flight or climb 155 kt true (A).
-                  - flaps extended (40° or less) 105 kt true (A).
-                  - flaps extended (more than 40°) 91 kt true (A). 
+                  - flaps extended (40 deg or less) 105 kt true (A).
+                  - flaps extended (more than 40 deg) 91 kt true (A). 
 
 Usable ceiling (A) :
 
@@ -83,19 +83,22 @@ Port Washington NY     Bermuda Island        1 h       5h           5h30        
 314A ops
 ========
 - parking    : - 700 RPM.
+               - adjust altimeter.
                - align gyro with magnetic compass.
-- taxi       : - increase pitch on 2 symmetrical engines.
-               - turn with pitch on 1 or 2 outboard engines.
+- taxi       : - low pitch.
+               - turn with throttle on 1 outboard engine.
 - take-off   : - flaps 1/3, full throttle 2400 RPM.
                - lift off between 80 kt (full load) and 60 kt (empty load). 
                - long (less than 6000 ft) because of water drag.
 - climb      : - retract flaps before 105 kt.
                - reduce to 37.5 inhg (throttle), 2300 RPM.
+               - 150 kt (full), 160 kt (empty).
 - cruise     : - economic : 102 kt at 9000 ft (full load), 117 kt at 13400 ft (empty load).
                - maximum : 160 kt, 2300 RPM 37.5 inhg (min pitch, min mixture).
 - navigation : - align gyro with magnetic compass.
                - listen in four course radio range of destination.
-- descent    : idle, max mixture.
+- descent    : - idle, max pitch.
+               - increase mixture with decreasing altitude.
 - approach   : flaps 1/3 below 105 kt.
 - landing    : - align at 1500 ft, flaps 2/3 below 105 kt.
                - at 1000 ft, full flaps below 90 kt.
@@ -120,11 +123,15 @@ keeping the tower view. To disable, see "ctrl-I c".
 
 Sounds
 ------
-See Sounds/Boeing314-b17-sound.xml to install B17 sounds (recommended).
+- see Sounds/Boeing314-b17-sound.xml to install B17 sounds (recommended).
+- voice callouts requires Festival (festival --server in a separate shell),
+  set /sim/sound/voices/enabled to true; to see the text of callouts, press "shift-F12"
+  (saved on exit in aircraft-data). 
+
 
 Known compatibility
 -------------------
-- 0.9.11 : minimal version.
+- 2.0.0 : minimal version.
 
 
 Keyboard
@@ -137,10 +144,18 @@ Views
 - "ctrl-E" : "E"ngineer view.
 - "ctrl-J" : copilot view.
 - "ctrl-K" : observer view (floating).
+- "ctrl-N" : "N"avigator view (floating).
 - "ctrl-O" : radi"O" view.
 - "ctrl-T" : celes"T"ial view (floating).
 - "shift-ctrl-T" : sex"T"ant (polaris star or southern cross).
+- "shift-ctrl-V" : restore view pitch.
 - "shift-ctrl-X" : restore floating view.
+
+Virtual crew
+------------
+- "ctrl-W" : wind check (voice).
+- "ctrl-Z" : virtual crew.
+- "shift-F12"    : show crew text.
  
 Unchanged behaviour
 -------------------
@@ -152,7 +167,7 @@ Unchanged behaviour
 
 Same behaviour
 --------------
-- "s"      : swaps between Captain and Engineer 2D panels.
+- "S"      : swaps between Captain and Engineer 2D panels.
 - "ctrl-A" : altitude hold.
 - "ctrl-P" : pitch hold.
  
@@ -162,7 +177,7 @@ Improved behaviour
 - "up / down"  : increases / decreases pitch hold.
 - "home / end" : increases / decreases pitch hold (slow).
 - "page up / page down" : increases / decreases copilot speed.
-- "ctrl-S" : virtual copilot (autothrottle).
+- "ctrl-S" : autothrottle (virtual copilot).
 - "a / A"  : speeds up BOTH speed and time; external view until X 10, internal view until X 20.
   Automatically resets to 1, when above 1000 ft/min.
 
@@ -178,26 +193,47 @@ Alternate behaviour
 Mouse
 =====
 
+Autopilot
+---------
+- Heading hold and pitch hold are engaged separately.
+- Altitude hold and pitch hold disable each other.
+
+Four course radio range
+-----------------------
+Four course radio range is emulated by the NDB.
+NDB only appeared after WWII with the VOR, when they both superseded the four course radio range (I).
+
 Ground Direction Finding
 ------------------------
 "The radio operator held the Morse key in transmit mode a minute, while the ground operator took
 a bearing of the signal" (G) :
 - add a waypoint.
-- call the ground operator, by "ctrl-I d" : range limited to 1500 NM (G)(J).
+- call the ground operator, by "ctrl-I d" : range is limited to 1500 miles [1300 NM] (G)(J).
 - within a delay of 2 minutes, the radio returns on a paper the magnetic heading towards the waypoint.
 
-Four course radio range
------------------------
-Emulated by the NDB.
-NDB only appeared after WWII with the VOR, when they both superseded the four course radio range (I).
+Starting with the Sextant
+-------------------------
+Swap to sextant view, by pressing "ctrl-T" :
+- activate the yellow hotspots, by pressing "ctrl-C" : the sextant should be visible,
+  down at the right of the seat, in stowed position.
+- take the sextant, by clicking one of the 2 cylindrical handles on its side.
+- enter the sextant view, by clicking its eyepiece.
+- increase field of view, by pressing "shift-X", until a notched knob is visible on the upper left.
+- increase the bubble size to the maximum, by clicking this notched (bubble) knob :
+  it is normal that the bubble remains out of view.
+- look at the celestial pole (polaris star in northern hemisphere), by pressing "shift-ctrl-T".
+- click the cylindrical (altitude) knob on the upper right, to move by step of 10 degrees,
+  until the bubble enters the eyepiece : altitude-deg (on the lower left corner) should show the local latitude,
+  at +/- 10 degrees.
+
+See Instruments/BubbleSextant/README.
 
 
 Virtual copilot
 ===============
-- activ, the copilot is green; otherwise yellow.
-- is never the pilot in command.
-- aligns gyro with magnetic compass, holds the speed (autothrottle).
-- activ above 500 ft sea level.
+- he aligns gyro with magnetic compass.
+- he can hold the throttle.
+- he is never the pilot in command.
 
 
 Consumption
@@ -225,7 +261,8 @@ KSFO - PHNL, 2080 NM :
 - average wind 270 deg 15 kt.
 - cruise starts at 9000 ft 102 kt indicated, +1000 ft + 5 kt every 5 h,
   to reach 12000 ft 117 kt before arrival.
-- after 16h00, lands in the morning with 1750 gallons, or 8 h :
+- ground station should be in range after 8 h.
+- after 16h30, lands in the morning with 1750 gallons, or 8 h :
   130 kt average ground speed (112 kt average indicated), at 53 gallons / h.
 
 At 160 kt indicated, the cruise will last 2080 NM / 166 kt = 12.5 h.
@@ -240,17 +277,12 @@ JSBSim
 - economic speed (110 kt).
 - planing over step.
 - rebound at landing.
+- anchor.
 
 
 TO DO
 =====
-- navigator view.
-- celestial navigation (sextant).
 - make 2D instruments from contemporary aircrafts.
-
-TO DO FDM
-----------
-- additional lift of sponsons.
 
 TO DO JSBSim (seaplane)
 -------------
@@ -260,26 +292,22 @@ TO DO JSBSim (seaplane)
 
 Known problems
 ==============
-- the file in application-data (saved configuration) causes the bounce at loading
-  (it seems to trim over the runway).
 
-Known problems JSBSim
----------------------
-- not enough brake at empty load : cut 2 or 4 engines.
-- not enough brake at maximum throttle.
-- at full load, the speed window between the lift off (80 kt) and flap overspeed (105 kt), is almost short.
-
-Known problems keyboard
------------------------
-- because of ctrl-I overriding, TAB altimeter menu is not available with GLUT.
+Known problems 2.0.0 autopilot
+------------------------------
+- the first waypoint is always ignored : insert a double waypoint.
+- to update waypoints, once route is activated, clear completely the route.
+- during descent, route manager may update the target altitude (press F11).
 
 Known problems OSG
 ------------------
-The following artefacts are supposed to be solved by OSG (works with 0.9.10 / Plib) :
-- missing hotspots.
+The following artefacts are supposed to be solved by OSG :
 - panels swaping too early.
-- instrument transparent through layer with alpha (celestial view).
-- transparency of propellers.
+- instrument transparent through layer with alpha (solved by range animation).
+
+Known problems FDM
+------------------
+- above 2400 RPM at takeoff.
 
 
 Secondary problems
@@ -287,14 +315,9 @@ Secondary problems
 - the polaris star is barely visible; the southern cross constellation is not visible.
 - the meaning of instruments is ergonomic guess and historical crosscheck.
 
-Secondary problems automatic mooring
-------------------------------------
-- sinks below ground at VMMC.
-
-Secondary problems JSBSim
---------------------------
+Secondary problems FDM
+----------------------
 - negativ pitch at rest.
-- fakes the displacement to get the real range.
  
 
 References
@@ -322,7 +345,7 @@ References
 (H) http://bluegrassairlines.com/bgas/clip01.htm/
     (1939 PAAA schedule).
 
-(I) http://members.aol.com/trekkspill/aerobcn.html
+(I) http://www.navfltsm.addr.com/ndb-nav-history.htm :
     (four course radio range).
 
 (J) http://www.panam.org/memoirs1.asp 
@@ -347,4 +370,4 @@ References
     F. W. S. Locke Jr., January 1946.
 
 
-9 December 2007.
+20 March 2010.

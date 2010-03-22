@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-voice</name>
+  <layout>vbox</layout>
+  <width>450</width>
+
+  <text>
+    <label>Boeing 314 voices</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Voice</label>
+    </text>
+
+    <text>
+      <label>(0 virtual crew member required)</label>
+      <color>
+        <red>0.5</red>
+        <green>0.5</green>
+        <blue>0.5</blue>
+      </color>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+<!--
+    <group>
+     <layout>hbox</layout>
+
+     <text>
+       <label>callout :</label>
+     </text>
+
+     <text>
+      <live>true</live>
+      <property>/systems/voice/callout</property>
+      <color>
+       <red>0.2</red>
+       <green>0.8</green>
+       <blue>0.2</blue>
+      </color>
+     </text>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+     <layout>hbox</layout>
+
+     <text>
+       <label>captain :</label>
+     </text>
+
+     <text>
+      <live>true</live>
+      <property>/systems/voice/display/captain</property>
+      <color>
+       <red>0.8</red>
+       <green>0.8</green>
+       <blue>0.2</blue>
+      </color>
+     </text>
+    </group>
+-->
+
+    <group>
+     <layout>hbox</layout>
+
+     <text>
+       <label>copilot :</label>
+     </text>
+
+     <text>
+      <live>true</live>
+      <property>/systems/voice/display/copilot</property>
+      <color>
+       <red>0.2</red>
+       <green>0.8</green>
+       <blue>0.2</blue>
+      </color>
+     </text>
+    </group>
+
+<!--
+    <group>
+     <layout>hbox</layout>
+
+     <text>
+       <label>engineer :</label>
+     </text>
+
+     <text>
+      <live>true</live>
+      <property>/systems/voice/display/engineer</property>
+      <color>
+       <red>0.2</red>
+       <green>0.8</green>
+       <blue>0.8</blue>
+      </color>
+     </text>
+    </group>
+-->
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Settings</legend>
+    <key>s</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-voice2</dialog-name>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Menu</legend>
+    <key>m</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+  </group>
+</PropertyList>

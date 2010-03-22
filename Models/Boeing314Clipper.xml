@@ -8,10 +8,6 @@
      - IMPORTANT : the model is already aligned vertically from Blender.
 
 
-     Panels :
-     all panels are 1024x512, i.e. surface must have width/height = 2/1, to keep the scale of instruments.
-
-
      Aninmation :
      - x y z Blender => x z y animation.
      - 1 blender unit = 1 m.
@@ -64,118 +60,42 @@
 
  </offsets>
 
- <!-- ======================================= -->
- <!-- panel models (X/Y/Z depth/width/height) -->
- <!-- ======================================= -->
+<!-- =========== -->
+<!-- Instruments -->
+<!-- =========== -->
 
- <!-- PILOT -->
-
-  <panel>
-   <path>Aircraft/Boeing314/Panels/Boeing314A-pilot.xml</path>
-   <bottom-left>
-    <x-m>-10.94</x-m>
-    <y-m>-0.950</y-m>
-    <z-m> 0.3675</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-10.94</x-m>
-    <y-m> 0.955</y-m>
-    <z-m> 0.3675</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-11.14</x-m>
-    <y-m>-0.950</y-m>
-    <z-m> 1.32</z-m>
-   </top-left>
-  </panel>
-
- <!-- OVERHEAD -->
-
-  <panel>
-   <path>Aircraft/Boeing314/Panels/Boeing314A-overhead.xml</path>
-   <bottom-left>
-    <x-m>-11.0825</x-m>
-    <y-m>-0.610</y-m>
-    <z-m> 1.59</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-11.0825</x-m>
-    <y-m> 1.295</y-m>
-    <z-m> 1.59</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-10.18</x-m>
-    <y-m>-0.610</y-m>
-    <z-m> 1.69</z-m>
-   </top-left>
-  </panel>
-
- <!-- ENGINEER -->
-
-  <panel>
-   <path>Aircraft/Boeing314/Panels/Boeing314A-engineer.xml</path>
-   <bottom-left>
-    <x-m>-6.98</x-m>
-    <y-m> 1.48</y-m>
-    <z-m> 0.90</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-5.78</x-m>
-    <y-m> 1.48</y-m>
-    <z-m> 0.90</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-6.98</x-m>
-    <y-m> 1.48</y-m>
-    <z-m> 1.50</z-m>
-   </top-left>
-  </panel>
-
-  <panel>
-   <path>Aircraft/Boeing314/Panels/Boeing314A-engineer-lever.xml</path>
-   <bottom-left>
-    <x-m>-6.98</x-m>
-    <y-m> 1.39</y-m>
-    <z-m> 0.86</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-5.78</x-m>
-    <y-m> 1.39</y-m>
-    <z-m> 0.86</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-6.98</x-m>
-    <y-m> 1.94</y-m>
-    <z-m> 1.38</z-m>
-   </top-left>
-  </panel>
-
- <!-- RADIO -->
-
-  <panel>
-   <path>Aircraft/Boeing314/Panels/Boeing314A-radio.xml</path>
-   <bottom-left>
-    <x-m>-8.28</x-m>
-    <y-m> 0.86</y-m>
-    <z-m> 0.85</z-m>
-   </bottom-left>
-   <bottom-right>
-    <x-m>-8.28</x-m>
-    <y-m> 1.70</y-m>
-    <z-m> 0.85</z-m>
-   </bottom-right>
-   <top-left>
-    <x-m>-8.28</x-m>
-    <y-m> 0.86</y-m>
-    <z-m> 1.27</z-m>
-   </top-left>
-   <depth-test type="bool">true</depth-test>          <!-- alpha to hide pilot panel -->
-  </panel>
+ <model>
+  <name>Instruments</name>
+  <path>Aircraft/Boeing314/Models/Boeing314_instruments.xml</path>
+ </model>
 
 
 <!-- ============= -->
 <!-- Optimizations -->
 <!-- ============= -->
+
+<!-- OSG doesn't yet clip the panels -->
+
+ <animation>
+   <type>range</type>
+   <object-name>Panel2DPilot</object-name>
+   <min-m>0</min-m>
+   <max-m>2.0</max-m>
+ </animation>
+
+ <animation>
+   <type>range</type>
+   <object-name>Panel2DOverhead</object-name>
+   <min-m>0</min-m>
+   <max-m>3.0</max-m>
+ </animation>
+
+ <animation>
+   <type>range</type>
+   <object-name>Panel2DEngineer</object-name>
+   <min-m>0</min-m>
+   <max-m>3.0</max-m>
+ </animation>
 
 
 <!-- ================================== -->
@@ -184,22 +104,24 @@
 
 <!-- PROPELLERS -->
 
- <animation>
-  <type>noshadow</type>
-  <object-name>PropellerDisc1</object-name>
-  <object-name>PropellerDisc2</object-name>
-  <object-name>PropellerDisc3</object-name>
-  <object-name>PropellerDisc4</object-name>
- </animation>
-
 <!-- assume 1/7 gear ratio -->
 
 <!-- OUTBOARDS PROPELLERS -->
 
  <animation>
-  <type>spin</type>
+  <type>noshadow</type>
   <object-name>PropellerDisc1</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc1</name>
   <object-name>PropellerShaft1</object-name>
+  <object-name>PropellerDisc1</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc1</object-name>
   <object-name>Propeller1</object-name>
   <property>engines/engine[0]/rpm</property>
   <factor>0.5625</factor> <!-- real 16 : 9 -->
@@ -238,8 +160,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft1</object-name>
-  <object-name>PropellerDisc1</object-name>
+  <object-name>Disc1</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[0]/rpm</property>
@@ -251,9 +172,19 @@
 <!-- 4 -->
 
  <animation>
-  <type>spin</type>
+  <type>noshadow</type>
   <object-name>PropellerDisc4</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc4</name>
   <object-name>PropellerShaft4</object-name>
+  <object-name>PropellerDisc4</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc4</object-name>
   <object-name>Propeller4</object-name>
   <property>engines/engine[3]/rpm</property>
   <factor>0.5625</factor> <!-- test with 0.01 -->
@@ -292,8 +223,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft4</object-name>
-  <object-name>PropellerDisc4</object-name>
+  <object-name>Disc4</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[3]/rpm</property>
@@ -305,15 +235,25 @@
 <!-- INBOARDS PROPELLERS -->
 
  <animation>
-  <type>spin</type>
+  <type>noshadow</type>
   <object-name>PropellerDisc2</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc2</name>
   <object-name>PropellerShaft2</object-name>
+  <object-name>PropellerDisc2</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc2</object-name>
   <object-name>Propeller2</object-name>
   <property>engines/engine[1]/rpm</property>
   <factor>0.5625</factor>
   <center>
    <x-m>0.0</x-m>
-   <y-m>-4.75</y-m>
+   <y-m>-4.744</y-m>
    <z-m>0.92</z-m>
   </center>
   <axis>
@@ -346,8 +286,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft2</object-name>
-  <object-name>PropellerDisc2</object-name>
+  <object-name>Disc2</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[1]/rpm</property>
@@ -359,9 +298,19 @@
 <!-- 3 -->
 
  <animation>
-  <type>spin</type>
+  <type>noshadow</type>
   <object-name>PropellerDisc3</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc3</name>
   <object-name>PropellerShaft3</object-name>
+  <object-name>PropellerDisc3</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc3</object-name>
   <object-name>Propeller3</object-name>
   <property>engines/engine[2]/rpm</property>
   <factor>0.5625</factor> <!-- test with 0.01 -->
@@ -400,8 +349,7 @@
 
  <animation>
   <type>select</type>
-  <object-name>PropellerShaft3</object-name>
-  <object-name>PropellerDisc3</object-name>
+  <object-name>Disc3</object-name>
   <condition>
    <greater-than-equals>
     <property>engines/engine[2]/rpm</property>
@@ -574,6 +522,42 @@
     <value>0.0</value>
    </not-equals>
   </condition>
+ </animation>
+
+
+<!-- ====== -->
+<!-- Inside -->
+<!-- ====== -->
+
+<!-- doors -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CelestialDoor</object-name>
+  <property>controls/doors/celestial/position-norm</property>
+  <factor>-180</factor>
+  <center>
+   <x-m>-5.351</x-m>
+   <y-m>-0.235</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CelestialDoor</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.doorsystem.celestialexport();</script>
+   </binding>
+  </action>
  </animation>
 
 </PropertyList>
