@@ -290,8 +290,12 @@ Mooring.presetseaplane = func {
 # goes to the harbour, once one has the tower
 Mooring.presetharbour = func {
    if( me.itself["root-ctrl"].getChild("automatic").getValue() ) {
+       var found = constant.FALSE;
        var airport = me.presets.getChild("airport-id").getValue();
+
        if( airport != nil and airport != "" ) {
+           print( "searching for a moorage near ", airport );
+
            for( var i=0; i<size(me.itself["seaplane"]); i=i+1 ) {
                 var harbour = me.itself["seaplane"][ i ].getChild("airport-id").getValue();
 
@@ -308,9 +312,14 @@ Mooring.presetharbour = func {
                         }
                     }
 
+                    found = constant.TRUE;
                     break;
                 }
            }
+       }
+
+       if( !found ) {
+           print( "no moorage found" );
        }
    }
 }

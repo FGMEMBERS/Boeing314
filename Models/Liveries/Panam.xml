@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!--
+
+     Path must be from calling .xml.
+
+-->
+
+<PropertyList>
+  <sim>
+    <model>
+     <livery>
+      <name type="string">Panam immat</name>
+      <index type="int">1</index>
+      <texture>B314Panam-hull.rgb</texture>
+      <texture-wing-left>Liveries/Panam-wing.rgb</texture-wing-left>
+      <texture-wing-right>Liveries/Panam-wing.rgb</texture-wing-right>
+      <texture-fin>Liveries/Panam-fin.rgb</texture-fin>
+     </livery>
+    </model>
+  </sim>
+</PropertyList>

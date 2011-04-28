@@ -15,8 +15,9 @@
                                                   Menu.
      1.4               March 2010                 3D seats, engineer levers and sextant.
                                                   Navigator view.
-                                                  Sponson lift and anchor.
+                                                  Sponson lift and anchor force.
                                                   Voice callouts (wind only).
+     1.5               April 2011                 Immatriculation support.
      ==========================================================================================
 -->
 
@@ -27,7 +28,7 @@
 
   <description>Boeing 314-A</description>
   <status>early-production</status>
-  <aircraft-version>1.4</aircraft-version>
+  <aircraft-version>1.5</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>
@@ -67,6 +68,7 @@
 
   <model>
    <path>Aircraft/Boeing314/Models/Boeing314Clipper.xml</path>
+   <immat>NC 18609</immat>
   </model> 
 
 <!-- compensates the shift of VRP at nose -->

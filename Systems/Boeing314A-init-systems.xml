@@ -58,6 +58,9 @@
   <crew>
    <serviceable type="bool">true</serviceable>
 
+   <immat n="0">NC</immat>                                                             <!-- default is NC 18609 -->
+   <immat n="1">18609</immat>
+
    <minimized type="bool">true</minimized>
   </crew>
 

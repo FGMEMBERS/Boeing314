@@ -27,7 +27,13 @@
         <dialog-name>Boeing314-fuel</dialog-name>
        </binding>
       </item>
-      <!--
+      <item>
+       <label>Immatriculation</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-immat</dialog-name>
+       </binding>
+      </item>
       <item>
        <label>Select Livery</label>
        <binding>
@@ -35,7 +41,6 @@
         <script>aircraft.livery.dialog.toggle()</script>
        </binding>
       </item>
-      -->
       <item>
        <label>Moorage</label>
        <binding>

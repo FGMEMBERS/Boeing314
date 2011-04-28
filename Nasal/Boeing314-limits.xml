@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<!-- copilot warnings -->
+
+  <max-flap-extension-speed>
+   <flaps>0.0</flaps>
+   <speed>105</speed>
+  </max-flap-extension-speed>
+  <max-flap-extension-speed>
+   <flaps>0.333</flaps>
+   <speed>105</speed>
+  </max-flap-extension-speed>
+  <max-flap-extension-speed>
+   <flaps>0.667</flaps>
+   <speed>90</speed>
+  </max-flap-extension-speed>
+  <vne>185</vne>
+
+</PropertyList>

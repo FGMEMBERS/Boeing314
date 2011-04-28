@@ -458,6 +458,7 @@ Menu.new = func {
                crew : nil,
                fuel : nil,
                gdf : nil,
+               immat : nil,
                menu : nil,
                moorage : nil,
                procedures : {},
@@ -476,15 +477,28 @@ Menu.init = func {
                                  "Aircraft/Boeing314/Dialogs/Boeing314-autopilot.xml");
    me.crew = gui.Dialog.new("/sim/gui/dialogs/Boeing314/crew/dialog",
                             "Aircraft/Boeing314/Dialogs/Boeing314-crew.xml");
-   me.gdf = gui.Dialog.new("/sim/gui/dialogs/Boeing314/gdf/dialog",
-                            "Aircraft/Boeing314/Dialogs/Boeing314-gdf.xml");
    me.fuel = gui.Dialog.new("/sim/gui/dialogs/Boeing314/fuel/dialog",
                             "Aircraft/Boeing314/Dialogs/Boeing314-fuel.xml");
+   me.gdf = gui.Dialog.new("/sim/gui/dialogs/Boeing314/gdf/dialog",
+                            "Aircraft/Boeing314/Dialogs/Boeing314-gdf.xml");
+   me.immat = gui.Dialog.new("/sim/gui/dialogs/Boeing314/immat/dialog",
+                             "Aircraft/Boeing314/Dialogs/Boeing314-immat.xml");
    me.moorage = gui.Dialog.new("/sim/gui/dialogs/Boeing314/moorage/dialog",
                                "Aircraft/Boeing314/Dialogs/Boeing314-moorage.xml");
 
    me.array( me.procedures, 2, "procedures" );
    me.array( me.voice, 2, "voice" );
+}
+
+Menu.immatexport = func {
+   var immatsplit = [ "", "" ];
+   var immat = getprop("/sim/model/immat");
+
+   immatsplit[0] = substr( immat, 0, 2 );
+   immatsplit[1] = substr( immat, 3 );
+
+   setprop("/systems/crew/immat[0]", immatsplit[0]);
+   setprop("/systems/crew/immat[1]", immatsplit[1]);
 }
 
 Menu.array = func( table, max, name ) {

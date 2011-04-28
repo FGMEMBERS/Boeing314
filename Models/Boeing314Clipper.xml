@@ -47,7 +47,6 @@
 
  <offsets>
 
-
 <!-- VRP at nose -->
 
    <x-m>16.30</x-m>             <!-- model is not exactly at the middle of length 106 feet. -->
@@ -57,8 +56,20 @@
  -->
    <z-m> 0.0</z-m>               <!-- aligned by FDM gear, if model at scale. -->
 
-
  </offsets>
+
+  <nasal>
+   <load>
+    var livery_update = aircraft.livery_update.new(
+    "Aircraft/Boeing314/Models/Liveries", 10,
+    func { print("Boeing 314 livery update") });
+   </load>
+
+   <unload>
+    livery_update.stop();
+   </unload>
+  </nasal>
+
 
 <!-- =========== -->
 <!-- Instruments -->
@@ -68,6 +79,53 @@
   <name>Instruments</name>
   <path>Aircraft/Boeing314/Models/Boeing314_instruments.xml</path>
  </model>
+
+ <model>
+  <name>Exterior</name>
+  <path>Aircraft/Boeing314/Models/Boeing314_exterior.xml</path>
+ </model>
+
+
+<!-- ============================ -->
+<!-- Livery (1 texture per group) -->
+<!-- ============================ -->
+
+<!-- disabled, because transparent windows have a 2nd texture
+  <animation>
+   <type>material</type>
+   <object-name>Fuselage</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture</texture-prop>
+  </animation>
+-->
+
+  <animation>
+   <type>material</type>
+   <object-name>LeftWing</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-wing-left</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>RightWing</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-wing-right</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>LeftFin</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-fin</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>RightFin</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-fin</texture-prop>
+  </animation>
 
 
 <!-- ============= -->
@@ -508,20 +566,6 @@
    <y>0.0</y>
    <z>1.0</z>
   </axis>
- </animation>
-
-<!-- ANCHOR -->
-
- <animation>
-  <type>select</type>
-  <object-name>AnchorLeft</object-name>
-  <object-name>AnchorRight</object-name>
-  <condition>
-   <not-equals>
-    <property>controls/gear/brake-parking</property>
-    <value>0.0</value>
-   </not-equals>
-  </condition>
  </animation>
 
 

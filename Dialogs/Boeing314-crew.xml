@@ -170,6 +170,9 @@
        <dialog-name>Boeing314-menu</dialog-name>
       </binding>
       <binding>
+       <command>dialog-apply</command>
+      </binding>
+      <binding>
         <command>dialog-close</command>
       </binding>
     </button>

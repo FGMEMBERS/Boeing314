@@ -67,9 +67,12 @@ BoeingMain.savedata = func {
                        "/controls/mooring/tower-adf",
                        "/controls/mooring/wind",
                        "/controls/seat/recover",
-                       "/systems/fuel/presets",
                        "/controls/voice/sound",
                        "/controls/voice/text",
+                       "/sim/model/immat",
+                       "/systems/crew/immat[0]",
+                       "/systems/crew/immat[1]",
+                       "/systems/fuel/presets",
                        "/systems/seat/position/celestial/x-m",
                        "/systems/seat/position/celestial/y-m",
                        "/systems/seat/position/celestial/z-m",
@@ -108,6 +111,10 @@ BoeingMain.instantiate = func {
 }
 
 BoeingMain.init = func {
+   aircraft.livery.init( "Aircraft/Boeing314/Models/Liveries",
+                         "sim/model/livery/name",
+                         "sim/model/livery/index" );
+
    me.instantiate();
    me.putinrelation();
 

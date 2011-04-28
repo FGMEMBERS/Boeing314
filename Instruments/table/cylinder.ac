@@ -13,7 +13,7 @@ OBJECT poly
 name "EngineerLever"
 data 12
 Cylinder.021
-texture "B314Panam-cockpit.rgb"
+texture "B314Panam-lever.rgb"
 texrep 1 1
 crease 30.000000
 numvert 44

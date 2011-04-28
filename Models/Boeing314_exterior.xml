@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <model>
+   <name>Anchor left</name>
+   <path>Aircraft/Boeing314/Models/Exterior/anchor/anchor.xml</path>
+   <offsets>
+    <x-m>-15.568</x-m>
+    <y-m>-0.277</y-m>
+    <z-m> 0.818</z-m>
+    <heading-deg>30</heading-deg>
+    <pitch-deg>-15</pitch-deg>
+   </offsets>
+  </model>
+
+  <model>
+   <name>Anchor right</name>
+   <path>Aircraft/Boeing314/Models/Exterior/anchor/anchor.xml</path>
+   <offsets>
+    <x-m>-15.568</x-m>
+    <y-m> 0.277</y-m>
+    <z-m> 0.818</z-m>
+    <heading-deg>-30</heading-deg>
+    <pitch-deg>-15</pitch-deg>
+   </offsets>
+  </model>
+
+<!-- REGISTRATION -->
+
+  <text>
+   <name>Registration wing right</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">1.92</character-size>
+   <character-aspect-ratio type="double">1.2</character-aspect-ratio>        <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <offsets>
+    <x-m>-2.260</x-m>
+    <y-m>15.500</y-m>
+    <z-m> 2.235</z-m>
+    <heading-deg>90</heading-deg>         <!-- switch pitch to roll -->
+    <pitch-deg>-2.2</pitch-deg>
+    <roll-deg>2.5</roll-deg>
+   </offsets>    
+  </text>
+
+  <text>
+   <name>Registration wing left</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">1.92</character-size>
+   <character-aspect-ratio type="double">1.2</character-aspect-ratio>        <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <offsets>
+    <x-m>-2.515</x-m>
+    <y-m>-16.800</y-m>
+    <z-m> 1.755</z-m>
+    <heading-deg>90</heading-deg>         <!-- switch pitch to roll -->
+    <pitch-deg>185.2</pitch-deg>
+    <roll-deg>-1.9</roll-deg>
+   </offsets>    
+  </text>
+
+<!-- fin -->
+
+  <text>
+   <name>Registration fin right top</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[0]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">0.55</character-size>
+   <character-aspect-ratio type="double">1.1</character-aspect-ratio>        <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 13.982</x-m>
+    <y-m> 6.994</y-m>
+    <z-m> 3.657</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>Registration fin left top</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[0]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">0.55</character-size>
+   <character-aspect-ratio type="double">1.1</character-aspect-ratio>      <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 13.982</x-m>
+    <y-m>-6.994</y-m>
+    <z-m> 3.657</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>Registration fin right</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[1]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">0.55</character-size>
+   <character-aspect-ratio type="double">1.1</character-aspect-ratio>        <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 14.082</x-m>
+    <y-m> 6.994</y-m>
+    <z-m> 3.117</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>Registration fin left</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[1]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">0.55</character-size>
+   <character-aspect-ratio type="double">1.1</character-aspect-ratio>      <!-- compress -->
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">32</width>
+    <height type="int">32</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 13.982</x-m>
+    <y-m>-6.994</y-m>
+    <z-m> 3.117</z-m>
+   </offsets>
+  </text>
+
+  <animation>
+   <type>select</type>
+   <name>Panam registration</name>
+   <object-name>Registration wing left</object-name>
+   <object-name>Registration wing right</object-name>
+   <object-name>Registration fin left</object-name>
+   <object-name>Registration fin left top</object-name>
+   <object-name>Registration fin right</object-name>
+   <object-name>Registration fin right top</object-name>
+   <condition>
+    <equals>
+     <property>sim/model/livery/index</property>
+     <value>1</value>
+    </equals>
+   </condition>
+  </animation>
+
+</PropertyList>
