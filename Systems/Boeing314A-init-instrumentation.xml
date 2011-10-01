@@ -18,6 +18,7 @@
   </clock>
 
   <gdf>
+   <airport type="string"></airport>
    <called type="bool">false</called>
    <calling type="bool">false</calling>
    <gmt-string type="string"></gmt-string>
@@ -30,14 +31,7 @@
     </dependency>
 
     <noinstrument>
-     <bearing>/autopilot/settings/true-heading-deg</bearing>
-     <route>/autopilot/route-manager/route</route>
-     <route-manager>/autopilot/route-manager</route-manager>
      <speed-up>/sim/speed-up</speed-up>
-     <waypoint>
-      <component>/autopilot/route-manager</component>
-      <subcomponent>wp</subcomponent>
-     </waypoint>
     </noinstrument>
    </relations>
 

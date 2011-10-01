@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-environment</name>
+  <layout>vbox</layout>
+  <width>450</width>
+
+  <text>
+    <label>Boeing 314 environment</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Visual effects  ~</label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>wake</label>
+      <property>/controls/environment/effects</property>
+      <binding>
+       <command>property-toggle</command>
+       <property>/controls/environment/effects</property>
+      </binding>
+    </checkbox>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-apply</command>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Menu</legend>
+    <key>m</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-apply</command>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+  </group>
+</PropertyList>

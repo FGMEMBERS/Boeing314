@@ -77,6 +77,31 @@
    <tanks include="../Nasal/Boeing314A-fuel.xml"/>
   </fuel>
 
+  <human>
+   <serviceable type="bool" archive="y">false</serviceable>
+
+   <airport-id></airport-id>
+
+   <relations>
+    <dependency>
+     <adf>
+      <component>/instrumentation</component>
+      <subcomponent>adf</subcomponent>
+     </adf>
+     <crew>/controls/crew</crew>
+    </dependency>
+
+    <itself>
+     <airport>
+      <component>/systems/human/route</component>
+      <subcomponent>seaplane</subcomponent>
+     </airport>
+    </itself>
+   </relations>
+
+   <route include="../Nasal/Boeing314-route.xml"/>
+  </human>
+
   <mooring>
    <boat-id></boat-id>                                                                 <!-- boat view -->
    <dialog></dialog>
@@ -84,9 +109,12 @@
 
    <relations>
     <dependency>
-     <boat>/systems/seat/position/boat-view</boat>
+     <boat>
+      <component>/systems/seat/position</component>
+      <subcomponent>boat</subcomponent>
+     </boat>
      <rope>/controls/gear/brake-parking</rope>
-     <tower>/sim/tower/airport-id</tower>
+     <seaport>/sim/type</seaport>
     </dependency>
 
     <itself>
@@ -110,6 +138,7 @@
 
   <seat>
    <boat type="bool">false</boat>
+   <boat2 type="bool">false</boat2>
    <captain type="bool">true</captain>
    <celestial type="bool">false</celestial>
    <copilot type="bool">false</copilot>
@@ -118,13 +147,20 @@
    <navigator type="bool">false</navigator>
    <observer type="bool">false</observer>
    <position>
-    <boat-view>
+    <boat n="0">
      <altitude-ft type="double">0.0</altitude-ft>
      <latitude-deg type="double">0.0</latitude-deg>
      <longitude-deg type="double">0.0</longitude-deg>
      <offset-ft type="double">0.0</offset-ft>                                          <!-- specific to the 3D model used -->
      <water-ft type="double">0.0</water-ft>                                            <!-- waterline -->
-    </boat-view>
+    </boat>
+    <boat n="1">
+     <altitude-ft type="double">0.0</altitude-ft>
+     <latitude-deg type="double">0.0</latitude-deg>
+     <longitude-deg type="double">0.0</longitude-deg>
+     <offset-ft type="double">0.0</offset-ft>                                          <!-- specific to the 3D model used -->
+     <water-ft type="double">0.0</water-ft>                                            <!-- waterline -->
+    </boat>
     <celestial>
      <x-m type="double">0.0</x-m>
      <y-m type="double">0.0</y-m>

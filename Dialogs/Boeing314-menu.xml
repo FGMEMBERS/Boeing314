@@ -13,7 +13,6 @@
 
   <group>
     <layout>hbox</layout>
-    <empty><stretch>true</stretch></empty>
 
     <button>
       <legend>Autopilot</legend>
@@ -52,6 +51,22 @@
     </button>
 
     <button>
+      <legend>Environnement</legend>
+      <key>e</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-environment</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+
+  <group>
+    <layout>hbox</layout>
+
+    <button>
       <legend>Fuel</legend>
       <key>f</key>
       <binding>
@@ -81,6 +96,18 @@
       <binding>
        <command>dialog-show</command>
        <dialog-name>Boeing314-procedures</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Seaport</legend>
+      <key>s</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>seaport</dialog-name>
       </binding>
       <binding>
         <command>dialog-close</command>

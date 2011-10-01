@@ -73,6 +73,15 @@
     </binding>
    </key>
 
+   <key n="12">
+    <name>Ctrl-L</name>
+    <desc>Toggle boat 2 view.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>globals.Boeing314.seatsystem.viewexport("boat2");</script>
+    </binding>
+   </key>
+
    <key n="14">
     <name>Ctrl-N</name>
     <desc>Toggle navigator view.</desc>

@@ -21,6 +21,13 @@
        </binding>
       </item>
       <item>
+       <label>Environment</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-environment</dialog-name>
+       </binding>
+      </item>
+      <item>
        <label>Fuel</label>
        <binding>
         <command>dialog-show</command>
@@ -53,6 +60,13 @@
        <binding>
         <command>dialog-show</command>
         <dialog-name>Boeing314-procedures</dialog-name>
+       </binding>
+      </item>
+      <item>
+       <label>Seaport</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>seaport</dialog-name>
        </binding>
       </item>
       <item>

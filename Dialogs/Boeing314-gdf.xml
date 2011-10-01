@@ -21,15 +21,15 @@
     <group>
       <layout>hbox</layout>
 
-      <text>
+      <input>
         <label>Station</label>
         <halign>left</halign>
-      </text>
-
-      <text>
+        <property>/instrumentation/gdf/airport</property>
         <live>true</live>
-        <property>/autopilot/route-manager/wp[0]/id</property>
-      </text>
+        <binding>
+         <command>dialog-apply</command>
+        </binding>
+      </input>
     </group>
 
     <checkbox>

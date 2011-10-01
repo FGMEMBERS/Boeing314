@@ -179,7 +179,6 @@
   </text>
 
   <animation>
-   <type>select</type>
    <name>Panam registration</name>
    <object-name>Registration wing left</object-name>
    <object-name>Registration wing right</object-name>
@@ -187,6 +186,31 @@
    <object-name>Registration fin left top</object-name>
    <object-name>Registration fin right</object-name>
    <object-name>Registration fin right top</object-name>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>Panam registration</object-name>
+   <emission>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+   </emission>
+   <ambient>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </ambient>
+   <diffuse>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </diffuse>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>Panam registration</object-name>
    <condition>
     <equals>
      <property>sim/model/livery/index</property>

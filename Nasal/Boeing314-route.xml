@@ -145,9 +145,27 @@
     <airport-id type="string">KOAK</airport-id>
 
     <location n="0">
+     <latitude-deg type="double">37.84088</latitude-deg>
+     <longitude-deg type="double">-122.34802</longitude-deg>
+     <heading-deg type="int">60</heading-deg>
+    </location>
+
+    <location n="1">
      <latitude-deg type="double">37.81743</latitude-deg>
      <longitude-deg type="double">-122.36370</longitude-deg>
      <heading-deg type="int">150</heading-deg>
+    </location>
+
+    <location n="2">
+     <latitude-deg type="double">37.84088</latitude-deg>
+     <longitude-deg type="double">-122.34802</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+    <location n="3">
+     <latitude-deg type="double">37.84088</latitude-deg>
+     <longitude-deg type="double">-122.34802</longitude-deg>
+     <heading-deg type="int">330</heading-deg>
     </location>
 
 <!-- Tracy -->
@@ -201,7 +219,6 @@
 
    <seaplane n="3">
     <airport-id type="string">PMDY</airport-id>
-    <water-ft type="double">-3.0</water-ft>
 
     <location n="0">
      <latitude-deg type="double">28.22183</latitude-deg>
@@ -463,7 +480,6 @@
 
    <seaplane n="11">
     <airport-id type="string">NZAA</airport-id>
-    <water-ft type="double">-4</water-ft>
 
     <location n="0">
      <latitude-deg type="double">-36.83608</latitude-deg>
@@ -795,7 +811,6 @@
 
    <seaplane n="20">
     <airport-id type="string">LFML</airport-id>
-    <water-ft type="double">-2.5</water-ft>
 
     <location n="0">
      <latitude-deg type="double">43.44018</latitude-deg>
@@ -1412,7 +1427,6 @@
 
    <seaplane n="37">
     <airport-id type="string">HSSS</airport-id>
-    <water-ft type="double">1224.0</water-ft>
 
     <location n="0">
      <latitude-deg type="double">15.60347</latitude-deg>
@@ -1435,7 +1449,6 @@
 
    <seaplane n="38">
     <airport-id type="string">FZAA</airport-id>
-    <water-ft type="double">820.0</water-ft>
 
     <location n="0">
      <latitude-deg type="double">-4.29909</latitude-deg>

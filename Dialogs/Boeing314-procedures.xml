@@ -23,6 +23,22 @@
      <layout>hbox</layout>
 
      <text>
+       <label>adf :</label>
+     </text>
+
+     <text>
+      <property>/systems/human/airport-id</property>
+     </text>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+     <layout>hbox</layout>
+
+     <text>
        <label>copilot :</label>
      </text>
 
@@ -56,7 +72,6 @@
      </text>
     </group>
 -->
-
   </group>
 
   <text>

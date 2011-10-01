@@ -17,7 +17,10 @@ VirtualCopilot.new = func {
                crewscreen : nil,
                voicecrew : nil,
 
-               COPILOTSEC : 2.0,
+               radiomanagement : RadioManagement.new(),
+
+               COPILOTSEC : 60.0,
+               COPILOTFASTSEC : 2.0,
 
                rates : 0.0,
 
@@ -49,6 +52,8 @@ VirtualCopilot.set_relation = func( autopilot, crew, voice ) {
    me.autopilotsystem = autopilot;
    me.crewscreen = crew;
    me.voicecrew = voice;
+
+   me.radiomanagement.set_relation( autopilot );
 }
 
 VirtualCopilot.windexport = func {
@@ -102,6 +107,8 @@ VirtualCopilot.toggleexport = func {
    me.itself["root-ctrl"].getChild("activ").setValue(launch);
        
    if( launch and !me.is_running() ) {
+       me.radiomanagement.set_task();
+
        me.schedule();
    }
 
@@ -167,6 +174,8 @@ VirtualCopilot.supervisor = func {
        me.set_activ();
 
        me.gyro();
+
+       me.radiomanagement.copilot( me );
 
        me.rates = me.randoms( me.rates );
        me.timestamp();

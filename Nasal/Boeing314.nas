@@ -38,11 +38,12 @@ BoeingMain.sec2cron = func {
    copilotcrew.fastschedule();
 
    # schedule the next call
-   settimer(func{ me.sec2cron(); },copilotcrew.COPILOTSEC);
+   settimer(func{ me.sec2cron(); },copilotcrew.COPILOTFASTSEC);
 }
 
 # 3 s cron
 BoeingMain.sec3cron = func {
+   autopilotsystem.schedule();
    crewscreen.schedule();
 
    # schedule the next call
@@ -57,13 +58,25 @@ BoeingMain.sec5cron = func {
    settimer(func{ me.sec5cron(); },mooringsystem.MOORINGSEC);
 }
 
+# 60 s cron
+BoeingMain.sec60cron = func {
+   mooringsystem.slowschedule();
+
+   # schedule the next call
+   settimer(func{ me.sec60cron(); },mooringsystem.BOATSEC);
+}
+
 BoeingMain.savedata = func {
    var saved_props = [ "/controls/copilot/gyro",
+                       "/controls/crew/radio",
                        "/controls/crew/timeout",
                        "/controls/crew/timeout-s",
                        "/controls/doors/celestial/opened",
+                       "/controls/environment/effects",
+                       "/controls/fuel/reinit",
                        "/controls/mooring/automatic",
                        "/controls/mooring/heading-deg",
+                       "/controls/mooring/seaport",
                        "/controls/mooring/tower-adf",
                        "/controls/mooring/wind",
                        "/controls/seat/recover",
@@ -123,10 +136,23 @@ BoeingMain.init = func {
    settimer(func { me.sec2cron(); },0);
    settimer(func { me.sec3cron(); },0);
    settimer(func { me.sec5cron(); },0);
+   settimer(func { me.sec60cron(); },0);
 
    # saved on exit, restored at launch
    me.savedata();
 }
 
+# state reset
+BoeingMain.reinit = func {
+   if( getprop("/controls/fuel/reinit") ) {
+       # default is JSBSim state, which loses fuel selection.
+       globals.Boeing314.fuelsystem.reinitexport();
+   }
+}
 
-boeing314L = setlistener("/sim/signals/fdm-initialized", func { theclipper = BoeingMain.new(); removelistener(boeing314L); } );
+
+# object creation
+boeing314L  = setlistener("/sim/signals/fdm-initialized", func { globals.Boeing314.main = BoeingMain.new(); removelistener(boeing314L); } );
+
+# state reset
+boeing314L2 = setlistener("/sim/signals/reinit", func { globals.Boeing314.main.reinit(); });

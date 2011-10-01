@@ -85,6 +85,11 @@
   <path>Aircraft/Boeing314/Models/Boeing314_exterior.xml</path>
  </model>
 
+ <model>
+  <name>Effects</name>
+  <path>Aircraft/Boeing314/Models/Boeing314_effects.xml</path>
+ </model>
+
 
 <!-- ============================ -->
 <!-- Livery (1 texture per group) -->

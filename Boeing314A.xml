@@ -6,8 +6,8 @@
 
     <fileheader>
         <author> </author>
-        <filecreationdate> 11 September 2009 </filecreationdate>
-        <version> 1.05 </version>
+        <filecreationdate> 5 September 2011 </filecreationdate>
+        <version> 1.06 </version>
 
         <description> Boeing314A </description>
         <license>
@@ -39,6 +39,7 @@
 
         <note>tilt at rest.</note>
         <note>hull drag.</note>
+        <note>sponson drag.</note>
         <note>step lift increases the windows until flaps retraction (105 kt).</note>
         <note>step triming moment.</note>
         <note>rebound at landing.</note>
@@ -1045,16 +1046,16 @@
                       <independentVar lookup="column">velocities/vc-kts</independentVar>
                       <independentVar lookup="table">inertia/weight-lbs</independentVar>
                       <tableData breakPoint="47850.0000">
-                                        0.0000	17.0000	34.0000
-                          0.0450	0.0000	0.0000	1.0000
-                          0.0550	0.0000	0.0000	0.8000
-                          0.0650	0.0000	0.0000	0.0000
+                                      0.0000  17.0000  34.0000
+                          0.0450      0.0000   0.0000   1.0000
+                          0.0550      0.0000   0.0000   0.8000
+                          0.0650      0.0000   0.0000   0.0000
                       </tableData>
                       <tableData breakPoint="84000.0000">
-                                        0.0000	21.0000	42.0000
-                          0.0490	0.0000	0.0000	1.0000
-                          0.0590	0.0000	0.0000	0.8000
-                          0.0690	0.0000	0.0000	0.0000
+                                      0.0000  21.0000  42.0000
+                          0.0490      0.0000   0.0000   1.0000
+                          0.0590      0.0000   0.0000   0.8000
+                          0.0690      0.0000   0.0000   0.0000
                       </tableData>
                   </table>
             </product>
@@ -1075,26 +1076,26 @@
                       <independentVar lookup="column">velocities/vc-kts</independentVar>
                       <independentVar lookup="table">inertia/weight-lbs</independentVar>
                       <tableData breakPoint="47850.0000">
-                              	        17.000   34.0000 44.0000 60.0000
-                         -0.0690	0.0000   0.0000	 0.0000  1.0000
-                         -0.0590	0.0000   0.0000	 0.5000  1.0000
-                         -0.0490	0.0000   0.5000	 1.0000  1.0000
-                         -0.0290	0.0000   1.0000	 1.0000  1.0000
-                          0.0290	0.0000   1.0000	 1.0000  1.0000
-                          0.0490	0.0000   0.5000	 1.0000  1.0000
-                          0.0590	0.0000   0.0000	 0.5000  1.0000
-                          0.0690	0.0000   0.0000	 0.0000  1.0000
+                                     17.0000  34.0000  44.0000  60.0000
+                         -0.0690      0.0000   0.0000   0.0000   1.0000
+                         -0.0590      0.0000   0.0000   0.5000   1.0000
+                         -0.0490      0.0000   0.5000   1.0000   1.0000
+                         -0.0290      0.0000   1.0000   1.0000   1.0000
+                          0.0290      0.0000   1.0000   1.0000   1.0000
+                          0.0490      0.0000   0.5000   1.0000   1.0000
+                          0.0590      0.0000   0.0000   0.5000   1.0000
+                          0.0690      0.0000   0.0000   0.0000   1.0000
                       </tableData>
                       <tableData breakPoint="84000.0000">
-                              	        21.000   42.0000 52.0000 80.0000
-                         -0.0600	0.0000   0.0000	 0.0000  1.0000
-                         -0.0500	0.0000   0.0000	 0.5000  1.0000
-                         -0.0400	0.0000   0.5000	 1.0000  1.0000
-                         -0.0200	0.0000   1.0000	 1.0000  1.0000
-                          0.0200	0.0000   1.0000	 1.0000  1.0000
-                          0.0400	0.0000   0.5000	 1.0000  1.0000
-                          0.0500	0.0000   0.0000	 0.5000  1.0000
-                          0.0600	0.0000   0.0000	 0.0000  1.0000
+                                     21.0000  42.0000  52.0000  80.0000
+                         -0.0600      0.0000   0.0000   0.0000   1.0000
+                         -0.0500      0.0000   0.0000   0.5000   1.0000
+                         -0.0400      0.0000   0.5000   1.0000   1.0000
+                         -0.0200      0.0000   1.0000   1.0000   1.0000
+                          0.0200      0.0000   1.0000   1.0000   1.0000
+                          0.0400      0.0000   0.5000   1.0000   1.0000
+                          0.0500      0.0000   0.0000   0.5000   1.0000
+                          0.0600      0.0000   0.0000   0.0000   1.0000
                       </tableData>
                   </table>
             </product>
@@ -1249,6 +1250,75 @@
             </function>
 
             <documentation>
+             The hull goes on its step :
+             - as sponson gets out water, less drag.
+             - sponson in water increases drag : 0.02/0.029 rad at rest.
+             - on step, the possible roll is higher (sponson touching water).
+             - after lift off, no drag by water.
+             - sponson is higher over water than hull.
+             - 5 % of hull drag.
+            </documentation>
+            <function name="aero/coefficient/HDsponson0">
+               <description>Drag_sponson_left</description>
+               <product>
+                  <property>aero/qbar-psf</property>
+                  <property>metrics/Sw-sqft</property>
+                  <value>0.0060</value>
+                  <table>
+                      <independentVar lookup="row">attitude/roll-rad</independentVar>
+                      <independentVar lookup="column">aero/h_b-mac-ft</independentVar>
+                      <independentVar lookup="table">inertia/weight-lbs</independentVar>
+                      <tableData breakPoint="47850.0000">
+                                        0.0250   0.0350   0.0450   0.0550   0.0650   0.0750
+                         -0.0790        1.0000   1.0000   1.0000   1.0000   0.5000   0.0000
+                         -0.0690        1.0000   1.0000   1.0000   0.5000   0.0000   0.0000
+                         -0.0590        1.0000   1.0000   0.5000   0.0000   0.0000   0.0000
+                         -0.0490        1.0000   0.5000   0.0000   0.0000   0.0000   0.0000
+                         -0.0290        1.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+                      </tableData>
+                      <tableData breakPoint="84000.0000">
+                                        0.0290   0.0390   0.0490   0.0590   0.0690   0.0790
+                         -0.0700        1.0000   1.0000   1.0000   1.0000   0.5000   0.0000
+                         -0.0600        1.0000   1.0000   1.0000   0.5000   0.0000   0.0000
+                         -0.0500        1.0000   1.0000   0.5000   0.0000   0.0000   0.0000
+                         -0.0400        1.0000   0.5000   0.0000   0.0000   0.0000   0.0000
+                         -0.0200        1.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+                      </tableData>
+                  </table>
+              </product>
+            </function>
+
+            <function name="aero/coefficient/HDsponson0[1]">
+               <description>Drag_sponson_right</description>
+               <product>
+                  <property>aero/qbar-psf</property>
+                  <property>metrics/Sw-sqft</property>
+                  <value>0.0060</value>
+                  <table>
+                      <independentVar lookup="row">attitude/roll-rad</independentVar>
+                      <independentVar lookup="column">aero/h_b-mac-ft</independentVar>
+                      <independentVar lookup="table">inertia/weight-lbs</independentVar>
+                      <tableData breakPoint="47850.0000">
+                                        0.0250   0.0350   0.0450   0.0550   0.0650   0.0750
+                          0.0290        1.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+                          0.0490        1.0000   0.5000   0.0000   0.0000   0.0000   0.0000
+                          0.0590        1.0000   1.0000   0.5000   0.0000   0.0000   0.0000
+                          0.0690        1.0000   1.0000   1.0000   0.5000   0.0000   0.0000
+                          0.0790        1.0000   1.0000   1.0000   1.0000   0.5000   0.0000
+                      </tableData>
+                      <tableData breakPoint="84000.0000">
+                                        0.0290   0.0390   0.0490   0.0590   0.0690   0.0790
+                          0.0200        1.0000   0.0000   0.0000   0.0000   0.0000   0.0000
+                          0.0400        1.0000   0.5000   0.0000   0.0000   0.0000   0.0000
+                          0.0500        1.0000   1.0000   0.5000   0.0000   0.0000   0.0000
+                          0.0600        1.0000   1.0000   1.0000   0.5000   0.0000   0.0000
+                          0.0700        1.0000   1.0000   1.0000   1.0000   0.5000   0.0000
+                      </tableData>
+                  </table>
+              </product>
+            </function>
+
+            <documentation>
                added.
             </documentation>
             <function name="aero/coefficient/CDo">
@@ -1349,13 +1419,16 @@
                     <value>0.0350</value>
                 </product>
             </function>
+            <documentation>
+              - 0.0280 replaced by 0.0.
+            </documentation>
             <function name="aero/coefficient/CDsb">
                 <description>Drag_due_to_speedbrakes</description>
                 <product>
                     <property>aero/qbar-psf</property>
                     <property>metrics/Sw-sqft</property>
                     <property>fcs/speedbrake-pos-norm</property>
-                    <value>0.0280</value>
+                    <value>0.0000</value>
                 </product>
             </function>
             <function name="aero/coefficient/CDbeta">

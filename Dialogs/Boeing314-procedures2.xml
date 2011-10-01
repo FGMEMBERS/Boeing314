@@ -64,6 +64,25 @@
          <property>/controls/copilot/gyro</property>
         </binding>
       </checkbox>
+
+      <checkbox>
+        <label>adjusts ADF to nearest moorage  ~</label>
+        <halign>left</halign>
+        <property>/controls/crew/radio</property>
+        <binding>
+         <command>property-toggle</command>
+         <property>/controls/crew/radio</property>
+        </binding>
+      </checkbox>
+
+      <text>
+        <label>(in Nasal/Boeing314-route.xml)</label>
+        <color>
+         <red>0.5</red>
+         <green>0.5</green>
+         <blue>0.5</blue>
+        </color>
+      </text>
      </group>
 
   </group>

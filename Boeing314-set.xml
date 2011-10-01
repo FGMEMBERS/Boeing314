@@ -18,6 +18,9 @@
                                                   Sponson lift and anchor force.
                                                   Voice callouts (wind only).
      1.5               April 2011                 Immatriculation support.
+     1.6               October 2011               Wake effect.
+                                                  2nd boat view.
+                                                  Sponson hydrodynamic drag.
      ==========================================================================================
 -->
 
@@ -28,7 +31,7 @@
 
   <description>Boeing 314-A</description>
   <status>early-production</status>
-  <aircraft-version>1.5</aircraft-version>
+  <aircraft-version>1.6</aircraft-version>
 
   <startup>
    <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>
@@ -85,6 +88,8 @@
 
   <help include="help.xml"/>
 
+  <type>seaplane</type>                                               <!-- triggers seaport dialog -->
+
  </sim>
 
  <consumables>
@@ -95,6 +100,7 @@
 
  <nasal>
   <Boeing314>
+   <file>Aircraft/Generic/limits.nas</file>
    <file>Aircraft/Generic/limits.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-constants.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-hydraulic.nas</file>
@@ -134,11 +140,18 @@
 
  <models>
   <model>
-   <name>Boat</name>
+   <name>Boat (takeoff)</name>
    <path>Models\Maritime\Misc\MarkerBuoy.xml</path>
-   <longitude-deg-prop>systems/seat/position/boat-view/longitude-deg</longitude-deg-prop>
-   <latitude-deg-prop>systems/seat/position/boat-view/latitude-deg</latitude-deg-prop>
-   <elevation-ft-prop>systems/seat/position/boat-view/water-ft</elevation-ft-prop>
+   <longitude-deg-prop>systems/seat/position/boat/longitude-deg</longitude-deg-prop>
+   <latitude-deg-prop>systems/seat/position/boat/latitude-deg</latitude-deg-prop>
+   <elevation-ft-prop>systems/seat/position/boat/water-ft</elevation-ft-prop>
+  </model>
+  <model>
+   <name>Boat (landing)</name>
+   <path>Models\Maritime\Civilian\SailBoatUnderPower11m.xml</path>
+   <longitude-deg-prop>systems/seat/position/boat[1]/longitude-deg</longitude-deg-prop>
+   <latitude-deg-prop>systems/seat/position/boat[1]/latitude-deg</latitude-deg-prop>
+   <elevation-ft-prop>systems/seat/position/boat[1]/water-ft</elevation-ft-prop>
   </model>
  </models>
 

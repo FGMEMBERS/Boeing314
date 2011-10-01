@@ -74,69 +74,6 @@
        <script>globals.Boeing314.seatsystem.recoverexport();</script>
       </binding>
     </checkbox>
-
-    <text>
-      <label></label>
-    </text>
-
-    <text>
-      <halign>center</halign>
-      <label>Mooring</label>
-    </text>
-
-    <checkbox>
-      <label>Automatic at startup  ~</label>
-      <halign>left</halign>
-      <property>/controls/mooring/automatic</property>
-    </checkbox>
-
-    <group>
-     <layout>vbox</layout>
-     <halign>left</halign>
-
-     <group>
-      <layout>hbox</layout>
-
-      <group>
-       <layout>vbox</layout>
-       <halign>left</halign>
-
-       <checkbox>
-         <halign>left</halign>
-         <label>Head to wind  ~</label>
-         <property>/controls/mooring/wind</property>
-         <binding>
-          <command>property-toggle</command>
-          <property>/controls/mooring/wind</property>
-         </binding>
-       </checkbox>
-      </group>
-
-      <group>
-       <layout>vbox</layout>
-       <halign>left</halign>
-
-       <input>
-         <halign>left</halign>
-         <property>/controls/mooring/heading-deg</property>
-         <label>degrees  ~</label>
-         <binding>
-          <command>dialog-apply</command>
-         </binding>
-       </input>
-      </group>
-     </group>
-    </group>
-
-    <text>
-      <label></label>
-    </text>
-
-    <checkbox>
-      <label>Four course radio range of tower  ~</label>
-      <halign>left</halign>
-      <property>/controls/mooring/tower-adf</property>
-    </checkbox>
   </group>
 
   <text>

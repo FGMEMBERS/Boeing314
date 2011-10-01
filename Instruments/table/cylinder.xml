@@ -29,7 +29,7 @@
   <object-name>ThrottleLever1</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/throttle</property>
@@ -41,7 +41,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/throttle</property>
@@ -76,7 +76,7 @@
   <object-name>ThrottleLever2</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/throttle</property>
@@ -88,7 +88,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/throttle</property>
@@ -123,7 +123,7 @@
   <object-name>ThrottleLever3</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/throttle</property>
@@ -135,7 +135,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/throttle</property>
@@ -170,7 +170,7 @@
   <object-name>ThrottleLever4</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/throttle</property>
@@ -182,7 +182,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/throttle</property>
@@ -219,7 +219,7 @@
   <object-name>PropellerLever1</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/propeller-pitch</property>
@@ -231,7 +231,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/propeller-pitch</property>
@@ -266,7 +266,7 @@
   <object-name>PropellerLever2</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/propeller-pitch</property>
@@ -278,7 +278,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/propeller-pitch</property>
@@ -313,7 +313,7 @@
   <object-name>PropellerLever3</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/propeller-pitch</property>
@@ -325,7 +325,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/propeller-pitch</property>
@@ -360,7 +360,7 @@
   <object-name>PropellerLever4</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/propeller-pitch</property>
@@ -372,7 +372,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/propeller-pitch</property>
@@ -409,7 +409,7 @@
   <object-name>MixtureLever1</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/mixture</property>
@@ -421,7 +421,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[0]/mixture</property>
@@ -456,7 +456,7 @@
   <object-name>MixtureLever2</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/mixture</property>
@@ -468,7 +468,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[1]/mixture</property>
@@ -503,7 +503,7 @@
   <object-name>MixtureLever3</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/mixture</property>
@@ -515,7 +515,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[2]/mixture</property>
@@ -550,7 +550,7 @@
   <object-name>MixtureLever4</object-name>
   <action>
    <button>0</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/mixture</property>
@@ -562,7 +562,7 @@
   </action>
   <action>
    <button>1</button>
-   <repeatable>false</repeatable>
+   <repeatable>true</repeatable>
    <binding>
     <command>property-adjust</command>
     <property>controls/engines/engine[3]/mixture</property>

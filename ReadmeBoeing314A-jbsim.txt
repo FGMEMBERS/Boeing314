@@ -131,12 +131,12 @@ Sounds
 
 Known compatibility
 -------------------
-- 2.0.0 : minimal version.
+- 2.4.0 : minimal version.
 
 
 Keyboard
 ========
-- "q"      : quit speed up.
+- "q" : quit speed up.
 
 Views
 -----
@@ -144,6 +144,7 @@ Views
 - "ctrl-E" : "E"ngineer view.
 - "ctrl-J" : copilot view.
 - "ctrl-K" : observer view (floating).
+- "ctrl-L" : boat view ("L"anding).
 - "ctrl-N" : "N"avigator view (floating).
 - "ctrl-O" : radi"O" view.
 - "ctrl-T" : celes"T"ial view (floating).
@@ -207,9 +208,9 @@ Ground Direction Finding
 ------------------------
 "The radio operator held the Morse key in transmit mode a minute, while the ground operator took
 a bearing of the signal" (G) :
-- add a waypoint.
+- input an airport.
 - call the ground operator, by "ctrl-I d" : range is limited to 1500 miles [1300 NM] (G)(J).
-- within a delay of 2 minutes, the radio returns on a paper the magnetic heading towards the waypoint.
+- within a delay of 2 minutes, the radio returns on a paper the magnetic heading towards the airport.
 
 Starting with the Sextant
 -------------------------
@@ -232,6 +233,7 @@ See Instruments/BubbleSextant/README.
 Virtual copilot
 ===============
 - he aligns gyro with magnetic compass.
+- he adjusts ADF to tower.
 - he can hold the throttle.
 - he is never the pilot in command.
 
@@ -292,12 +294,7 @@ TO DO JSBSim (seaplane)
 
 Known problems
 ==============
-
-Known problems 2.0.0 autopilot
-------------------------------
-- the first waypoint is always ignored : insert a double waypoint.
-- to update waypoints, once route is activated, clear completely the route.
-- during descent, route manager may update the target altitude (press F11).
+- data are not saved on reinit.
 
 Known problems OSG
 ------------------
@@ -370,4 +367,4 @@ References
     F. W. S. Locke Jr., January 1946.
 
 
-20 March 2010.
+10 September 2011.

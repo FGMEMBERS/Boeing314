@@ -50,6 +50,11 @@ Constant.new = func {
                HOURTOSECOND : 3600.0,
                MINUTETOSECOND : 60.0,
 
+# length
+               METERTOFEET : 3.28083989501,
+               NMTOMETER : 1852,
+               KMTOMETER : 1000,
+
 # weight
                GALUSTOLB : 6.6,                        # 1 US gallon = 6.6 pound
                LBTOGALUS : 0.0

@@ -67,7 +67,7 @@
    </key>
    <key>
     <name>Ctrl-B</name>
-    <desc>boat view</desc>
+    <desc>boat view (takeoff)</desc>
    </key>
    <key>
     <name>Ctrl-E</name>
@@ -88,6 +88,10 @@
    <key>
     <name>Ctrl-K</name>
     <desc>observer view (floating)</desc>
+   </key>
+   <key>
+    <name>Ctrl-L</name>
+    <desc>boat view (landing)</desc>
    </key>
    <key>
     <name>Ctrl-N</name>

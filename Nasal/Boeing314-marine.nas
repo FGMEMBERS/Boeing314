@@ -19,6 +19,12 @@ Mooring.new = func {
 
                presets : nil,
 
+               mooringtower : [ "", "" ],
+               mooringlocation : [ -1, -1 ],
+               mooringdirection : [ -1, -1 ],
+               mooringlanding : constant.FALSE,
+
+               BOATSEC : 60.0,
                MOORINGSEC : 5.0,
                AIRPORTSEC : 3.0,
                HARBOURSEC : 2.0,
@@ -28,6 +34,10 @@ Mooring.new = func {
                APPROACHFT : 3000,
                BOATFT : 10,                                            # crew in a boat
                SEAFT : 0,
+
+               EARTHKM : 20000,                                        # largest distance between 2 points on earth surface
+               PORTNM : 100,                                           # distance when the boat moves
+               BOATMETER : 50,                                         # minimal distance between both boats
            
                DESCENTFTPS : -1.67                                     # 100 ft/min
          };
@@ -53,9 +63,30 @@ Mooring.allowedexport = func {
    return me.anchor.allowedexport();
 }
 
+Mooring.seaportexport = func {
+   if( me.itself["root-ctrl"].getChild("seaport").getValue() ) {
+       me.enableseaport();
+   }
+   else {
+       me.disableseaport();
+   }
+}
+
 Mooring.schedule = func {
-   me.towerchange();
    me.anchor.cut();
+
+   # work around for 2.4.0 : properties may be reset.
+   if( me.itself["root"].getChild("boat-id").getValue() == "" ) {
+       for(var i=0; i<2; i=i+1) {
+           if( me.mooringtower[i] != "" ) {
+               me.setboatmoorage( me.mooringlocation[i], me.mooringdirection[i], i, me.mooringtower[i] );
+           }
+       }
+   }
+}
+
+Mooring.slowschedule = func {
+   me.towerchange();
 }
 
 Mooring.dialogexport = func {
@@ -71,7 +102,6 @@ Mooring.dialogexport = func {
        if( harbour == moorage ) {
            me.setmoorage( i, moorage );
 
-           me.dependency["tower"].setValue(moorage);
            break;
        }
    }
@@ -81,6 +111,10 @@ Mooring.setmoorage = func( index, moorage ) {
     var latitudedeg = 0.0;
     var longitudedeg = 0.0;
     var headingdeg = constant.DEG0;
+
+
+    # automatic mooring is not compatible with seaport dialog
+    me.disableseaport();
 
 
     # best mooring according to the wind
@@ -93,7 +127,13 @@ Mooring.setmoorage = func( index, moorage ) {
         headingdeg = location[ index2 ].getChild("heading-deg").getValue();
     }
 
-    me.setboatmoorage( index, index2, moorage );
+    me.setboatmoorage( index, index2, 0, moorage );
+
+
+    # boat waiting at the landing end
+    var index3 = me.findmoorage( index, constant.TRUE );
+
+    me.setboatmoorage( index, index3, 1, moorage );
 
 
     # apply
@@ -105,8 +145,6 @@ Mooring.setmoorage = func( index, moorage ) {
     me.presets.getChild("altitude-ft").setValue(-9999);
 
     me.presets.getChild("airspeed-kt").setValue(0);
-
-    me.setadf( index, moorage );
 
 
     # copilot feedback
@@ -140,7 +178,6 @@ Mooring.findmoorage = func( index, landing ) {
         winddeg = me.itself["root-ctrl"].getChild("heading-deg").getValue();
     }
 
-
     # best mooring according to the wind
     for( var i=0; i<size(location); i=i+1) {
          mooragedeg = location[ i ].getChild("heading-deg").getValue();
@@ -155,108 +192,152 @@ Mooring.findmoorage = func( index, landing ) {
     return result;
 }
 
-Mooring.setadf = func( index, beacon ) {
-   if( me.itself["root-ctrl"].getChild("tower-adf").getValue() ) {
-       var frequency = 0.0;
-       var adf = me.itself["seaplane"][ index ].getNode("adf");
+Mooring.setboatmoorage = func( index, index2, index3, tower ) {
+   if( index3 == 1 ) {
+       # if same moorage, 2nd boat is over 1st boat (smaller buoy)
+       if( me.mooringdirection[0] == index2 ) {
+       }
 
-       if( adf != nil ) {
-           frequency = adf.getChild("selected-khz");
-           if( frequency != nil ) {
-               frequencykz = frequency.getValue();
-               setprop("/instrumentation/adf/frequencies/selected-khz",frequencykz);
-           }
-           frequency = adf.getChild("standby-khz");
-           if( frequency != nil ) {
-               frequencykz = frequency.getValue();
-               setprop("/instrumentation/adf/frequencies/standby-khz",frequencykz);
+       elsif( index >= 0 and index2 >= 0 ) {
+           var location = me.itself["seaplane"][ index ].getChildren("location");
+
+           var boat = geo.Coord.new();
+           var boat2 = geo.Coord.new();
+
+           boat.set_latlon( location[ me.mooringdirection[0] ].getChild("latitude-deg").getValue(),
+                            location[ me.mooringdirection[0] ].getChild("longitude-deg").getValue() );
+           boat2.set_latlon( location[ index2 ].getChild("latitude-deg").getValue(),
+                             location[ index2 ].getChild("longitude-deg").getValue() );
+
+           # if moorage too close, 2nd boat is over 1st boat (smaller buoy)
+           if( boat.distance_to( boat2 ) < me.BOATMETER ) {
+               index2 = me.mooringdirection[0];
            }
        }
    }
-}
 
-Mooring.setboatmoorage = func( index, index2, tower ) {
-   if( index >= 0 ) {
+   if( index >= 0 and index2 >= 0 ) {
        var location = me.itself["seaplane"][ index ].getChildren("location");
+
+       # backup for restore
+       me.mooringlocation[index3] = index;
+       me.mooringdirection[index3] = index2;
+       me.mooringtower[index3] = tower;
 
        var latitudedeg = location[ index2 ].getChild("latitude-deg").getValue();
        var longitudedeg = location[ index2 ].getChild("longitude-deg").getValue();
        var headingdeg = location[ index2 ].getChild("heading-deg").getValue();
 
-       me.setboatposition( latitudedeg, longitudedeg, headingdeg, tower );
+       me.setboatposition( index3, latitudedeg, longitudedeg, headingdeg, tower );
 
-       me.setboataltitude( index );
+       me.setboataltitude( index, index3, geo.elevation( latitudedeg, longitudedeg ) );
+   }
+
+   else {
+       # clear
+       me.mooringlocation[index3] = -1;
+       me.mooringdirection[index3] = -1;
+       me.mooringtower[index3] = "";
    }
 }
 
-Mooring.setboatposition = func( latitudedeg, longitudedeg, headingdeg, airport ) {
+Mooring.setboatposition = func( index, latitudedeg, longitudedeg, headingdeg, airport ) {
    # behind to the right of the hull
    latitudedeg = latitudedeg - me.BOATDEG * math.cos( headingdeg * constant.DEGTORAD );
    longitudedeg = longitudedeg - me.BOATDEG * math.sin( headingdeg * constant.DEGTORAD );
 
-   me.dependency["boat"].getChild("latitude-deg").setValue( latitudedeg );
-   me.dependency["boat"].getChild("longitude-deg").setValue( longitudedeg );
+   me.dependency["boat"][index].getChild("latitude-deg").setValue( latitudedeg );
+   me.dependency["boat"][index].getChild("longitude-deg").setValue( longitudedeg );
 
    me.itself["root"].getChild("boat-id").setValue(airport);
 }
 
-Mooring.setboataltitude = func( index ) {
+Mooring.setboataltitude = func( index, index2, altitudemeter ) {
    if( index >= 0 ) {
        # sea level, by default
        var altitudeft = me.SEAFT;
 
-       # lake or river
-       if( me.itself["seaplane"][ index ].getNode("water-ft") != nil ) {
-           altitudeft = me.itself["seaplane"][ index ].getChild("water-ft").getValue();
+       # geo may returns nil
+       if( altitudemeter != nil ) {
+           altitudeft = altitudemeter * constant.METERTOFEET;
        }
 
-       me.setboatheight( altitudeft );
+       me.setboatheight( index2, altitudeft );
    }
 }
 
-Mooring.setboatheight = func( altitudeft ) {
-   var modelft = altitudeft + me.dependency["boat"].getChild("offset-ft").getValue();
-   me.dependency["boat"].getChild("water-ft").setValue( modelft );
+Mooring.setboatheight = func( index, altitudeft ) {
+   var modelft = altitudeft + me.dependency["boat"][index].getChild("offset-ft").getValue();
+   me.dependency["boat"][index].getChild("water-ft").setValue( modelft );
 
    altitudeft = altitudeft + me.BOATFT;
-   me.dependency["boat"].getChild("altitude-ft").setValue( altitudeft );
+   me.dependency["boat"][index].getChild("altitude-ft").setValue( altitudeft );
 
 }
 
-# tower changed by dialog (destination or airport location)
 Mooring.towerchange = func {
    var change = constant.FALSE;
    var descent = constant.FALSE;
-   var tower = me.dependency["tower"].getValue();
+   var index = -1;
+   var tower = me.mooringtower[0];
+   var distancemeter = 0.0;
+   var nearestmeter = me.EARTHKM * constant.KMTOMETER;
+   var destination = geo.Coord.new();
+   var flight = geo.aircraft_position();
 
 
-   if( tower != me.itself["root"].getChild("boat-id").getValue() ) {
+   # search for the nearest moorage
+   for(var i=0; i<size(me.itself["seaplane"]); i=i+1) {
+      var location = me.itself["seaplane"][i].getChildren("location");
+
+      if( size(location) > 0 ) {
+          destination.set_latlon( location[0].getChild("latitude-deg").getValue(),
+                                  location[0].getChild("longitude-deg").getValue() );
+          distancemeter = flight.distance_to( destination ); 
+          if( distancemeter < nearestmeter ) {
+              tower = me.itself["seaplane"][ i ].getChild("airport-id").getValue();
+              nearestmeter = distancemeter;
+              index = i;
+          }
+      }
+   }
+
+
+   # tower change
+   if( tower != me.mooringtower[0] ) {
        change = constant.TRUE;
    }
 
-   elsif( me.noinstrument["agl"].getValue() < me.APPROACHFT and
-          me.noinstrument["vertical"].getValue() < me.DESCENTFTPS ) {
-       descent = constant.TRUE;
+   # only within vicinity
+   if( nearestmeter < me.PORTNM * constant.NMTOMETER ) {
+       # wind at location is changing during descent
+       if( me.noinstrument["agl"].getValue() < me.APPROACHFT and
+           me.noinstrument["vertical"].getValue() < me.DESCENTFTPS ) {
+           descent = constant.TRUE;
+       }
    }
 
 
+   # log change
+   if( descent and descent != me.mooringlanding ) {
+       print( "314 : setting boat for landing near ", tower );
+   }
+   elsif( change ) {
+       print( "314 : setting boat near ", tower );
+   }
+
+   me.mooringlanding = descent;
+
+
    if( change or descent ) {
-       for(var i=0; i<size(me.itself["seaplane"]); i=i+1) {
-           var harbour = me.itself["seaplane"][ i ].getChild("airport-id").getValue();
-           if( harbour == tower ) {
-               # wind at location is changing
-               var index = me.findmoorage( i, constant.TRUE );
+       var index2 = me.findmoorage( index, constant.FALSE );
 
-               # boat waiting at the landing end
-               me.setboatmoorage( i, index, tower );
+       me.setboatmoorage( index, index2, 0, tower );
 
-               if( change ) {
-                   me.setadf( i, tower );
-               }
+       # boat waiting at the landing end
+       var index3 = me.findmoorage( index, constant.TRUE );
 
-               break;
-           }
-       }
+       me.setboatmoorage( index, index3, 1, tower );
    }
 }
 
@@ -294,7 +375,7 @@ Mooring.presetharbour = func {
        var airport = me.presets.getChild("airport-id").getValue();
 
        if( airport != nil and airport != "" ) {
-           print( "searching for a moorage near ", airport );
+           print( "314 : searching for a moorage near ", airport );
 
            for( var i=0; i<size(me.itself["seaplane"]); i=i+1 ) {
                 var harbour = me.itself["seaplane"][ i ].getChild("airport-id").getValue();
@@ -319,9 +400,22 @@ Mooring.presetharbour = func {
        }
 
        if( !found ) {
-           print( "no moorage found" );
+           me.seaportexport();
+           print( "314 : no moorage found" );
        }
    }
+
+   else {
+       me.seaportexport();
+   }
+}
+
+Mooring.enableseaport = func {
+   me.dependency["seaport"].setValue("seaplane");
+}
+
+Mooring.disableseaport = func {
+   me.dependency["seaport"].setValue("");
 }
 
 

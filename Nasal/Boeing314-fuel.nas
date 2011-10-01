@@ -16,7 +16,9 @@ Fuel = {};
 Fuel.new = func {
    var obj = { parents : [Fuel],
 
-           tanksystem : Tanks.new()
+               tanksystem : Tanks.new(),
+
+               presets : 0                                                  # saved state
          };
 
    obj.init();
@@ -26,10 +28,25 @@ Fuel.new = func {
 
 Fuel.init = func {
    me.tanksystem.presetfuel();
+   me.savestate();
 }
 
 Fuel.menuexport = func {
    me.tanksystem.menu();
+   me.savestate();
+}
+
+Fuel.reinitexport = func {
+   # restore for reinit
+   setprop( "/systems/fuel/presets", me.presets );
+
+   me.tanksystem.presetfuel();
+   me.savestate();
+}
+
+Fuel.savestate = func {
+   # backup for reinit
+   me.presets = getprop( "/systems/fuel/presets" );
 }
 
 

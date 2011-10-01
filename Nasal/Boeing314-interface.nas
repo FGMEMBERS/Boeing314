@@ -78,6 +78,9 @@ Seats.init = func {
             elsif( name == "Boat View" ) {
                 me.save_lookup("boat", i);
             }
+            elsif( name == "Boat (landing) View" ) {
+                me.save_lookup("boat2", i);
+            }
         }
    }
 
@@ -456,6 +459,7 @@ Menu.new = func {
 
                autopilot : nil,
                crew : nil,
+               environment : nil,
                fuel : nil,
                gdf : nil,
                immat : nil,
@@ -477,6 +481,8 @@ Menu.init = func {
                                  "Aircraft/Boeing314/Dialogs/Boeing314-autopilot.xml");
    me.crew = gui.Dialog.new("/sim/gui/dialogs/Boeing314/crew/dialog",
                             "Aircraft/Boeing314/Dialogs/Boeing314-crew.xml");
+   me.environment = gui.Dialog.new("/sim/gui/dialogs/Boeing314/environment/dialog",
+                                   "Aircraft/Boeing314/Dialogs/Boeing314-environment.xml");
    me.fuel = gui.Dialog.new("/sim/gui/dialogs/Boeing314/fuel/dialog",
                             "Aircraft/Boeing314/Dialogs/Boeing314-fuel.xml");
    me.gdf = gui.Dialog.new("/sim/gui/dialogs/Boeing314/gdf/dialog",

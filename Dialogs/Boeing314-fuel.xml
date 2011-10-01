@@ -41,6 +41,24 @@
     <label></label>
   </text>
 
+  <checkbox>
+    <label>Restore on reinit  ~</label>
+    <halign>left</halign>
+    <property>/controls/fuel/reinit</property>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/fuel/reinit</property>
+    </binding>
+  </checkbox>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
   <group>
     <layout>hbox</layout>
 
@@ -49,7 +67,8 @@
       <empty><stretch>true</stretch></empty>
 
       <button>
-        <legend>OK</legend>
+        <legend>Fill</legend>
+        <key>f</key>
         <binding>
           <command>dialog-apply</command>
         </binding>

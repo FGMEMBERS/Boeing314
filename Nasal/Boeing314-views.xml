@@ -242,9 +242,30 @@
     <enabled type="bool">false</enabled>
     <type>lookat</type>
     <config>
-      <eye-lat-deg-path>/systems/seat/position/boat-view/latitude-deg</eye-lat-deg-path>
-      <eye-lon-deg-path>/systems/seat/position/boat-view/longitude-deg</eye-lon-deg-path>
-      <eye-alt-ft-path>/systems/seat/position/boat-view/altitude-ft</eye-alt-ft-path>
+      <eye-lat-deg-path>/systems/seat/position/boat/latitude-deg</eye-lat-deg-path>
+      <eye-lon-deg-path>/systems/seat/position/boat/longitude-deg</eye-lon-deg-path>
+      <eye-alt-ft-path>/systems/seat/position/boat/altitude-ft</eye-alt-ft-path>
+
+      <at-model type="bool">true</at-model>
+      <at-model-idx type="int">0</at-model-idx>
+
+      <ground-level-nearplane-m type="double">3.0f</ground-level-nearplane-m>      <!-- boat -->
+      <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+      <x-offset-m type="double">0</x-offset-m>
+      <y-offset-m type="double">0</y-offset-m>
+      <z-offset-m type="double">0</z-offset-m>
+    </config>
+  </view>
+
+  <view>
+    <name>Boat (landing) View</name>
+    <enabled type="bool">false</enabled>
+    <type>lookat</type>
+    <config>
+      <eye-lat-deg-path>/systems/seat/position/boat[1]/latitude-deg</eye-lat-deg-path>
+      <eye-lon-deg-path>/systems/seat/position/boat[1]/longitude-deg</eye-lon-deg-path>
+      <eye-alt-ft-path>/systems/seat/position/boat[1]/altitude-ft</eye-alt-ft-path>
 
       <at-model type="bool">true</at-model>
       <at-model-idx type="int">0</at-model-idx>

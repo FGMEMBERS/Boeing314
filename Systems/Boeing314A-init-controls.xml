@@ -16,6 +16,7 @@
    <timeout-s type="double">10.0</timeout-s>
    <copilot type="bool">false</copilot>
    <minimized-s>10.0</minimized-s>
+   <radio type="bool">true</radio>                                 <!-- tower ADF -->
   </crew>
 
   <doors>
@@ -24,11 +25,19 @@
    </celestial>
   </doors>
 
+  <environment>
+   <effects type="bool">true</effects>
+  </environment>
+
+  <fuel>
+   <reinit type="bool">true</reinit>                               <!-- restore fuel on reinit -->
+  </fuel>
+
   <mooring>
    <anchor alias="/fdm/jsbsim/systems/hull/anchor"/>
    <automatic type="bool">true</automatic>
    <heading-deg type="int">0</heading-deg>                         <!-- head to -->
-   <tower-adf type="bool">true</tower-adf>                         <!-- set ADF frequencies -->
+   <seaport type="bool">true</seaport>                             <!-- open Seaport dialog -->
    <wind type="bool">true</wind>                                   <!-- head to wind -->
   </mooring>
 
