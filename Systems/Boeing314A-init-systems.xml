@@ -113,7 +113,10 @@
       <component>/systems/seat/position</component>
       <subcomponent>boat</subcomponent>
      </boat>
+     <engines>/controls/engines</engines>
+     <presets>/sim/presets</presets>
      <rope>/controls/gear/brake-parking</rope>
+     <scenery>/sim/sceneryloaded</scenery>
      <seaport>/sim/type</seaport>
     </dependency>
 

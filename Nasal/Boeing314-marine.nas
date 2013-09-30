@@ -17,8 +17,6 @@ Mooring.new = func {
 
                anchor : Anchor.new(),
 
-               presets : nil,
-
                mooringtower : [ "", "" ],
                mooringlocation : [ -1, -1 ],
                mooringdirection : [ -1, -1 ],
@@ -49,8 +47,6 @@ Mooring.new = func {
 
 Mooring.init = func {
    me.inherit_system("/systems/mooring");
-
-   me.presets = props.globals.getNode("/sim/presets");
 
    me.presetseaplane();
 }
@@ -125,6 +121,8 @@ Mooring.setmoorage = func( index, moorage ) {
         latitudedeg = location[ index2 ].getChild("latitude-deg").getValue();
         longitudedeg = location[ index2 ].getChild("longitude-deg").getValue();
         headingdeg = location[ index2 ].getChild("heading-deg").getValue();
+
+        print( "314 : moorage found near ", moorage );
     }
 
     me.setboatmoorage( index, index2, 0, moorage );
@@ -137,14 +135,17 @@ Mooring.setmoorage = func( index, moorage ) {
 
 
     # apply
-    me.presets.getChild("latitude-deg").setValue(latitudedeg);
-    me.presets.getChild("longitude-deg").setValue(longitudedeg);
-    me.presets.getChild("heading-deg").setValue(headingdeg);
+    me.dependency["presets"].getChild("latitude-deg").setValue(latitudedeg);
+    me.dependency["presets"].getChild("longitude-deg").setValue(longitudedeg);
+    me.dependency["presets"].getChild("heading-deg").setValue(headingdeg);
 
     # forces the computation of ground
-    me.presets.getChild("altitude-ft").setValue(-9999);
+    me.dependency["presets"].getChild("altitude-ft").setValue(-9999);
 
-    me.presets.getChild("airspeed-kt").setValue(0);
+    me.dependency["presets"].getChild("airspeed-kt").setValue(0);
+
+    # disable runway
+    me.dependency["presets"].getChild("airport-id").setValue("");
 
 
     # copilot feedback
@@ -343,7 +344,7 @@ Mooring.towerchange = func {
 
 # change of airport
 Mooring.presetairport = func {
-   var airport = me.presets.getChild("airport-id").getValue();
+   var airport = me.dependency["presets"].getChild("airport-id").getValue();
 
    if( airport != nil and airport != "" ) {
        settimer(func{ me.presetseaplane(); },me.HARBOURSEC);
@@ -358,7 +359,7 @@ Mooring.presetairport = func {
 # automatic seaplane preset
 Mooring.presetseaplane = func {
    # wait for end of trim
-   if( getprop("/sim/sceneryloaded") ) {
+   if( me.dependency["scenery"].getValue() ) {
        settimer(func{ me.presetharbour(); },me.HARBOURSEC);
    }
 
@@ -372,7 +373,7 @@ Mooring.presetseaplane = func {
 Mooring.presetharbour = func {
    if( me.itself["root-ctrl"].getChild("automatic").getValue() ) {
        var found = constant.FALSE;
-       var airport = me.presets.getChild("airport-id").getValue();
+       var airport = me.dependency["presets"].getChild("airport-id").getValue();
 
        if( airport != nil and airport != "" ) {
            print( "314 : searching for a moorage near ", airport );
@@ -386,7 +387,7 @@ Mooring.presetharbour = func {
                     fgcommand("presets-commit", props.Node.new());
 
                     # presets cuts the engines
-                    var eng = props.globals.getNode("/controls/engines");
+                    var eng = me.dependency["engines"];
                     if (eng != nil) {
                         foreach (var c; eng.getChildren("engine")) {
                                  c.getNode("magnetos", 1).setIntValue(3);
