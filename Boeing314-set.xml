@@ -40,6 +40,14 @@
   <flight-model>jsb</flight-model>
   <aero>Boeing314A</aero>
 
+  <fdm>
+   <surface>
+    <!-- The aircraft always relies on a solid ground surface, so in order to
+         keep it floating we disable JSBSim's ground handling -->
+    <override-level>1</override-level>
+   </surface>
+  </fdm>
+
   <systems>
    <autopilot>
     <path>Aircraft/Boeing314/Systems/Boeing314A-autopilot.xml</path>
