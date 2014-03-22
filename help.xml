@@ -10,6 +10,10 @@
 <!-- Specific keys -->
 
    <key>
+    <name>=</name>
+    <desc>menu</desc>
+   </key>
+   <key>
     <name>left/right</name>
     <desc>autopilot heading</desc>
    </key>
@@ -78,14 +82,6 @@
     <desc>heading hold</desc>
    </key>
    <key>
-    <name>=</name>
-    <desc>menu</desc>
-   </key>
-   <key>
-    <name>Ctrl-J</name>
-    <desc>copilot view</desc>
-   </key>
-   <key>
     <name>Ctrl-K</name>
     <desc>observer view (floating)</desc>
    </key>
@@ -104,6 +100,10 @@
    <key>
     <name>Ctrl-P</name>
     <desc>pitch hold</desc>
+   </key>
+   <key>
+    <name>Ctrl-Q</name>
+    <desc>virtual crew</desc>
    </key>
    <key>
     <name>Ctrl-S</name>
@@ -130,8 +130,8 @@
     <desc>restore floating view</desc>
    </key>
    <key>
-    <name>Ctrl-Z</name>
-    <desc>virtual crew</desc>
+    <name>Ctrl-Y</name>
+    <desc>copilot view</desc>
    </key>
 
 

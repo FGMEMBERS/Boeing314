@@ -3,6 +3,11 @@
 <!-- - Fuselage were soundproofed against the engine sound.
 
      - Low hardware config : 2 engines per sound; otherwise exception in main loop.
+
+
+     Known problems :
+     ==============
+     - "once" sound must be both internal/external, otherwise triggers once the view flag toggles.
 -->
  
 <PropertyList>
@@ -738,6 +743,7 @@
  
   <stall>
    <name>stall</name>
+   <type>avionics</type>
    <path>Aircraft/Boeing314/Sounds/stall_horn.wav</path>
    <property>/sim/alarms/stall-warning</property>
    <position>
@@ -776,6 +782,7 @@
 
   <click>
    <name>click on</name>
+   <type>avionics</type>
    <path>Sounds/click.wav</path>
    <condition>
     <property>/instrumentation/generic/click</property>
@@ -792,6 +799,7 @@
 
   <click>
    <name>click off</name>
+   <type>avionics</type>
    <path>Sounds/click.wav</path>
    <condition>
     <not>

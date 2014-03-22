@@ -17,6 +17,10 @@
    </relations>
   </clock>
 
+  <comm>
+   <power-btn type="int">1</power-btn>
+  </comm>
+
   <gdf>
    <airport type="string"></airport>
    <called type="bool">false</called>
@@ -42,4 +46,13 @@
    <factor type="double">1.0</factor>                                      <!-- otherwise material doesn't work with OSG -->
   </generic>
 
+  <sextant>
+   <relations>
+    <noinstrument>
+     <current-view>/sim/current-view</current-view>
+     <heading>/orientation/heading-deg</heading>
+     <latitude>/position/latitude-deg</latitude>
+    </noinstrument>
+   </relations>
+  </sextant>
 </PropertyList>

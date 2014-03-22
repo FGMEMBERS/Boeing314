@@ -11,27 +11,34 @@
 Sextant = {};
 
 Sextant.new = func {
-   var obj = { parents : [Sextant]
+   var obj = { parents : [Sextant,System]
          };
+
+   obj.init();
+
    return obj;
 };
 
+Sextant.init = func {
+    me.inherit_system("/instrumentation/sextant");
+}
+
 Sextant.polarisexport = func {
    var headingdeg = 0.0;
-   var latdeg = getprop("/position/latitude-deg");
+   var latdeg = me.noinstrument["latitude"].getValue();
 
    # polaris star
    if( latdeg >= 0.0 ) {
-       headingdeg = getprop("/orientation/heading-deg");
-       setprop("/sim/current-view/goal-heading-offset-deg", headingdeg );
-       setprop("/sim/current-view/goal-pitch-offset-deg", latdeg );
+       headingdeg = me.noinstrument["heading"].getValue();
+       me.noinstrument["current-view"].getChild("goal-heading-offset-deg").setValue( headingdeg );
+       me.noinstrument["current-view"].getChild("goal-pitch-offset-deg").setValue( latdeg );
    }
 
    # southern cross
    else {
-       headingdeg = getprop("/orientation/heading-deg") + constant.DEG180;
-       setprop("/sim/current-view/goal-heading-offset-deg", headingdeg );
-       setprop("/sim/current-view/goal-pitch-offset-deg", - latdeg );
+       headingdeg = me.noinstrument["heading"].getValue() + constant.DEG180;
+       me.noinstrument["current-view"].getChild("goal-heading-offset-deg").setValue( headingdeg );
+       me.noinstrument["current-view"].getChild("goal-pitch-offset-deg").setValue( - latdeg );
    }
 }
 
@@ -43,11 +50,9 @@ Sextant.polarisexport = func {
 Generic = {};
 
 Generic.new = func {
-   var obj = { parents : [Generic],
+   var obj = { parents : [Generic,System],
 
-           click : nil,
-
-           generic : aircraft.light.new("/instrumentation/generic",[ 1.5,0.2 ])
+               generic : nil
          };
 
    obj.init();
@@ -56,7 +61,9 @@ Generic.new = func {
 };
 
 Generic.init = func {
-   me.click = props.globals.getNode("/instrumentation/generic/click");
+   me.inherit_system("/instrumentation/generic");
+
+   me.generic = aircraft.light.new(me.itself["root"].getPath(),[ 1.5,0.2 ]);
 
    me.generic.toggle();
 }
@@ -64,11 +71,11 @@ Generic.init = func {
 Generic.toggleclick = func {
    var sound = constant.TRUE;
 
-   if( me.click.getValue() ) {
+   if( me.itself["root"].getChild("click").getValue() ) {
        sound = constant.FALSE;
    }
 
-   me.click.setValue( sound );
+   me.itself["root"].getChild("click").setValue( sound );
 }
 
 

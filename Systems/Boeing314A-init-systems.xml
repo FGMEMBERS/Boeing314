@@ -43,6 +43,7 @@
     <noinstrument>
      <altitude>/position/altitude-agl-ft</altitude>
      <speed-up>/sim/speed-up</speed-up>
+     <time>/sim/time</time>
      <true>/orientation/heading-deg</true>
      <wind>/environment/wind-from-heading-deg</wind>
     </noinstrument>
@@ -62,6 +63,23 @@
    <immat n="1">18609</immat>
 
    <minimized type="bool">true</minimized>
+
+   <relations>
+    <dependency>
+     <copilot>/systems/copilot</copilot>
+     <copilot-ctrl>/controls/copilot</copilot-ctrl>
+     <engineer>/systems/engineer</engineer>
+     <engineer-ctrl>/controls/engineer</engineer-ctrl>
+     <human>/systems/human</human>
+     <voice>/systems/voice</voice>
+    </dependency>
+
+    <noinstrument>
+     <freeze>/sim/freeze/master</freeze>
+     <speed-up>/sim/speed-up</speed-up>
+     <startup>/sim/startup/ysize</startup>
+    </noinstrument>
+   </relations>
   </crew>
 
   <engineer>
@@ -181,6 +199,20 @@
     </observer>
    </position>
    <radio type="bool">false</radio>
+
+   <relations>
+    <dependency>
+     <current-view>/sim/current-view</current-view>
+     <views>
+      <component>/sim</component>
+      <subcomponent>view</subcomponent>
+     </views>
+    </dependency>
+
+    <itself>
+     <position>/systems/seat/position</position>
+    </itself>
+   </relations>
   </seat>
 
   <voice include="Boeing314A-checklists.xml">

@@ -27,6 +27,19 @@
   </text>
 
   <text>
+    <label>Select immat livery</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
     <label></label>
   </text>
 

@@ -13,7 +13,7 @@ Doors = {};
 Doors.new = func {
    var obj = { parents : [Doors,System],
 
-               celestial : aircraft.door.new("controls/doors/celestial", 10.0)
+               celestial : nil
          };
 
    obj.init();
@@ -23,6 +23,8 @@ Doors.new = func {
 
 Doors.init = func {
    me.inherit_system( "/systems/doors" );
+
+   me.celestial = aircraft.door.new(me.itself["root-ctrl"].getNode("celestial").getPath(), 10.0);
 
    # user customization
    if( me.itself["root-ctrl"].getNode("celestial").getChild("opened").getValue() ) {

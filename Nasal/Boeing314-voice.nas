@@ -36,7 +36,7 @@ Voice.init = func {
 }
 
 Voice.inittext = func {
-   me.inittable("/systems/voice/callouts/wind/pilot", me.pilotwind );
+   me.inittable(me.itself["root"].getNode("callouts/wind/pilot").getPath(), me.pilotwind );
 }
 
 Voice.inittable = func( path, table ) {

@@ -47,10 +47,11 @@ The strips behind the engines seem dark exhaust wake (E).
 
 Color of ground cockpit helps to contrast with the walls (F).
 
+Windows (hull, door, cockpit) are extracted into a seperated object.
+
 
 TO DO
 =====
-- OSG text immatriculation.
 - finner wing tip and sponson.
 - shape of hull behind the step (afterbody).
 - grooves (sponsons, top of fuselage).
@@ -103,7 +104,10 @@ http://www.panamair.org/History/earlydays.htm/ : the Panam logo.
 http://www.commercemarketplace.com/home/CollectAir/ephemera.html/ : the Boeing logo.
 
 
-Made with Blender 2.48a.
+Made with Blender 2.67a.
+AC3D export :
+- Auto smooth is enabled (default is 30 degrees). Except tables and seats.
+- AC3D groups are removed, to help import/export.
 
 
-30 August 2009.
+22 March 2014.

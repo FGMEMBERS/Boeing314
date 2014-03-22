@@ -113,13 +113,13 @@ Installation
 Fuel load
 ---------
 - default is maximum landing weight, 80000 lb.
-- for alternate load, press "ctrl-I f" (saved on exit in aircraft-data).
+- for alternate load, press "= f" (saved on exit in aircraft-data).
 
 Mooring
 -------
 - at startup, the seaplane is moved to its moorage (if any in Nasal/Boeing314-route.xml),
-keeping the tower view. To disable, see "ctrl-I c".
-- for alternate moorages, press "ctrl-I m".
+keeping the tower view. To disable, see "= c".
+- for alternate moorages, press "= m".
 
 Sounds
 ------
@@ -131,7 +131,7 @@ Sounds
 
 Known compatibility
 -------------------
-- 2.4.0 : minimal version.
+- 3.0.0 : minimal version.
 
 
 Keyboard
@@ -142,20 +142,20 @@ Views
 -----
 - "ctrl-B" : "B"oat view.
 - "ctrl-E" : "E"ngineer view.
-- "ctrl-J" : copilot view.
 - "ctrl-K" : observer view (floating).
 - "ctrl-L" : boat view ("L"anding).
 - "ctrl-N" : "N"avigator view (floating).
 - "ctrl-O" : radi"O" view.
 - "ctrl-T" : celes"T"ial view (floating).
+- "ctrl-Y" : copilot view.
 - "shift-ctrl-T" : sex"T"ant (polaris star or southern cross).
 - "shift-ctrl-V" : restore view pitch.
 - "shift-ctrl-X" : restore floating view.
 
 Virtual crew
 ------------
+- "ctrl-Q" : virtual crew.
 - "ctrl-W" : wind check (voice).
-- "ctrl-Z" : virtual crew.
 - "shift-F12"    : show crew text.
  
 Unchanged behaviour
@@ -184,7 +184,7 @@ Improved behaviour
 
 Alternate behaviour
 -------------------
-- "ctrl-I" : menu.
+- "=" : menu.
 - "up / down"    : move floating view in length.
 - "home / end"   : move floating view in length (fast).
 - "left / right" : move floating view in width.
@@ -209,7 +209,7 @@ Ground Direction Finding
 "The radio operator held the Morse key in transmit mode a minute, while the ground operator took
 a bearing of the signal" (G) :
 - input an airport.
-- call the ground operator, by "ctrl-I d" : range is limited to 1500 miles [1300 NM] (G)(J).
+- call the ground operator, by "= d" : range is limited to 1500 miles [1300 NM] (G)(J).
 - within a delay of 2 minutes, the radio returns on a paper the magnetic heading towards the airport.
 
 Starting with the Sextant
@@ -367,4 +367,4 @@ References
     F. W. S. Locke Jr., January 1946.
 
 
-10 September 2011.
+22 March 2014.

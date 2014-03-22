@@ -584,7 +584,7 @@
   <type>rotate</type>
   <object-name>CelestialDoor</object-name>
   <property>controls/doors/celestial/position-norm</property>
-  <factor>-180</factor>
+  <factor>-90</factor>
   <center>
    <x-m>-5.351</x-m>
    <y-m>-0.235</y-m>

@@ -140,7 +140,12 @@
   </text>
 
   <text>
-    <label>Position Aircraft On Ground</label>
+    <label>Airfield without moorage</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
   </text>
 
   <checkbox>

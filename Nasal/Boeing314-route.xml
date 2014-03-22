@@ -145,9 +145,9 @@
     <airport-id type="string">KOAK</airport-id>
 
     <location n="0">
-     <latitude-deg type="double">37.84088</latitude-deg>
-     <longitude-deg type="double">-122.34802</longitude-deg>
-     <heading-deg type="int">60</heading-deg>
+     <latitude-deg type="double">37.841</latitude-deg>
+     <longitude-deg type="double">-122.349</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
     </location>
 
     <location n="1">
@@ -157,15 +157,15 @@
     </location>
 
     <location n="2">
-     <latitude-deg type="double">37.84088</latitude-deg>
-     <longitude-deg type="double">-122.34802</longitude-deg>
+     <latitude-deg type="double">37.840</latitude-deg>
+     <longitude-deg type="double">-122.327</longitude-deg>
      <heading-deg type="int">270</heading-deg>
     </location>
 
     <location n="3">
-     <latitude-deg type="double">37.84088</latitude-deg>
-     <longitude-deg type="double">-122.34802</longitude-deg>
-     <heading-deg type="int">330</heading-deg>
+     <latitude-deg type="double">37.823</latitude-deg>
+     <longitude-deg type="double">-122.35527</longitude-deg>
+     <heading-deg type="int">360</heading-deg>
     </location>
 
 <!-- Tracy -->

@@ -175,7 +175,7 @@ VirtualCrew.timestamp = func {
     }
 
     me.itself["root"].getChild("state").setValue(me.getlog());
-    me.itself["root"].getChild("time").setValue(getprop("/sim/time/gmt-string"));
+    me.itself["root"].getChild("time").setValue(me.noinstrument["time"].getChild("gmt-string").getValue());
 }
 
 VirtualCrew.completed = func {
