@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<!--
+
+     TO DO :
+     =====
+     - ground effect.
+
+
+
+     References :
+     ==========
+
+     - http://www.youtube.com/watch?v=pRYzFjift2Q :
+     Takeoff, 1939.
+
+     Wake at low speed.
+     Spray on step.
+     Ground effect over water.
+-->
+
+<PropertyList>
+
+<!-- x/y/z == forward/left/up -->
+
+<!-- wake -->
+
+  <model>
+   <name>Hull</name>
+   <path>Aircraft/Boeing314/Models/Effects/wake/wake.xml</path>
+  </model>
+
+  <model>
+   <name>Left sponson</name>
+   <path>Aircraft/Boeing314/Models/Effects/wake/wake-left.xml</path>
+  </model>
+
+  <model>
+   <name>Right sponson</name>
+   <path>Aircraft/Boeing314/Models/Effects/wake/wake-right.xml</path>
+  </model>
+
+  <model>
+   <name>Step spray</name>
+   <path>Aircraft/Boeing314/Models/Effects/wake/spray.xml</path>
+  </model>
+
+</PropertyList>

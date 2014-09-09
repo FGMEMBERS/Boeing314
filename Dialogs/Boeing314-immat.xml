@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-immat</name>
+  <layout>vbox</layout>
+  <width>300</width>
+
+  <text>
+    <label>Boeing 314 immatriculation</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+
+    <input>
+      <label>Immatriculation</label>
+      <halign>left</halign>
+      <property>/sim/model/immat</property>
+      <pref-width>150</pref-width>
+    </input>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label>Select immat livery</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-apply</command>
+    </binding>
+    <binding>
+      <command>nasal</command>
+      <script>globals.Boeing314.menusystem.immatexport();</script>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+  </group>
+</PropertyList>

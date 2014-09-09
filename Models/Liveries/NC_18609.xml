@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <sim>
+    <model>
+     <livery>
+      <name type="string">NC 18609</name>
+      <index type="int">0</index>
+      <texture>B314Panam-hull.rgb</texture>
+      <texture-wing-left>B314Panam-wing-left.rgb</texture-wing-left>
+      <texture-wing-right>B314Panam-wing-right.rgb</texture-wing-right>
+      <texture-fin>B314Panam-fin.rgb</texture-fin>
+     </livery>
+    </model>
+  </sim>
+</PropertyList>

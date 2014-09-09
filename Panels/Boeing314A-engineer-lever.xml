@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+
+<!-- Boeing 314-A engineer lever panel.
+
+CAUTION : fuel tanks in 3D panel must use level-lb; otherwise with level-gal_us,
+          all tanks become reset to 0 (even without fuel preset) !
+
+
+The photographs are probably taken with the engines stopped.
+
+
+B314-A engineer panel (from left to right, top to bottom).
+=====================
+Wall, half right of board, above the levers :
+- 1st line, 4 rpm at 0 rpm.
+- 4th line, 4 manifold pressure at outside pressure 29.92 inhg.
+
+Desk, below the half right of board :
+- 4 pitch levers, ended by 4 mixture levers (A).
+
+
+
+References
+==========
+
+(A) position extrapolated from modern aircrafts.
+
+
+
+_______________________________________________________________________
+
+This is a panel configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the panel's background texture and
+the location (and optionally, size) of the instruments that will
+appear on the panel.
+
+Each instrument is, itself, defined in an XML-encoded property list
+in a separate file.
+
+Co-ordinates are relative to the *bottom* left corner of the screen
+(as in OpenGL).  The total FlightGear window is always considered to
+be 1024x768, whatever its actual display size on the screen.  All
+paths are relative to $FG_ROOT.
+
+Note that the name of the element defining each instrument must be
+different, or else instrument definitions will be overwritten:
+that's not particularly XML-ish, but that's how property lists
+work in FlightGear right now.
+
+Each instrument has its own preferred width and height, but you can
+override those by providing <w>..</w> and <h>..</h> properties with the
+<x>...</x> and <y>...</y> properties.
+
+-->
+
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<PropertyList>
+
+ <name>Boeing 314-A Engineer Lever Panel</name>
+ <background>Aircraft/Boeing314/Panels/Textures/transparent-bg.rgb</background>
+ <w>1024</w>
+ <h>512</h>
+ <y-offset>0</y-offset>
+ <view-height>500</view-height>
+
+ <instruments>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 1 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[0]/throttle</engine-throttle-select>
+   </params>
+   <x>280</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 2 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[1]/throttle</engine-throttle-select>
+   </params>
+   <x>300</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 3 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[2]/throttle</engine-throttle-select>
+   </params>
+   <x>320</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 4 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[3]/throttle</engine-throttle-select>
+   </params>
+   <x>340</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 1 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[0]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>380</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 2 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[1]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>400</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 3 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[2]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>420</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-pitch-quadrant.xml">
+   <name>Engine 4 pitch</name>
+   <params>
+    <engine-pitch-select>/controls/engines/engine[3]/propeller-pitch</engine-pitch-select>
+   </params>
+   <x>440</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 1 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[0]/mixture</engine-mixture-select>
+   </params>
+   <x>500</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 2 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[1]/mixture</engine-mixture-select>
+   </params>
+   <x>520</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 3 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[2]/mixture</engine-mixture-select>
+   </params>
+   <x>540</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-quadrant.xml">
+   <name>Engine 4 mixture</name>
+   <params>
+    <engine-mixture-select>/controls/engines/engine[3]/mixture</engine-mixture-select>
+   </params>
+   <x>560</x>
+   <y>50</y>
+   <w>15</w>
+   <h>60</h>
+  </instrument>
+
+ </instruments>
+
+</PropertyList>

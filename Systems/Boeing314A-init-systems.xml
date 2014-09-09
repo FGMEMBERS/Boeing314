@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+
+<!-- intialize systems :
+
+     - avoids nil values for Nasal.
+-->
+
+<PropertyList>
+
+  <autopilot>
+   <relations>
+    <dependency>
+     <altimeter>/instrumentation/altimeter/indicated-altitude-ft</altimeter>
+    </dependency>
+
+    <itself>
+     <autopilot>/autopilot/locks</autopilot>
+     <autopilot-ctrl>/controls/autoflight</autopilot-ctrl>
+     <autopilot-set>/autopilot/settings</autopilot-set>
+    </itself>
+
+    <noinstrument>
+     <heading>/orientation/heading-magnetic-deg</heading>
+     <pitch>/orientation/pitch-deg</pitch>
+    </noinstrument>
+   </relations>
+  </autopilot>
+
+  <copilot>
+   <activ type="bool">false</activ>                                                    <!-- yellow -->
+
+   <relations>
+    <dependency>
+     <autopilot>/autopilot/locks</autopilot>
+     <autopilot-set>/autopilot/settings</autopilot-set>
+     <compass>/orientation/heading-magnetic-deg</compass>
+     <crew>/systems/crew</crew>
+     <crew-ctrl>/controls/crew</crew-ctrl>
+     <heading>/instrumentation/heading-indicator</heading>
+     <voice>/systems/voice/argument</voice>
+    </dependency>
+
+    <noinstrument>
+     <altitude>/position/altitude-agl-ft</altitude>
+     <speed-up>/sim/speed-up</speed-up>
+     <time>/sim/time</time>
+     <true>/orientation/heading-deg</true>
+     <wind>/environment/wind-from-heading-deg</wind>
+    </noinstrument>
+   </relations>
+
+   <state></state>
+   <state-last></state-last>                                                           <!-- last action -->
+   <throttle type="bool">false</throttle>                                              <!-- doesn't hold throttle -->
+   <time></time>
+   <waypoint type="bool">false</waypoint>                                              <!-- doesn't follow waypoint -->
+  </copilot>
+
+  <crew>
+   <serviceable type="bool">true</serviceable>
+
+   <immat n="0">NC</immat>                                                             <!-- default is NC 18609 -->
+   <immat n="1">18609</immat>
+
+   <minimized type="bool">true</minimized>
+
+   <relations>
+    <dependency>
+     <copilot>/systems/copilot</copilot>
+     <copilot-ctrl>/controls/copilot</copilot-ctrl>
+     <engineer>/systems/engineer</engineer>
+     <engineer-ctrl>/controls/engineer</engineer-ctrl>
+     <human>/systems/human</human>
+     <voice>/systems/voice</voice>
+    </dependency>
+
+    <noinstrument>
+     <freeze>/sim/freeze/master</freeze>
+     <speed-up>/sim/speed-up</speed-up>
+     <startup>/sim/startup/ysize</startup>
+    </noinstrument>
+   </relations>
+  </crew>
+
+  <engineer>
+   <activ type="bool">false</activ>                                                    <!-- yellow -->
+   <state></state>
+   <state-last></state-last>                                                           <!-- last action -->
+   <time></time>
+  </engineer>
+
+  <fuel>
+   <presets type="int">0</presets>                                                     <!-- max landing load -->
+
+   <tanks include="../Nasal/Boeing314A-fuel.xml"/>
+  </fuel>
+
+  <human>
+   <serviceable type="bool" archive="y">false</serviceable>
+
+   <airport-id></airport-id>
+
+   <relations>
+    <dependency>
+     <adf>
+      <component>/instrumentation</component>
+      <subcomponent>adf</subcomponent>
+     </adf>
+     <crew>/controls/crew</crew>
+    </dependency>
+
+    <itself>
+     <airport>
+      <component>/systems/human/route</component>
+      <subcomponent>seaplane</subcomponent>
+     </airport>
+    </itself>
+   </relations>
+
+   <route include="../Nasal/Boeing314-route.xml"/>
+  </human>
+
+  <mooring>
+   <boat-id></boat-id>                                                                 <!-- boat view -->
+   <dialog></dialog>
+   <moorage-id></moorage-id>
+
+   <relations>
+    <dependency>
+     <boat>
+      <component>/systems/seat/position</component>
+      <subcomponent>boat</subcomponent>
+     </boat>
+     <engines>/controls/engines</engines>
+     <presets>/sim/presets</presets>
+     <rope>/controls/gear/brake-parking</rope>
+     <scenery>/sim/sceneryloaded</scenery>
+     <seaport>/sim/type</seaport>
+    </dependency>
+
+    <itself>
+     <seaplane>
+      <component>/systems/mooring/route</component>
+      <subcomponent>seaplane</subcomponent>
+     </seaplane>
+    </itself>
+
+    <noinstrument>
+     <agl>/position/altitude-agl-ft</agl>
+     <velocity>/velocities/uBody-fps</velocity>
+     <vertical>/velocities/vertical-speed-fps</vertical>
+     <wind>/environment/wind-from-heading-deg</wind>
+    </noinstrument>
+   </relations>
+
+   <route include="../Nasal/Boeing314-route.xml"/>
+   <state></state>
+  </mooring>
+
+  <seat>
+   <boat type="bool">false</boat>
+   <boat2 type="bool">false</boat2>
+   <captain type="bool">true</captain>
+   <celestial type="bool">false</celestial>
+   <copilot type="bool">false</copilot>
+   <engineer type="bool">false</engineer>
+   <moorage type="bool">false</moorage>
+   <navigator type="bool">false</navigator>
+   <observer type="bool">false</observer>
+   <position>
+    <boat n="0">
+     <altitude-ft type="double">0.0</altitude-ft>
+     <latitude-deg type="double">0.0</latitude-deg>
+     <longitude-deg type="double">0.0</longitude-deg>
+     <offset-ft type="double">0.0</offset-ft>                                          <!-- specific to the 3D model used -->
+     <water-ft type="double">0.0</water-ft>                                            <!-- waterline -->
+    </boat>
+    <boat n="1">
+     <altitude-ft type="double">0.0</altitude-ft>
+     <latitude-deg type="double">0.0</latitude-deg>
+     <longitude-deg type="double">0.0</longitude-deg>
+     <offset-ft type="double">0.0</offset-ft>                                          <!-- specific to the 3D model used -->
+     <water-ft type="double">0.0</water-ft>                                            <!-- waterline -->
+    </boat>
+    <celestial>
+     <x-m type="double">0.0</x-m>
+     <y-m type="double">0.0</y-m>
+     <z-m type="double">0.0</z-m>
+    </celestial>
+    <navigator>
+     <x-m type="double">0.0</x-m>
+     <y-m type="double">0.0</y-m>
+     <z-m type="double">0.0</z-m>
+    </navigator>
+    <observer>
+     <x-m type="double">0.0</x-m>
+     <y-m type="double">0.0</y-m>
+     <z-m type="double">0.0</z-m>
+    </observer>
+   </position>
+   <radio type="bool">false</radio>
+
+   <relations>
+    <dependency>
+     <current-view>/sim/current-view</current-view>
+     <views>
+      <component>/sim</component>
+      <subcomponent>view</subcomponent>
+     </views>
+    </dependency>
+
+    <itself>
+     <position>/systems/seat/position</position>
+    </itself>
+   </relations>
+  </seat>
+
+  <voice include="Boeing314A-checklists.xml">
+   <serviceable type="bool" archive="y">true</serviceable>
+
+   <argument></argument>
+   <callout></callout>
+   <checklist></checklist>
+
+   <display>
+    <captain></captain>
+    <copilot></copilot>
+    <engineer></engineer>
+   </display>
+
+   <real type="bool">false</real>                                                      <!-- not a real checklist -->
+
+   <relations>
+    <itself>
+     <display>/systems/voice/display</display>
+     <sound>/sim/sound/voices</sound>
+    </itself>
+   </relations>
+
+   <text></text>
+  </voice>
+
+</PropertyList>

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-gdf</name>
+  <layout>vbox</layout>
+  <width>400</width>
+
+  <text>
+    <label>Boeing 314 ground direction finding</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+      <input>
+        <label>Station</label>
+        <halign>left</halign>
+        <property>/instrumentation/gdf/airport</property>
+        <live>true</live>
+        <binding>
+         <command>dialog-apply</command>
+        </binding>
+      </input>
+    </group>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>called</label>
+      <live>true</live>
+      <property>/instrumentation/gdf/called</property>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.GDFcrew.callexport();</script>
+      </binding>
+    </checkbox>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+      <text>
+        <halign>left</halign>
+        <live>true</live>
+        <property>/instrumentation/gdf/state</property>
+        <color>
+         <red>0.2</red>
+         <green>0.8</green>
+         <blue>0.2</blue>
+        </color>
+      </text>
+    </group>
+
+    <group>
+      <layout>hbox</layout>
+
+      <text>
+        <label>GMT</label>
+        <halign>left</halign>
+      </text>
+
+      <text>
+        <live>true</live>
+        <property>/instrumentation/gdf/gmt-string</property>
+      </text>
+    </group>
+
+    <group>
+      <layout>hbox</layout>
+
+      <text>
+        <label>Magnetic (deg)</label>
+        <halign>left</halign>
+      </text>
+
+      <text>
+        <live>true</live>
+        <property>/instrumentation/gdf/heading-deg</property>
+      </text>
+    </group>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+</PropertyList>

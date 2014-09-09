@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+
+<!-- Boeing 314-A overhead panel.
+
+The photographs are probably taken with the engines stopped.
+
+
+B314 overhead panel (from left to right, top to bottom).
+===================
+- the 4 middle switches could be engine starters (A).
+
+
+B314-A overhead panel (from left to right, top to bottom).
+=====================
+- the 4 middle switches could be engine starters (A).
+
+
+
+References
+==========
+
+(A) position extrapolated from modern aircrafts.
+
+
+
+_______________________________________________________________________
+
+This is a panel configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the panel's background texture and
+the location (and optionally, size) of the instruments that will
+appear on the panel.
+
+Each instrument is, itself, defined in an XML-encoded property list
+in a separate file.
+
+Co-ordinates are relative to the *bottom* left corner of the screen
+(as in OpenGL).  The total FlightGear window is always considered to
+be 1024x768, whatever its actual display size on the screen.  All
+paths are relative to $FG_ROOT.
+
+Note that the name of the element defining each instrument must be
+different, or else instrument definitions will be overwritten:
+that's not particularly XML-ish, but that's how property lists
+work in FlightGear right now.
+
+Each instrument has its own preferred width and height, but you can
+override those by providing <w>..</w> and <h>..</h> properties with the
+<x>...</x> and <y>...</y> properties.
+
+-->
+
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<PropertyList>
+
+ <name>Boeing 314-A Overhead Panel</name>
+ <background>Aircraft/Boeing314/Panels/Textures/transparent-bg.rgb</background>
+ <w>1024</w>
+ <h>512</h>
+ <y-offset>0</y-offset>
+ <view-height>500</view-height>
+
+ <instruments>
+
+<!-- Overhead -->
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 1</name>
+   <params>
+    <magneto-select>/controls/engines/engine[0]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[0]/starter</starter-select>
+   </params>
+   <x>233</x>
+   <y>170</y>
+   <w>40</w>
+   <h>20</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 2</name>
+   <params>
+    <magneto-select>/controls/engines/engine[1]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[1]/starter</starter-select>
+   </params>
+   <x>293</x>
+   <y>170</y>
+   <w>40</w>
+   <h>20</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 3</name>
+   <params>
+    <magneto-select>/controls/engines/engine[2]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[2]/starter</starter-select>
+   </params>
+   <x>353</x>
+   <y>170</y>
+   <w>40</w>
+   <h>20</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-magneto-switch.xml">
+   <name>Magneto 4</name>
+   <params>
+    <magneto-select>/controls/engines/engine[3]/magnetos</magneto-select>
+    <starter-select>/controls/engines/engine[3]/starter</starter-select>
+   </params>
+   <x>413</x>
+   <y>170</y>
+   <w>40</w>
+   <h>20</h>
+  </instrument>
+
+ </instruments>
+
+</PropertyList>

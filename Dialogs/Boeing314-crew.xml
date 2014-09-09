@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-crew</name>
+  <layout>vbox</layout>
+  <width>450</width>
+
+
+  <text>
+    <label>Boeing 314 crew</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+
+    <text>
+      <label>Status</label>
+    </text>
+
+    <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <group>
+      <layout>hbox</layout>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <checkbox>
+         <halign>left</halign>
+         <label>Timeout of display  ~</label>
+         <property>/controls/crew/timeout</property>
+         <binding>
+          <command>property-toggle</command>
+          <property>/controls/crew/timeout</property>
+         </binding>
+       </checkbox>
+      </group>
+
+      <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <input>
+         <halign>left</halign>
+         <property>/controls/crew/timeout-s</property>
+         <label>seconds  ~</label>
+         <binding>
+          <command>dialog-apply</command>
+         </binding>
+       </input>
+      </group>
+     </group>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label>Views</label>
+    </text>
+
+    <checkbox>
+      <halign>left</halign>
+      <label>Recover position of last session  ~</label>
+      <property>/controls/seat/recover</property>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.seatsystem.recoverexport();</script>
+      </binding>
+    </checkbox>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
+       <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-menu</dialog-name>
+      </binding>
+      <binding>
+       <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+</PropertyList>

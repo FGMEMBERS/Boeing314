@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<!-- Boeing 314 caging knob.
+-->
+
+<PropertyList>
+
+ <name>Heading hold</name>
+ <w-base>52</w-base>
+ <h-base>52</h-base>
+
+ <layers>
+
+  <layer>
+   <name>Heading hold</name>
+    <type>switch</type>
+     <layer>
+      <condition>
+       <equals>
+        <property>/autopilot/locks/heading</property>
+        <value>dg-heading-hold</value>
+       </equals>
+      </condition>
+      <name>on</name>
+      <texture>
+      <path>Aircraft/Boeing314/Panels/Instruments/Textures/switches.rgb</path>
+      <x1>0.0</x1>
+      <y1>0.74</y1>
+      <x2>0.25</x2>
+      <y2>1.0</y2>
+      </texture>
+      <w>40</w>
+      <h>40</h>
+    <transformations>
+      <transformation>
+      <type>y-shift</type>
+      <offset>3</offset>
+      </transformation>
+    </transformations>
+    </layer>
+    <layer>
+    <name>off</name>
+    <texture>
+    <path>Aircraft/Boeing314/Panels/Instruments/Textures/switches.rgb</path>
+    <x1>0.0</x1>
+    <y1>0.0</y1>
+    <x2>0.25</x2>
+    <y2>0.31</y2>
+    </texture>
+    <w>40</w>
+    <h>47</h>
+    </layer>
+    <transformations>
+     <transformation>
+      <type>x-shift</type>
+      <offset>0</offset>
+      </transformation>
+    <transformation>
+    <type>y-shift</type>
+    <offset>0</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+ <actions>
+
+  <action>
+   <name>toggle heading hold</name>
+   <button>0</button>
+   <x>-22</x>
+   <y>-19</y>
+   <w>44</w>
+   <h>44</h>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.autopilotsystem.apheadingexport();</script>
+   </binding>
+   <binding>
+    <command>property-toggle</command>
+    <property>/instrumentation/generic/click</property>
+   </binding>
+  </action>
+
+ </actions>
+ 
+</PropertyList>

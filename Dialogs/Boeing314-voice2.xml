@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-voice2</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Boeing 314 voices</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label>Settings</label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+      <layout>hbox</layout>
+
+     <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <checkbox>
+         <label>Callouts</label>
+         <halign>left</halign>
+         <property>/controls/voice/sound</property>
+         <binding>
+          <command>property-toggle</command>
+          <property>/controls/voice/sound</property>
+         </binding>
+       </checkbox>
+     </group>
+
+     <group>
+       <layout>vbox</layout>
+       <halign>left</halign>
+
+       <text>
+         <label>Feedback</label>
+       </text>
+
+       <text>
+         <label></label>
+       </text>
+ 
+       <checkbox>
+         <label>Display callouts text  ~</label>
+         <halign>left</halign>
+         <property>/controls/voice/text</property>
+         <binding>
+          <command>nasal</command>
+          <script>globals.Boeing314.voicecrew.crewtextexport();</script>
+         </binding>
+       </checkbox>
+
+       <text>
+         <label></label>
+       </text>
+
+       <checkbox>
+         <label>Voice sound</label>
+         <halign>left</halign>
+         <property>/sim/sound/voices/enabled</property>
+       </checkbox>
+
+       <text>
+         <label>requires Festival</label>
+         <color>
+          <red>0.5</red>
+          <green>0.5</green>
+          <blue>0.5</blue>
+         </color>
+       </text>
+
+       <text>
+         <label>(to toggle, update preferences.xml and restart)</label>
+         <color>
+          <red>0.5</red>
+          <green>0.5</green>
+          <blue>0.5</blue>
+         </color>
+       </text>
+     </group>
+    </group>
+
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+  </group>
+</PropertyList>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<!-- Initialize instrumentation :
+
+     - avoids nil value for nasal.
+-->
+
+<PropertyList>
+
+  <clock>
+   <relations>
+    <noinstrument>
+     <altitude>/position/altitude-ft</altitude>
+     <speed-up>/sim/speed-up</speed-up>
+     <warp>/sim/time/warp</warp>
+    </noinstrument>
+   </relations>
+  </clock>
+
+  <comm>
+   <power-btn type="int">1</power-btn>
+  </comm>
+
+  <gdf>
+   <airport type="string"></airport>
+   <called type="bool">false</called>
+   <calling type="bool">false</calling>
+   <gmt-string type="string"></gmt-string>
+   <heading-deg type="double">0.0</heading-deg>
+
+   <relations>
+    <dependency>
+     <clock>/sim/time/gmt-string</clock>
+     <mag-variation>/environment/magnetic-variation-deg</mag-variation>
+    </dependency>
+
+    <noinstrument>
+     <speed-up>/sim/speed-up</speed-up>
+    </noinstrument>
+   </relations>
+
+   <show-paper type="bool">false</show-paper>
+  </gdf>
+
+  <generic>
+   <factor type="double">1.0</factor>                                      <!-- otherwise material doesn't work with OSG -->
+  </generic>
+
+  <sextant>
+   <relations>
+    <noinstrument>
+     <current-view>/sim/current-view</current-view>
+     <heading>/orientation/heading-deg</heading>
+     <latitude>/position/latitude-deg</latitude>
+    </noinstrument>
+   </relations>
+  </sextant>
+</PropertyList>

@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+
+<!-- 
+     VRP :
+     - the model is shifted at the nose tip, where one wants the FDM to compute the movement.
+     - that doesn't affect the animations.
+     - that only requires a shift of views.
+     - IMPORTANT : the model is already aligned vertically from Blender.
+
+
+     Aninmation :
+     - x y z Blender => x z y animation.
+     - 1 blender unit = 1 m.
+     - multiplayer requires property without leading slash.
+
+
+
+     References :
+     ==========
+
+     - http://case.pr.erau.edu/reports/US_reports/1940/1943.02.22_PanAmericanAirways_Boeing-314.pdf
+     (crash - 22 february 1943 Lisbon, Portugal) :
+
+     Elevator range : +/-25 deg (20 + 5).
+ 
+     - http://www.airweb.faa.gov/Regulatory_and_Guidance_Library/rgMakeModel.nsf/MainFrame?OpenFrameSet
+     (FAA certificate, TC176 - Wright Double row Cyclone GR-260025) :
+
+     Gear ratio 16 : 9.
+
+     - http://www.southernoregonwarbirds.org/fa3.html/
+     (Franck Varnum flew during WWII). 
+
+     The propellers were geared down 9:5 from engine shaft, so when we slowed the engines to 1500 rpm
+     the props were only turning at 850 rpm.
+
+
+     Known problems :
+     ==============
+     - the shaft is visible behind the propeller disc, because they are not in a group.
+
+-->
+
+<PropertyList>
+
+ <path>Boeing314Clipper.ac</path>
+
+ <offsets>
+
+<!-- VRP at nose -->
+
+   <x-m>16.30</x-m>             <!-- model is not exactly at the middle of length 106 feet. -->
+
+<!-- The black painting of the hull should be visible, if empty load.
+     Both sponsons touch inside water (not only 1), if full load.
+ -->
+   <z-m> 0.0</z-m>               <!-- aligned by FDM gear, if model at scale. -->
+
+ </offsets>
+
+  <nasal>
+   <load>
+    var livery_update = aircraft.livery_update.new(
+    "Aircraft/Boeing314/Models/Liveries", 10,
+    func { print("Boeing 314 livery update") });
+   </load>
+
+   <unload>
+    livery_update.stop();
+   </unload>
+  </nasal>
+
+
+<!-- =========== -->
+<!-- Instruments -->
+<!-- =========== -->
+
+ <model>
+  <name>Instruments</name>
+  <path>Aircraft/Boeing314/Models/Boeing314_instruments.xml</path>
+ </model>
+
+ <model>
+  <name>Exterior</name>
+  <path>Aircraft/Boeing314/Models/Boeing314_exterior.xml</path>
+ </model>
+
+ <model>
+  <name>Effects</name>
+  <path>Aircraft/Boeing314/Models/Boeing314_effects.xml</path>
+ </model>
+
+
+<!-- ============================ -->
+<!-- Livery (1 texture per group) -->
+<!-- ============================ -->
+
+<!-- disabled, because transparent windows have a 2nd texture
+  <animation>
+   <type>material</type>
+   <object-name>Fuselage</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture</texture-prop>
+  </animation>
+-->
+
+  <animation>
+   <type>material</type>
+   <object-name>LeftWing</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-wing-left</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>RightWing</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-wing-right</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>LeftFin</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-fin</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>RightFin</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-fin</texture-prop>
+  </animation>
+
+
+<!-- ============= -->
+<!-- Optimizations -->
+<!-- ============= -->
+
+<!-- OSG doesn't yet clip the panels -->
+
+ <animation>
+   <type>range</type>
+   <object-name>Panel2DPilot</object-name>
+   <min-m>0</min-m>
+   <max-m>2.0</max-m>
+ </animation>
+
+ <animation>
+   <type>range</type>
+   <object-name>Panel2DOverhead</object-name>
+   <min-m>0</min-m>
+   <max-m>3.0</max-m>
+ </animation>
+
+ <animation>
+   <type>range</type>
+   <object-name>Panel2DEngineer</object-name>
+   <min-m>0</min-m>
+   <max-m>3.0</max-m>
+ </animation>
+
+
+<!-- ================================== -->
+<!-- Animations (x/y/z = back/right/up) -->
+<!-- ================================== -->
+
+<!-- PROPELLERS -->
+
+<!-- assume 1/7 gear ratio -->
+
+<!-- OUTBOARDS PROPELLERS -->
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PropellerDisc1</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc1</name>
+  <object-name>PropellerShaft1</object-name>
+  <object-name>PropellerDisc1</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc1</object-name>
+  <object-name>Propeller1</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>0.5625</factor> <!-- real 16 : 9 -->
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>-10.07</y-m>
+   <z-m>1.70</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>blend</type>
+  <object-name>PropellerDisc1</object-name>
+  <property>engines/engine[0]/rpm</property>
+  <factor>0.00015</factor>
+  <offset>-0.5</offset>
+  <min>0.0</min>
+  <max>0.5</max>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Propeller1</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[0]/rpm</property>
+    <value>1800</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Disc1</object-name>
+  <condition>
+   <greater-than-equals>
+    <property>engines/engine[0]/rpm</property>
+    <value>1800</value>
+   </greater-than-equals>
+  </condition>
+ </animation>
+
+<!-- 4 -->
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PropellerDisc4</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc4</name>
+  <object-name>PropellerShaft4</object-name>
+  <object-name>PropellerDisc4</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc4</object-name>
+  <object-name>Propeller4</object-name>
+  <property>engines/engine[3]/rpm</property>
+  <factor>0.5625</factor> <!-- test with 0.01 -->
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>10.05</y-m>
+   <z-m>1.70</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>blend</type>
+  <object-name>PropellerDisc4</object-name>
+  <property>engines/engine[3]/rpm</property>
+  <factor>0.00015</factor>
+  <offset>-0.5</offset>
+  <min>0.0</min>
+  <max>0.5</max>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Propeller4</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[3]/rpm</property>
+    <value>1800</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Disc4</object-name>
+  <condition>
+   <greater-than-equals>
+    <property>engines/engine[3]/rpm</property>
+    <value>1800</value>
+   </greater-than-equals>
+  </condition>
+ </animation>
+
+<!-- INBOARDS PROPELLERS -->
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PropellerDisc2</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc2</name>
+  <object-name>PropellerShaft2</object-name>
+  <object-name>PropellerDisc2</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc2</object-name>
+  <object-name>Propeller2</object-name>
+  <property>engines/engine[1]/rpm</property>
+  <factor>0.5625</factor>
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>-4.744</y-m>
+   <z-m>0.92</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>blend</type>
+  <object-name>PropellerDisc2</object-name>
+  <property>engines/engine[1]/rpm</property>
+  <factor>0.00015</factor>
+  <offset>-0.5</offset>
+  <min>0.0</min>
+  <max>0.5</max>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Propeller2</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[1]/rpm</property>
+    <value>1800</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Disc2</object-name>
+  <condition>
+   <greater-than-equals>
+    <property>engines/engine[1]/rpm</property>
+    <value>1800</value>
+   </greater-than-equals>
+  </condition>
+ </animation>
+
+<!-- 3 -->
+
+ <animation>
+  <type>noshadow</type>
+  <object-name>PropellerDisc3</object-name>
+ </animation>
+
+ <animation>
+  <name>Disc3</name>
+  <object-name>PropellerShaft3</object-name>
+  <object-name>PropellerDisc3</object-name>
+ </animation>
+
+ <animation>
+  <type>spin</type>
+  <object-name>Disc3</object-name>
+  <object-name>Propeller3</object-name>
+  <property>engines/engine[2]/rpm</property>
+  <factor>0.5625</factor> <!-- test with 0.01 -->
+  <center>
+   <x-m>0.0</x-m>
+   <y-m>4.72</y-m>
+   <z-m>0.92</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+ </animation>
+
+ <animation> 
+  <type>blend</type>
+  <object-name>PropellerDisc3</object-name>
+  <property>engines/engine[2]/rpm</property>
+  <factor>0.00015</factor>
+  <offset>-0.5</offset>
+  <min>0.0</min>
+  <max>0.5</max>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Propeller3</object-name>
+  <condition>
+   <less-than>
+    <property>engines/engine[2]/rpm</property>
+    <value>1800</value>
+   </less-than>
+  </condition>
+ </animation>
+
+ <animation>
+  <type>select</type>
+  <object-name>Disc3</object-name>
+  <condition>
+   <greater-than-equals>
+    <property>engines/engine[2]/rpm</property>
+    <value>1800</value>
+   </greater-than-equals>
+  </condition>
+ </animation>
+
+<!-- FLAP -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LeftFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>-55.0</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-0.12</x-m>
+   <y-m>-8.4</y-m>
+   <z-m>1.60</z-m>
+  </center>
+  <axis>
+   <x>-0.11</x>
+   <y>-1.0</y>
+   <z>0.07</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RightFlap</object-name>
+  <property>surface-positions/flap-pos-norm</property>
+  <factor>55.0</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-0.12</x-m>
+   <y-m>8.4</y-m>
+   <z-m>1.60</z-m>
+  </center>
+  <axis>
+   <x>-0.11</x> <!-- height -->
+   <y>1.0</y>
+   <z>0.07</z> <!-- depth -->
+  </axis>
+ </animation>
+
+<!-- AILERON -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LeftAileron</object-name>
+  <property>surface-positions/left-aileron-pos-norm</property>
+  <factor>25.0</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-1.16</x-m>
+   <y-m>-19.19</y-m>
+   <z-m>2.16</z-m>
+  </center>
+  <axis>
+   <x>-0.14</x>
+   <y>-1.0</y>
+   <z>0.05</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RightAileron</object-name>
+  <property>surface-positions/right-aileron-pos-norm</property>
+  <factor>25.0</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>-1.16</x-m>
+   <y-m>19.19</y-m>
+   <z-m>2.16</z-m>
+  </center>
+  <axis>
+   <x>-0.14</x> <!-- height -->
+   <y>1.0</y>
+   <z>0.05</z> <!-- depth -->
+  </axis>
+ </animation>
+
+<!-- ELEVATOR -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LeftElevator</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>25.0</factor> <!-- real -->
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>14.49</x-m>
+   <y-m>0.0</y-m>
+   <z-m>2.04</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RightElevator</object-name>
+  <property>surface-positions/elevator-pos-norm</property>
+  <factor>-25.0</factor> <!-- real -->
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>14.49</x-m>
+   <y-m>0.0</y-m>
+   <z-m>2.04</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>-1.0</y>
+   <z>0.0</z>
+  </axis>
+ </animation>
+
+<!-- RUDDER -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LeftRudder</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>20</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>14.37</x-m>
+   <y-m>-6.95</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RightRudder</object-name>
+  <property>surface-positions/rudder-pos-norm</property>
+  <factor>20</factor>
+  <offset-deg>0</offset-deg>   
+  <center>
+   <x-m>14.37</x-m>
+   <y-m>6.95</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+
+<!-- ====== -->
+<!-- Inside -->
+<!-- ====== -->
+
+<!-- doors -->
+
+ <animation>
+  <type>rotate</type>
+  <object-name>CelestialDoor</object-name>
+  <property>controls/doors/celestial/position-norm</property>
+  <factor>-90</factor>
+  <center>
+   <x-m>-5.351</x-m>
+   <y-m>-0.235</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>CelestialDoor</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.doorsystem.celestialexport();</script>
+   </binding>
+  </action>
+ </animation>
+
+</PropertyList>

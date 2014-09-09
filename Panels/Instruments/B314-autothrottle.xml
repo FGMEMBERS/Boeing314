@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+
+<!-- Boeing314 autothrottle :
+
+     this is not a real mode, only to help the tests with speed-up.
+-->
+
+<PropertyList>
+
+ <name>Autothrottle switch</name>
+ <w-base>52</w-base>
+ <h-base>52</h-base>
+
+ <layers>
+
+  <layer>
+   <name>autothrottle switch</name>
+   <type>switch</type>
+
+   <layer>
+    <condition>
+     <equals>
+      <property>/autopilot/locks/speed</property>
+      <value>speed-with-throttle</value>
+     </equals>
+    </condition>
+    <name>on</name>
+    <texture>
+     <path>Aircraft/Boeing314/Panels/Instruments/Textures/switches.rgb</path>
+     <x1>0.0</x1>
+     <y1>0.74</y1>
+     <x2>0.25</x2>
+     <y2>1.0</y2>
+    </texture>
+    <w>40</w>
+    <h>40</h>
+    <transformations>
+     <transformation>
+     <type>y-shift</type>
+     <offset>3</offset>
+     </transformation>
+    </transformations>
+   </layer>
+
+   <layer>
+    <name>3rd state</name>
+    <condition>
+     <equals>
+      <property>/autopilot/locks/speed</property>
+      <value>speed-with-throttle-arm</value>
+     </equals>
+    </condition>
+    <texture>
+     <path>Aircraft/Boeing314/Panels/Instruments/Textures/switches.rgb</path>
+     <x1>0.0</x1>
+     <y1>0.47</y1>
+     <x2>0.25</x2>
+     <y2>0.745</y2>
+    </texture>
+    <w>40</w>
+    <h>42</h>
+    <transformations>
+     <transformation>
+      <type>y-shift</type>
+      <offset>1.5</offset>
+     </transformation>
+    </transformations>
+   </layer>
+
+   <layer>
+    <name>off</name>
+    <texture>
+     <path>Aircraft/Boeing314/Panels/Instruments/Textures/switches.rgb</path>
+     <x1>0.0</x1>
+     <y1>0.0</y1>
+     <x2>0.25</x2>
+     <y2>0.31</y2>
+    </texture>
+    <w>40</w>
+    <h>47</h>
+   </layer>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>0</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>0</offset>
+     </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+ <actions>
+
+  <action>
+   <name>activate autopilot</name>
+   <button>0</button>
+   <x>-22</x>
+   <y>-19</y>
+   <w>44</w>
+   <h>44</h>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.autopilotsystem.atexport();</script>
+   </binding>
+  </action>
+
+ </actions>
+ 
+</PropertyList>

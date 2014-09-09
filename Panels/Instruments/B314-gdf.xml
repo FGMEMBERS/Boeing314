@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<!-- Ground direction finder.
+
+http://www.petan.net/aviation/gdf.htm/ : range limited to 1500 miles.
+
+The ground operator sends to the radio operator the true heading.
+Then the radio operator computes the magnetic heading from its approximate position
+(map with magnetic variation). And write the result on a paper for the pilots.
+-->
+
+<PropertyList>
+
+ <name>GDF paper</name>
+
+ <w-base>50</w-base>
+ <h-base>50</h-base>
+
+ <layers>
+
+  <layer>
+   <name>background</name>
+   <condition>
+    <property>/instrumentation/gdf/show-paper</property>
+   </condition>
+   <texture>
+    <path>Aircraft/Boeing314/Panels/Instruments/Textures/B314-white-paper.rgb</path>
+   </texture>
+   <w>40</w>
+   <h>40</h>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <offset>15</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Zulu time of the radio call</name>
+   <condition>
+    <property>/instrumentation/gdf/show-paper</property>
+   </condition>
+   <type>text</type>
+   <point-size>9</point-size>
+   <color>
+    <red>0.1</red> <!-- grey paper pencil -->
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>text-value</type>
+     <property>/instrumentation/gdf/gmt-string</property>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-10</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>11</offset>
+    </transformation>
+    <transformation>
+     <type>rotation</type>
+     <offset>15</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Bearing noted on a paper by the radio</name>
+   <condition>
+    <property>/instrumentation/gdf/show-paper</property>
+   </condition>
+   <type>text</type>
+   <point-size>9</point-size>
+   <color>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </color>
+   <chunks>
+    <chunk>
+     <type>text-value</type>
+     <property>/instrumentation/gdf/heading-deg</property>
+    </chunk>
+   </chunks>
+   <transformations>
+    <transformation>
+     <type>x-shift</type>
+     <offset>-10</offset>
+    </transformation>
+    <transformation>
+     <type>y-shift</type>
+     <offset>-11</offset>
+    </transformation>
+    <transformation>
+     <type>rotation</type>
+     <offset>15</offset>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+<!-- remove the paper -->
+
+ <actions>
+
+  <action>
+   <name>toggle</name>
+   <button>0</button>
+   <x>-25</x>
+   <y>-25</y>
+   <w>50</w>
+   <h>50</h>
+   <binding>
+    <command>property-toggle</command>
+    <property>/instrumentation/gdf/show-paper</property>
+    <value></value>
+   </binding>
+  </action> 
+
+ </actions>
+
+</PropertyList>

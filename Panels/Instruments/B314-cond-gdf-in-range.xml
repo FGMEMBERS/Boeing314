@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<!-- Ground Direction Finding in range :
+
+     - waypoint exists (radio operator has dialed).
+     - waypoint distance is less than 1500 NM.
+-->
+
+<PropertyList>
+
+  <and>
+   <not-equals>
+    <property>/autopilot/route-manager/wp/id</property>
+    <value type="string"></value>
+   </not-equals>
+   <less-than>
+    <property>/autopilot/route-manager/wp/dist</property>
+    <value type="double">1500.0</value>
+   </less-than>
+   <not-equals>
+    <property>/instrumentation/gdf/called</property>
+    <value type="double">on</value>
+   </not-equals>
+  </and>
+
+</PropertyList>

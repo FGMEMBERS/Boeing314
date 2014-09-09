@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<!-- - creates booleans (impossible with Nasal), which would otherwise be empty strings by default.
+     - makes more readable the initialization state.
+-->
+
+<PropertyList>
+
+  <copilot>
+   <activ type="bool">false</activ>
+   <gyro type="bool">true</gyro>                                   <!-- reset gyro -->
+  </copilot>
+
+  <crew>
+   <timeout type="bool">true</timeout>                             <!-- of 10 seconds -->
+   <timeout-s type="double">10.0</timeout-s>
+   <copilot type="bool">false</copilot>
+   <minimized-s>10.0</minimized-s>
+   <radio type="bool">true</radio>                                 <!-- tower ADF -->
+  </crew>
+
+  <doors>
+   <celestial>
+    <opened type="bool">false</opened>
+   </celestial>
+  </doors>
+
+  <environment>
+   <effects type="bool">true</effects>
+  </environment>
+
+  <fuel>
+   <reinit type="bool">true</reinit>                               <!-- restore fuel on reinit -->
+  </fuel>
+
+  <mooring>
+   <anchor alias="/fdm/jsbsim/systems/hull/anchor"/>
+   <automatic type="bool">true</automatic>
+   <heading-deg type="int">0</heading-deg>                         <!-- head to -->
+   <seaport type="bool">true</seaport>                             <!-- open Seaport dialog -->
+   <wind type="bool">true</wind>                                   <!-- head to wind -->
+  </mooring>
+
+  <seat>
+   <recover type="bool">false</recover>
+  </seat>
+
+  <voice>
+   <sound type="bool">true</sound>
+   <text type="bool">true</text>                                   <!-- debug without Festival -->
+  </voice>
+
+</PropertyList>

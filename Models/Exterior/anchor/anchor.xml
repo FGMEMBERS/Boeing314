@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>anchor.ac</path>
+
+ <animation>
+  <type>select</type>
+  <object-name>Anchor</object-name>
+  <condition>
+   <not-equals>
+    <property>controls/gear/brake-parking</property>
+    <value>0.0</value>
+   </not-equals>
+  </condition>
+ </animation>
+
+</PropertyList>
+

@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+
+<!-- Close button doesn't select the moorage.
+
+
+     WARNING : The combo must correspond to the comment field in
+               Aircraft/Boeing314/Nasal/Boeing314-route.xml.
+-->
+
+<PropertyList>
+  <name>Boeing314-moorage</name>
+  <layout>vbox</layout>
+
+  <text>
+    <label>Boeing 314 moorage</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <text>
+    <property>/sim/tower/airport-id</property>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+    <text>
+      <label>Nearest airfield</label>
+      <halign>left</halign>
+    </text>
+    <list>
+      <pref-width>400</pref-width>
+      <pref-height>300</pref-height>
+      <property>/systems/mooring/dialog</property>
+      <value>NZAA  Auckland</value>
+      <value>OBBI  Bahrein</value>
+      <value>KBWI  Baltimore</value>
+      <value>GBYD  Banjul</value>
+      <value>SBBE  Belem</value>
+      <value>TXKF  Bermuda</value>
+      <value>GGOV  Boloma</value>
+      <value>CCP2  Botwood</value>
+      <value>PCIS  Canton Island</value>
+      <value>YPDN  Darwin</value>
+      <value>EINN  Foynes</value>
+      <value>YGLA  Gladstone</value>
+      <value>PGUM  Guam</value>
+      <value>VHHH  Hong Kong</value>
+      <value>PHNL  Honolulu (Pearl Harbour)</value>
+      <value>LPHR  Horta</value>
+      <value>OPMR  Karachi</value>
+      <value>HSSS  Khartoum</value>
+      <value>FZAA  Kinshasa</value>
+      <value>DNMM  Lagos</value>
+      <value>LPPT  Lisbon</value>
+      <value>KTOA  Los Angeles (San Pedro)</value>
+      <value>KLGA  New York (La Guardia)</value>
+      <value>7N3   New York (Port Washington)</value>
+      <value>VMMC  Macau</value>
+      <value>RPLS  Manila</value>
+      <value>LFML  Marseille</value>
+      <value>KMIA  Miami (Dinner Key)</value>
+      <value>PMDY  Midway Island</value>
+      <value>NWWM  Noumea</value>
+      <value>SBNT  Natal</value>
+      <value>TTPP  Port of Spain</value>
+      <value>KOAK  San Francisco (Treasure Island)</value>
+      <value>KBFI  Seattle (Elliott Bay)</value>
+      <value>CYQM  Shediac bay</value>
+      <value>EGHI  Southampton</value>
+      <value>WRSJ  Surabaya</value>
+      <value>NFNA  Suva</value>
+      <value>VCCT  Trincomalee</value>
+      <value>PWAK  Wake Island</value>
+    </list>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label>Mooring</label>
+  </text>
+
+  <checkbox>
+    <label>Automatic at startup  ~</label>
+    <halign>left</halign>
+    <property>/controls/mooring/automatic</property>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/mooring/automatic</property>
+    </binding>
+  </checkbox>
+
+  <group>
+   <layout>vbox</layout>
+   <halign>left</halign>
+
+   <group>
+    <layout>hbox</layout>
+
+    <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <checkbox>
+       <halign>left</halign>
+       <label>Head to wind  ~</label>
+       <property>/controls/mooring/wind</property>
+       <binding>
+        <command>property-toggle</command>
+        <property>/controls/mooring/wind</property>
+       </binding>
+     </checkbox>
+    </group>
+
+    <group>
+     <layout>vbox</layout>
+     <halign>left</halign>
+
+     <input>
+       <halign>left</halign>
+       <property>/controls/mooring/heading-deg</property>
+       <label>degrees  ~</label>
+     </input>
+    </group>
+   </group>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label>Airfield without moorage</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <checkbox>
+    <label>Open Seaport dialog  ~</label>
+    <halign>left</halign>
+    <property>/controls/mooring/seaport</property>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/mooring/seaport</property>
+    </binding>
+  </checkbox>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
+
+    <group>
+      <layout>hbox</layout>
+      <empty><stretch>true</stretch></empty>
+
+      <button>
+        <legend>Position</legend>
+        <key>p</key>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>globals.Boeing314.mooringsystem.dialogexport();</script>
+        </binding>
+        <binding>
+          <command>presets-commit</command>
+        </binding>
+        <binding>
+          <command>dialog-close</command>
+        </binding>
+      </button>
+
+      <button>
+        <legend>Close</legend>
+        <default>true</default>
+        <key>Esc</key>
+        <binding>
+          <command>dialog-apply</command>
+        </binding>
+        <binding>
+          <command>dialog-close</command>
+        </binding>
+      </button>
+    </group>
+
+    <button>
+      <legend>Menu</legend>
+      <key>m</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-menu</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+  </group>
+</PropertyList>

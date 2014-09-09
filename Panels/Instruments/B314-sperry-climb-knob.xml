@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+
+<!-- Sperry autopilot climb knob
+
+Adapted from Martin Dressler dr@musicabona.cz
+Artificial horizon from C172RG small version
+GPL
+_______________________________________________________________________________
+
+Based on Default by David Megginson, david@megginson.com.
+
+This is an instrument configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the instrument's layers and actions.
+
+Each instrument is composed of layers stacked on top of each other.
+A layer may be a texture (with transparent parts to show the layers
+underneath), text, or a special layer that switches between two
+others (say, to turn an indicator light on or off).  Each layer can
+move independently in proportion to a property value, and text
+can be generated from property values as well: all of the layer's
+movements are defined as transformations.
+
+Actions are hotspots on the instrument that will respond to a mouse
+click.  Actions always modify the values of properties, either by
+adjusting them, toggling them, or swaping them with other
+properties' values.
+-->
+
+<PropertyList>
+
+ <name>Sperry climb knob</name>
+
+ <w-base>50</w-base>
+ <h-base>50</h-base>
+
+ <layers>
+
+  <layer>
+   <name>Heading Knob</name>
+   <texture>
+    <path>Aircraft/Boeing314/Panels/Instruments/Textures/blister.rgb</path>
+    <x1>0.25</x1>
+    <y1>0.7344</y1>
+    <x2>0.5</x2>
+    <y2>0.9844</y2>
+   </texture>
+   <h>24</h>
+   <w>24</w>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property>/autopilot/settings/target-pitch-deg</property>
+     <scale>80.0</scale>
+    </transformation>
+   </transformations>
+  </layer>
+
+  <layer>
+   <name>Heading label</name>
+   <texture>
+    <path>Aircraft/Boeing314/Panels/Instruments/Textures/misc-1.rgb</path>
+    <x1>0.0078125</x1>
+    <y1>0.5</y1>
+    <x2>0.1640625</x2>
+    <y2>0.6640625</y2>
+   </texture>
+   <w>15</w>
+   <h>15</h>
+   <transformations>
+    <transformation>
+     <type>rotation</type>
+     <property>/autopilot/settings/target-pitch-deg</property>
+     <scale>80.0</scale>
+    </transformation>
+   </transformations>
+  </layer>
+
+ </layers>
+
+ <actions>
+
+  <action>
+   <name>decrease pitch</name>
+   <button>0</button>
+   <x>2</x>
+   <y>-13</y>
+   <w>10</w>
+   <h>24</h>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.autopilotsystem.pitchexport(-1.0);</script>
+   </binding>
+  </action>
+
+  <action>
+   <name>increase pitch</name>
+   <button>0</button>
+   <x>-11</x>
+   <y>-13</y>
+   <w>10</w>
+   <h>24</h>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.autopilotsystem.pitchexport(1.0);</script>
+   </binding>
+  </action>
+
+</actions>
+
+</PropertyList>

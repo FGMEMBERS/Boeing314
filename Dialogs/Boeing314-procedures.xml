@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+  <name>Boeing314-procedures</name>
+  <layout>vbox</layout>
+  <width>700</width>
+
+  <text>
+    <label>Boeing 314 procedures</label>
+  </text>
+
+  <hrule><dummy/></hrule>
+
+  <group>
+    <layout>vbox</layout>
+    <halign>center</halign>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+     <layout>hbox</layout>
+
+     <text>
+       <label>adf :</label>
+     </text>
+
+     <text>
+      <property>/systems/human/airport-id</property>
+     </text>
+    </group>
+
+    <text>
+      <label></label>
+    </text>
+
+    <group>
+     <layout>hbox</layout>
+
+     <text>
+       <label>copilot :</label>
+     </text>
+
+     <text>
+      <live>true</live>
+      <property>/systems/copilot/state-last</property>
+      <color>
+       <red>0.2</red>
+       <green>0.8</green>
+       <blue>0.2</blue>
+      </color>
+     </text>
+    </group>
+
+<!--
+    <group>
+     <layout>hbox</layout>
+
+     <text>
+       <label>engineer :</label>
+     </text>
+
+     <text>
+      <live>true</live>
+      <property>/systems/engineer/state-last</property>
+      <color>
+       <red>0.2</red>
+       <green>0.8</green>
+       <blue>0.2</blue>
+      </color>
+     </text>
+    </group>
+-->
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+   <layout>hbox</layout>
+
+   <button>
+    <legend>Close</legend>
+    <default>true</default>
+    <key>Esc</key>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Settings</legend>
+    <key>s</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-procedures2</dialog-name>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Menu</legend>
+    <key>m</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+  </group>
+</PropertyList>

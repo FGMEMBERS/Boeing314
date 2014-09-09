@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<!-- to make reading easier. -->
+
+<PropertyList>
+
+    <callouts>
+
+     <wind>
+      <pilot>
+       <description>wind direction</description>
+       <message>
+        <action>port</action>
+        <text>wind %d port</text>
+       </message>
+       <message>
+        <action>starboard</action>
+        <text>wind %d starboard</text>
+       </message>
+       <message>
+        <action>head</action>
+        <text>head to wind</text>
+       </message>
+      </pilot>
+     </wind>
+
+    </callouts>
+
+</PropertyList>

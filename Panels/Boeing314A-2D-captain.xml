@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+
+<!-- Boeing 314-A captain, center, and pedestal panel.
+
+By lack of space, only one lever for propeller and mixture.
+
+
+The photographs are probably taken with the engines stopped.
+
+
+B314 panel (from left to right, top to bottom).
+==========
+Captain 1st line :
+- airspeed at 0 kt (A).
+- turn coordinator (A).
+- vertical speed at 0 ft/min (A).
+- could be an ADF finder or a magnetic compass.
+
+Captain 2nd line :
+- could be the altimeter, by its position visible (not behind the yoke).
+
+Center 1st line :
+- the 2 first, manifold pressure (outbards engines) at outside pressure 29.92 inhg (A).
+- the 2 last, rpm (outboards engines) at 0 rpm (A).
+
+Center 2nd, 3rd and 4th line :
+- the Sperry autopilot (B), with all its knobs (C) : left the gyro (heading hold), and right
+the artificial horizon (pitch hold).
+
+Center 5th line :
+- could be a clock.
+
+
+B314-A panel (from left to right, top to bottom).
+============
+Captain 1st line :
+- the 2nd instrument is the turn coordinator (A).
+- the 4th could be the altimeter (A) - not at sea level -, or an ADF finder.
+
+Center 1st line :
+- the 4 first could be the manifold pressure, by their markings round the clock.
+- the last 2 could be rpm (outboards engines), by their markings not round the clock.
+
+
+
+References
+==========
+
+(A) position extrapolated from modern aircrafts.
+
+(B) http://www.southernoregonwarbirds.org/fa3.html/
+    (Franck Varnum flew during WWII). 
+
+(C) http://www.oldbeacon.com/beacon/sperry_autopilot-1.htm
+    (Your Wings, by Assen Jordanoff - New York, Funk & Wagnalls, 1936)
+
+
+_______________________________________________________________________
+
+This is a panel configuration file for the open-source flight
+simulator FlightGear (www.flightgear.org).  The file is an XML-encoded
+FlightGear property list defining the panel's background texture and
+the location (and optionally, size) of the instruments that will
+appear on the panel.
+
+Each instrument is, itself, defined in an XML-encoded property list
+in a separate file.
+
+Co-ordinates are relative to the *bottom* left corner of the screen
+(as in OpenGL).  The total FlightGear window is always considered to
+be 1024x768, whatever its actual display size on the screen.  All
+paths are relative to $FG_ROOT.
+
+Note that the name of the element defining each instrument must be
+different, or else instrument definitions will be overwritten:
+that's not particularly XML-ish, but that's how property lists
+work in FlightGear right now.
+
+Each instrument has its own preferred width and height, but you can
+override those by providing <w>..</w> and <h>..</h> properties with the
+<x>...</x> and <y>...</y> properties.
+
+-->
+
+<!DOCTYPE PropertyList SYSTEM "panel.dtd">
+
+<PropertyList>
+
+ <name>Boeing 314-A Captain Panel</name>
+ <background>Aircraft/Boeing314/Panels/Textures/Boeing314A-panel-bg.rgb</background>
+ <w>1424</w>
+ <h>468</h>
+ <y-offset>0</y-offset>
+ <view-height>440</view-height>
+
+ <instruments>
+
+  <instrument include="Instruments/B314-speed-up.xml">
+   <name>Speed up</name>
+   <x>370</x>
+   <y>420</y>
+   <w>80</w>
+   <h>80</h>
+  </instrument>
+
+<!-- Captain -->
+
+  <instrument include="../../Instruments/asi.xml">
+   <name>Indicated air speed</name>
+   <x>80</x>
+   <y>295</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/turn.xml">
+   <name>Turn Coordinator</name>
+   <x>220</x>
+   <y>295</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/vsi.xml">
+   <name>Vertical speed</name>
+   <x>360</x>
+   <y>295</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/altimeter.xml">
+   <name>Altimeter</name>
+   <x>510</x>
+   <y>360</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/controls.xml">
+   <name>Control Position Indicators</name>
+   <x>80</x>
+   <y>120</y>
+   <w>90</w>
+   <h>90</h>
+  </instrument>
+
+  <instrument include="../../Instruments/ati-c172s.xml">
+   <name>Attitude indicator</name>
+   <x>220</x>
+   <y>120</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="../../Instruments/adf.xml">
+   <name>ADF</name>
+   <x>390</x>
+   <y>120</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+<!-- Captain right -->
+
+  <instrument include="Instruments/B314-gdf.xml">
+   <name>Ground Direction Finder</name>
+   <x>560</x>
+   <y>195</y>
+   <w>88</w>
+   <h>88</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-clock.xml">
+   <name>Clock</name>
+   <x>560</x>
+   <y>55</y>
+   <w>90</w>
+   <h>90</h>
+  </instrument>
+
+<!-- Center (outboards engines) -->
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 1</name>
+   <params>
+    <mp-select>/engines/engine[0]/mp-osi</mp-select>
+   </params>
+   <x>670</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/single-manifold-pressure.xml">
+   <name>Manifold pressure 4</name>
+   <params>
+    <mp-select>/engines/engine[3]/mp-osi</mp-select>
+   </params>
+   <x>770</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 1</name>
+   <params>
+    <rpm-select>/engines/engine[0]/rpm</rpm-select>
+   </params>
+   <x>870</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+  <instrument include="../../Instruments/rpm.xml">
+   <name>Engine 4</name>
+   <params>
+    <rpm-select>/engines/engine[3]/rpm</rpm-select>
+   </params>
+   <x>970</x>
+   <y>395</y>
+   <w>100</w>
+   <h>100</h>
+  </instrument>
+
+<!-- Sperry autopilot -->
+
+  <instrument include="Instruments/B314-sperry-climb-knob.xml">
+   <name>Climb knob</name>
+   <x>1000</x>
+   <y>310</y>
+   <w>70</w>
+   <h>70</h>
+  </instrument>
+
+  <instrument include="../../Instruments/gyro.xml">
+   <name>Directional Gauge</name>
+   <x>720</x>
+   <y>235</y>
+   <w>120</w>
+   <h>120</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-sperry-horizon.xml">
+   <name>Attitude Indicator</name>
+   <x>900</x>
+   <y>235</y>
+   <w>150</w>
+   <h>150</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-sperry-heading-hold.xml">
+   <name>Heading hold switch</name>
+   <x>720</x>
+   <y>140</y>
+   <w>40</w>
+   <h>40</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-sperry-pitch-hold.xml">
+   <name>Pitch hold switch</name>
+   <x>840</x>
+   <y>140</y>
+   <w>40</w>
+   <h>40</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-sperry-level-hold.xml">
+   <name>Level hold switch</name>
+   <x>1000</x>
+   <y>140</y>
+   <w>40</w>
+   <h>40</h>
+  </instrument>
+
+<!-- Pedestal -->
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 1 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[0]/throttle</engine-throttle-select>
+   </params>
+   <x>770</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 2 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[1]/throttle</engine-throttle-select>
+   </params>
+   <x>790</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 3 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[2]/throttle</engine-throttle-select>
+   </params>
+   <x>810</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-throttle-quadrant.xml">
+   <name>Engine 4 throttle quadrant</name>
+   <params>
+    <engine-throttle-select>/controls/engines/engine[3]/throttle</engine-throttle-select>
+   </params>
+   <x>830</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+<!-- Engineer -->
+
+  <instrument include="Instruments/B314-pitch-all.xml">
+   <name>Engines pitch</name>
+   <x>880</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="Instruments/B314-mixture-all.xml">
+   <name>Engines mixture</name>
+   <x>900</x>
+   <y>44</y>
+   <w>20</w>
+   <h>80</h>
+  </instrument>
+
+<!-- Copilot -->
+
+  <instrument include="Instruments/B314-flap-quadrant.xml">
+   <name>Flaps quadrant</name>
+   <params>
+    <flaps-select>/controls/flight/flaps</flaps-select>
+   </params>
+   <x>990</x>
+   <y>44</y>
+   <w>40</w>
+   <h>80</h>
+  </instrument>
+
+  <instrument include="../../Instruments/magcompass.xml">
+   <name>Magnetic Compass</name>
+   <x>778</x>
+   <y>480</y>
+  </instrument>
+
+ </instruments>
+
+</PropertyList>
