@@ -83,7 +83,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Overhead -->
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 1</name>
    <params>
     <magneto-select>/controls/engines/engine[0]/magnetos</magneto-select>
@@ -95,7 +95,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 2</name>
    <params>
     <magneto-select>/controls/engines/engine[1]/magnetos</magneto-select>
@@ -107,7 +107,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 3</name>
    <params>
     <magneto-select>/controls/engines/engine[2]/magnetos</magneto-select>
@@ -119,7 +119,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>50</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-magneto-switch.xml">
+  <instrument include="Aircraft/Instruments/single-magneto-switch.xml">
    <name>Magneto 4</name>
    <params>
     <magneto-select>/controls/engines/engine[3]/magnetos</magneto-select>
@@ -212,7 +212,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Engineer -->
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 1 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[0]/egt-degf</engine-egt-select>
@@ -224,7 +224,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 2 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[1]/egt-degf</engine-egt-select>
@@ -236,7 +236,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 3 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[2]/egt-degf</engine-egt-select>
@@ -248,7 +248,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 4 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[3]/egt-degf</engine-egt-select>
@@ -260,7 +260,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 1 rpm</name>
    <params>
     <rpm-select>/engines/engine[0]/rpm</rpm-select>
@@ -271,7 +271,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 2 rpm</name>
    <params>
     <rpm-select>/engines/engine[1]/rpm</rpm-select>
@@ -282,7 +282,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 3 rpm</name>
    <params>
     <rpm-select>/engines/engine[2]/rpm</rpm-select>
@@ -293,7 +293,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 4 rpm</name>
    <params>
     <rpm-select>/engines/engine[3]/rpm</rpm-select>
@@ -304,7 +304,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 1</name>
    <params>
     <mp-select>/engines/engine[0]/mp-osi</mp-select>
@@ -315,7 +315,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 2</name>
    <params>
     <mp-select>/engines/engine[1]/mp-osi</mp-select>
@@ -326,7 +326,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 3</name>
    <params>
     <mp-select>/engines/engine[2]/mp-osi</mp-select>
@@ -337,7 +337,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 4</name>
    <params>
     <mp-select>/engines/engine[3]/mp-osi</mp-select>
@@ -440,13 +440,13 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Radio -->
 
-  <instrument include="../../Instruments/navcom-kx155.xml">
+  <instrument include="Aircraft/Instruments/navcom-kx155.xml">
    <name>NavCom 1 Radio</name>
    <x>890</x>
    <y>171</y>
   </instrument>
 
-  <instrument include="../../Instruments/adf-radio.xml">
+  <instrument include="Aircraft/Instruments/adf-radio.xml">
    <name>ADF Radio</name>
    <x>890</x>
    <y>90</y>

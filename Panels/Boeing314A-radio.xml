@@ -43,7 +43,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
  <instruments>
 
-  <instrument include="../../Instruments/navcom-kx155.xml">
+  <instrument include="Aircraft/Instruments/navcom-kx155.xml">
    <name>NavCom 1 Radio</name>
    <x>100</x>
    <y>201</y>
@@ -51,7 +51,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/adf-radio.xml">
+  <instrument include="Aircraft/Instruments/adf-radio.xml">
    <name>ADF Radio</name>
    <x>100</x>
    <y>110</y>
