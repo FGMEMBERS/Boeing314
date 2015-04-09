@@ -105,7 +105,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Captain -->
 
-  <instrument include="../../Instruments/asi.xml">
+  <instrument include="Aircraft/Instruments/asi.xml">
    <name>Indicated air speed</name>
    <x>80</x>
    <y>295</y>
@@ -113,7 +113,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../Instruments/turn.xml">
+  <instrument include="Aircraft/Instruments/turn.xml">
    <name>Turn Coordinator</name>
    <x>220</x>
    <y>295</y>
@@ -121,7 +121,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../Instruments/vsi.xml">
+  <instrument include="Aircraft/Instruments/vsi.xml">
    <name>Vertical speed</name>
    <x>360</x>
    <y>295</y>
@@ -129,7 +129,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../Instruments/altimeter.xml">
+  <instrument include="Aircraft/Instruments/altimeter.xml">
    <name>Altimeter</name>
    <x>510</x>
    <y>360</y>
@@ -137,7 +137,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../Instruments/controls.xml">
+  <instrument include="Aircraft/Instruments/controls.xml">
    <name>Control Position Indicators</name>
    <x>80</x>
    <y>120</y>
@@ -145,7 +145,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>90</h>
   </instrument>
 
-  <instrument include="../../Instruments/ati-c172s.xml">
+  <instrument include="Aircraft/Instruments/ati-c172s.xml">
    <name>Attitude indicator</name>
    <x>220</x>
    <y>120</y>
@@ -153,7 +153,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>120</h>
   </instrument>
 
-  <instrument include="../../Instruments/adf.xml">
+  <instrument include="Aircraft/Instruments/adf.xml">
    <name>ADF</name>
    <x>390</x>
    <y>120</y>
@@ -181,7 +181,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Center (outboards engines) -->
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 1</name>
    <params>
     <mp-select>/engines/engine[0]/mp-osi</mp-select>
@@ -192,7 +192,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 4</name>
    <params>
     <mp-select>/engines/engine[3]/mp-osi</mp-select>
@@ -203,7 +203,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 1</name>
    <params>
     <rpm-select>/engines/engine[0]/rpm</rpm-select>
@@ -214,7 +214,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>100</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 4</name>
    <params>
     <rpm-select>/engines/engine[3]/rpm</rpm-select>
@@ -235,7 +235,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>70</h>
   </instrument>
 
-  <instrument include="../../Instruments/gyro.xml">
+  <instrument include="Aircraft/Instruments/gyro.xml">
    <name>Directional Gauge</name>
    <x>720</x>
    <y>235</y>
@@ -352,7 +352,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>80</h>
   </instrument>
 
-  <instrument include="../../Instruments/magcompass.xml">
+  <instrument include="Aircraft/Instruments/magcompass.xml">
    <name>Magnetic Compass</name>
    <x>778</x>
    <y>480</y>

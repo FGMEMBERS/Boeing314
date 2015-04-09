@@ -156,7 +156,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- Engineer -->
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 1 rpm</name>
    <params>
     <rpm-select>/engines/engine[0]/rpm</rpm-select>
@@ -167,7 +167,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 2 rpm</name>
    <params>
     <rpm-select>/engines/engine[1]/rpm</rpm-select>
@@ -178,7 +178,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 3 rpm</name>
    <params>
     <rpm-select>/engines/engine[2]/rpm</rpm-select>
@@ -189,7 +189,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/rpm.xml">
+  <instrument include="Aircraft/Instruments/rpm.xml">
    <name>Engine 4 rpm</name>
    <params>
     <rpm-select>/engines/engine[3]/rpm</rpm-select>
@@ -202,7 +202,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- line 3 -->
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 1 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[0]/egt-degf</engine-egt-select>
@@ -214,7 +214,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 2 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[1]/egt-degf</engine-egt-select>
@@ -226,7 +226,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 3 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[2]/egt-degf</engine-egt-select>
@@ -238,7 +238,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/egt.xml">
+  <instrument include="Aircraft/Instruments/egt.xml">
    <name>Engine 4 fuel flow</name>
    <params>
     <engine-egt-select>/engines/engine[3]/egt-degf</engine-egt-select>
@@ -252,7 +252,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
 
 <!-- line 4 -->
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 1</name>
    <params>
     <mp-select>/engines/engine[0]/mp-osi</mp-select>
@@ -263,7 +263,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 2</name>
    <params>
     <mp-select>/engines/engine[1]/mp-osi</mp-select>
@@ -274,7 +274,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 3</name>
    <params>
     <mp-select>/engines/engine[2]/mp-osi</mp-select>
@@ -285,7 +285,7 @@ override those by providing <w>..</w> and <h>..</h> properties with the
    <h>60</h>
   </instrument>
 
-  <instrument include="../../Instruments/single-manifold-pressure.xml">
+  <instrument include="Aircraft/Instruments/single-manifold-pressure.xml">
    <name>Manifold pressure 4</name>
    <params>
     <mp-select>/engines/engine[3]/mp-osi</mp-select>
