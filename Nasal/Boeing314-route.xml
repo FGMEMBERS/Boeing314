@@ -725,7 +725,7 @@
 <!-- Southampton -->
 
     <adf>
-     <selected-khz type="int">391.5</selected-khz>
+     <selected-khz type="int">391</selected-khz>
     </adf>
    </seaplane>
 
@@ -1413,7 +1413,7 @@
      <heading-deg type="int">290</heading-deg>
     </location>
 
-<!-- Bahrein --> 
+<!-- Bahrein -->
 
     <adf>
      <selected-khz type="int">395</selected-khz>
