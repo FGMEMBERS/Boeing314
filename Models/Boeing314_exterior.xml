@@ -26,28 +26,28 @@
    </offsets>
   </model>
 
-<!-- REGISTRATION -->
-
+<!-- PANAM REGISTRATION -->
+  
   <text>
-   <name>Registration wing right</name>
+   <name>Panam registration wing right</name>
    <type type="string">text-value</type>
    <property type="string">sim/model/immat</property>
    <format type="string">%s</format>
    <draw-text type="bool">true</draw-text>
    <font>Helvetica.txf</font>
-   <character-size type="double">1.92</character-size>
-   <character-aspect-ratio type="double">1.2</character-aspect-ratio>        <!-- compress -->
+   <character-size type="double">1.75</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
    <max-height>32</max-height>
    <max-width>80</max-width>
    <font-resolution>
-    <width type="int">32</width>
-    <height type="int">32</height>
+    <width type="int">128</width>
+    <height type="int">128</height>
    </font-resolution>
    <alignment>center-center</alignment>
    <offsets>
     <x-m>-2.260</x-m>
     <y-m>15.500</y-m>
-    <z-m> 2.235</z-m>
+    <z-m> 2.245</z-m>
     <heading-deg>90</heading-deg>         <!-- switch pitch to roll -->
     <pitch-deg>-2.2</pitch-deg>
     <roll-deg>2.5</roll-deg>
@@ -55,19 +55,19 @@
   </text>
 
   <text>
-   <name>Registration wing left</name>
+   <name>Panam registration wing left</name>
    <type type="string">text-value</type>
    <property type="string">sim/model/immat</property>
    <format type="string">%s</format>
    <draw-text type="bool">true</draw-text>
    <font>Helvetica.txf</font>
-   <character-size type="double">1.92</character-size>
-   <character-aspect-ratio type="double">1.2</character-aspect-ratio>        <!-- compress -->
+   <character-size type="double">1.75</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
    <max-height>32</max-height>
    <max-width>80</max-width>
    <font-resolution>
-    <width type="int">32</width>
-    <height type="int">32</height>
+    <width type="int">128</width>
+    <height type="int">128</height>
    </font-resolution>
    <alignment>center-center</alignment>
    <offsets>
@@ -83,7 +83,7 @@
 <!-- fin -->
 
   <text>
-   <name>Registration fin right top</name>
+   <name>Panam registration fin right top</name>
    <type type="string">text-value</type>
    <property type="string">systems/crew/immat[0]</property>
    <format type="string">%s</format>
@@ -101,13 +101,13 @@
    <axis-alignment>reversed-xz-plane</axis-alignment>
    <offsets>
     <x-m> 13.982</x-m>
-    <y-m> 6.994</y-m>
+    <y-m> 6.995</y-m>
     <z-m> 3.657</z-m>
    </offsets>
   </text>
 
   <text>
-   <name>Registration fin left top</name>
+   <name>Panam registration fin left top</name>
    <type type="string">text-value</type>
    <property type="string">systems/crew/immat[0]</property>
    <format type="string">%s</format>
@@ -131,7 +131,7 @@
   </text>
 
   <text>
-   <name>Registration fin right</name>
+   <name>Panam registration fin right</name>
    <type type="string">text-value</type>
    <property type="string">systems/crew/immat[1]</property>
    <format type="string">%s</format>
@@ -149,13 +149,13 @@
    <axis-alignment>reversed-xz-plane</axis-alignment>
    <offsets>
     <x-m> 14.082</x-m>
-    <y-m> 6.994</y-m>
+    <y-m> 6.995</y-m>
     <z-m> 3.117</z-m>
    </offsets>
   </text>
 
   <text>
-   <name>Registration fin left</name>
+   <name>Panam registration fin left</name>
    <type type="string">text-value</type>
    <property type="string">systems/crew/immat[1]</property>
    <format type="string">%s</format>
@@ -180,12 +180,12 @@
 
   <animation>
    <name>Panam registration</name>
-   <object-name>Registration wing left</object-name>
-   <object-name>Registration wing right</object-name>
-   <object-name>Registration fin left</object-name>
-   <object-name>Registration fin left top</object-name>
-   <object-name>Registration fin right</object-name>
-   <object-name>Registration fin right top</object-name>
+   <object-name>Panam registration wing left</object-name>
+   <object-name>Panam registration wing right</object-name>
+   <object-name>Panam registration fin left</object-name>
+   <object-name>Panam registration fin left top</object-name>
+   <object-name>Panam registration fin right</object-name>
+   <object-name>Panam registration fin right top</object-name>
   </animation>
 
   <animation>
@@ -215,6 +215,292 @@
     <equals>
      <property>sim/model/livery/index</property>
      <value>1</value>
+    </equals>
+   </condition>
+  </animation>
+
+<!-- BOAC REGISTRATION -->
+
+  <text>
+   <name>BOAC registration fuselage right</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat[1]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">1.0</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 3.273</x-m>
+    <y-m> 1.970</y-m>
+    <z-m> 0.101</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>BOAC registration fuselage left</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat[1]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">1.0</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 3.158</x-m>
+    <y-m>-1.970</y-m>
+    <z-m> 0.101</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>BOAC registration wing right</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[2]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">2.7</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xy-plane</axis-alignment>
+   <offsets>
+    <x-m>-2.356</x-m>
+    <y-m> 10.180</y-m>
+    <z-m> 1.122</z-m>
+    <heading-deg>90</heading-deg>         <!-- switch pitch to roll -->
+    <pitch-deg>-5.8</pitch-deg>
+    <roll-deg>-1.0</roll-deg>
+   </offsets>    
+  </text>
+
+  <text>
+   <name>BOAC registration wing left</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[3]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">2.7</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xy-plane</axis-alignment>
+   <offsets>
+    <x-m>-2.356</x-m>
+    <y-m>-10.180</y-m>
+    <z-m> 1.122</z-m>
+    <heading-deg>90</heading-deg>         <!-- switch pitch to roll -->
+    <pitch-deg>5.8</pitch-deg>
+    <roll-deg>-1.0</roll-deg>
+   </offsets>    
+  </text>
+
+  <animation>
+   <name>BOAC registration</name>
+   <object-name>BOAC registration fuselage left</object-name>
+   <object-name>BOAC registration fuselage right</object-name>
+   <object-name>BOAC registration wing right</object-name>
+   <object-name>BOAC registration wing left</object-name>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>BOAC registration</object-name>
+   <emission>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+   </emission>
+   <ambient>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </ambient>
+   <diffuse>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </diffuse>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>BOAC registration</object-name>
+   <condition>
+    <equals>
+     <property>sim/model/livery/index</property>
+     <value>2</value>
+    </equals>
+   </condition>
+  </animation>
+
+<!-- BOAC2 REGISTRATION -->
+
+  <text>
+   <name>BOAC2 registration fuselage right</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat[1]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">1.6</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 4.323</x-m>
+    <y-m> 1.970</y-m>
+    <z-m> 0.271</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>BOAC2 registration fuselage left</name>
+   <type type="string">text-value</type>
+   <property type="string">sim/model/immat[1]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">1.6</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>xz-plane</axis-alignment>
+   <offsets>
+    <x-m> 4.323</x-m>
+    <y-m>-1.970</y-m>
+    <z-m> 0.271</z-m>
+   </offsets>
+  </text>
+
+  <text>
+   <name>BOAC2 registration wing right</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[2]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">3.0</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xy-plane</axis-alignment>
+   <offsets>
+    <x-m>-2.356</x-m>
+    <y-m> 10.214</y-m>
+    <z-m> 1.122</z-m>
+    <heading-deg>90</heading-deg>         <!-- switch pitch to roll -->
+    <pitch-deg>-5.8</pitch-deg>
+    <roll-deg>-1.0</roll-deg>
+   </offsets>    
+  </text>
+
+  <text>
+   <name>BOAC2 registration wing left</name>
+   <type type="string">text-value</type>
+   <property type="string">systems/crew/immat[3]</property>
+   <format type="string">%s</format>
+   <draw-text type="bool">true</draw-text>
+   <font>Helvetica.txf</font>
+   <character-size type="double">3.0</character-size>
+   <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+   <max-height>32</max-height>
+   <max-width>80</max-width>
+   <font-resolution>
+    <width type="int">128</width>
+    <height type="int">128</height>
+   </font-resolution>
+   <alignment>center-center</alignment>
+   <axis-alignment>reversed-xy-plane</axis-alignment>
+   <offsets>
+    <x-m>-2.356</x-m>
+    <y-m>-10.214</y-m>
+    <z-m> 1.122</z-m>
+    <heading-deg>90</heading-deg>         <!-- switch pitch to roll -->
+    <pitch-deg>5.8</pitch-deg>
+    <roll-deg>-1.0</roll-deg>
+   </offsets>    
+  </text>
+
+  <animation>
+   <name>BOAC2 registration</name>
+   <object-name>BOAC2 registration fuselage left</object-name>
+   <object-name>BOAC2 registration fuselage right</object-name>
+   <object-name>BOAC2 registration wing right</object-name>
+   <object-name>BOAC2 registration wing left</object-name>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>BOAC2 registration</object-name>
+   <emission>
+    <red>0</red>
+    <green>0</green>
+    <blue>0</blue>
+   </emission>
+   <ambient>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </ambient>
+   <diffuse>
+    <red>0.1</red>
+    <green>0.1</green>
+    <blue>0.1</blue>
+   </diffuse>
+  </animation>
+
+  <animation>
+   <type>select</type>
+   <object-name>BOAC2 registration</object-name>
+   <condition>
+    <equals>
+     <property>sim/model/livery/index</property>
+     <value>3</value>
     </equals>
    </condition>
   </animation>

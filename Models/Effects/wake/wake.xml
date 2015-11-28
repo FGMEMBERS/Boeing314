@@ -35,7 +35,7 @@
      <value>3.0</value>
     </greater-than>
     <less-than-equals>                                          <!-- no wake when on step -->
-     <property>fdm/jsbsim/aero/coefficient/HLstep0</property>
+     <property>fdm/jsbsim/hydro/hull-drag-lbs</property>
      <value>20000.0</value>
     </less-than-equals>
     <property>/controls/environment/effects</property>
@@ -69,7 +69,7 @@
 
   <counter>
    <particles-per-sec>
-    <property>fdm/jsbsim/aero/coefficient/HDhull0</property>
+     <property>fdm/jsbsim/hydro/hull-drag-lbs</property>
     <factor>1.0</factor>
     <spread>50</spread>
    </particles-per-sec>

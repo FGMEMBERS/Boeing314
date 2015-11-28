@@ -4,6 +4,49 @@
 
 
 
+# =================
+# OVERRIDING JSBSIM
+# =================
+
+BoeingJSBsim = {};
+
+BoeingJSBsim.new = func {
+   var obj = { parents : [BoeingJSBsim,System]
+         };
+
+   obj.init();
+
+   return obj;
+}
+
+BoeingJSBsim.init = func {
+  me.inherit_system( "/systems/environment" );
+}
+
+BoeingJSBsim.wavescron = func {
+  var groundft = me.noinstrument["ground"].getValue();
+  var waveft = me.dependency["fdm-environment"].getChild("wave-amplitude-ft").getValue();
+    
+  # Send the current ground level to the JSBSim hydrodynamics model.
+  me.dependency["fdm-environment"].getChild("water-level-ft").setValue( groundft + waveft );
+
+  # Connect the JSBSim hydrodynamics wave model with the custom water shader.
+  me.itself["waves"].getChild("time-sec").setValue( me.dependency["fdm-simulation"].getChild("sim-time-sec").getValue() );
+  me.itself["waves"].getChild("from-deg").setValue( me.dependency["fdm-environment"].getChild("waves-from-deg").getValue() );
+  me.itself["waves"].getChild("length-ft").setValue( me.dependency["fdm-environment"].getChild("wave-length-ft").getValue() );
+  me.itself["waves"].getChild("amplitude-ft").setValue( me.dependency["fdm-environment"].getChild("wave-amplitude-ft").getValue() );
+  
+  me.itself["waves"].getChild("angular-frequency-rad_sec").setValue( me.dependency["fdm-wave"].getChild("angular-frequency-rad_sec").getValue() );
+  me.itself["waves"].getChild("wave-number-rad_ft").setValue( me.dependency["fdm-wave"].getChild("wave-number-rad_ft").getValue() );
+  
+  settimer(func{ me.wavescron(); }, 0.0);
+}
+
+BoeingJSBsim.specific = func {
+  settimer(func{ me.wavescron(); }, 0.0);
+}
+
+
 # ==============
 # Initialization
 # ==============
@@ -72,19 +115,37 @@ BoeingMain.savedata = func {
                        "/controls/crew/timeout",
                        "/controls/crew/timeout-s",
                        "/controls/doors/celestial/opened",
+                       "/controls/doors/wing[0]/opened",
+                       "/controls/doors/wing[1]/opened",
                        "/controls/environment/effects",
                        "/controls/fuel/reinit",
                        "/controls/mooring/automatic",
+                       "/controls/mooring/category/atlantic",
+                       "/controls/mooring/category/atlantic2",
+                       "/controls/mooring/category/atlantic3",
+                       "/controls/mooring/category/atlantic4",
+                       "/controls/mooring/category/atlantic-winter",
+                       "/controls/mooring/category/atlantic-winter2",
+                       "/controls/mooring/category/atlantic-winter3",
+                       "/controls/mooring/category/atlantic-winter4",
+                       "/controls/mooring/category/everything",
+                       "/controls/mooring/category/other",
+                       "/controls/mooring/category/pacific",
+                       "/controls/mooring/category/pacific2",
+                       "/controls/mooring/category/round-the-world",
                        "/controls/mooring/heading-deg",
                        "/controls/mooring/seaport",
+                       "/controls/mooring/sort/distance",
+                       "/controls/mooring/sort/ident",
+                       "/controls/mooring/sort/name",
                        "/controls/mooring/tower-adf",
-                       "/controls/mooring/wind",
+                       "/controls/mooring/wind/head",
+                       "/controls/mooring/wind/terminal",
                        "/controls/seat/recover",
                        "/controls/voice/sound",
                        "/controls/voice/text",
-                       "/sim/model/immat",
-                       "/systems/crew/immat[0]",
-                       "/systems/crew/immat[1]",
+                       "/sim/model/immat[0]",
+                       "/sim/model/immat[1]",
                        "/systems/fuel/presets",
                        "/systems/seat/position/celestial/x-m",
                        "/systems/seat/position/celestial/y-m",
@@ -105,6 +166,8 @@ BoeingMain.savedata = func {
 BoeingMain.instantiate = func {
    globals.Boeing314.constant = Constant.new();
    globals.Boeing314.constantaero = ConstantAero.new();
+   globals.Boeing314.FDM = BoeingJSBsim.new();
+   
    globals.Boeing314.fuelsystem = Fuel.new();
    globals.Boeing314.autopilotsystem = Autopilot.new();
 
@@ -130,6 +193,9 @@ BoeingMain.init = func {
 
    me.instantiate();
    me.putinrelation();
+
+   # JSBSim specific
+   #FDM.specific();
 
    # schedule the 1st call
    settimer(func { me.sec1cron(); },0);

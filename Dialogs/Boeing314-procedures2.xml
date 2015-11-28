@@ -5,7 +5,7 @@
   <layout>vbox</layout>
 
   <text>
-    <label>Boeing 314 procedures</label>
+    <label>Boeing 314 procedures 2</label>
   </text>
 
   <hrule><dummy/></hrule>
@@ -97,6 +97,18 @@
 
   <group>
    <layout>hbox</layout>
+
+   <button>
+    <legend>Back</legend>
+    <key>b</key>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-procedures</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
 
    <button>
     <legend>Close</legend>

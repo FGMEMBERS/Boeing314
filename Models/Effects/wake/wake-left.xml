@@ -3,7 +3,7 @@
 <PropertyList>
 
   <params>
-   <drag>fdm/jsbsim/aero/coefficient/HDsponson0</drag>
+   <drag>fdm/jsbsim/hydro/left-sponson-drag-lbs</drag>
   </params>
 
   <particlesystem include="sponson.xml"/>

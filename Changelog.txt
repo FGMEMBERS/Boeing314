@@ -1,5 +1,9 @@
-     Version           CVS date                   Milestone
+     Version           SVN/GIT date               Milestone
 ==============================================================================================
+     1.7               November 2015              Dock view.
+                                                  Alternate livery.
+                                                  Wing doors.
+                                                  FDM 2.0 (contact points replace gear).
      1.6               October 2011               Wake effect.
                                                   2nd boat view.
                                                   Sponson hydrodynamic drag.

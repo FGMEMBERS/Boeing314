@@ -22,7 +22,7 @@
     <condition>
      <and>
       <greater-than>
-       <property>fdm/jsbsim/aero/coefficient/HLstep0</property>
+       <property>fdm/jsbsim/hydro/hull-lift-lbs</property>
        <value>20000.0</value>
       </greater-than>
       <property>/controls/environment/effects</property>
@@ -58,7 +58,7 @@
 
     <counter>
      <particles-per-sec>
-      <property>fdm/jsbsim/aero/coefficient/HLstep0</property>
+      <property>fdm/jsbsim/hydro/hull-lift-lbs</property>
       <factor>0.1</factor>
       <spread>50</spread>
      </particles-per-sec>

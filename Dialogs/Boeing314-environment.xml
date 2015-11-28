@@ -46,6 +46,21 @@
    <layout>hbox</layout>
 
    <button>
+    <legend>Back</legend>
+    <key>b</key>
+    <binding>
+      <command>dialog-apply</command>
+    </binding>
+    <binding>
+     <command>dialog-show</command>
+     <dialog-name>Boeing314-menu</dialog-name>
+    </binding>
+    <binding>
+      <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
     <legend>Close</legend>
     <default>true</default>
     <key>Esc</key>
@@ -56,21 +71,5 @@
       <command>dialog-close</command>
     </binding>
    </button>
-
-   <button>
-    <legend>Menu</legend>
-    <key>m</key>
-    <binding>
-     <command>dialog-show</command>
-     <dialog-name>Boeing314-menu</dialog-name>
-    </binding>
-    <binding>
-      <command>dialog-apply</command>
-    </binding>
-    <binding>
-      <command>dialog-close</command>
-    </binding>
-   </button>
-
   </group>
 </PropertyList>

@@ -14,7 +14,7 @@
 Fuel = {};
 
 Fuel.new = func {
-   var obj = { parents : [Fuel],
+   var obj = { parents : [Fuel,System],
 
                tanksystem : Tanks.new(),
 
@@ -27,6 +27,8 @@ Fuel.new = func {
 };
 
 Fuel.init = func {
+   me.inherit_system("/systems/fuel");
+
    me.tanksystem.presetfuel();
    me.savestate();
 }
@@ -38,7 +40,7 @@ Fuel.menuexport = func {
 
 Fuel.reinitexport = func {
    # restore for reinit
-   setprop( "/systems/fuel/presets", me.presets );
+   me.itself["root"].getChild("presets").setValue( me.presets );
 
    me.tanksystem.presetfuel();
    me.savestate();
@@ -46,7 +48,7 @@ Fuel.reinitexport = func {
 
 Fuel.savestate = func {
    # backup for reinit
-   me.presets = getprop( "/systems/fuel/presets" );
+   me.presets = me.itself["root"].getChild("presets").getValue();
 }
 
 
@@ -62,29 +64,34 @@ Tanks.new = func {
 # tank contents, to be initialised from XML
    var obj = { parents : [Tanks], 
 
-           pumpsystem : Pump.new(),
+               pumpsystem : Pump.new(),
 
-           CONTENTLB : { "1" : 0.0, "2" : 0.0, "3" : 0.0, "4" : 0.0, "5" : 0.0, "6" : 0.0, "7" : 0.0 },
-           TANKINDEX : { "1" : 0, "2" : 1, "3" : 2, "4" : 3, "5" : 4, "6" : 5, "7" : 6 },
-           TANKNAME : [ "1", "2", "3", "4", "5", "6", "7" ],
-           nb_tanks : 0,
+               CONTENTLB : { "1" : 0.0, "2" : 0.0, "3" : 0.0, "4" : 0.0, "5" : 0.0, "6" : 0.0, "7" : 0.0 },
+               TANKINDEX : { "1" : 0, "2" : 1, "3" : 2, "4" : 3, "5" : 4, "6" : 5, "7" : 6 },
+               TANKNAME : [ "1", "2", "3", "4", "5", "6", "7" ],
+               nb_tanks : 0,
 
-           fillings : nil,
-           tanks : nil
-         };
+               dialogpath : nil,
+               fillingspath : nil,
+               systempath : nil,
+               tankspath : nil
+        };
 
-    obj.init();
+   obj.init();
 
-    return obj;
+   return obj;
 }
 
 Tanks.init = func {
-    me.tanks = props.globals.getNode("/consumables/fuel").getChildren("tank");
-    me.fillings = props.globals.getNode("/systems/fuel/tanks").getChildren("filling");
+   me.systempath = props.globals.getNode("/systems/fuel");
 
-    me.nb_tanks = size(me.tanks);
+   me.dialogpath = me.systempath.getNode("tanks/dialog");
+   me.tankspath = props.globals.getNode("/consumables/fuel").getChildren("tank");
+   me.fillingspath = me.systempath.getChild("tanks").getChildren("filling");
 
-    me.initcontent();
+   me.nb_tanks = size(me.tankspath);
+
+   me.initcontent();
 }
 
 # fuel initialization
@@ -92,21 +99,21 @@ Tanks.initcontent = func {
    var densityppg = 0.0;
 
    for( var i=0; i < me.nb_tanks; i=i+1 ) {
-        densityppg = me.tanks[i].getChild("density-ppg").getValue();
-        me.CONTENTLB[me.TANKNAME[i]] = me.tanks[i].getChild("capacity-gal_us").getValue() * densityppg;
+        densityppg = me.tankspath[i].getChild("density-ppg").getValue();
+        me.CONTENTLB[me.TANKNAME[i]] = me.tankspath[i].getChild("capacity-gal_us").getValue() * densityppg;
    }
 }
 
 # change by dialog
 Tanks.menu = func {
-   var value = getprop("/systems/fuel/tanks/dialog");
+   var value = me.dialogpath.getValue();
 
-   for( var i=0; i < size(me.fillings); i=i+1 ) {
-        if( me.fillings[i].getChild("comment").getValue() == value ) {
+   for( var i=0; i < size(me.fillingspath); i=i+1 ) {
+        if( me.fillingspath[i].getChild("comment").getValue() == value ) {
             me.load( i );
 
             # for aircraft-data
-            setprop("/systems/fuel/presets",i);
+            me.systempath.getChild("presets").setValue(i);
             break;
         }
    }
@@ -118,21 +125,21 @@ Tanks.presetfuel = func {
    var value = "";
 
    # default is 0
-   var fuel = getprop("/systems/fuel/presets");
+   var fuel = me.systempath.getChild("presets").getValue();
 
    if( fuel == nil ) {
        fuel = 0;
    }
 
-   if( fuel < 0 or fuel >= size(me.fillings) ) {
+   if( fuel < 0 or fuel >= size(me.fillingspath) ) {
        fuel = 0;
    } 
 
    # copy to dialog
-   dialog = getprop("/systems/fuel/tanks/dialog");
+   dialog = me.dialogpath.getValue();
    if( dialog == "" or dialog == nil ) {
-       value = me.fillings[fuel].getChild("comment").getValue();
-       setprop("/systems/fuel/tanks/dialog", value);
+       value = me.fillingspath[fuel].getChild("comment").getValue();
+       me.dialogpath.setValue(value);
    }
 
    me.load( fuel );
@@ -140,7 +147,7 @@ Tanks.presetfuel = func {
 
 Tanks.load = func( fuel ) {
    var child = nil;
-   var presets = me.fillings[fuel].getChildren("tank");
+   var presets = me.fillingspath[fuel].getChildren("tank");
 
    for( var i=0; i < size(presets); i=i+1 ) {
         child = presets[i].getChild("level-gal_us");
@@ -168,7 +175,7 @@ Pump = {};
 Pump.new = func {
    var obj = { parents : [Pump],
 
-           tanks : nil 
+               tanks : nil 
          };
 
    obj.init();

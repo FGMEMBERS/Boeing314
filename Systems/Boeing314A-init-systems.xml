@@ -3,6 +3,22 @@
 <!-- intialize systems :
 
      - avoids nil values for Nasal.
+     - avoid string numbers (comparison doesn't work in XML instrument) for Nasal.
+     - autopilot, engines and gear also to distinguish the specific additions.
+
+
+     Relations :
+
+     <another>
+     - <dependency> is a real dependency.
+     - <itself> is the system.
+       Reserved entries : me.itself["root"] is path /systems/another.
+                          me.itself["root-ctrl"] is path /controls/another.
+     - <noinstrument> is to built the system.
+       Or for fuzzy decision of virtual crew :
+       visual estimation of altitude over ground, if failure of radio altimeter;
+       speed implicitly known, during a subsonic cruise.
+     </another>
 -->
 
 <PropertyList>
@@ -59,8 +75,12 @@
   <crew>
    <serviceable type="bool">true</serviceable>
 
-   <immat n="0">NC</immat>                                                             <!-- default is NC 18609 -->
-   <immat n="1">18609</immat>
+   <immat n="0">NC</immat>                                                             <!-- default is NC 18612 -->
+   <immat n="1">18612</immat>
+   <immat n="2">G-A</immat>                                                            <!-- default is G-AGBZ -->
+   <immat n="3">GBZ</immat>
+   <immat n="4">NC</immat>                                                             <!-- default is NC 18611 -->
+   <immat n="5">18611</immat>
 
    <minimized type="bool">true</minimized>
 
@@ -74,6 +94,14 @@
      <voice>/systems/voice</voice>
     </dependency>
 
+    <itself>
+     <dialogs>/sim/gui/dialogs/Boeing314</dialogs>
+     <immat>
+      <component>/sim/model</component>
+      <subcomponent>immat</subcomponent>
+     </immat>
+    </itself>
+
     <noinstrument>
      <freeze>/sim/freeze/master</freeze>
      <speed-up>/sim/speed-up</speed-up>
@@ -82,6 +110,13 @@
    </relations>
   </crew>
 
+  <electrical>
+   <outputs>
+    <comm n="0" type="double">12.0</comm>                                              <!-- for KX165 -->
+    <comm n="1" type="double">12.0</comm>
+   </outputs>
+  </electrical>
+
   <engineer>
    <activ type="bool">false</activ>                                                    <!-- yellow -->
    <state></state>
@@ -89,10 +124,30 @@
    <time></time>
   </engineer>
 
+  <environment>
+   <relations>
+    <dependency>
+     <fdm-environment>/fdm/jsbsim/hydro/environment</fdm-environment>
+     <fdm-simulation>/fdm/jsbsim/simulation</fdm-simulation>
+     <fdm-wave>/fdm/jsbsim/hydro/environment/wave</fdm-wave>
+    </dependency>
+
+    <itself>
+     <waves>environment/waves</waves>
+    </itself>
+
+    <noinstrument>
+     <ground>/position/ground-elev-ft</ground>
+    </noinstrument>
+   </relations>
+  </environment>
+    
   <fuel>
    <presets type="int">0</presets>                                                     <!-- max landing load -->
 
-   <tanks include="../Nasal/Boeing314A-fuel.xml"/>
+   <tanks include="../Nasal/Boeing314A-fuel.xml">
+    <dialog></dialog>
+   </tanks>
   </fuel>
 
   <human>
@@ -123,6 +178,7 @@
   <mooring>
    <boat-id></boat-id>                                                                 <!-- boat view -->
    <dialog></dialog>
+   <list></list>                                                                       <!-- dialog list -->
    <moorage-id></moorage-id>
 
    <relations>
@@ -131,6 +187,7 @@
       <component>/systems/seat/position</component>
       <subcomponent>boat</subcomponent>
      </boat>
+     <dock>/systems/seat/position/dock</dock>
      <engines>/controls/engines</engines>
      <presets>/sim/presets</presets>
      <rope>/controls/gear/brake-parking</rope>
@@ -147,7 +204,7 @@
 
     <noinstrument>
      <agl>/position/altitude-agl-ft</agl>
-     <velocity>/velocities/uBody-fps</velocity>
+     <speed>/velocities/groundspeed-kt</speed>
      <vertical>/velocities/vertical-speed-fps</vertical>
      <wind>/environment/wind-from-heading-deg</wind>
     </noinstrument>
@@ -155,6 +212,8 @@
 
    <route include="../Nasal/Boeing314-route.xml"/>
    <state></state>
+   <terminal></terminal>
+   <terminal-real type="bool">false</terminal-real>
   </mooring>
 
   <seat>
@@ -163,6 +222,7 @@
    <captain type="bool">true</captain>
    <celestial type="bool">false</celestial>
    <copilot type="bool">false</copilot>
+   <dock type="bool">false</dock>
    <engineer type="bool">false</engineer>
    <moorage type="bool">false</moorage>
    <navigator type="bool">false</navigator>
@@ -187,6 +247,17 @@
      <y-m type="double">0.0</y-m>
      <z-m type="double">0.0</z-m>
     </celestial>
+    <dock>
+     <altitude-ft type="double">0.0</altitude-ft>
+     <heading-deg type="double">0.0</heading-deg>
+     <latitude-deg type="double">0.0</latitude-deg>
+     <longitude-deg type="double">0.0</longitude-deg>
+     <offset-ft type="double">0.0</offset-ft>                                          <!-- specific to the 3D model used -->
+     <water-ft type="double">0.0</water-ft>                                            <!-- waterline -->
+     <x-m type="double">0.0</x-m>
+     <y-m type="double">0.0</y-m>
+     <z-m type="double">0.0</z-m>
+    </dock>
     <navigator>
      <x-m type="double">0.0</x-m>
      <y-m type="double">0.0</y-m>

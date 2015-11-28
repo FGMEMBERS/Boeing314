@@ -5,6 +5,14 @@
 
      Copyright (C) 2008 - 2010  Anders Gidenstam  (anders(at)gidenstam.org)
      This file is licensed under the GPL license version 2 or later.
+
+
+     References :
+     ==========
+     http://www.youtube.com/watch?v=6LU1lGYEjac :
+     NACA tow test.
+
+     Wake starts in front of sponson, then moves towards the hull.
 -->
 
 <PropertyList>
@@ -17,9 +25,9 @@
 
   <offsets>
    <heading-deg>180</heading-deg>
-   <x-m>  -3.00 </x-m>                                          <!-- sponson tip -->
-   <y-m>  -6.30 </y-m>                                          <!-- left sponson -->
-   <z-m>  -2.70 </z-m>                                          <!-- sponson tip -->
+   <x-m>  -6.00 </x-m>                                          <!-- in front of sponson -->
+   <y-m>  -6.70 </y-m>                                          <!-- left sponson -->
+   <z-m>  -2.70 </z-m>                                          <!-- below sponson -->
   </offsets>
 
   <attach>world</attach>

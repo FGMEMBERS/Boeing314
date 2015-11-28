@@ -15,7 +15,11 @@
       <texture>B314Panam-hull.rgb</texture>
       <texture-wing-left>Liveries/Panam-wing.rgb</texture-wing-left>
       <texture-wing-right>Liveries/Panam-wing.rgb</texture-wing-right>
+      <texture-engine>Liveries/Panam-wing.rgb</texture-engine>
+      <texture-propeller>B314Panam-default.rgb</texture-propeller>
       <texture-fin>Liveries/Panam-fin.rgb</texture-fin>
+      <texture-rudder>B314Panam-rudder.rgb</texture-rudder>
+      <texture-default>B314Panam-default.rgb</texture-default>
      </livery>
     </model>
   </sim>

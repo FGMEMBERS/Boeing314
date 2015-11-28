@@ -1,8 +1,20 @@
 <?xml version="1.0"?>
 
 <!-- Initialize instrumentation :
+     - WARNING : this file inherits from preferences.xml.
+     - avoids nasal nil values or non-member error.
+     - nasal instruments are also serviceable.
 
-     - avoids nil value for nasal.
+
+     Relations :
+
+     <another>
+     - <dependency> is a real dependency.
+     - <itself> is the instrument.
+       Reserved entries : me.itself["root"] is path /systems/another.
+                          me.itself["root-ctrl"] is path /controls/another.
+     - <noinstrument> is to built the instrument.
+     </another>
 -->
 
 <PropertyList>
@@ -17,8 +29,12 @@
    </relations>
   </clock>
 
-  <comm>
-   <power-btn type="int">1</power-btn>
+  <comm n="0">
+   <power-btn type="bool">true</power-btn>                                 <!-- display on -->
+  </comm>
+
+  <comm n="1">
+   <power-btn type="bool">true</power-btn>                                 <!-- display on -->
   </comm>
 
   <gdf>
