@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!-- sim initialization.  -->
+
+<PropertyList include="Boeing314-views.xml">
+
+  <gui>
+   <dialogs>
+    <Boeing314></Boeing314>             <!-- path creation for nasal -->
+   </dialogs>
+  </gui>
+
+</PropertyList>
