@@ -11,6 +11,10 @@
 
   <hrule><dummy/></hrule>
 
+  <text>
+    <label></label>
+  </text>
+
   <group>
     <layout>hbox</layout>
 
@@ -61,10 +65,6 @@
         <command>dialog-close</command>
       </binding>
     </button>
-  </group>
-
-  <group>
-    <layout>hbox</layout>
 
     <button>
       <legend>Fuel</legend>
@@ -77,6 +77,14 @@
         <command>dialog-close</command>
       </binding>
     </button>
+  </group>
+
+  <text>
+    <label></label>
+  </text>
+
+  <group>
+    <layout>hbox</layout>
 
     <button>
       <legend>Moorage</legend>
@@ -115,6 +123,18 @@
     </button>
 
     <button>
+      <legend>1 Views</legend>
+      <key>1</key>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-views</dialog-name>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
       <legend>Voice</legend>
       <key>v</key>
       <binding>
@@ -140,6 +160,10 @@
 
     <empty><stretch>true</stretch></empty>
   </group>
+
+  <text>
+    <label></label>
+  </text>
 
   <text>
     <label></label>

@@ -23,6 +23,12 @@
    <celestial>
     <opened type="bool">false</opened>
    </celestial>
+   <wing n="0">
+    <opened type="bool">false</opened>
+   </wing>
+   <wing n="1">
+    <opened type="bool">false</opened>
+   </wing>
   </doors>
 
   <environment>
@@ -36,9 +42,32 @@
   <mooring>
    <anchor alias="/fdm/jsbsim/systems/hull/anchor"/>
    <automatic type="bool">true</automatic>
+   <category>
+    <atlantic type="bool">false</atlantic>
+    <atlantic2 type="bool">false</atlantic2>
+    <atlantic3 type="bool">false</atlantic3>
+    <atlantic4 type="bool">false</atlantic4>
+    <atlantic-winter type="bool">false</atlantic-winter>
+    <atlantic-winter2 type="bool">false</atlantic-winter2>
+    <atlantic-winter3 type="bool">false</atlantic-winter3>
+    <atlantic-winter4 type="bool">false</atlantic-winter4>
+    <everything type="bool">true</everything>
+    <other type="bool">false</other>
+    <pacific type="bool">false</pacific>
+    <pacific2 type="bool">false</pacific2>
+    <round-the-world type="bool">false</round-the-world>
+   </category>
    <heading-deg type="int">0</heading-deg>                         <!-- head to -->
    <seaport type="bool">true</seaport>                             <!-- open Seaport dialog -->
-   <wind type="bool">true</wind>                                   <!-- head to wind -->
+   <sort>
+    <distance type="bool">false</distance>
+    <ident type="bool">false</ident>
+    <name type="bool">true</name>
+   </sort>
+   <wind>
+    <head type="bool">true</head>                                  <!-- head to wind -->
+    <terminal type="bool">false</terminal>                         <!-- terminal area at first -->
+   </wind>
   </mooring>
 
   <seat>

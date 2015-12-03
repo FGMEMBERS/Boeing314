@@ -778,6 +778,44 @@
    </volume>
   </door>
 
+  <door>
+   <name>Left wing door</name>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/controls/doors/wing[0]/position-norm</property>
+     <value>0.0</value>
+    </equals>
+   </condition>
+   <position>
+    <x>10.0</x>
+    <y>-1.5</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <factor>0.2</factor>
+   </volume>
+  </door>
+
+  <door>
+   <name>Right wing door</name>
+   <path>Sounds/door_close.wav</path>
+   <condition>
+    <equals>
+     <property>/controls/doors/wing[1]/position-norm</property>
+     <value>0.0</value>
+    </equals>
+   </condition>
+   <position>
+    <x>10.0</x>
+    <y>1.5</y>
+    <z>0.0</z>
+   </position>
+   <volume>
+    <factor>0.2</factor>
+   </volume>
+  </door>
+
 <!-- cannot disable click in external views, otherwise heard when ctrl-V -->
 
   <click>

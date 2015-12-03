@@ -70,6 +70,13 @@
        </binding>
       </item>
       <item>
+       <label>Views</label>
+       <binding>
+        <command>dialog-show</command>
+        <dialog-name>Boeing314-views</dialog-name>
+       </binding>
+      </item>
+      <item>
        <label>Voice</label>
        <binding>
         <command>dialog-show</command>

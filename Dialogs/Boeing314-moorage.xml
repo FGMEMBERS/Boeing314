@@ -2,14 +2,12 @@
 
 <!-- Close button doesn't select the moorage.
 
-
-     WARNING : The combo must correspond to the comment field in
-               Aircraft/Boeing314/Nasal/Boeing314-route.xml.
 -->
 
 <PropertyList>
   <name>Boeing314-moorage</name>
   <layout>vbox</layout>
+  <width>950</width>
 
   <text>
     <label>Boeing 314 moorage</label>
@@ -18,7 +16,21 @@
   <hrule><dummy/></hrule>
 
   <text>
-    <property>/sim/tower/airport-id</property>
+    <label>Historical destinations  ~</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
+  </text>
+
+  <text>
+    <label>(nearest airfield)</label>
+    <color>
+      <red>0.5</red>
+      <green>0.5</green>
+      <blue>0.5</blue>
+    </color>
   </text>
 
   <text>
@@ -27,111 +39,1373 @@
 
   <group>
     <layout>hbox</layout>
-    <text>
-      <label>Nearest airfield</label>
-      <halign>left</halign>
-    </text>
+
+    <group>
+      <layout>vbox</layout>
+
+      <text>
+       <label>Sort by</label>
+       <color>
+        <red>0.5</red>
+        <green>0.5</green>
+        <blue>0.5</blue>
+       </color>
+      </text>
+
+      <group>
+       <layout>vbox</layout>
+       
+       <radio>
+        <label>id</label>
+        <halign>left</halign>
+        <property>/controls/mooring/sort/ident</property>
+        <live>true</live>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/ident</property>
+         <value>true</value>
+        </binding>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/distance</property>
+         <value>false</value>
+        </binding>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/name</property>
+         <value>false</value>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>globals.Boeing314.mooringsystem.orderexport();</script>
+        </binding>
+        <binding>
+          <command>dialog-update</command>
+          <object-name>moorage-list</object-name>
+        </binding>
+       </radio>
+
+       <radio>
+        <label>name</label>
+        <halign>left</halign>
+        <property>/controls/mooring/sort/name</property>
+        <live>true</live>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/name</property>
+         <value>true</value>
+        </binding>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/distance</property>
+         <value>false</value>
+        </binding>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/ident</property>
+         <value>false</value>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>globals.Boeing314.mooringsystem.orderexport();</script>
+        </binding>
+        <binding>
+          <command>dialog-update</command>
+          <object-name>moorage-list</object-name>
+        </binding>
+       </radio>
+
+       <radio>
+        <label>distance from start</label>
+        <halign>left</halign>
+        <property>/controls/mooring/sort/distance</property>
+        <live>true</live>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/distance</property>
+         <value>true</value>
+        </binding>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/ident</property>
+         <value>false</value>
+        </binding>
+        <binding>
+         <command>property-assign</command>
+         <property>/controls/mooring/sort/name</property>
+         <value>false</value>
+        </binding>
+        <binding>
+          <command>nasal</command>
+          <script>globals.Boeing314.mooringsystem.orderexport();</script>
+        </binding>
+        <binding>
+          <command>dialog-update</command>
+          <object-name>moorage-list</object-name>
+        </binding>
+       </radio>
+      </group>
+
+      <text>
+       <label>* known terminal</label>
+       <halign>left</halign>
+       <color>
+        <red>0.5</red>
+        <green>0.5</green>
+        <blue>0.5</blue>
+       </color>
+      </text>
+    </group>
+      
     <list>
-      <pref-width>400</pref-width>
+      <halign>left</halign>
+      <pref-width>450</pref-width>
       <pref-height>300</pref-height>
       <property>/systems/mooring/dialog</property>
-      <value>NZAA  Auckland</value>
-      <value>OBBI  Bahrein</value>
-      <value>KBWI  Baltimore</value>
-      <value>GBYD  Banjul</value>
-      <value>SBBE  Belem</value>
-      <value>TXKF  Bermuda</value>
-      <value>GGOV  Boloma</value>
-      <value>CCP2  Botwood</value>
-      <value>PCIS  Canton Island</value>
-      <value>YPDN  Darwin</value>
-      <value>EINN  Foynes</value>
-      <value>YGLA  Gladstone</value>
-      <value>PGUM  Guam</value>
-      <value>VHHH  Hong Kong</value>
-      <value>PHNL  Honolulu (Pearl Harbour)</value>
-      <value>LPHR  Horta</value>
-      <value>OPMR  Karachi</value>
-      <value>HSSS  Khartoum</value>
-      <value>FZAA  Kinshasa</value>
-      <value>DNMM  Lagos</value>
-      <value>LPPT  Lisbon</value>
-      <value>KTOA  Los Angeles (San Pedro)</value>
-      <value>KLGA  New York (La Guardia)</value>
-      <value>7N3   New York (Port Washington)</value>
-      <value>VMMC  Macau</value>
-      <value>RPLS  Manila</value>
-      <value>LFML  Marseille</value>
-      <value>KMIA  Miami (Dinner Key)</value>
-      <value>PMDY  Midway Island</value>
-      <value>NWWM  Noumea</value>
-      <value>SBNT  Natal</value>
-      <value>TTPP  Port of Spain</value>
-      <value>KOAK  San Francisco (Treasure Island)</value>
-      <value>KBFI  Seattle (Elliott Bay)</value>
-      <value>CYQM  Shediac bay</value>
-      <value>EGHI  Southampton</value>
-      <value>WRSJ  Surabaya</value>
-      <value>NFNA  Suva</value>
-      <value>VCCT  Trincomalee</value>
-      <value>PWAK  Wake Island</value>
+      <properties>/systems/mooring/list</properties>
+      <name>moorage-list</name>
     </list>
+
+   <group>
+     <layout>vbox</layout>
+
+     <text>
+      <label>Route</label>
+      <color>
+       <red>0.5</red>
+       <green>0.5</green>
+       <blue>0.5</blue>
+      </color>
+     </text>
+
+     <radio>
+      <halign>left</halign>  
+      <label>Atlantic</label>
+      <property>/controls/mooring/category/atlantic</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>Atlantic winter</label>
+      <property>/controls/mooring/category/atlantic-winter</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>Atlantic winter westbound</label>
+      <property>/controls/mooring/category/atlantic-winter2</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>North Pacific</label>
+      <property>/controls/mooring/category/pacific</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>other</label>
+      <property>/controls/mooring/category/other</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>round the world</label>
+      <property>/controls/mooring/category/round-the-world</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>South Pacific</label>
+      <property>/controls/mooring/category/pacific2</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>Southern Europe</label>
+      <property>/controls/mooring/category/atlantic2</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <text>
+      <label></label>
+     </text>
+
+     <text>
+      <label>BOAC</label>
+      <color>
+       <red>0.5</red>
+       <green>0.5</green>
+       <blue>0.5</blue>
+      </color>
+     </text>
+
+     <radio>
+      <halign>left</halign>  
+      <label>Atlantic</label>
+      <property>/controls/mooring/category/atlantic3</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>Atlantic winter</label>
+      <property>/controls/mooring/category/atlantic-winter3</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>Atlantic winter westbound</label>
+      <property>/controls/mooring/category/atlantic-winter4</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <radio>
+      <halign>left</halign>  
+      <label>West Africa</label>
+      <property>/controls/mooring/category/atlantic4</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+
+     <text>
+      <label></label>
+     </text>
+
+     <radio>
+      <halign>left</halign>  
+      <label>everything</label>
+        <color>
+         <red>0.5</red>
+         <green>0.5</green>
+         <blue>0.5</blue>
+        </color>
+      <property>/controls/mooring/category/everything</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/everything</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter3</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/atlantic-winter4</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/other</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/pacific2</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/category/round-the-world</property>
+       <value>false</value>
+      </binding>
+      <binding>
+       <command>nasal</command>
+       <script>globals.Boeing314.mooringsystem.orderexport();</script>
+      </binding>
+      <binding>
+       <command>dialog-update</command>
+       <object-name>moorage-list</object-name>
+      </binding>
+     </radio>
+   </group>
   </group>
 
   <text>
     <label></label>
   </text>
 
+  <group>
+   <layout>hbox</layout>
+
+   <text>
+     <label>Moorage :</label>
+   </text>
+
+   <text>
+    <property>/systems/mooring/boat-id</property>
+    <halign>left</halign>
+    <color>
+     <red>0.2</red>
+     <green>0.8</green>
+     <blue>0.2</blue>
+    </color>
+   </text>
+  </group>
+
+  <group>
+   <layout>hbox</layout>
+
+   <text>
+     <enabled alias="/systems/mooring/terminal-real"/>
+     <label>Terminal :</label>
+   </text>
+
+   <text>
+     <enabled alias="/systems/mooring/terminal-real"/>
+     <property>/systems/mooring/terminal</property>
+     <halign>left</halign>
+     <color>
+      <red>0.2</red>
+      <green>0.8</green>
+      <blue>0.2</blue>
+     </color>
+    </text>
+  </group>
+
   <text>
     <label></label>
   </text>
 
-  <text>
-    <label>Mooring</label>
-  </text>
-
-  <checkbox>
-    <label>Automatic at startup  ~</label>
-    <halign>left</halign>
-    <property>/controls/mooring/automatic</property>
-    <binding>
-      <command>property-toggle</command>
-      <property>/controls/mooring/automatic</property>
-    </binding>
-  </checkbox>
-
   <group>
-   <layout>vbox</layout>
-   <halign>left</halign>
+   <layout>hbox</layout>
 
    <group>
-    <layout>hbox</layout>
-
-    <group>
      <layout>vbox</layout>
-     <halign>left</halign>
 
      <checkbox>
-       <halign>left</halign>
-       <label>Head to wind  ~</label>
-       <property>/controls/mooring/wind</property>
-       <binding>
+      <label>Automatic mooring at startup</label>
+      <halign>left</halign>
+      <property>/controls/mooring/automatic</property>
+      <binding>
         <command>property-toggle</command>
-        <property>/controls/mooring/wind</property>
-       </binding>
+        <property>/controls/mooring/automatic</property>
+      </binding>
      </checkbox>
-    </group>
 
-    <group>
+     <text>
+      <label></label>
+     </text>
+
+     <text>
+      <label>Airfield without moorage</label>
+      <color>
+        <red>0.5</red>
+        <green>0.5</green>
+        <blue>0.5</blue>
+      </color>
+     </text>
+
+     <text>
+      <label></label>
+     </text>
+
+     <checkbox>
+      <label>Open Seaport dialog</label>
+      <halign>left</halign>
+      <property>/controls/mooring/seaport</property>
+      <binding>
+        <command>property-toggle</command>
+        <property>/controls/mooring/seaport</property>
+      </binding>
+     </checkbox>
+   </group>
+   
+   <group>
      <layout>vbox</layout>
-     <halign>left</halign>
 
-     <input>
-       <halign>left</halign>
-       <property>/controls/mooring/heading-deg</property>
-       <label>degrees  ~</label>
-     </input>
-    </group>
+     <text>
+      <label>Wind</label>
+      <color>
+       <red>0.5</red>
+       <green>0.5</green>
+       <blue>0.5</blue>
+      </color>
+     </text>
+
+     <text>
+      <label></label>
+     </text>
+
+     <group>
+      <layout>vbox</layout>
+      <halign>left</halign>
+
+      <group>
+       <layout>hbox</layout>
+
+       <group>
+        <layout>vbox</layout>
+        <halign>left</halign>
+
+        <radio>
+         <halign>left</halign>
+         <label>Head to wind</label>
+         <property>/controls/mooring/wind/head</property>
+         <live>true</live>
+         <binding>
+          <command>property-assign</command>
+          <property>/controls/mooring/wind/head</property>
+          <value>true</value>
+         </binding>
+         <binding>
+          <command>property-assign</command>
+          <property>/controls/mooring/wind/terminal</property>
+          <value>false</value>
+         </binding>
+        </radio>
+       </group>
+
+       <group>
+        <layout>vbox</layout>
+        <halign>left</halign>
+
+        <input>
+         <halign>left</halign>
+         <property>/controls/mooring/heading-deg</property>
+         <label>degrees</label>
+        </input>
+       </group>
+      </group>
+     </group>
+
+     <radio>
+      <label>Historical terminal</label>
+      <halign>left</halign>
+      <property>/controls/mooring/wind/terminal</property>
+      <live>true</live>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/wind/terminal</property>
+       <value>true</value>
+      </binding>
+      <binding>
+       <command>property-assign</command>
+       <property>/controls/mooring/wind/head</property>
+       <value>false</value>
+      </binding>
+     </radio>
    </group>
   </group>
 
@@ -140,79 +1414,66 @@
   </text>
 
   <text>
-    <label>Airfield without moorage</label>
-    <color>
-      <red>0.5</red>
-      <green>0.5</green>
-      <blue>0.5</blue>
-    </color>
-  </text>
-
-  <checkbox>
-    <label>Open Seaport dialog  ~</label>
-    <halign>left</halign>
-    <property>/controls/mooring/seaport</property>
-    <binding>
-      <command>property-toggle</command>
-      <property>/controls/mooring/seaport</property>
-    </binding>
-  </checkbox>
-
-  <text>
-    <label></label>
-  </text>
-
-  <text>
     <label></label>
   </text>
 
   <group>
     <layout>hbox</layout>
 
-    <group>
-      <layout>hbox</layout>
-      <empty><stretch>true</stretch></empty>
-
-      <button>
-        <legend>Position</legend>
-        <key>p</key>
-        <binding>
-          <command>dialog-apply</command>
-        </binding>
-        <binding>
-          <command>nasal</command>
-          <script>globals.Boeing314.mooringsystem.dialogexport();</script>
-        </binding>
-        <binding>
-          <command>presets-commit</command>
-        </binding>
-        <binding>
-          <command>dialog-close</command>
-        </binding>
-      </button>
-
-      <button>
-        <legend>Close</legend>
-        <default>true</default>
-        <key>Esc</key>
-        <binding>
-          <command>dialog-apply</command>
-        </binding>
-        <binding>
-          <command>dialog-close</command>
-        </binding>
-      </button>
-    </group>
-
     <button>
-      <legend>Menu</legend>
-      <key>m</key>
+      <legend>Back</legend>
+      <key>b</key>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
       <binding>
        <command>dialog-show</command>
        <dialog-name>Boeing314-menu</dialog-name>
       </binding>
       <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
+      <binding>
         <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Align with wind</legend>
+      <key>a</key>
+      <binding>
+        <command>nasal</command>
+        <script>globals.Boeing314.mooringsystem.repeatexport();</script>
+      </binding>
+      <binding>
+        <command>presets-commit</command>
+      </binding>
+      <binding>
+        <command>dialog-close</command>
+      </binding>
+    </button>
+
+    <button>
+      <legend>Position</legend>
+      <key>p</key>
+      <binding>
+        <command>dialog-apply</command>
+      </binding>
+      <binding>
+        <command>nasal</command>
+        <script>globals.Boeing314.mooringsystem.dialogexport();</script>
+      </binding>
+      <binding>
+        <command>presets-commit</command>
       </binding>
       <binding>
         <command>dialog-close</command>

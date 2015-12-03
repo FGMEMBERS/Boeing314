@@ -16,7 +16,11 @@
     <layout>vbox</layout>
 
     <text>
-      <label>Status</label>
+     <label>Status</label>
+    </text>
+
+    <text>
+     <label></label>
     </text>
 
     <group>
@@ -38,6 +42,10 @@
           <command>property-toggle</command>
           <property>/controls/crew/timeout</property>
          </binding>
+         <binding>
+          <command>nasal</command>
+          <script>globals.Boeing314.crewscreen.wakeupexport();</script>
+         </binding>
        </checkbox>
       </group>
 
@@ -56,24 +64,6 @@
       </group>
      </group>
     </group>
-
-    <text>
-      <label></label>
-    </text>
-
-    <text>
-      <label>Views</label>
-    </text>
-
-    <checkbox>
-      <halign>left</halign>
-      <label>Recover position of last session  ~</label>
-      <property>/controls/seat/recover</property>
-      <binding>
-       <command>nasal</command>
-       <script>globals.Boeing314.seatsystem.recoverexport();</script>
-      </binding>
-    </checkbox>
   </group>
 
   <text>
@@ -88,11 +78,14 @@
     <layout>hbox</layout>
 
     <button>
-      <legend>Close</legend>
-      <default>true</default>
-      <key>Esc</key>
+      <legend>Back</legend>
+      <key>b</key>
       <binding>
        <command>dialog-apply</command>
+      </binding>
+      <binding>
+       <command>dialog-show</command>
+       <dialog-name>Boeing314-menu</dialog-name>
       </binding>
       <binding>
         <command>dialog-close</command>
@@ -100,12 +93,9 @@
     </button>
 
     <button>
-      <legend>Menu</legend>
-      <key>m</key>
-      <binding>
-       <command>dialog-show</command>
-       <dialog-name>Boeing314-menu</dialog-name>
-      </binding>
+      <legend>Close</legend>
+      <default>true</default>
+      <key>Esc</key>
       <binding>
        <command>dialog-apply</command>
       </binding>

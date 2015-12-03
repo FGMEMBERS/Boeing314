@@ -95,14 +95,15 @@
 <!-- Livery (1 texture per group) -->
 <!-- ============================ -->
 
-<!-- disabled, because transparent windows have a 2nd texture
   <animation>
    <type>material</type>
    <object-name>Fuselage</object-name>
+   <object-name>Antenna</object-name>
+   <object-name>AntennaLeft</object-name>
+   <object-name>AntennaRight</object-name>
    <property-base>sim/model/livery/</property-base>
    <texture-prop>texture</texture-prop>
   </animation>
--->
 
   <animation>
    <type>material</type>
@@ -120,16 +121,71 @@
 
   <animation>
    <type>material</type>
+   <object-name>Engine1</object-name>
+   <object-name>Engine2</object-name>
+   <object-name>Engine3</object-name>
+   <object-name>Engine4</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-engine</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+   <object-name>Propeller1</object-name>
+   <object-name>Propeller2</object-name>
+   <object-name>Propeller3</object-name>
+   <object-name>Propeller4</object-name>
+   <object-name>PropellerShaft1</object-name>
+   <object-name>PropellerShaft2</object-name>
+   <object-name>PropellerShaft3</object-name>
+   <object-name>PropellerShaft4</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-propeller</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
    <object-name>LeftFin</object-name>
+   <object-name>MiddleFin</object-name>
+   <object-name>RightFin</object-name>
+   <object-name>LeftStabilizer</object-name>
+   <object-name>RightStabilizer</object-name>
    <property-base>sim/model/livery/</property-base>
    <texture-prop>texture-fin</texture-prop>
   </animation>
 
   <animation>
    <type>material</type>
-   <object-name>RightFin</object-name>
+   <object-name>LeftRudder</object-name>
+   <object-name>RightRudder</object-name>
    <property-base>sim/model/livery/</property-base>
-   <texture-prop>texture-fin</texture-prop>
+   <texture-prop>texture-rudder</texture-prop>
+  </animation>
+
+  <animation>
+   <type>material</type>
+<!-- fuselage -->
+   <object-name>BollardLeft</object-name>
+   <object-name>BollardRight</object-name>
+   <object-name>NoseDoorTop</object-name>
+   <object-name>NoseDoorBottom</object-name>
+   <object-name>LeftDoor</object-name>
+   <object-name>RightDoor</object-name>
+   <object-name>LeftSponson</object-name>
+   <object-name>RightSponson</object-name>
+<!-- wing -->
+   <object-name>LeftFlap</object-name>
+   <object-name>RightFlap</object-name>
+   <object-name>LeftAileron</object-name>
+   <object-name>RightAileron</object-name>
+<!-- fin -->
+   <object-name>MiddleFin</object-name>
+   <object-name>LeftStabilizer</object-name>
+   <object-name>RightStabilizer</object-name>
+   <object-name>LeftElevator</object-name>
+   <object-name>RightElevator</object-name>
+   <property-base>sim/model/livery/</property-base>
+   <texture-prop>texture-default</texture-prop>
   </animation>
 
 
@@ -574,6 +630,19 @@
  </animation>
 
 
+<!-- EFFECTS -->
+
+ <effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <condition>
+   <property>sim/rendering/rembrandt/enabled</property>
+  </condition>
+  <object-name>Windows</object-name>
+  <object-name>LeftDoorWindows</object-name>
+  <object-name>RightDoorWindows</object-name>
+ </effect>
+
+
 <!-- ====== -->
 <!-- Inside -->
 <!-- ====== -->
@@ -584,7 +653,7 @@
   <type>rotate</type>
   <object-name>CelestialDoor</object-name>
   <property>controls/doors/celestial/position-norm</property>
-  <factor>-90</factor>
+  <factor>-112</factor>
   <center>
    <x-m>-5.351</x-m>
    <y-m>-0.235</y-m>
@@ -605,6 +674,64 @@
    <binding>
     <command>nasal</command>
     <script>globals.Boeing314.doorsystem.celestialexport();</script>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>LeftWingDoor</object-name>
+  <property>controls/doors/wing[0]/position-norm</property>
+  <factor>-90</factor>
+  <center>
+   <x-m>-6.118</x-m>
+   <y-m>-1.544</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>LeftWingDoor</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.doorsystem.wingexport(0);</script>
+   </binding>
+  </action>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RightWingDoor</object-name>
+  <property>controls/doors/wing[1]/position-norm</property>
+  <factor>90</factor>
+  <center>
+   <x-m>-6.118</x-m>
+   <y-m> 1.529</y-m>
+   <z-m>0.0</z-m>
+  </center>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>pick</type>
+  <object-name>RightWingDoor</object-name>
+  <action>
+   <button>0</button>
+   <binding>
+    <command>nasal</command>
+    <script>globals.Boeing314.doorsystem.wingexport(1);</script>
    </binding>
   </action>
  </animation>

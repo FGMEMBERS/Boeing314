@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <waves>
+   <amplitude-ft></amplitude-ft>
+   <angular-frequency-rad_sec></angular-frequency-rad_sec>
+   <from-deg></from-deg>
+   <length-ft></length-ft>
+   <time-sec></time-sec>
+   <wave-number-rad_ft></wave-number-rad_ft>
+  </waves>
+
+</PropertyList>

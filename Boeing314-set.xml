@@ -2,26 +2,18 @@
 
 <PropertyList>
 
- <sim include="Nasal/Boeing314-views.xml">
+ <sim include="Nasal/Boeing314-sim.xml">
 
   <description>Boeing 314-A</description>
   <status>early-production</status>
-  <aircraft-version>1.6</aircraft-version>
+  <aircraft-version>1.7</aircraft-version>
 
   <startup>
-   <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>
+   <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>            <!-- CCP2 -->
   </startup>
 
   <flight-model>jsb</flight-model>
   <aero>Boeing314A</aero>
-
-  <fdm>
-   <surface>
-    <!-- The aircraft always relies on a solid ground surface, so in order to
-         keep it floating we disable JSBSim's ground handling -->
-    <override-level>1</override-level>
-   </surface>
-  </fdm>
 
   <systems>
    <autopilot>
@@ -54,7 +46,8 @@
 
   <model>
    <path>Aircraft/Boeing314/Models/Boeing314Clipper.xml</path>
-   <immat>NC 18609</immat>
+   <immat n="0">NC 18609</immat>
+   <immat n="1">G-AGBZ</immat>
   </model> 
 
 <!-- compensates the shift of VRP at nose -->
@@ -79,11 +72,12 @@
   <fuel include="Systems/Boeing314A-init-fuel.xml"/>                  <!-- required by nasal -->
  </consumables>
  
+ <environment include="Systems/Boeing314A-init-environment.xml"/>
+ 
  <limits include="Nasal/Boeing314-limits.xml"/>
 
  <nasal>
   <Boeing314>
-   <file>Aircraft/Generic/limits.nas</file>
    <file>Aircraft/Generic/limits.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-constants.nas</file>
    <file>Aircraft/Boeing314/Nasal/Boeing314-hydraulic.nas</file>
@@ -135,6 +129,13 @@
    <longitude-deg-prop>systems/seat/position/boat[1]/longitude-deg</longitude-deg-prop>
    <latitude-deg-prop>systems/seat/position/boat[1]/latitude-deg</latitude-deg-prop>
    <elevation-ft-prop>systems/seat/position/boat[1]/water-ft</elevation-ft-prop>
+  </model>
+  <model>
+   <name>Dock</name>
+   <path>Models\Maritime\Misc\MarkerBuoy.xml</path>
+   <longitude-deg-prop>systems/seat/position/dock/longitude-deg</longitude-deg-prop>
+   <latitude-deg-prop>systems/seat/position/dock/latitude-deg</latitude-deg-prop>
+   <elevation-ft-prop>systems/seat/position/dock/water-ft</elevation-ft-prop>
   </model>
  </models>
 

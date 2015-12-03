@@ -131,64 +131,77 @@ Sounds
 
 Known compatibility
 -------------------
-- 3.0.0 : minimal version.
+3.6.0 RC : minimal version.
 
 
 Keyboard
 ========
-- "q" : quit speed up.
 
 Views
 -----
-- "ctrl-B" : "B"oat view.
-- "ctrl-E" : "E"ngineer view.
-- "ctrl-K" : observer view (floating).
-- "ctrl-L" : boat view ("L"anding).
-- "ctrl-N" : "N"avigator view (floating).
-- "ctrl-O" : radi"O" view.
-- "ctrl-T" : celes"T"ial view (floating).
-- "ctrl-Y" : copilot view.
-- "shift-ctrl-T" : sex"T"ant (polaris star or southern cross).
+- "ctrl-D"       : "D"ock view (terminal).
+- "ctrl-E"       : "E"ngineer view.
+- "ctrl-K"       : observer view (floating).
+- "ctrl-L"       : boat view ("L"anding).
+- "ctrl-N"       : "N"avigator view (floating).
+- "ctrl-O"       : radi"O" view.
+- "ctrl-T"       : Boat view ("T"ake off).
+- "ctrl-U"       : celestial view (floating).
+- "shift-ctrl-U" : point sextant towards polaris star or southern cross.
 - "shift-ctrl-V" : restore view pitch.
 - "shift-ctrl-X" : restore floating view.
+- "ctrl-Y"       : copilot view.
 
 Virtual crew
 ------------
-- "ctrl-Q" : virtual crew.
-- "ctrl-W" : wind check (voice).
+- "ctrl-Q"       : virtual crew.
+- "ctrl-W"       : "W"ind check (voice).
 - "shift-F12"    : show crew text.
  
 Unchanged behaviour
 -------------------
-- "x / X"  : zooms in the small fonts; reset with "ctrl-X".
-- starter until slightly below 500 RPM.
-  If unable to start the engine, increase the throttle beforehand, or when releasing the starter.
-- "ctrl-H" : heading hold.
-- "left / right" : turns the heading hold.
+- "ctrl-H"       : "H"eading hold.
+- "s"            : "s"tarter until slightly below 500 RPM.
+                   When unable to start the engine, increase the throttle beforehand, or when releasing the starter.
+- "x / X"        : zooms in the small fonts.
+                   Reset with "ctrl-X".
 
 Same behaviour
 --------------
-- "S"      : swaps between Captain and Engineer 2D panels.
-- "ctrl-A" : altitude hold.
-- "ctrl-P" : pitch hold.
+- "ctrl-A"       : "A"ltitude hold.
+- "ctrl-P"       : "P"itch hold.
+- "S"            : "S"waps between Captain and Engineer 2D panels.
  
 Improved behaviour
 ------------------
-- "b / B"  : is the anchor, only below 15 kt.
-- "up / down"  : increases / decreases pitch hold.
-- "home / end" : increases / decreases pitch hold (slow).
-- "page up / page down" : increases / decreases copilot speed.
-- "ctrl-S" : autothrottle (virtual copilot).
-- "a / A"  : speeds up BOTH speed and time; external view until X 10, internal view until X 20.
-  Automatically resets to 1, when above 1000 ft/min.
+- "a / A"        : speeds up BOTH speed and time (external view until X 10, internal view until X 20).
+                   Automatically resets to 1, when above 1000 ft/min.
+- "b / B"        : anchor used as "b"rake (only below 15 kt).
+- "ctrl-S"       : autothrottle (virtual copilot).
+- "left /        : autopilot heading (knob).
+   right"
+- "up /          : increases / decreases pitch hold.
+   down"
+- "page up /     : increases / decreases copilot speed.
+   page down"
 
 Alternate behaviour
 -------------------
-- "=" : menu.
-- "up / down"    : move floating view in length.
-- "home / end"   : move floating view in length (fast).
-- "left / right" : move floating view in width.
-- "page up / page down" : move floating view in height.
+- "="            : menu.
+- "left /        : move floating view in width.
+   right"
+- "up /          : move floating view in length.
+   down"
+- "page up /     : move floating view in height.
+   page down"
+
+Additional behaviour
+--------------------
+- "q"            : "q"uit speed up.
+- "ctrl up /     : increases / decreases pitch hold (slow).
+   ctrl down"
+- "ctrl up /     : move floating view in length (fast).
+   ctrl down"
 
 
 Mouse
@@ -367,4 +380,4 @@ References
     F. W. S. Locke Jr., January 1946.
 
 
-22 March 2014.
+1st November 2015.

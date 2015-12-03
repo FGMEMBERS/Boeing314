@@ -52,10 +52,10 @@ Windows (hull, door, cockpit) are extracted into a seperated object.
 
 TO DO
 =====
+- improve wing door scale.
 - finner wing tip and sponson.
 - shape of hull behind the step (afterbody).
 - grooves (sponsons, top of fuselage).
-- a reversed "PAA" logo for the bow right (italic in direction of the speed).
 
 
 Known problems
@@ -68,6 +68,7 @@ Known problems Panam livery
 - the fuselage seemed to be a metallic grey blue.
 - in absence of photography of NC 18609, the flag is only on the bow.
 - the Boeing logo seems to be green.
+- letters of "PAA" logo are reversed on the right bow.
 
 
 References
@@ -80,21 +81,15 @@ References
 
 (D)  http://www.csd.uwo.ca/~pettypi/elevon/gustin_military/db/us/C98BOEIN.html/
 
-(E)  http://www.rbogash.com/B314.html :
+(E)  http://www.rbogash.com/B314.html : orange wing color.
 
-     orange wing color.
+(F)  http://www.mcguinnessonline.com/burt/flyingboat2.htm : cockpit color.
 
-(F)  http://www.mcguinnessonline.com/burt/flyingboat2.htm :
+(G)  http://www.ieeeghn.org/wiki/index.php/First-Hand:Evolution_of_the_2-Person_Crew_Jet_Transport_Flight_Deck : high resolution cockpit.
 
-     cockpit color.
-
-(G)  http://www.ieeeghn.org/wiki/index.php/First-Hand:Evolution_of_the_2-Person_Crew_Jet_Transport_Flight_Deck :
-
-     high resolution cockpit.
-
-     http://www.seawings.co.uk/boeingb-314plansgal.htm/ :
-
-     plans.
+     http://www.seawings.co.uk/ : plans.
+     
+     https://www.flickr.com/photos/sdasmarchives/4590297824/in/photostream/ : flag below sponson.
 
 
 Credits
@@ -104,10 +99,12 @@ http://www.panamair.org/History/earlydays.htm/ : the Panam logo.
 http://www.commercemarketplace.com/home/CollectAir/ephemera.html/ : the Boeing logo.
 
 
-Made with Blender 2.67a.
+GIMP font : Serif.
+
+Made with Blender 2.68a.
 AC3D export :
 - Auto smooth is enabled (default is 30 degrees). Except tables and seats.
 - AC3D groups are removed, to help import/export.
 
 
-22 March 2014.
+22 August 2015.

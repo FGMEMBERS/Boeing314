@@ -423,8 +423,8 @@ RadioManagement.set_adf = func( index, task ) {
 
         if( index < size( adf ) ) {
             var frequency = nil;
-            var frequencykhz = 0;
-            var currentkhz = 0;
+            var frequencykhz = 0.0;
+            var currentkhz = 0.0;
 
             # not real : no ADF standby frequency
             frequency = adf[ index ].getChild("standby-khz");

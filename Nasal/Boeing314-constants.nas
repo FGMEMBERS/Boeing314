@@ -13,6 +13,11 @@ ConstantAero = {};
 ConstantAero.new = func {
    var obj = { parents : [ConstantAero],
 
+               TAXIKT : 15,
+
+# AGL altitude, where the gears touch the ground
+               AGLTOUCHFT : 12,
+
 # AGL altitude when on ground : radio altimeter is above gear
 # (Z height of center of gravity minus Z height of main landing gear)
                AGLFT : 8
@@ -38,9 +43,13 @@ Constant.new = func {
                TRUE : 1.0,                             #  faster than "true"/"false"
                FALSE : 0.0,
 
+# property not yet created at startup (should through XML)
+               DELAYEDNODE : 1,
+
 # angle
                DEG360 : 360,
                DEG180 : 180,
+               DEG90  : 90,
                DEG10  : 10,
                DEG0   : 0,
 
@@ -92,6 +101,17 @@ Constant.crossnorth = func( offsetdeg ) {
        offsetdeg = offsetdeg - me.DEG360;
    }
    elsif( offsetdeg < - me.DEG180 ) {
+       offsetdeg = offsetdeg + me.DEG360;
+   }
+
+   return offsetdeg;
+}
+
+Constant.truncatenorth = func( offsetdeg ) {
+   if( offsetdeg > me.DEG360 ) {
+       offsetdeg = offsetdeg - me.DEG360;
+   }
+   elsif( offsetdeg < 0 ) {
        offsetdeg = offsetdeg + me.DEG360;
    }
 
@@ -234,7 +254,7 @@ System.is_moving = func {
 
    # must exist in XML !
    var aglft = me.noinstrument["agl"].getValue();
-   var speedkt = me.noinstrument["airspeed"].getValue();
+   var speedkt = me.noinstrument["speed"].getValue();
 
    if( aglft >=  constantaero.AGLTOUCHFT or speedkt >= constantaero.TAXIKT ) {
        result = constant.TRUE;

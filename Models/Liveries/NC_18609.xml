@@ -9,7 +9,11 @@
       <texture>B314Panam-hull.rgb</texture>
       <texture-wing-left>B314Panam-wing-left.rgb</texture-wing-left>
       <texture-wing-right>B314Panam-wing-right.rgb</texture-wing-right>
+      <texture-engine>B314Panam-wing-left.rgb</texture-engine>
+      <texture-propeller>B314Panam-default.rgb</texture-propeller>
       <texture-fin>B314Panam-fin.rgb</texture-fin>
+      <texture-rudder>B314Panam-rudder.rgb</texture-rudder>
+      <texture-default>B314Panam-default.rgb</texture-default>
      </livery>
     </model>
   </sim>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<!--
+
+     Path must be from calling .xml.
+     
+
+     TO DO : speedbird logo.
+     =====
+
+     
+     References :
+     ==========
+     http://en.wikipedia.org/wiki/Boeing_314_Clipper
+     
+     http://www.aussieairliners.org/scrapbook/boeing%20314/boeing314.html
+     
+     https://www.flickr.com/photos/sdasmarchives/4589676931
+
+     http://www.seattlepi.com/business/boeing/slideshow/75-years-since-Boeing-Clipper-first-flew-64021/photo-4746412.php :
+     with color.
+     
+
+     Credits
+     .......
+     http://www.flagpictures.org/ : the Union Jack.
+
+-->
+
+<PropertyList>
+  <sim>
+    <model>
+     <livery>
+      <name type="string">BOAC immat</name>
+      <index type="int">2</index>
+      <texture>Liveries/BOAC-hull.png</texture>
+      <texture-wing-left>Liveries/BOAC-wing.png</texture-wing-left>
+      <texture-wing-right>Liveries/BOAC-wing.png</texture-wing-right>
+      <texture-engine>Liveries/BOAC-wing.png</texture-engine>
+      <texture-propeller>Liveries/BOAC-default.png</texture-propeller>
+      <texture-fin>Liveries/BOAC-fin.png</texture-fin>
+      <texture-rudder>Liveries/BOAC-default.png</texture-rudder>
+      <texture-default>Liveries/BOAC-default.png</texture-default>
+     </livery>
+    </model>
+  </sim>
+</PropertyList>

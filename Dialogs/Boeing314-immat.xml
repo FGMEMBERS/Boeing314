@@ -3,7 +3,7 @@
 <PropertyList>
   <name>Boeing314-immat</name>
   <layout>vbox</layout>
-  <width>300</width>
+  <width>350</width>
 
   <text>
     <label>Boeing 314 immatriculation</label>
@@ -15,9 +15,16 @@
     <layout>vbox</layout>
 
     <input>
-      <label>Immatriculation</label>
+      <label>Panam</label>
       <halign>left</halign>
-      <property>/sim/model/immat</property>
+      <property>/sim/model/immat[0]</property>
+      <pref-width>150</pref-width>
+    </input>
+
+    <input>
+      <label>BOAC</label>
+      <halign>left</halign>
+      <property>/sim/model/immat[1]</property>
       <pref-width>150</pref-width>
     </input>
   </group>
@@ -59,6 +66,18 @@
     </binding>
     <binding>
       <command>dialog-close</command>
+    </binding>
+   </button>
+
+   <button>
+    <legend>Reset</legend>
+    <key>r</key>
+    <binding>
+      <command>nasal</command>
+      <script>globals.Boeing314.menusystem.resetexport();</script>
+    </binding>
+    <binding>
+     <command>dialog-update</command>
     </binding>
    </button>
   </group>

@@ -13,7 +13,8 @@ Doors = {};
 Doors.new = func {
    var obj = { parents : [Doors,System],
 
-               celestial : nil
+               celestial : nil,
+               wing : [nil,nil]
          };
 
    obj.init();
@@ -26,9 +27,19 @@ Doors.init = func {
 
    me.celestial = aircraft.door.new(me.itself["root-ctrl"].getNode("celestial").getPath(), 10.0);
 
+   var thewings = me.itself["root-ctrl"].getChildren("wing");
+   for (var i=0; i<size(thewings); i=i+1) {
+        me.wing[i] = aircraft.door.new(thewings[i].getPath(), 8.0);
+   }
+
    # user customization
    if( me.itself["root-ctrl"].getNode("celestial").getChild("opened").getValue() ) {
        me.celestial.toggle();
+   }
+   for (var i=0; i<size(thewings); i=i+1) {
+        if( thewings[i].getChild("opened").getValue() ) {
+            me.wing[i].toggle();
+        }
    }
 }
 
@@ -42,4 +53,17 @@ Doors.celestialexport = func {
    }
 
    me.itself["root-ctrl"].getNode("celestial").getChild("opened").setValue(state);
+}
+
+Doors.wingexport = func( index ) {
+   var state = constant.TRUE;
+   var thewings = me.itself["root-ctrl"].getChildren("wing");
+
+   me.wing[index].toggle();
+
+   if( thewings[index].getChild("opened").getValue() ) {
+       state = constant.FALSE;
+   }
+
+   thewings[index].getChild("opened").setValue(state);
 }

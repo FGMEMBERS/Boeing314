@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 
 <!-- References :
      ==========
 
-(A) http://www.panam.org/
+(A) http://www.panam.org
 
     2 maps : Pacific clippers and 1941 outposts.
 
@@ -13,23 +13,23 @@
     http://www.panam.org/memoirs1.asp :
     Panam's ground direction finding in the Pacific.
 
-(B) http://www.airfields-freeman.com/
+(B) http://www.airfields-freeman.com
 
     Abandoned and little-known airfields : Treasure Island, Baltimore Dundalk, Dinner Key.
 
-(C) http://www.geology.wisc.edu/~maher/pacclip.html/
+(C) http://www.geology.wisc.edu/~maher/pacclip.html
 
     1941-1942 round-the-world trip.
 
-(D) http://www.avweb.com/news/profiles/182932-1.html/
+(D) http://www.avweb.com/news/profiles/182932-1.html
 
-    Robert M. Robbins flew the B-314 in the Atlantic.
+    Panam routes : Robert M. Robbins flew the B-314 in the Atlantic.
 
 (E) http://iwn.iwai.ie/v28i4/flying_boats_foynes.PDF
 
     Foynes Flying Boat Museum.
 
-(F) http://www.virtualmuseum.ca/
+(F) http://www.virtualmuseum.ca
 
     Botwood harbour, Newfoundland.
 
@@ -37,15 +37,15 @@
 
     Bermuda Island.
 
-(H) http://www.airchive.com/
+(H) http://www.airchive.com
 
     Panam map 1940 (Atlantic and Pacific coasts of Americas).
 
-(I) http://www.pilotfriend.com/
+(I) http://www.pilotfriend.com
 
     Mail service to Marseille.
 
-(J) http://users.ev1.net/~gpmoran/WakeIslandHistory.htm/
+(J) http://celticowboy.com/WakeIslandHistory.htm
 
     History of Panam base at Wake Island.
 
@@ -61,14 +61,41 @@
 
     San Pedro, Suva.
 
+(O) http://www.flysfo.com/content/pan-american-airways-moves-its-pacific-alaska-division-san-francisco-airport
+
+    Seaplane harbor.
 
 (P) Photos at moorage :
 
     http://www.airfields-freeman.com/ : Baltimore.
-    http://www.boeingphotostore.com/ : Mathews Beach.
+    http://www.boeingimages.com/ : Mathews Beach.
     http://www.panam.org/ (Panam Historical Foundation) : Dinner Key, Horta, Pearl Harbour.
     http://1000aircraftphotos.com/ (William T. Larkins) : Treasure Island.
 
+(Q) http://www.huffingtonpost.com/heidi-legg/luxury-seaplanes-from-sou_b_3682236.html
+
+    Pointe du Chene.
+
+(R) http://www.aussieairliners.org/scrapbook/boeing%20314/boeing314.html
+
+    Mechanics Bay.
+
+(S) http://airpigz.com/blog/2012/3/18/coolpix-pan-am-anzac-clipper-clear-lake-and-pearl-harbor.html
+
+    Diversion of San Franciso bay.
+
+
+    http://aerosociety.com/News/Publications/J-Aero-Hist/Papers :
+
+    Paper 2013/03 : BOAC routes.
+
+    http://www.timetableimages.com/ttimages/ba2.htm :
+    
+    BOAC timetables.
+
+    http://www.flyingboatmuseum.com/history/foynes-airport-operations :
+
+    Poole.
 -->
 
 <PropertyList>
@@ -98,6 +125,9 @@
 
    <seaplane n="0">
     <airport-id type="string">KBFI</airport-id>
+    <name>Seattle (Elliott Bay)</name>
+    
+    <route-other type="int">0</route-other>
 
     <location n="0">
      <latitude-deg type="double">47.58811</latitude-deg>
@@ -143,6 +173,12 @@
 
    <seaplane n="1">
     <airport-id type="string">KOAK</airport-id>
+    <name>San Francisco (Treasure Island)</name>
+    
+    <route-everything type="int">0</route-everything>
+    <route-pacific type="int">0</route-pacific>
+    <route-pacific2 type="int">0</route-pacific2>
+    <route-round-the-world type="int">0</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">37.841</latitude-deg>
@@ -154,6 +190,8 @@
      <latitude-deg type="double">37.81743</latitude-deg>
      <longitude-deg type="double">-122.36370</longitude-deg>
      <heading-deg type="int">150</heading-deg>
+     <terminal type="bool">true</terminal>
+     <name type="string">Treasure Island</name>
     </location>
 
     <location n="2">
@@ -182,6 +220,11 @@
 
    <seaplane n="2">
     <airport-id type="string">PHNL</airport-id>
+    <name>Honolulu (Pearl Harbour)</name>
+    
+    <route-pacific type="int">1</route-pacific>
+    <route-pacific2 type="int">1</route-pacific2>
+    <route-round-the-world type="int">2</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">21.37628</latitude-deg>
@@ -219,6 +262,9 @@
 
    <seaplane n="3">
     <airport-id type="string">PMDY</airport-id>
+    <name>Midway Island</name>
+    
+    <route-pacific type="int">2</route-pacific>
 
     <location n="0">
      <latitude-deg type="double">28.22183</latitude-deg>
@@ -255,6 +301,9 @@
 
    <seaplane n="4">
     <airport-id type="string">PWAK</airport-id>
+    <name>Wake Island</name>
+    
+    <route-pacific type="int">3</route-pacific>
 
     <location n="0">
      <latitude-deg type="double">19.31050</latitude-deg>
@@ -287,6 +336,9 @@
 
    <seaplane n="5">
     <airport-id type="string">PGUM</airport-id>
+    <name>Guam</name>
+    
+    <route-pacific type="int">4</route-pacific>
 
     <location n="0">
      <latitude-deg type="double">13.48437</latitude-deg>
@@ -318,6 +370,9 @@
 
    <seaplane n="6">
     <airport-id type="string">RPLS</airport-id>
+    <name>Manila</name>
+    
+    <route-pacific type="int">5</route-pacific>
 
     <location n="0">
      <latitude-deg type="double">14.48513</latitude-deg>
@@ -354,6 +409,9 @@
 
    <seaplane n="7">
     <airport-id type="string">VMMC</airport-id>
+    <name>Macau</name>
+    
+    <route-pacific type="int">6</route-pacific>
 
     <location n="0">
      <latitude-deg type="double">22.17795</latitude-deg>
@@ -386,6 +444,9 @@
 
    <seaplane n="8">
     <airport-id type="string">VHHH</airport-id>
+    <name>Hong Kong</name>
+    
+    <route-pacific type="int">7</route-pacific>
 
     <location n="0">
      <latitude-deg type="double">22.31530</latitude-deg>
@@ -422,6 +483,9 @@
 
    <seaplane n="9">
     <airport-id type="string">PCIS</airport-id>
+    <name>Canton Island</name>
+    
+    <route-pacific2 type="int">2</route-pacific2>
 
     <location n="0">
      <latitude-deg type="double">-2.82440</latitude-deg>
@@ -454,6 +518,10 @@
 
    <seaplane n="10">
     <airport-id type="string">NWWM</airport-id>
+    <name>Noumea</name>
+    
+    <route-pacific2 type="int">3</route-pacific2>
+    <route-round-the-world type="int">4</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">-22.25851</latitude-deg>
@@ -475,20 +543,26 @@
 
 <!-- Auckland (NZAA), New Zealand.
 
-     in the harbour.
+     in the harbour (R).
 -->
 
    <seaplane n="11">
     <airport-id type="string">NZAA</airport-id>
+    <name>Auckland</name>
+    
+    <route-pacific2 type="int">4</route-pacific2>
+    <route-round-the-world type="int">5</route-round-the-world>
 
     <location n="0">
-     <latitude-deg type="double">-36.83608</latitude-deg>
-     <longitude-deg type="double">174.76021</longitude-deg>
+     <latitude-deg type="double">-36.84499</latitude-deg>
+     <longitude-deg type="double">174.78907</longitude-deg>
      <heading-deg type="int">85</heading-deg>
+     <terminal type="bool">true</terminal>
+     <name>Mechanics Bay</name>
     </location>
     <location n="1">
-     <latitude-deg type="double">-36.83608</latitude-deg>
-     <longitude-deg type="double">174.76021</longitude-deg>
+     <latitude-deg type="double">-36.83897</latitude-deg>
+     <longitude-deg type="double">174.78921</longitude-deg>
      <heading-deg type="int">285</heading-deg>
     </location>
 
@@ -505,7 +579,7 @@
 <!-- the first regular flight by a commercial aircraft (1939).  -->
 <!-- .......................................................... -->
 
-<!-- Panam base at Baltimore Municipal Airport / Harbor Field (KBWI), Dundalk, MD (39.25 N, 76.53 W) (B).
+<!-- Panam base at Baltimore Municipal Airport / Harbor Field (W48), Dundalk, MD (39.25 N, 76.53 W) (B).
 
      in an angle (P) (*).
 
@@ -513,7 +587,12 @@
 -->
 
    <seaplane n="12">
-    <airport-id type="string">KBWI</airport-id>
+    <airport-id type="string">W48</airport-id>
+    <name>Baltimore (Harbor Field)</name>
+    
+    <route-atlantic3 type="int">2</route-atlantic3>
+    <route-atlantic-winter3 type="int">0</route-atlantic-winter3>
+    <route-atlantic-winter4 type="int">4</route-atlantic-winter4>
 
     <location n="0">
      <latitude-deg type="double">39.23239</latitude-deg>
@@ -534,6 +613,8 @@
      <latitude-deg type="double">39.24409</latitude-deg>
      <longitude-deg type="double">-76.53896</longitude-deg>
      <heading-deg type="int">270</heading-deg>
+     <terminal type="bool">true</terminal>
+     <name type="string">Harbor Field</name>
     </location>
 
 <!-- Anne Arundel and Ellicott -->
@@ -551,6 +632,12 @@
 
    <seaplane n="13">
     <airport-id type="string">7N3</airport-id>
+    <name>New York (Port Washington)</name>
+    
+    <route-atlantic type="int">0</route-atlantic>
+    <route-atlantic2 type="int">0</route-atlantic2>
+    <route-atlantic-winter type="int">0</route-atlantic-winter>
+    <route-atlantic-winter2 type="int">4</route-atlantic-winter2>
 
     <location n="0">
      <latitude-deg type="double">40.81517</latitude-deg>
@@ -583,13 +670,16 @@
 
 <!-- Shediac bay, New Brunswick.
 
-     in the bay.
+     in the bay (Q).
 
      north of Moncton (CYQM).
 -->
 
    <seaplane n="14">
     <airport-id type="string">CYQM</airport-id>
+    <name>Shediac bay</name>
+    
+    <route-atlantic type="int">1</route-atlantic>
 
     <location n="0">
      <latitude-deg type="double">46.24398</latitude-deg>
@@ -607,9 +697,11 @@
      <heading-deg type="int">180</heading-deg>
     </location>
     <location n="3">
-     <latitude-deg type="double">46.24279</latitude-deg>
-     <longitude-deg type="double">-64.53026</longitude-deg>
+     <latitude-deg type="double">46.23953</latitude-deg>
+     <longitude-deg type="double">-64.53270</longitude-deg>
      <heading-deg type="int">270</heading-deg>
+     <terminal type="bool">true</terminal>
+     <name>Pointe du Chene</name>
     </location>
 
 <!-- Riverview -->
@@ -626,6 +718,10 @@
 
    <seaplane n="15">
     <airport-id type="string">CCP2</airport-id>
+    <name>Botwood</name>
+    
+    <route-atlantic type="int">2</route-atlantic>
+    <route-atlantic3 type="int">1</route-atlantic3>
 
 <!-- from the harbour -->
 
@@ -674,6 +770,11 @@
 
    <seaplane n="16">
     <airport-id type="string">EINN</airport-id>
+    <name>Foynes</name>
+    
+    <route-atlantic type="int">3</route-atlantic>
+    <route-atlantic3 type="int">0</route-atlantic3>
+    <route-atlantic4 type="int">0</route-atlantic4>
 
     <location n="0">
      <latitude-deg type="double">52.61750</latitude-deg>
@@ -710,6 +811,9 @@
 
    <seaplane n="17">
     <airport-id type="string">EGHI</airport-id>
+    <name>Southampton</name>
+    
+    <route-atlantic type="int">4</route-atlantic>
 
     <location n="0">
      <latitude-deg type="double">50.87325</latitude-deg>
@@ -725,7 +829,7 @@
 <!-- Southampton -->
 
     <adf>
-     <selected-khz type="int">391</selected-khz>
+     <selected-khz type="int">391.5</selected-khz>
     </adf>
    </seaplane>
 
@@ -744,6 +848,11 @@
 
    <seaplane n="18">
     <airport-id type="string">LPHR</airport-id>
+    <name>Horta</name>
+    
+    <route-atlantic2 type="int">1</route-atlantic2>
+    <route-atlantic-winter type="int">3</route-atlantic-winter>
+    <route-atlantic-winter3 type="int">3</route-atlantic-winter3>
 
     <location n="0">
      <latitude-deg type="double">38.54152</latitude-deg>
@@ -770,6 +879,13 @@
 
    <seaplane n="19">
     <airport-id type="string">LPPT</airport-id>
+    <name>Lisbon</name>
+    
+    <route-atlantic2 type="int">2</route-atlantic2>
+    <route-atlantic4 type="int">1</route-atlantic4>
+    <route-atlantic-winter type="int">3</route-atlantic-winter>
+    <route-atlantic-winter2 type="int">0</route-atlantic-winter2>
+    <route-atlantic-winter3 type="int">3</route-atlantic-winter3>
 
     <location n="0">
      <latitude-deg type="double">38.67184</latitude-deg>
@@ -811,6 +927,9 @@
 
    <seaplane n="20">
     <airport-id type="string">LFML</airport-id>
+    <name>Marseille</name>
+    
+    <route-atlantic2 type="int">3</route-atlantic2>
 
     <location n="0">
      <latitude-deg type="double">43.44018</latitude-deg>
@@ -854,6 +973,11 @@
 
    <seaplane n="21">
     <airport-id type="string">TXKF</airport-id>
+    <name>Bermuda</name>
+    
+    <route-atlantic-winter type="int">1</route-atlantic-winter>
+    <route-atlantic-winter3 type="int">1</route-atlantic-winter3>
+    <route-atlantic-winter4 type="int">3</route-atlantic-winter4>
 
     <location n="0">
      <latitude-deg type="double">32.34001</latitude-deg>
@@ -894,6 +1018,9 @@
 
    <seaplane n="22">
     <airport-id type="string">KLGA</airport-id>
+    <name>New York (La Guardia)</name>
+    
+    <route-round-the-world type="int">15</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">40.78244</latitude-deg>
@@ -915,6 +1042,13 @@
      <longitude-deg type="double">-73.85522</longitude-deg>
      <heading-deg type="int">300</heading-deg>
     </location>
+    <location n="4">
+     <latitude-deg type="double">40.77698</latitude-deg>
+     <longitude-deg type="double">-73.88874</longitude-deg>
+     <heading-deg type="int">355</heading-deg>
+     <terminal type="bool">true</terminal>
+     <name type="string">Bowery Bay</name>
+    </location>
 
 <!-- Bridge and Paterson  -->
 
@@ -929,6 +1063,10 @@
 
    <seaplane n="23">
     <airport-id type="string">TTPP</airport-id>
+    <name>Port of Spain</name>
+    
+    <route-atlantic-winter2 type="int">3</route-atlantic-winter2>
+    <route-atlantic-winter4 type="int">2</route-atlantic-winter4>
 
     <location n="0">
      <latitude-deg type="double">10.66861</latitude-deg>
@@ -955,6 +1093,10 @@
 
    <seaplane n="24">
     <airport-id type="string">SBBE</airport-id>
+    <name>Belem</name>
+    
+    <route-atlantic-winter2 type="int">2</route-atlantic-winter2>
+    <route-atlantic-winter4 type="int">1</route-atlantic-winter4>
 
     <location n="0">
      <latitude-deg type="double">-1.38634</latitude-deg>
@@ -983,6 +1125,9 @@
 
    <seaplane n="25">
     <airport-id type="string">GGOV</airport-id>
+    <name>Boloma</name>
+    
+    <route-atlantic-winter2 type="int">1</route-atlantic-winter2>
 
     <location n="0">
      <latitude-deg type="double">11.58062</latitude-deg>
@@ -1013,6 +1158,7 @@
 
    <seaplane n="26">
     <airport-id type="string">KMIA</airport-id>
+    <name>Miami (Dinner Key)</name>
 
     <location n="0">
      <latitude-deg type="double">25.72360</latitude-deg>
@@ -1025,9 +1171,11 @@
      <heading-deg type="int">140</heading-deg>
     </location>
     <location n="2">
-     <latitude-deg type="double">25.72360</latitude-deg>
-     <longitude-deg type="double">-80.22440</longitude-deg>
+     <latitude-deg type="double">25.72702</latitude-deg>
+     <longitude-deg type="double">-80.23303</longitude-deg>
      <heading-deg type="int">230</heading-deg>
+     <terminal type="bool">true</terminal>
+     <name>Dinner Key</name>
     </location>
     <location n="3">
      <latitude-deg type="double">25.69452</latitude-deg>
@@ -1056,6 +1204,9 @@
 
    <seaplane n="27">
     <airport-id type="string">GBYD</airport-id>
+    <name>Banjul</name>
+    
+    <route-atlantic4 type="int">2</route-atlantic4>
 
     <location n="0">
      <latitude-deg type="double">13.40098</latitude-deg>
@@ -1092,6 +1243,10 @@
 
    <seaplane n="28">
     <airport-id type="string">DNMM</airport-id>
+    <name>Lagos</name>
+    
+    <route-atlantic4 type="int">3</route-atlantic4>
+    <route-atlantic-winter4 type="int">0</route-atlantic-winter4>
 
     <location n="0">
      <latitude-deg type="double">6.471221</latitude-deg>
@@ -1124,7 +1279,7 @@
 
 <!-- ........................................................................... -->
 <!-- Auckland, via Noumea and Port of Spain, to New York La Guardia              -->
-<!-- (15 December 1941, 6 January 1942) (A) (C) (M).                                 -->
+<!-- (15 December 1941, 6 January 1942) (A) (C) (M).                             -->
 <!--                                                                             -->
 <!-- The first round-the-world trip by a commercial aircraft (NC 18602).         -->
 <!-- ........................................................................... -->
@@ -1136,6 +1291,9 @@
 
    <seaplane n="29">
     <airport-id type="string">KTOA</airport-id>
+    <name>Los Angeles (San Pedro)</name>
+    
+    <route-round-the-world type="int">1</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">33.72345</latitude-deg>
@@ -1173,6 +1331,9 @@
 
    <seaplane n="30">
     <airport-id type="string">NFNA</airport-id>
+    <name>Suva</name>
+    
+    <route-round-the-world type="int">3</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">-18.13672</latitude-deg>
@@ -1209,6 +1370,9 @@
 
    <seaplane n="31">
     <airport-id type="string">YGLA</airport-id>
+    <name>Gladstone</name>
+    
+    <route-round-the-world type="int">6</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">-23.83203</latitude-deg>
@@ -1245,6 +1409,9 @@
 
    <seaplane n="32">
     <airport-id type="string">YPDN</airport-id>
+    <name>Darwin</name>
+    
+    <route-round-the-world type="int">7</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">-12.45049</latitude-deg>
@@ -1280,7 +1447,10 @@
 -->
 
    <seaplane n="33">
-    <airport-id type="string">WRSJ</airport-id>
+    <airport-id type="string">WARR</airport-id>
+    <name>Surabaya</name>
+    
+    <route-round-the-world type="int">8</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">-7.19709</latitude-deg>
@@ -1318,6 +1488,9 @@
 
    <seaplane n="34">
     <airport-id type="string">VCCT</airport-id>
+    <name>Trincomalee</name>
+    
+    <route-round-the-world type="int">9</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">8.55514</latitude-deg>
@@ -1354,6 +1527,9 @@
 
    <seaplane n="35">
     <airport-id type="string">OPMR</airport-id>
+    <name>Karachi</name>
+    
+    <route-round-the-world type="int">10</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">24.83291</latitude-deg>
@@ -1391,6 +1567,9 @@
 
    <seaplane n="36">
     <airport-id type="string">OBBI</airport-id>
+    <name>Bahrein</name>
+    
+    <route-round-the-world type="int">11</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">26.23530</latitude-deg>
@@ -1413,7 +1592,7 @@
      <heading-deg type="int">290</heading-deg>
     </location>
 
-<!-- Bahrein -->
+<!-- Bahrein --> 
 
     <adf>
      <selected-khz type="int">395</selected-khz>
@@ -1427,15 +1606,18 @@
 
    <seaplane n="37">
     <airport-id type="string">HSSS</airport-id>
+    <name>Khartoum</name>
+    
+    <route-round-the-world type="int">12</route-round-the-world>
 
     <location n="0">
-     <latitude-deg type="double">15.60347</latitude-deg>
-     <longitude-deg type="double">32.52591</longitude-deg>
+     <latitude-deg type="double">15.60339</latitude-deg>
+     <longitude-deg type="double">32.52545</longitude-deg>
      <heading-deg type="int">65</heading-deg>
     </location>
     <location n="1">
-     <latitude-deg type="double">15.60347</latitude-deg>
-     <longitude-deg type="double">32.52591</longitude-deg>
+     <latitude-deg type="double">15.60339</latitude-deg>
+     <longitude-deg type="double">32.52545</longitude-deg>
      <heading-deg type="int">315</heading-deg>
     </location>
 
@@ -1449,6 +1631,9 @@
 
    <seaplane n="38">
     <airport-id type="string">FZAA</airport-id>
+    <name>Kinshasa</name>
+    
+    <route-round-the-world type="int">13</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">-4.29909</latitude-deg>
@@ -1485,6 +1670,9 @@
 
    <seaplane n="39">
     <airport-id type="string">SBNT</airport-id>
+    <name>Natal</name>
+    
+    <route-round-the-world type="int">14</route-round-the-world>
 
     <location n="0">
      <latitude-deg type="double">-5.78500</latitude-deg>
@@ -1502,6 +1690,88 @@
     <adf>
      <selected-khz type="int">400</selected-khz>
     </adf>
+   </seaplane>
+
+<!-- ........... -->
+<!-- Diversion   -->
+<!--             -->
+<!-- ........... -->
+
+<!-- Clear Lake (CN20), California (S).
+
+     at seaport.
+-->
+
+   <seaplane n="40">
+    <airport-id type="string">CN20</airport-id>
+    <name>San Francisco diversion (Clear Lake)</name>
+
+    <location n="0">
+     <latitude-deg type="double">39.01130</latitude-deg>
+     <longitude-deg type="double">-122.79326</longitude-deg>
+     <heading-deg type="int">35</heading-deg>
+    </location>
+    <location n="1">
+     <latitude-deg type="double">39.02983</latitude-deg>
+     <longitude-deg type="double">-122.82232</longitude-deg>
+     <heading-deg type="int">100</heading-deg>
+    </location>
+    <location n="2">
+     <latitude-deg type="double">39.03094</latitude-deg>
+     <longitude-deg type="double">-122.77267</longitude-deg>
+     <heading-deg type="int">240</heading-deg>
+    </location>
+    <location n="3">
+     <latitude-deg type="double">39.03094</latitude-deg>
+     <longitude-deg type="double">-122.77267</longitude-deg>
+     <heading-deg type="int">310</heading-deg>
+    </location>
+
+<!-- Tracy (San Francisco) -->
+
+    <adf>
+     <selected-khz type="int">203</selected-khz>
+    </adf>
+   </seaplane>
+
+<!-- San Francisco seaplane harbor (KSFO).
+
+     When Treasure Island was converted to naval station (O).
+-->
+
+   <seaplane n="41">
+    <airport-id type="string">KSFO</airport-id>
+    <name>San Francisco (Seaplane Harbor)</name>
+    
+    <no-other type="int">0</no-other>
+
+    <location n="0">
+     <latitude-deg type="double">37.63207</latitude-deg>
+     <longitude-deg type="double">-122.37477</longitude-deg>
+     <heading-deg type="int">0</heading-deg>
+    </location>
+
+    <location n="1">
+     <latitude-deg type="double">37.63255</latitude-deg>
+     <longitude-deg type="double">-122.38737</longitude-deg>
+     <heading-deg type="int">90</heading-deg>
+     <terminal type="bool">true</terminal>
+     <name type="string">Seaplane Harbor</name>
+    </location>
+
+    <location n="2">
+     <latitude-deg type="double">37.63622</latitude-deg>
+     <longitude-deg type="double">-122.37542</longitude-deg>
+     <heading-deg type="int">180</heading-deg>
+    </location>
+
+    <location n="3">
+     <latitude-deg type="double">37.63347</latitude-deg>
+     <longitude-deg type="double">-122.37306</longitude-deg>
+     <heading-deg type="int">270</heading-deg>
+    </location>
+
+<!-- ADF from preferences.xml -->
    </seaplane>
 
 <!-- ========================= -->

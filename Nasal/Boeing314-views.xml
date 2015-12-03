@@ -279,4 +279,25 @@
     </config>
   </view>
 
+  <view>
+    <name>Dock (terminal) View</name>
+    <enabled type="bool">false</enabled>
+    <type>lookfrom</type>
+    <config>
+      <eye-lat-deg-path>/systems/seat/position/dock/latitude-deg</eye-lat-deg-path>
+      <eye-lon-deg-path>/systems/seat/position/dock/longitude-deg</eye-lon-deg-path>
+      <eye-alt-ft-path>/systems/seat/position/dock/altitude-ft</eye-alt-ft-path>
+
+      <at-model type="bool">true</at-model>
+      <at-model-idx type="int">0</at-model-idx>
+
+      <ground-level-nearplane-m type="double">1.5f</ground-level-nearplane-m>      <!-- dock -->
+      <default-field-of-view-deg type="double">55.0</default-field-of-view-deg>
+
+      <x-offset-m type="double">0</x-offset-m>
+      <y-offset-m type="double">0</y-offset-m>
+      <z-offset-m type="double">0</z-offset-m>
+    </config>
+  </view>
+
 </PropertyList>
