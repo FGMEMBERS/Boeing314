@@ -114,23 +114,10 @@ DayTime.schedule = func {
    var speedup = me.noinstrument["speed-up"].getValue();
 
    if( speedup > 1 ) {
-       var multiplier = 0.0;
-       var offsetsec = 0.0;
-       var warp = 0.0;
-       var stepft = 0.0;
-       var maxft = 0.0;
-       var minft = 0.0;
-
-       # accelerate day time
-       multiplier = speedup - 1;
-       offsetsec = me.SPEEDUPSEC * multiplier;
-       warp = me.noinstrument["warp"].getValue() + offsetsec; 
-       me.noinstrument["warp"].setValue(warp);
-
        # safety
-       stepft = me.MAXSTEPFT * speedup;
-       maxft = me.lastft + stepft;
-       minft = me.lastft - stepft;
+       var stepft = me.MAXSTEPFT * speedup;
+       var maxft = me.lastft + stepft;
+       var minft = me.lastft - stepft;
 
        # too fast
        if( altitudeft > maxft or altitudeft < minft ) {
