@@ -131,7 +131,7 @@ Sounds
 
 Known compatibility
 -------------------
-3.6.0 RC : minimal version.
+2016.1.1 : minimal version.
 
 
 Keyboard
@@ -338,7 +338,7 @@ References
 (B) http://www.boeing.com/history/boeing/m314.html/
     (314A)
 
-(C) http://www.hq.nasa.gov/office/pao/History/SP-468/app-a2.htm/
+(C) http://history.nasa.gov/SP-468/app-a2.htm
     (314).
 
 (D) http://aeroweb.brooklyn.cuny.edu/locator/manufact/boeing/bng-314.htm/
@@ -380,4 +380,4 @@ References
     F. W. S. Locke Jr., January 1946.
 
 
-1st November 2015.
+2nd April 2016.
