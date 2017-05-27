@@ -8,6 +8,19 @@
   <status>early-production</status>
   <aircraft-version>1.7</aircraft-version>
 
+  <tags>
+    <tag>boeing</tag>
+    <tag>high-wing</tag>
+    <tag>seaplane</tag>
+    <tag>four-engine</tag>
+    <tag>piston</tag>
+    <tag>supercharged</tag>
+    <tag>variable-pitch</tag>
+    <tag>transport</tag>
+    <tag>1930s</tag>
+    <tag>1940s</tag>
+  </tags>
+
   <startup>
    <splash-texture>Aircraft/Boeing314/Boeing314A-splash.rgb</splash-texture>            <!-- CCP2 -->
   </startup>
